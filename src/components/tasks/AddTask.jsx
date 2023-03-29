@@ -24,18 +24,19 @@ const AddTask = function ({ tasksArray, userMail, setTasksArray }) {
 
   const closeModal = function () {
     document.querySelector('.modal-newTask').classList.add('hidden');
-    document.querySelector('.confirmDelete').classList.add('hidden');
     document.querySelector('.overlay').classList.add('hidden');
   };
 
   return (
     <div className="container-modal__NewTask">
       <div onClick={closeModal} className="overlay hidden"></div>
+
       <form className="modal-newTask hidden" onSubmit={addTask}>
         <h1 className="modal-newTask-h1">Nueva tarea</h1>
         <textarea className="modal-newTask-input" id="inputDescription" placeholder="Descripción" type="text" />
         <button onClick={closeModal} className="modal-newTask-addButton" type="submit">Agregar</button>
       </form>
+
     </div>
   );
 };

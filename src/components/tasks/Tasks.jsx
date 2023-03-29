@@ -6,14 +6,14 @@ const firestore = getFirestore(firebaseApp);
 
 const Tasks = function ({ tasksArray, userMail, setTasksArray }) {
 
-  const cancelAndCloseConfirmDelete = () => {
+  const closeDeleteMessage = () => {
+    document.querySelector('.overlayDelete').classList.add('hidden');
     document.querySelector('.confirmDelete').classList.add('hidden');
-    document.querySelector('.overlay').classList.add('hidden');
   };
 
   const RevealConfirmDelete = () => {
     document.querySelector('.confirmDelete').classList.remove('hidden');
-    document.querySelector('.overlay').classList.remove('hidden');
+    document.querySelector('.overlayDelete').classList.remove('hidden');
   };
 
   async function deleteTask(idTaskToDelete) {
@@ -35,8 +35,6 @@ const Tasks = function ({ tasksArray, userMail, setTasksArray }) {
         {tasksArray.map(function (a) {
           return (
             <>
-              <div className="overlay hidden"></div>
-
               <div key={a.id} className="task">
                 <div className="taskDescription">
                   <p className="task-p">{a.description}</p>
@@ -48,9 +46,11 @@ const Tasks = function ({ tasksArray, userMail, setTasksArray }) {
               <div className="confirmDelete hidden">
                 <h4 className="confirmDelete-h4">¿Eliminar la tarea?</h4>
                 <p className="confirmDelete-p">Esta acción es permanente y no se puede deshacer</p>
-                <button onClick={() => { deleteTask(a.id); cancelAndCloseConfirmDelete(); }} className="confirmDelete-btn-deleteTask">Eliminar Ahora</button>
-                <button onClick={cancelAndCloseConfirmDelete} className="confirmDelete-btn-quitModal">Cancelar</button>
+                <button onClick={() => { deleteTask(a.id); closeDeleteMessage(); }} className="confirmDelete-btn-deleteTask">Eliminar Ahora</button>
+                <button onClick={closeDeleteMessage} className="confirmDelete-btn-quitModal">Cancelar</button>
               </div>
+
+              <div className="overlayDelete hidden"></div>
             </>
           );
         })}
