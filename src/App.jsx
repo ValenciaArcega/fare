@@ -12,7 +12,7 @@ export function App() {
   // create a global state
   const [globalUser, setGlobalUser] = useState(null);
 
-  onAuthStateChanged(auth, function (firebaseUser) {
+  onAuthStateChanged(auth, (firebaseUser) => {
     if (firebaseUser) {
       setGlobalUser(firebaseUser);
     } else {

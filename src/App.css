@@ -48,7 +48,6 @@ html {
 }
 
 body {
-  padding-bottom: 4rem;
   font-family: 'Inter', sans-serif;
   color: var(--18);
   background-color: var(--bg);
