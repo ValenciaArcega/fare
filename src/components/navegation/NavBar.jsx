@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { signOut, } from "firebase/auth";
 import { auth } from "../Home";
 import { IconPlus, IconMoon, IconSignOut, IconSun, IconAddTaskMob, IconMoonMob, IconSunMob, IconSignOutMob } from "../icons/navBar-buttons";
-import { makeDark, makeLight } from "../functions/appearance";
+import { makeDark, makeLight } from "../../functions/appearance";
 import '../../App.css';
 
 

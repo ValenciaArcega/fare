@@ -20,8 +20,8 @@
   --border__task: #c9c9c9;
 
   /* border */
-  --border-wrapper-input-loginMail: #969696;
-  --border-wrapper-input-loginPass: #969696;
+  --border-wrapper-input-loginMail: #a8a8a8;
+  --border-wrapper-input-loginPass: #a8a8a8;
   /* shadows */
 }
 
@@ -75,42 +75,52 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--mainColor-shade);
+  background-color: var(--bg);
 }
 
 .login {
-  height: 31rem;
+  height: 26rem;
   width: 19rem;
-  padding: 2rem 1.5rem 1rem 1.5rem;
-  border-radius: 32px;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
   color: #181818;
   background-color: #fff;
+  box-shadow: 0px 10px 20px 5px rgba(31, 209, 79, 0.17);
+}
+
+.login img {
+  align-self: center;
+  height: 96px;
 }
 
 .login-h1 {
   letter-spacing: -1px;
   text-align: center;
+  overflow-y: hidden;
 }
 
 .login-form {
-  height: 60%;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
 
 .login-formLabel {
-  margin-top: 2rem;
+  margin-bottom: 6px;
   font-size: 18px;
   letter-spacing: -.4px;
   font-weight: 600;
+  overflow-y: hidden;
 }
 
 .wrapper-login-inputMail,
 .wrapper-login-inputPass {
   width: 100%;
-  margin-top: 8px;
+  margin-bottom: 18px;
   padding-left: 10px;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 2px solid var(--border-wrapper-input-loginMail);
   overflow-y: hidden;
   display: flex;
@@ -150,7 +160,6 @@ textarea {
 
 /* Login o Register */
 .login-btn__accOrReg {
-  margin-top: 1rem;
   height: 2.5rem;
   width: 100%;
   border-radius: 12px;
@@ -166,35 +175,11 @@ textarea {
   background-color: #0ba073;
 }
 
-/* Google button */
-.btn__access-google {
-  height: 2.5rem;
-  width: 100%;
-  margin-top: 1rem;
-  border-radius: 12px;
-  font-weight: 500;
-  letter-spacing: -.6px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, .1);
-  color: #181818;
-  background-color: #fff;
-}
-
-.btn__access-google:hover {
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, .15);
-}
-
 /* Do u have an account? */
 .btn__toggle__accOrReg {
   height: 2rem;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 8px;
   border-radius: 12px;
   font-size: 14px;
   font-weight: 500;

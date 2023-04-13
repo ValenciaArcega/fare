@@ -1,4 +1,4 @@
-import '../../App.css';
+import '../App.css';
 
 const root = document.querySelector(':root');
 
