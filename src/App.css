@@ -5,7 +5,7 @@
   --mainColor: #0ca678;
   --mainColor-tint: #12b886;
   --mainColor-shade: #099268;
-  --18: #181818;
+  --black18: #181818;
   --bg: #f2f2f7;
   --ff: #fff;
 
@@ -19,10 +19,10 @@
 
   --border__task: #c9c9c9;
 
-  /* border */
-  --border-wrapper-input-loginMail: #a8a8a8;
-  --border-wrapper-input-loginPass: #a8a8a8;
-  /* shadows */
+  --borderFieldName: #c5c5c5;
+  --borderFieldID: #c5c5c5;
+  --borderFieldPass: #c5c5c5;
+  --borderFieldPassConfirm: #c5c5c5;
 }
 
 ::selection {
@@ -49,7 +49,7 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  color: var(--18);
+  color: var(--black18);
   background-color: var(--bg);
 }
 
@@ -60,138 +60,18 @@ button {
 button,
 input {
   font-family: 'Inter', sans-serif;
-  color: var(--18);
+  color: var(--black18);
   background-color: var(--bg);
 }
 
 input,
 textarea {
   caret-color: var(--mainColor-shade);
-}
-
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-.container-login {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg);
-}
-
-.login {
-  height: 26rem;
-  width: 19rem;
-  padding: 1rem 1.5rem 1rem 1.5rem;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  color: #181818;
-  background-color: #fff;
-  box-shadow: 0px 10px 20px 5px rgba(31, 209, 79, 0.17);
-}
-
-.login img {
-  align-self: center;
-  height: 96px;
-}
-
-.login-h1 {
-  letter-spacing: -1px;
-  text-align: center;
-  overflow-y: hidden;
-}
-
-.login-form {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.login-formLabel {
-  margin-bottom: 6px;
-  font-size: 18px;
-  letter-spacing: -.4px;
-  font-weight: 600;
-  overflow-y: hidden;
-}
-
-.wrapper-login-inputMail,
-.wrapper-login-inputPass {
-  width: 100%;
-  margin-bottom: 18px;
-  padding-left: 10px;
-  border-radius: 10px;
-  border: 2px solid var(--border-wrapper-input-loginMail);
-  overflow-y: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
   background-color: #fff;
 }
 
-.wrapper-login-inputPass {
-  border: 2px solid var(--border-wrapper-input-loginPass);
-}
-
-.input-password,
-.input-mail {
-  height: 2.4rem;
-  width: 100%;
-  padding: 0 6px;
-  font-size: 16px;
-  font-weight: 500;
-  border: none;
-  outline: none;
-  color: #181818;
-  background-color: #fff;
-}
-
-.input-iconMail,
-.input-iconPass {
-  height: 25px;
-  color: var(--border-wrapper-input-loginMail);
-  /* background-color: red; */
-}
-
-.input-iconPass {
-  color: var(--border-wrapper-input-loginPass);
-}
-
-/* Login o Register */
-.login-btn__accOrReg {
-  height: 2.5rem;
-  width: 100%;
-  border-radius: 12px;
-  font-weight: 500;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  color: var(--ff);
-  background-color: var(--mainColor);
-}
-
-.login-btn__accOrReg:hover {
-  background-color: #0ba073;
-}
-
-/* Do u have an account? */
-.btn__toggle__accOrReg {
-  height: 2rem;
-  width: 100%;
-  margin-top: 8px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  color: #181818;
-  background-color: #fff;
-}
-
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
+/* /////////////////////////////////////////////////////// */
+/* AddTasks.jsx */
 
 .container-modal__NewTask {
   display: flex;
@@ -201,9 +81,8 @@ textarea {
 }
 
 .modal-newTask {
-  /* height: 15rem; */
-  width: 18rem;
-  padding: 2rem;
+  width: 20rem;
+  padding: 2rem 1.5rem;
   display: flex;
   gap: 8px;
   flex-direction: column;
@@ -226,12 +105,12 @@ textarea {
 
 .modal-newTask-input {
   height: 8rem;
-  padding: 8px;
+  padding: 12px 8px;
   font-size: 18px;
   border: 2px solid var(--bg__modal-input-border);
   border-radius: 12px;
   outline: none;
-  color: var(--18);
+  color: var(--black18);
   background-color: var(--bg__modal-input);
 }
 
@@ -252,39 +131,38 @@ textarea {
 }
 
 .modal-newTask-addButton {
-  height: 2.5rem;
+  height: 48px;
   width: 100%;
   margin-top: 8px;
-  border-radius: 6px;
+  border-radius: 10px;
   font-weight: 600;
   border: none;
   outline: none;
   overflow-y: hidden;
-  color: var(--ff);
-  background-color: var(--mainColor);
+  color: var(--black18);
+  background: linear-gradient(to top right, #24be71, #1cd176);
 }
 
 .modal-newTask-addButton:hover {
   cursor: pointer;
 }
 
-/* diana */
-
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////// */
 .container-tasks {
   margin-top: 5rem;
   background: none;
 }
 
-.tasks-header__h1 {
+.tasks-header-h1 {
   letter-spacing: -1px;
   padding-left: 1rem;
-
+  color: var(--black18);
 }
 
 .tasks {
   margin-top: 1rem;
   padding: 0 1rem;
+  padding-bottom: 6rem;
   display: grid;
   gap: 2rem 10px;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
@@ -325,7 +203,6 @@ textarea {
   bottom: 0;
   height: calc(1.6em * var(--line-height));
   width: 100%;
-  /* pointer-events: none; */
   background: linear-gradient(to bottom, transparent, var(--ff));
   z-index: 97;
 }
@@ -333,13 +210,12 @@ textarea {
 .btn-expandDescriptionTask {
   appearance: none;
   min-width: 100%;
-  min-height: 2.3rem;
+  min-height: 44px;
   margin-top: 8px;
   padding: 4px 12px;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 400;
-  /* cursor: pointer; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -348,11 +224,11 @@ textarea {
 }
 
 .btn-expandDescriptionTask::before {
-  content: "Ver";
+  content: "Expandir";
 }
 
 .btn-expandDescriptionTask:checked::before {
-  content: "Ocultar";
+  content: "Contraer";
 }
 
 /* Now the has selector goes in action */
@@ -361,7 +237,7 @@ textarea {
 }
 
 .task__btn-complete {
-  min-height: 2.3rem;
+  min-height: 44px;
   width: 100%;
   margin-top: 8px;
   border-radius: 8px;
@@ -385,24 +261,33 @@ textarea {
   z-index: 98;
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-.navBar-desktop {
-  overflow-y: hidden;
+/* /////////////////////////////////////////////////////// */
+/* NavBar.jsx */
+.NVD {
+  height: 44px;
   width: 100%;
-  height: 3rem;
   border-bottom: 4px solid var(--mainColor);
   display: grid;
-  align-items: center;
-  grid-template-columns: 1fr repeat(3, 8rem);
+  grid-template-columns: 30% 1fr;
   position: fixed;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   background-color: var(--bg);
+  z-index: 7;
 }
 
-.navBar-desktop img {
-  padding-left: 1rem;
+.NVD-title {
+  margin-left: 1.3rem;
+  letter-spacing: 1px;
+  font-size: 24px;
+  justify-self: flex-start;
+  align-self: center;
+  font-weight: 700;
+  font-style: italic;
 }
+
 
 .navBar-btn {
   font-weight: 600;
@@ -411,10 +296,19 @@ textarea {
   gap: 2px;
   align-items: center;
   justify-items: center;
-  background: none;
   border: none;
+  background: none;
+  color: var(--black18);
 }
 
+.NVD-wrapperButtons {
+  padding-right: 1.3rem;
+  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: none;
+}
 
 .navBar__btn__svg-addTask,
 .navBar__btn__svg-moon,
@@ -435,7 +329,7 @@ textarea {
   cursor: pointer;
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////// */
 .navBar-mobile {
   width: 100%;
   height: 3.3rem;
@@ -448,6 +342,7 @@ textarea {
   bottom: 0;
   left: 0;
   background-color: var(--ff);
+  z-index: 100;
 }
 
 .navBar__mobile-btn {
@@ -494,7 +389,8 @@ textarea {
   height: 32px;
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////// */
+/* Tasks.jsx */
 .confirmDelete {
   width: 19rem;
   padding: 2rem 2rem 1.6rem 2rem;
@@ -552,8 +448,396 @@ textarea {
   cursor: pointer;
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////// */
+/* BadCredencials.jsx */
+.msg-BadCredentials {
+  height: 44px;
+  width: 20rem;
+  padding: 8px;
+  border-radius: 10px;
+  top: 20px;
+  gap: 4px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0px 10px 12px -6px rgba(0, 0, 0, 0.2);
+}
+
+.msg-BadCredentials-svg {
+  height: 22px;
+  color: #ff2c2c;
+}
+
+.msg-BadCredentials-p {
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ///////////////////////////////////////////////////// */
+/* SignUp.jsx */
+.container-signUp {
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signUp {
+  width: 20rem;
+  padding: 2rem 0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px -6px rgba(0, 0, 0, 0.2);
+}
+
+.signUp-title {
+  margin-bottom: 6px;
+  font-size: 26px;
+  letter-spacing: -.8px;
+}
+
+.signUp-label {
+  width: 82%;
+  margin-top: 10px;
+  letter-spacing: -.4px;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: 85% 1fr;
+}
+
+
+.signUp-labelSVG {
+  width: 20px;
+  justify-self: center;
+  color: var(--mainColor);
+}
+
+.signUp-name,
+.signUp-mail,
+.signUp-pass,
+.signUp-passConfirm {
+  min-height: 50px;
+  width: 82%;
+  margin-top: 6px;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  border: 2px solid var(--borderFieldName);
+  background: none;
+  outline: none;
+  background-color: white;
+}
+
+.signUp-mail {
+  border: 2px solid var(--borderFieldID);
+}
+
+.signUp-pass {
+  width: 100%;
+  margin-top: 0;
+  border: 2px solid var(--borderFieldPass);
+}
+
+.signUp-passConfirm {
+  width: 100%;
+  margin-top: 0;
+  border: 2px solid var(--borderFieldPassConfirm);
+}
+
+.signUp-name-p,
+.signUp-mail-p,
+.signUp-pass-p,
+.signUp-passConfirm-p {
+  height: 12px;
+  width: 82%;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #f63737;
+  overflow-y: hidden;
+}
+
+.wrapper-password {
+  width: 82%;
+  margin-top: 6px;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 80% 1fr;
+  background-color: #fff;
+}
+
+.btn-showPass,
+.btn-showPassConfirm {
+  height: 50px;
+  width: 48px;
+
+  border: 2px solid var(--borderFieldPass);
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-showPassConfirm {
+  border: 2px solid var(--borderFieldPassConfirm);
+}
+
+.btn-showPass-svg,
+.btn-hidePass-svg,
+.btn-showPassConfirm-svg,
+.btn-hidePassConfirm-svg {
+  height: 24px;
+  color: var(--mainColor);
+}
+
+.wrapper-textAdvicePass {
+  width: 82%;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+}
+
+.signUp-pass-p {
+  height: 20px;
+  font-size: 14px;
+  color: var(--mainColor);
+}
+
+.signUp-pass-ul {
+  font-size: 14px;
+}
+
+.signUp-pass-ul li::first-letter {
+  color: #0ca678;
+}
+
+
+.signUp-btnRegister {
+  min-height: 48px;
+  width: 82%;
+  margin-top: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  color: #000;
+  background: linear-gradient(to top right, #24be71, #1cd176);
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.2);
+}
+
+.signUp-btnRegister:hover {
+  cursor: pointer;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.25);
+}
+
+.signUp-labelGoSignIn {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.signUp-btnGoSignIn {
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--mainColor-shade);
+}
+
+.signUp-btnGoSignIn:hover {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+
+
+
+/* ///////////////////////////////////////////////////// */
+/* Login.jsx */
+.container-login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  width: 20rem;
+  border-radius: 12px;
+  display: flex;
+  padding: 24px 0;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0px 10px 20px -6px rgba(62, 208, 145, 0.25);
+}
+
+.login-img {
+  height: 5.3rem;
+  user-select: none;
+  pointer-events: none;
+}
+
+.login-title {
+  margin-top: 4px;
+  font-size: 2rem;
+  letter-spacing: -1px;
+  font-weight: 800;
+  user-select: none;
+  pointer-events: none;
+  background: linear-gradient(to right bottom, #24be71, var(--mainColor-shade));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-label {
+  width: 80%;
+  margin-top: 1rem;
+  font-weight: 600;
+  user-select: none;
+  pointer-events: none;
+}
+
+.login-inputMail,
+.login-inputPass {
+  min-height: 36px;
+  width: 80%;
+  margin-top: 4px;
+  padding: 12px 6px;
+  border-radius: 10px;
+  font-size: 18px;
+  outline: none;
+  border: 2px solid #e4e4e4;
+}
+
+.login-inputMail:focus,
+.login-inputPass:focus {
+  border: 2px solid var(--mainColor);
+}
+
+.login-buttonLogin {
+  min-height: 52px;
+  width: 80%;
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  color: #000;
+  background: linear-gradient(to top right, #24be71, #1cd176);
+  box-shadow: 0px 8px 12px -6px rgba(0, 0, 0, 0.2);
+}
+
+.login-buttonLogin:hover {
+  cursor: pointer;
+  box-shadow: 0px 8px 12px -6px rgba(0, 0, 0, 0.21);
+}
+
+.login-labelBGR {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.login-BGR {
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--mainColor-shade);
+}
+
+.login-BGR:hover {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+/* //////////////////////////////// */
 /* tools */
 .hidden {
   display: none;
+}
+
+.gradient {
+  background: linear-gradient(to right bottom, #24be71, var(--mainColor-shade));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight-container,
+.highlight {
+  position: relative;
+}
+
+.highlight-container {
+  display: inline-block;
+}
+
+.highlight-container:before {
+  content: " ";
+  height: 100%;
+  width: 110%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(1.07, 1.05) skewX(-15deg);
+  background: linear-gradient(to left, var(--mainColor), #24be71);
+}
+
+
+.highlightBubble-container,
+.highlightBubble {
+  position: relative;
+}
+
+.highlightBubble-container {
+  display: inline-block;
+}
+
+.highlightBubble-container:before {
+  content: " ";
+  width: 100%;
+  display: block;
+  position: absolute;
+  margin-left: -3px;
+  top: -1px;
+  left: -1px;
+  height: 90%;
+  margin-right: -3px;
+  transform: rotate(2deg);
+  border-radius: 20% 25% 20% 24%;
+  padding: 10px 3px 3px 10px;
+  background: var(--gradient-primary);
 }

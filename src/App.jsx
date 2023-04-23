@@ -1,9 +1,9 @@
 import './App.css';
-import Home from "./components/Home";
-import Login from "./components/Login";
-import { useState } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import firebaseApp from "./credentials";
+import Sign from "./components/pages/Sign";
+import Home from "./components/Home";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useState } from 'react';
 
 const auth = getAuth(firebaseApp);
 
@@ -15,5 +15,5 @@ export function App() {
     else setGlobalUser(false);
   });
 
-  return <>{globalUser ? <Home userMail={globalUser.email} /> : <Login />}</>;
+  return <>{globalUser ? <Home userMail={globalUser.email} /> : <Sign />}</>;
 }

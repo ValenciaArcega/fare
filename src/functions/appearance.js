@@ -19,7 +19,7 @@ const makeDark = function () {
 
   root.style.setProperty('--mainColor', '#1BE0A5');
   root.style.setProperty('--bg', '#181818');
-  root.style.setProperty('--18', '#fff');;
+  root.style.setProperty('--black18', '#fff');;
   root.style.setProperty('--ff', '#363636');
   // button expand
   root.style.setProperty('--bg__btn-expand', '#424242');
@@ -50,7 +50,7 @@ const makeLight = function () {
   //document.querySelector('.NBbtn-sun').classList.add('hidden');
   root.style.setProperty('--mainColor', '#0ca678');
   root.style.setProperty('--bg', '#f2f2f7');
-  root.style.setProperty('--18', '#181818');
+  root.style.setProperty('--black18', '#181818');
   root.style.setProperty('--ff', '#fff');
   // button expand
   root.style.setProperty('--bg__btn-expand', '#f2f2f7');

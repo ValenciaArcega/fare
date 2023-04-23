@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
-import AddTask from './tasks/AddTask';
-import Tasks from './tasks/Tasks';
 import firebaseApp from "../credentials";
-import { getAuth } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import AddTask from './tasks/AddTask';
 import NavBar from "./navegation/NavBar";
+import Tasks from './tasks/Tasks';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
-// conection variables
 export const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
-
 const Home = function ({ userMail }) {
-
+  // var
   const [tasksArray, setTasksArray] = useState(null);
-
   const fakeData = [
     { id: 1, description: 'Tarea de ejemplo' },
   ];
-
+  // fn
   async function findOrCreateDocument(idDocument) {
     // create a reference of the document, after import 'doc' and 'getDoc'
     const docRef = doc(firestore, `users/${idDocument}`);
@@ -35,7 +32,7 @@ const Home = function ({ userMail }) {
       return infoDoc.tasks;
     }
   }
-
+  // hooks
   useEffect(() => {
     async function fetchTasks() {
       const fetchedTasks = await findOrCreateDocument(userMail);
@@ -48,7 +45,9 @@ const Home = function ({ userMail }) {
     <div className="container-home">
       <NavBar userMail={userMail} />
       <AddTask tasksArray={tasksArray} userMail={userMail} setTasksArray={setTasksArray} />
-      {tasksArray ? <Tasks tasksArray={tasksArray} userMail={userMail} setTasksArray={setTasksArray} /> : null}
+      {tasksArray
+        ? <Tasks tasksArray={tasksArray} userMail={userMail} setTasksArray={setTasksArray} />
+        : null}
     </div>
   );
 };

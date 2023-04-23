@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { signOut, } from "firebase/auth";
 import { auth } from "../Home";
-import { IconPlus, IconMoon, IconSignOut, IconSun, IconAddTaskMob, IconMoonMob, IconSunMob, IconSignOutMob } from "../icons/navBar-buttons";
+import { IconPlus, IconMoon, IconSignOut, IconSun, IconAddTaskMob, IconMoonMob, IconSunMob, IconSignOutMob } from "../svg/navBar-buttons";
 import { makeDark, makeLight } from "../../functions/appearance";
 import '../../App.css';
 
@@ -16,17 +16,20 @@ const NavBarDesktop = function () {
   };
 
   return (
-    <div className="navBar-desktop">
-      <img height="32px" src="promemoria.png" />
-      <button className="navBar-btn NBbtn-addTask" onClick={showModal}>
-        <IconPlus />Agregar tarea</button>
-      <button className="navBar-btn NBbtn-moon" onClick={makeDark}>
-        <IconMoon />Modo obscuro</button>
-      <button className="navBar-btn NBbtn-sun hidden" onClick={makeLight}>
-        <IconSun />Modo claro</button>
-      <button className="navBar-btn NBbtn-signout" onClick={() => { signOut(auth); makeLight(); }}>
-        <IconSignOut />Cerrar sesión</button>
-    </div>
+    <nav className="NVD">
+      <h2 className="NVD-title"><span className="highlight-container"><span className="highlight">fare</span></span></h2>
+
+      <div className="NVD-wrapperButtons">
+        <button className="navBar-btn NBbtn-addTask" onClick={showModal}>
+          <IconPlus />Agregar tarea</button>
+        <button className="navBar-btn NBbtn-moon" onClick={makeDark}>
+          <IconMoon />Modo obscuro</button>
+        <button className="navBar-btn NBbtn-sun hidden" onClick={makeLight}>
+          <IconSun />Modo claro</button>
+        <button className="navBar-btn NBbtn-signout" onClick={() => { signOut(auth); makeLight(); }}>
+          <IconSignOut />Cerrar sesión</button>
+      </div>
+    </nav>
   );
 };
 
