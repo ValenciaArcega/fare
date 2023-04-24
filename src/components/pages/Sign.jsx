@@ -2,7 +2,7 @@ import { SignIn } from "../views/SignIn";
 import { SignUp } from "../views/SignUp";
 import { useState } from "react";
 
-const Sign = () => {
+export function Sign() {
   const [isRegistering, setIsRegistering] = useState(false);
 
   return (
@@ -11,5 +11,3 @@ const Sign = () => {
       : <SignUp setIsRegistering={setIsRegistering} />
   );
 };
-
-export default Sign;

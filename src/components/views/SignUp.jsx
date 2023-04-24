@@ -1,6 +1,6 @@
-import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../svg/IconsSignUp';
+import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../svg/SignUp';
 import { inputNameKeyUp, inputNameFocusIn, inputNameBlur, inputNumberFocusIn, inputNumberBlur, inputPassFocusIn, inputPassBlur, showPassRegister, inputConfirmPassFocusIn, inputConfirmPassBlur, inputConfirmPassKeyUp, showConfirmRegister } from "../../functions/review-inputRegister";
-import reviewRegister from "../../functions/review-userRegistration";
+import { reviewRegister } from "../../functions/review-userRegistration";
 import firebaseApp from '../../credentials';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
@@ -12,8 +12,7 @@ export function SignUp({ setIsRegistering }) {
     e.preventDefault();
     const mail = e.target.inputMail.value;
     const password = e.target.inputPassword.value;
-
-    await createUserWithEmailAndPassword(auth, mail, password);
+    if (reviewRegister()) await createUserWithEmailAndPassword(auth, mail, password);
   }
   const resetBorders = () => {
     const root = document.querySelector(':root');
@@ -100,7 +99,7 @@ export function SignUp({ setIsRegistering }) {
         </div>
         <p className="signUp-passConfirm-p"></p>
 
-        <button type="submit" onClick={reviewRegister} className="signUp-btnRegister" name="button to Register">Registrarme Ahora</button>
+        <button type="submit" className="signUp-btnRegister" name="button to Register">Registrarme Ahora</button>
 
         <label className="signUp-labelGoSignIn" htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className="signUp-btnGoSignIn" onClick={goSignIn}>Inicia Sesión</button></label>
 

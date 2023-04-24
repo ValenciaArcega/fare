@@ -263,10 +263,10 @@ textarea {
 
 /* /////////////////////////////////////////////////////// */
 /* NavBar.jsx */
-.NVD {
+.navBar-desktop {
   height: 44px;
   width: 100%;
-  border-bottom: 4px solid var(--mainColor);
+  border-bottom: 2px solid var(--mainColor);
   display: grid;
   grid-template-columns: 30% 1fr;
   position: fixed;
@@ -290,8 +290,8 @@ textarea {
 
 
 .navBar-btn {
-  font-weight: 600;
-  letter-spacing: -.3px;
+  font-weight: 500;
+  letter-spacing: -.2px;
   display: flex;
   gap: 2px;
   align-items: center;
@@ -311,8 +311,6 @@ textarea {
 }
 
 .navBar__btn__svg-addTask,
-.navBar__btn__svg-moon,
-.navBar__btn__svg-sun,
 .navBar__btn__svg-power {
   height: 20px;
 }
@@ -379,8 +377,6 @@ textarea {
 }
 
 .navBarMobile__btn__svg-addTask,
-.navBarMobile__btn__svg-moon,
-.navBarMobile__btn__svg-sun,
 .navBarMobile__btn__svg-power {
   height: 20px;
 }
@@ -494,7 +490,7 @@ textarea {
 /* ///////////////////////////////////////////////////// */
 /* SignUp.jsx */
 .container-signUp {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   padding-bottom: 2rem;
   display: flex;
   align-items: center;
@@ -571,7 +567,7 @@ textarea {
 .signUp-mail-p,
 .signUp-pass-p,
 .signUp-passConfirm-p {
-  height: 12px;
+  min-height: 12px;
   width: 82%;
   margin-top: 2px;
   font-size: 12px;
@@ -672,7 +668,6 @@ textarea {
 }
 
 .signUp-btnGoSignIn:hover {
-  font-weight: 700;
   cursor: pointer;
 }
 
@@ -702,12 +697,14 @@ textarea {
 }
 
 .login-img {
-  height: 5.3rem;
+  min-height: 5.3rem;
+  max-height: 5.3rem;
   user-select: none;
   pointer-events: none;
 }
 
 .login-title {
+  min-height: 44px;
   margin-top: 4px;
   font-size: 2rem;
   letter-spacing: -1px;
@@ -720,6 +717,7 @@ textarea {
 }
 
 .login-label {
+  min-height: 21px;
   width: 80%;
   margin-top: 1rem;
   font-weight: 600;
@@ -729,10 +727,10 @@ textarea {
 
 .login-inputMail,
 .login-inputPass {
-  min-height: 36px;
+  min-height: 50px;
   width: 80%;
   margin-top: 4px;
-  padding: 12px 6px;
+  padding: 0 10px;
   border-radius: 10px;
   font-size: 18px;
   outline: none;
@@ -764,7 +762,8 @@ textarea {
 }
 
 .login-labelBGR {
-  margin-top: 16px;
+  margin-top: 8px;
+  padding: 10px 0;
   font-size: 16px;
 }
 
@@ -778,9 +777,62 @@ textarea {
 }
 
 .login-BGR:hover {
-  font-weight: 700;
   cursor: pointer;
 }
+
+
+
+/* ///////////////////////////////////////////////////// */
+/* Appearance.jsx */
+.btn-Dark,
+.btn-Light {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 64px;
+  right: 12px;
+  background: none;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.btn-darkIcon,
+.btn-lightIcon {
+  height: 24px;
+  color: #181818;
+}
+
+.btn-lightIcon {
+  height: 28px;
+  color: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* //////////////////////////////// */

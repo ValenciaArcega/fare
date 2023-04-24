@@ -1,6 +1,4 @@
-
-const reviewRegister = () => {
-
+export function reviewRegister() {
   let reviewed = false;
 
   const inputName = document.querySelector('.signUp-name');
@@ -49,5 +47,3 @@ const reviewRegister = () => {
   }
   return reviewed;
 };
-
-export default reviewRegister;

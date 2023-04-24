@@ -1,4 +1,4 @@
-import { IconPadlock } from "../svg/IconsSignIn";
+import { IconPadlock } from "../svg/BadCredentials";
 
 export default function BadCredentials() {
   return (

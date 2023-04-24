@@ -1,7 +1,7 @@
 import './App.css';
 import firebaseApp from "./credentials";
-import Sign from "./components/pages/Sign";
-import Home from "./components/Home";
+import { Sign } from "./components/pages/Sign";
+import { Home } from "./components/pages/Home";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useState } from 'react';
 

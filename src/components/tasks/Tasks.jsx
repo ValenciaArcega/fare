@@ -4,7 +4,7 @@ import { getFirestore, updateDoc, doc } from 'firebase/firestore';
 
 const firestore = getFirestore(firebaseApp);
 
-const Tasks = function ({ tasksArray, userMail, setTasksArray }) {
+export function Tasks({ tasksArray, userMail, setTasksArray }) {
 
   const closeDeleteMessage = () => {
     document.querySelector('.overlayDelete').classList.add('hidden');
@@ -57,4 +57,3 @@ const Tasks = function ({ tasksArray, userMail, setTasksArray }) {
   );
 };
 
-export default Tasks;
