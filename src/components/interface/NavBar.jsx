@@ -1,4 +1,3 @@
-import '../../App.css';
 import React, { useEffect, useState } from 'react';
 import { signOut, } from "firebase/auth";
 import { auth } from "../pages/Home";
@@ -6,24 +5,18 @@ import { makeLight } from "../../functions/switch-appearance";
 import { IconPlus, IconSignOut, IconAddTaskMob, IconSignOutMob } from "../svg/NavBar";
 
 function NavBarDesktop() {
-  // fn
-  const showModal = function () {
+
+  function showModal() {
     const modal = document.querySelector('.modal-newTask');
     const overlay = document.querySelector('.overlay');
 
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
   };
-  // cm
+
   return (
     <nav className="navBar-desktop">
-      <h2 className="NVD-title">
-        <span className="highlight-container">
-          <span className="highlight">
-            fare
-          </span>
-        </span>
-      </h2>
+      <h2 className="NVD-title"><span className="highlight-container"><span className="highlight">fare</span></span></h2>
 
       <div className="NVD-wrapperButtons">
         <button type="button" className="navBar-btn NBbtn-addTask" onClick={showModal}>
@@ -47,15 +40,15 @@ function NavBarDesktop() {
 };
 
 function NavBarMobile() {
-  // fn
-  const showModal = () => {
+
+  function showModal() {
     const modal = document.querySelector('.modal-newTask');
     const overlay = document.querySelector('.overlay');
 
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
   };
-  // cm
+
   return (
     <div className="navBar-mobile">
       <button type="button" className="navBar__mobile-btn" onClick={() => { signOut(auth); makeLight(); }}>
@@ -90,4 +83,3 @@ export default function NavBar() {
     <div> {isDesktop ? <NavBarDesktop /> : <NavBarMobile />} </div>
   );
 };
-

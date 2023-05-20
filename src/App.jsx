@@ -10,8 +10,8 @@ const auth = getAuth(firebaseApp);
 export function App() {
   const [globalUser, setGlobalUser] = useState(null);
 
-  onAuthStateChanged(auth, (fU) => {
-    if (fU) setGlobalUser(fU);
+  onAuthStateChanged(auth, (firebaseUser) => {
+    if (firebaseUser) setGlobalUser(firebaseUser);
     else setGlobalUser(false);
   });
 

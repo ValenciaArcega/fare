@@ -5,25 +5,25 @@ import firebaseApp from '../../credentials';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 export function SignUp({ setIsRegistering }) {
-  // var
   const auth = getAuth(firebaseApp);
-  // fn
+
+  function resetBorders() {
+    const root = document.querySelector(':root');
+    root.style.setProperty('--borderFieldName', '#c5c5c5');
+    root.style.setProperty('--borderFieldID', '#c5c5c5');
+    root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5');
+  };
+  function goSignIn() {
+    resetBorders();
+    setIsRegistering(false);
+  };
+
   async function submitHandler(e) {
     e.preventDefault();
     const mail = e.target.inputMail.value;
     const password = e.target.inputPassword.value;
     if (reviewRegister()) await createUserWithEmailAndPassword(auth, mail, password);
   }
-  const resetBorders = () => {
-    const root = document.querySelector(':root');
-    root.style.setProperty('--borderFieldName', '#c5c5c5');
-    root.style.setProperty('--borderFieldID', '#c5c5c5');
-    root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5');
-  };
-  const goSignIn = () => {
-    resetBorders();
-    setIsRegistering(false);
-  };
 
   return (
     <section className="container-signUp">

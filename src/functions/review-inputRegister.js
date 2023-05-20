@@ -11,7 +11,7 @@ const inputNameKeyUp = () => {
   const textErrorName = document.querySelector('.signUp-name-p');
 
   for (let i = 0; i < inputName.value.length; i++) {
-    root.style.setProperty('--borderFieldName', '#2e466f');
+    root.style.setProperty('--borderFieldName', '#0ca678');
     if (inputName.value[i].match(/^[0-9]+$/)) {
       textErrorName.textContent = 'Recuerda, caracteres de tipo texto';
       root.style.setProperty('--borderFieldName', '#f63737');
@@ -21,12 +21,12 @@ const inputNameKeyUp = () => {
   }
   if (inputName.value === '') {
     textErrorName.textContent = '';
-    root.style.setProperty('--borderFieldName', '#2e466f');
+    root.style.setProperty('--borderFieldName', '#0ca678');
   }
 };
 
 ////////////////////////////////////////////////////////////
-// input number
+// input mail
 const inputNumberFocusIn = () => root.style.setProperty('--borderFieldID', '#0ca678');
 const inputNumberBlur = () => root.style.setProperty('--borderFieldID', '#c5c5c5');
 

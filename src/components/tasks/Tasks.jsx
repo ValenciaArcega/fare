@@ -2,16 +2,15 @@ import React from 'react';
 import firebaseApp from "../../credentials";
 import { getFirestore, updateDoc, doc } from 'firebase/firestore';
 
-const firestore = getFirestore(firebaseApp);
-
 export function Tasks({ tasksArray, userMail, setTasksArray }) {
+  const firestore = getFirestore(firebaseApp);
 
-  const closeDeleteMessage = () => {
+  function closeDeleteMessage() {
     document.querySelector('.overlayDelete').classList.add('hidden');
     document.querySelector('.confirmDelete').classList.add('hidden');
   };
 
-  const RevealConfirmDelete = () => {
+  function RevealConfirmDelete() {
     document.querySelector('.confirmDelete').classList.remove('hidden');
     document.querySelector('.overlayDelete').classList.remove('hidden');
   };
@@ -56,4 +55,3 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
     </main>
   );
 };
-

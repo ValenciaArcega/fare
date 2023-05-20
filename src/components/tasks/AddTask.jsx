@@ -2,9 +2,13 @@ import React from 'react';
 import firebaseApp from "../../credentials";
 import { getFirestore, updateDoc, doc } from 'firebase/firestore';
 
-const firestore = getFirestore(firebaseApp);
+export function AddTask({ tasksArray, userMail, setTasksArray }) {
+  const firestore = getFirestore(firebaseApp);
 
-const AddTask = function ({ tasksArray, userMail, setTasksArray }) {
+  function closeModal() {
+    document.querySelector('.modal-newTask').classList.add('hidden');
+    document.querySelector('.overlay').classList.add('hidden');
+  };
 
   async function addTask(e) {
     e.preventDefault();
@@ -22,11 +26,6 @@ const AddTask = function ({ tasksArray, userMail, setTasksArray }) {
     e.target.inputDescription.value = '';
   }
 
-  const closeModal = function () {
-    document.querySelector('.modal-newTask').classList.add('hidden');
-    document.querySelector('.overlay').classList.add('hidden');
-  };
-
   return (
     <div className="container-modal__NewTask">
       <div onClick={closeModal} className="overlay hidden"></div>
@@ -40,5 +39,3 @@ const AddTask = function ({ tasksArray, userMail, setTasksArray }) {
     </div>
   );
 };
-
-export default AddTask;

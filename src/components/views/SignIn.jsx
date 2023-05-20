@@ -3,10 +3,8 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import firebaseApp from '../../credentials';
 import { useState } from "react";
 
-const auth = getAuth(firebaseApp);
-
 export function SignIn({ setIsRegistering }) {
-
+  const auth = getAuth(firebaseApp);
   const [isWrong, setIsWrong] = useState(false);
 
   async function submitHandler(e) {
@@ -19,10 +17,11 @@ export function SignIn({ setIsRegistering }) {
       setIsWrong(true);
       setTimeout(() => {
         setIsWrong(false);
-      }, 4000);
+      }, 4500);
     }
   }
-  const goRegister = (e) => {
+
+  function goRegister(e) {
     e.preventDefault();
     setIsRegistering(true);
   };

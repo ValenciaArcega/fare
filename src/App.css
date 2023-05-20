@@ -280,12 +280,12 @@ textarea {
 
 .NVD-title {
   margin-left: 1.3rem;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-size: 24px;
-  justify-self: flex-start;
-  align-self: center;
   font-weight: 700;
   font-style: italic;
+  overflow-y: hidden;
+  color: #181818;
 }
 
 
@@ -850,27 +850,30 @@ textarea {
 .highlight-container,
 .highlight {
   position: relative;
+  overflow-y: hidden;
 }
 
 .highlight-container {
-  display: inline-block;
+  /* display: inline-block; */
+  padding-left: 1rem;
 }
 
 .highlight-container:before {
-  content: " ";
+  content: "";
   height: 100%;
-  width: 110%;
+  width: 100%;
   display: block;
   position: absolute;
   top: 0;
-  left: 0;
-  transform: scale(1.07, 1.05) skewX(-15deg);
+  left: 10px;
+  transform: scale(1.07, 1.05) skewX(-20deg);
   background: linear-gradient(to left, var(--mainColor), #24be71);
 }
 
 
 .highlightBubble-container,
 .highlightBubble {
+  overflow-y: hidden;
   position: relative;
 }
 
