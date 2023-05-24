@@ -6,6 +6,7 @@ import { Tasks } from '../tasks/Tasks';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { Appearance } from '../theme/Appearance';
+import { Finder } from "../interface/Finder";
 
 export const auth = getAuth(firebaseApp);
 
@@ -42,13 +43,12 @@ export function Home({ userMail }) {
     <div className="container-home">
       <NavBar />
       <Appearance />
-
+      {/* <Finder /> */}
       <AddTask
         tasksArray={tasksArray}
         userMail={userMail}
         setTasksArray={setTasksArray}
       />
-
       {tasksArray
         ? <Tasks tasksArray={tasksArray} userMail={userMail} setTasksArray={setTasksArray} />
         : null}

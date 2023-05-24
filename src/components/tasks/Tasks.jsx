@@ -1,9 +1,15 @@
-import React from 'react';
+import { useState } from 'react';
 import firebaseApp from "../../credentials";
 import { getFirestore, updateDoc, doc } from 'firebase/firestore';
+import { SearchIcon } from "../svg/Finder";
 
 export function Tasks({ tasksArray, userMail, setTasksArray }) {
   const firestore = getFirestore(firebaseApp);
+  const [filteredItems, setFilteredItems] = useState(tasksArray);
+
+  function lookFor(e) {
+    setFilteredItems(tasksArray.filter(item => item.description.toLowerCase().includes(e.target.value.toLowerCase())));
+  }
 
   function closeDeleteMessage() {
     document.querySelector('.overlayDelete').classList.add('hidden');
@@ -28,10 +34,17 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
 
   return (
     <main className="container-tasks">
+      <section className="containerFinder">
+        <div className="finder">
+          <SearchIcon />
+          <input onChangeCapture={lookFor} className="finder-input" type="text" id="finder" />
+        </div>
+      </section>
+
       <h1 className="tasks-header-h1">Lista de tareas pendientes</h1>
 
       <div className="tasks">
-        {tasksArray.map(a =>
+        {filteredItems.map(a =>
           <div key={a.id}>
             <div className="task">
               <div className="taskDescription">
