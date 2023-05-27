@@ -16,6 +16,7 @@
   --bg__modal: #f2f2f7;
   --bg__modal-input: #fff;
   --bg__modal-input-border: #c9c9c9;
+  --bg__modal-inputTitle-border: #c9c9c9;
 
   --border__task: #c9c9c9;
 
@@ -102,31 +103,45 @@ textarea {
   letter-spacing: -1px;
   overflow-y: hidden;
 }
-
-.modal-newTask-input {
+.modal-newTask-title {
+  height: 3rem;
+  padding: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  border: 2px solid var(--bg__modal-inputTitle-border);
+  border-radius: 12px;  
+  outline: none;
+  color: var(--black18);
+  background-color: var(--bg__modal-input);
+}
+.modal-newTask-description {
   height: 8rem;
   padding: 12px 8px;
   font-size: 18px;
   border: 2px solid var(--bg__modal-input-border);
-  border-radius: 12px;
+  border-radius: 12px;  
   outline: none;
   color: var(--black18);
   background-color: var(--bg__modal-input);
 }
 
-.modal-newTask-input::-webkit-scrollbar {
+.modal-newTask-description::-webkit-scrollbar {
   width: 8px;
   border: none;
 }
 
-.modal-newTask-input::-webkit-scrollbar-thumb {
+.modal-newTask-description::-webkit-scrollbar-thumb {
   border-radius: 12px;
   height: 10%;
   width: 10%;
   background-color: var(--mainColor);
 }
 
-.modal-newTask-input:focus {
+.modal-newTask-description:focus {
+  border: 2px solid var(--mainColor);
+}
+
+.modal-newTask-title:focus {
   border: 2px solid var(--mainColor);
 }
 
@@ -177,6 +192,13 @@ textarea {
   background-color: var(--ff);
 }
 
+.task-title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+}
 .task-p {
   font-size: 18px;
   text-align: center;

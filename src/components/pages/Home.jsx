@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import firebaseApp from "../../credentials";
-import { AddTask } from '../tasks/AddTask';
+import { AddTask } from "../tasks/AddTask";
 import NavBar from "../interface/NavBar";
-import { Tasks } from '../tasks/Tasks';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { Appearance } from '../theme/Appearance';
-import { Finder } from "../interface/Finder";
+import { Tasks } from "../tasks/Tasks";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { Appearance } from "../theme/Appearance";
 
 export const auth = getAuth(firebaseApp);
 
@@ -14,7 +13,11 @@ export function Home({ userMail }) {
   const firestore = getFirestore(firebaseApp);
   const [tasksArray, setTasksArray] = useState(null);
   const fakeData = [
-    { id: 1, description: 'Tarea de ejemplo, aqui podras agregar cualquier idea o pendiente que debas realizar 😀' },
+    {
+      title: "Tarea de ejemplo",
+      description:
+        "Aqui podras agregar cualquier idea o pendiente que debas realizar 😀",
+    },
   ];
 
   async function findOrCreateDocument(idDocument) {
@@ -43,15 +46,18 @@ export function Home({ userMail }) {
     <div className="container-home">
       <NavBar />
       <Appearance />
-      {/* <Finder /> */}
       <AddTask
         tasksArray={tasksArray}
         userMail={userMail}
         setTasksArray={setTasksArray}
       />
-      {tasksArray
-        ? <Tasks tasksArray={tasksArray} userMail={userMail} setTasksArray={setTasksArray} />
-        : null}
+      {tasksArray ? (
+        <Tasks
+          tasksArray={tasksArray}
+          userMail={userMail}
+          setTasksArray={setTasksArray}
+        />
+      ) : null}
     </div>
   );
-};
+}
