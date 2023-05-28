@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../pages/Home";
-import { makeLight } from "../../functions/switch-appearance";
+import { makeLight, makeDark } from "../../functions/switch-appearance";
 import {
   IconPlus,
   IconSignOut,
@@ -20,11 +20,13 @@ function NavBarDesktop() {
 
   return (
     <nav className="navBar-desktop">
-      <h2 className="NVD-title">
+
+      <img src="logo-light.svg" alt="" height={28} className="logo" />
+      {/* <h2 className="NVD-title">
         <span className="highlight-container">
           <span className="highlight">fare</span>
         </span>
-      </h2>
+      </h2> */}
 
       <div className="NVD-wrapperButtons">
         <button

@@ -1,4 +1,3 @@
-import React from "react";
 import firebaseApp from "../../credentials";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 
@@ -12,22 +11,24 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
 
   async function addTask(e) {
     e.preventDefault();
-    // create new task tasksArray
+
+    const docRef = doc(firestore, `users/${userMail}`);
     const description = e.target.inputDescription.value;
     const title = e.target.inputTitle.value;
     const newTaskArr = [
       ...tasksArray,
       {
+        id: +new Date(),
         title: title,
         description: description,
       },
     ];
-    // update data base
-    const docRef = doc(firestore, `users/${userMail}`);
+
     updateDoc(docRef, { tasks: [...newTaskArr] });
-    //update the state
+
     setTasksArray(newTaskArr);
-    // clean the form
+
+    e.target.inputTitle.value = "";
     e.target.inputDescription.value = "";
   }
 

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
 import firebaseApp from "../../credentials";
-import { AddTask } from "../tasks/AddTask";
 import NavBar from "../interface/NavBar";
-import { Tasks } from "../tasks/Tasks";
+import React, { useState, useEffect } from "react";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 import { Appearance } from "../theme/Appearance";
+import { AddTask } from "../tasks/AddTask";
+import { getAuth } from "firebase/auth";
+import { Tasks } from "../tasks/Tasks";
 
 export const auth = getAuth(firebaseApp);
 
@@ -14,9 +14,10 @@ export function Home({ userMail }) {
   const [tasksArray, setTasksArray] = useState(null);
   const fakeData = [
     {
+      id: +new Date(),
       title: "Tarea de ejemplo",
       description:
-        "Aqui podras agregar cualquier idea o pendiente que debas realizar 😀",
+        "Aqui podras agregar cualquier idea o pendiente que debas realizar, por ejemplo: Imprimir el reporte de Química para el Jueves 😀",
     },
   ];
 

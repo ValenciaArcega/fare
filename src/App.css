@@ -93,7 +93,7 @@ textarea {
   transform: translate(-50%, -50%);
   border-radius: 12px;
   background-color: var(--bg__modal);
-  box-shadow: 0 8px 5rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px 2px rgba(0, 0, 0, 0.3);
   z-index: 99;
 }
 
@@ -103,23 +103,25 @@ textarea {
   letter-spacing: -1px;
   overflow-y: hidden;
 }
+
 .modal-newTask-title {
   height: 3rem;
-  padding: 6px;
-  font-size: 18px;
-  font-weight: 500;
+  padding: 0 8px;
+  font-size: 19px;
+  font-weight: 600;
   border: 2px solid var(--bg__modal-inputTitle-border);
-  border-radius: 12px;  
+  border-radius: 12px;
   outline: none;
   color: var(--black18);
   background-color: var(--bg__modal-input);
 }
+
 .modal-newTask-description {
   height: 8rem;
   padding: 12px 8px;
   font-size: 18px;
   border: 2px solid var(--bg__modal-input-border);
-  border-radius: 12px;  
+  border-radius: 12px;
   outline: none;
   color: var(--black18);
   background-color: var(--bg__modal-input);
@@ -179,11 +181,10 @@ textarea {
   padding-bottom: 6rem;
   display: grid;
   gap: 2rem 10px;
-  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   align-items: center;
   justify-items: center;
 }
-
 
 .task {
   padding: 1rem;
@@ -196,20 +197,21 @@ textarea {
   margin-bottom: 8px;
   font-size: 20px;
   font-weight: 600;
-  text-align: center;
   pointer-events: none;
 }
+
 .task-p {
   font-size: 18px;
-  text-align: center;
+  /* text-align: center; */
   pointer-events: none;
 }
 
 .taskDescription {
   --max-lines: 1;
   --line-height: 1.6;
-  width: 15rem;
+  width: 16rem;
   border-radius: 12px;
+  text-align: start;
 
   margin-top: 8px;
   max-height: calc(var(--max-lines) * 1em * var(--line-height));
@@ -833,58 +835,6 @@ textarea {
   color: yellow;
 }
 
-/* Finder.jsx */
-.containerFinder {
-  height: 6rem;
-  margin-top: 2.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.finder {
-  height: 54px;
-  width: 20rem;
-  padding-left: 12px;
-  border-radius: 100px;
-  border: 2px solid #e8e8e8;
-  display: grid;
-  grid-template-columns: 10% 1fr;
-  align-items: center;
-  justify-items: center;
-  background-color: var(--ff);
-  box-shadow: 0px 4px 10px -6px rgba(0, 0, 0, 0.15);
-}
-
-.finder-svg {
-  height: 24px;
-  stroke: #181818;
-}
-
-.finder-input {
-  width: 100%;
-  height: 100%;
-  padding-left: 6px;
-  padding-right: 12px;
-  font-size: 18px;
-  font-weight: 400;
-  border: none;
-  outline: none;
-  background: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -948,4 +898,98 @@ textarea {
   border-radius: 20% 25% 20% 24%;
   padding: 10px 3px 3px 10px;
   background: var(--gradient-primary);
+}
+
+
+
+/* ///////////////////////////////////////////////////// */
+/* Finder.jsx */
+.cn {
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-finder {
+  margin-top: 4rem;
+  position: relative;
+  width: 17rem;
+  height: 44px;
+  display: grid;
+  grid-template-columns: 10% 80% 1fr;
+  align-items: center;
+  overflow: hidden;
+  padding-left: 20px;
+  padding-right: 12px;
+  border-radius: 30px;
+  transition: border-radius 0.5s ease;
+  background: var(--ff);
+  box-shadow: 0px 8px 6px -6px rgba(19, 144, 67, 0.24);
+}
+
+/* styling of animated border */
+.container-finder:before {
+  content: "";
+  position: absolute;
+  background: var(--mainColor);
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  transition: transform 0.3s ease;
+}
+
+.container-finder:focus-within {
+  border-radius: 3px;
+}
+
+/* animated border */
+.container-finder:focus-within:before {
+  transform: scale(1);
+}
+
+.input {
+  height: 100%;
+  width: 100%;
+  padding-left: 8px;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.finder-btnClose {
+  padding: 0;
+  border: none;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* closeButton shown when typing */
+input:not(:placeholder-shown)~.finder-btnClose {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* sizing svg icons */
+.finder-svg-close,
+.finder-svg-search {
+  /* margin-top: 3px; */
+  padding: 0;
+  align-self: center;
+  width: 18px;
+  height: 18px;
+  color: var(--mainColor);
+}
+
+.finder-svg-search {
+  width: 22px;
+  height: 22px;
 }
