@@ -10,7 +10,7 @@ export function Finder({ lookFor, setIsSearching }) {
           className="input"
           placeholder="Buscar por título"
           type="text"
-          autoSave="off"
+          autoComplete="off"
         />
         <button onClick={() => setIsSearching(false)} className="finder-btnClose" type="reset"> <IconClose /> </button>
       </form>

@@ -18,6 +18,8 @@
   --bg__modal-input-border: #c9c9c9;
   --bg__modal-inputTitle-border: #c9c9c9;
 
+  --bg__blur-navBar: rgba(255, 255, 255, 0.4);
+
   --border__task: #c9c9c9;
 
   --borderFieldName: #c5c5c5;
@@ -25,7 +27,8 @@
   --borderFieldPass: #c5c5c5;
   --borderFieldPassConfirm: #c5c5c5;
 
-  --shadow-task: 12px 25px 20px -21px rgb(42 153 47 / 50%);
+  --shadow-finder: 0px 20px 18px -18px rgba(19, 144, 67, 0.4);
+  --shadow-task: 0px 22px 16px -21px rgb(42 153 47 / 44%);
 }
 
 ::selection {
@@ -121,7 +124,7 @@ textarea {
 .modal-newTask-description {
   height: 8rem;
   padding: 12px 8px;
-  font-size: 18px;
+  font-size: 19px;
   border: 2px solid var(--bg__modal-input-border);
   border-radius: 12px;
   outline: none;
@@ -150,7 +153,7 @@ textarea {
 }
 
 .modal-newTask-addButton {
-  height: 48px;
+  height: 52px;
   width: 100%;
   margin-top: 8px;
   border-radius: 10px;
@@ -159,7 +162,7 @@ textarea {
   border: none;
   outline: none;
   overflow-y: hidden;
-  color: var(--black18);
+  color: #181818;
   background: linear-gradient(to top right, #19d075, #1af49d);
   /* background: linear-gradient(to top right, #24be71, #1cd176); */
 }
@@ -236,7 +239,7 @@ textarea {
   height: calc(1.6em * var(--line-height));
   width: 100%;
   background: linear-gradient(to bottom, transparent, var(--ff));
-  z-index: 97;
+  z-index: 90;
 }
 
 .btn-expandDescriptionTask {
@@ -306,8 +309,10 @@ textarea {
   justify-content: center;
   top: 0;
   left: 0;
-  background-color: var(--bg);
-  z-index: 7;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: var(--bg__blur-navBar);
+  z-index: 99;
 }
 
 .NVD-title {
@@ -381,14 +386,15 @@ textarea {
   margin-top: -2rem;
   border-radius: 300px;
   position: fixed;
-  bottom: 44px;
-  right: 24px;
+  bottom: 18px;
+  right: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   background: linear-gradient(to left bottom, var(--mainColor), var(--mainColor-shade));
   box-shadow: 0px 6px 15px rgb(0, 0, 0, 0.25);
+  z-index: 96;
 }
 
 .navBar__mobile-btnAdd:hover {
@@ -428,6 +434,7 @@ textarea {
 
 .confirmDelete-h4 {
   font-size: 22px;
+  text-align: center;
 }
 
 .confirmDelete-p {
@@ -442,7 +449,7 @@ textarea {
 
 .confirmDelete-btn-quitModal,
 .confirmDelete-btn-deleteTask {
-  height: 2.5rem;
+  height: 48px;
   border: none;
   border-radius: 8px;
   font-weight: 500;
@@ -810,12 +817,12 @@ textarea {
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 64px;
+  top: 54px;
   right: 20px;
   background: none;
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  z-index: 7;
+  z-index: 100;
 }
 
 .btn-darkIcon,
@@ -920,7 +927,7 @@ textarea {
   border-radius: 30px;
   transition: border-radius 0.5s ease;
   background: var(--ff);
-  box-shadow: 0px 8px 6px -6px rgba(19, 144, 67, 0.24);
+  box-shadow: var(--shadow-finder);
 }
 
 /* styling of animated border */

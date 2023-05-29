@@ -20,8 +20,11 @@ export function makeDark() {
   root.style.setProperty('--bg__modal-inputTitle-border', '#333333');
   // task
   root.style.setProperty('--border__task', 'transparent');
-
+  // shadows
   root.style.setProperty('--shadow-task', 'transparent');
+  root.style.setProperty('--shadow-finder', 'transparent');
+  // blur
+  root.style.setProperty('--bg__blur-navBar', 'rgba(0, 0, 0, 0.4)');
 };
 
 export function makeLight() {
@@ -46,5 +49,9 @@ export function makeLight() {
   root.style.setProperty('--bg__modal-inputTitle-border', '#c9c9c9');
   // task
   root.style.setProperty('--border__task', '#c9c9c9');
-  root.style.setProperty('--shadow-task', '12px 25px 20px -21px rgb(42 153 47 / 50%)');
+  // shadows
+  root.style.setProperty('--shadow-finder', '0px 20px 18px -18px rgba(19, 144, 67, 0.4)');
+  root.style.setProperty('--shadow-task', '0px 22px 16px -21px rgb(42 153 47 / 44%)');
+  // blur
+  root.style.setProperty('--bg__blur-navBar', 'rgba(255, 255, 255, 0.4)');
 };

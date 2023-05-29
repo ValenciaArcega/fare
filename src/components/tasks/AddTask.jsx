@@ -37,11 +37,12 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
       <div onClick={closeModal} className="overlay hidden"></div>
 
       <form className="modal-newTask hidden" onSubmit={addTask}>
-        <h1 className="modal-newTask-h1">Nueva tarea</h1>
+        <h1 className="modal-newTask-h1">📚 Nueva tarea</h1>
         <input
           id="inputTitle"
           className="modal-newTask-title"
           placeholder="Titulo"
+          autoComplete="off"
         />
         <textarea
           className="modal-newTask-description"
