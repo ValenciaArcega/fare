@@ -4,10 +4,10 @@ import { useState } from "react";
 import { Finder } from "../interface/Finder";
 
 export function Tasks({ tasksArray, userMail, setTasksArray }) {
+  let identificador;
   const firestore = getFirestore(firebaseApp);
   const [filteredItems, setFilteredItems] = useState(tasksArray);
   const [isSearching, setIsSearching] = useState(false);
-  let identificador;
 
   function lookFor(e) {
     setFilteredItems(
@@ -23,16 +23,13 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
     document.querySelector(".confirmDelete").classList.add("hidden");
   }
 
-  function revealConfirmDelete(some) {
-    console.log(some);
+  function revealConfirmDelete() {
     document.querySelector(".confirmDelete").classList.remove("hidden");
     document.querySelector(".overlayDelete").classList.remove("hidden");
   }
 
   function deleteTask(toDelete) {
-    console.log(toDelete);
     const newTasksArray = tasksArray.filter((task) => task.id !== toDelete);
-    // update database
     const docRef = doc(firestore, `users/${userMail}`);
     updateDoc(docRef, { tasks: [...newTasksArray] });
     // update state    
@@ -45,10 +42,9 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
 
       <Finder lookFor={lookFor} setIsSearching={setIsSearching} />
 
-      <h1 className="tasks-header-h1">Lista de tareas pendientes</h1>
+      <h1 className="tasks-header-h1"><span className="highlight-container"><span className="highlight">Lista de tareas pendientes</span></span></h1>
 
       <div className="tasks">
-
         {(isSearching ? filteredItems : tasksArray).map(function (note, i) {
           return (
             <div key={i}>
@@ -65,36 +61,37 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
                 <button
                   className="task__btn-complete"
                   onClick={() => {
-                    revealConfirmDelete(note.id);
                     identificador = note.id;
+                    revealConfirmDelete();
                   }}
                 >
                   Completada
                 </button>
-
-                <div className="confirmDelete hidden">
-                  <h4 className="confirmDelete-h4">¿Eliminar la tarea?</h4>
-                  <p className="confirmDelete-p" onClick={() => console.log(identificador)}>
-                    Esta acción es permanente y no se puede deshacer
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      deleteTask(identificador);
-                      closeDeleteMessage();
-                    }}
-                    className="confirmDelete-btn-deleteTask"
-                  >
-                    Eliminar Ahora
-                  </button>
-
-                  <button onClick={closeDeleteMessage} className="confirmDelete-btn-quitModal"
-                  >Cancelar</button>
-                </div>
-
-                <div className="overlayDelete hidden"></div>
-
               </div>
+
+              <div className="confirmDelete hidden">
+                <h4 className="confirmDelete-h4">¿Tarea completada?</h4>
+                <p className="confirmDelete-p">
+                  Esta acción es permanente y no se puede deshacer
+                </p>
+                <button
+                  className="confirmDelete-btn-deleteTask"
+                  type="button"
+                  onClick={() => {
+                    deleteTask(identificador);
+                    closeDeleteMessage();
+                  }}
+                >
+                  Eliminar Ahora
+                </button>
+
+                <button onClick={closeDeleteMessage} className="confirmDelete-btn-quitModal"
+                >
+                  Cancelar
+                </button>
+              </div>
+              <div className="overlayDelete hidden"></div>
+
             </div>
           );
         })}

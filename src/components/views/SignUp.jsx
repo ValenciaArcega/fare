@@ -29,7 +29,7 @@ export function SignUp({ setIsRegistering }) {
     <section className="container-signUp">
       <form className="signUp" onSubmit={submitHandler}>
 
-        <h1 className="signUp-title">Crea una cuenta <span className="gradient">gratis</span></h1>
+        <h1 className="signUp-title">Crea una cuenta <span className="gradientText-one">gratis</span></h1>
 
         <label className="signUp-label" htmlFor="sufn">Nombre<IconText /></label>
         <input

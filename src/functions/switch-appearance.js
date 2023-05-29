@@ -2,9 +2,7 @@ export function makeDark() {
   const root = document.querySelector(':root');
   const btnDark = document.querySelector('.btn-Dark');
   const btnLight = document.querySelector('.btn-Light');
-  const logo = document.querySelector('.logo');
 
-  if (logo) logo.src = "logo-dark.svg";
   btnDark.classList.add('hidden');
   btnLight.classList.remove('hidden');
 
@@ -28,9 +26,7 @@ export function makeLight() {
   const root = document.querySelector(':root');
   const btnDark = document.querySelector('.btn-Dark');
   const btnLight = document.querySelector('.btn-Light');
-  const logo = document.querySelector('.logo');
 
-  if (logo) logo.src = "logo-light.svg";
   btnLight.classList.add('hidden');
   btnDark.classList.remove('hidden');
 

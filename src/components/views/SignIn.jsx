@@ -32,7 +32,7 @@ export function SignIn({ setIsRegistering }) {
 
       <form className="login" onSubmit={submitHandler}>
         <img className="login-img" src="login.svg" alt="" />
-        <h1 className="login-title">Inicia Sesión</h1>
+        <h1 className="login-title"><span className="gradientText-one">Inicia Sesión</span></h1>
 
         <label className="login-label" htmlFor="inputMail">Correo electrónico</label>
         <input

@@ -152,12 +152,14 @@ textarea {
   width: 100%;
   margin-top: 8px;
   border-radius: 10px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   border: none;
   outline: none;
   overflow-y: hidden;
   color: var(--black18);
-  background: linear-gradient(to top right, #24be71, #1cd176);
+  background: linear-gradient(to top right, #19d075, #1af49d);
+  /* background: linear-gradient(to top right, #24be71, #1cd176); */
 }
 
 .modal-newTask-addButton:hover {
@@ -170,27 +172,31 @@ textarea {
 }
 
 .tasks-header-h1 {
+  margin-top: 1rem;
   letter-spacing: -1px;
-  padding-left: 1rem;
-  color: var(--black18);
+  text-align: center;
+  overflow: hidden;
+  color: #181818;
 }
 
 .tasks {
-  margin-top: 1rem;
-  padding: 0 1rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
   padding-bottom: 6rem;
   display: grid;
-  gap: 2rem 10px;
+  gap: 0 10px;
   grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   align-items: center;
   justify-items: center;
 }
 
 .task {
+  margin: 18px;
   padding: 1rem;
-  border: 1px solid var(--border__task);
+  /* border: 1px solid var(--border__task); */
   border-radius: 14px;
   background-color: var(--ff);
+  box-shadow: 12px 25px 20px -21px rgb(42 153 47 / 50%);
 }
 
 .task-title {
@@ -366,27 +372,18 @@ textarea {
   z-index: 100;
 }
 
-.navBar__mobile-btn {
-  gap: 4px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -.7px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background-color: var(--ff);
-}
-
 .navBar__mobile-btnAdd {
   height: 4.2rem;
   width: 4.2rem;
   margin-top: -2rem;
   border-radius: 300px;
+  position: fixed;
+  bottom: 44px;
+  right: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
   background: linear-gradient(to left bottom, var(--mainColor), var(--mainColor-shade));
   box-shadow: 0px 6px 15px rgb(0, 0, 0, 0.25);
 }
@@ -399,8 +396,7 @@ textarea {
   color: #fff;
 }
 
-.navBarMobile__btn__svg-addTask,
-.navBarMobile__btn__svg-power {
+.navBarMobile__btn__svg-addTask {
   height: 20px;
 }
 
@@ -428,7 +424,7 @@ textarea {
 }
 
 .confirmDelete-h4 {
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .confirmDelete-p {
@@ -734,9 +730,6 @@ textarea {
   font-weight: 800;
   user-select: none;
   pointer-events: none;
-  background: linear-gradient(to right bottom, #24be71, var(--mainColor-shade));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .login-label {
@@ -770,7 +763,7 @@ textarea {
   width: 80%;
   margin-top: 1.5rem;
   border-radius: 10px;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
   border: none;
   outline: none;
@@ -817,11 +810,12 @@ textarea {
   align-items: center;
   justify-content: center;
   position: fixed;
-  bottom: 64px;
-  right: 12px;
+  top: 64px;
+  right: 20px;
   background: none;
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
+  z-index: 7;
 }
 
 .btn-darkIcon,
@@ -844,8 +838,8 @@ textarea {
   display: none;
 }
 
-.gradient {
-  background: linear-gradient(to right bottom, #24be71, var(--mainColor-shade));
+.gradientText-one {
+  background: linear-gradient(to left, #27da87, #36b88f);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -858,19 +852,20 @@ textarea {
 
 .highlight-container {
   /* display: inline-block; */
-  padding-left: 1rem;
+  padding-left: 16px;
 }
 
 .highlight-container:before {
   content: "";
   height: 100%;
-  width: 100%;
+  width: 98%;
   display: block;
   position: absolute;
   top: 0;
   left: 10px;
   transform: scale(1.07, 1.05) skewX(-20deg);
-  background: linear-gradient(to left, var(--mainColor), #24be71);
+  background: linear-gradient(to left, #26cf9d, #00d26a);
+  ;
 }
 
 
@@ -912,7 +907,7 @@ textarea {
 }
 
 .container-finder {
-  margin-top: 4rem;
+  margin-top: 9rem;
   position: relative;
   width: 17rem;
   height: 44px;

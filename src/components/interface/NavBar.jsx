@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../pages/Home";
-import { makeLight, makeDark } from "../../functions/switch-appearance";
-import {
-  IconPlus,
-  IconSignOut,
-  IconAddTaskMob,
-  IconSignOutMob,
-} from "../svg/NavBar";
+import { makeLight } from "../../functions/switch-appearance";
+import { IconPlus, IconAddTaskMob } from "../svg/NavBar";
 
 function NavBarDesktop() {
   function showModal() {
@@ -21,12 +16,7 @@ function NavBarDesktop() {
   return (
     <nav className="navBar-desktop">
 
-      <img src="logo-light.svg" alt="" height={28} className="logo" />
-      {/* <h2 className="NVD-title">
-        <span className="highlight-container">
-          <span className="highlight">fare</span>
-        </span>
-      </h2> */}
+      <img src="logo.png" alt="" height={34} style={{ marginLeft: 10 }} />
 
       <div className="NVD-wrapperButtons">
         <button
@@ -46,7 +36,6 @@ function NavBarDesktop() {
             makeLight();
           }}
         >
-          <IconSignOut />
           Cerrar sesión
         </button>
       </div>
@@ -64,29 +53,23 @@ function NavBarMobile() {
   }
 
   return (
-    <div className="navBar-mobile">
-      <button
+    <>
+      {/* <button
         type="button"
         className="navBar__mobile-btn"
         onClick={() => {
           signOut(auth);
           makeLight();
         }}
-      >
-        <IconSignOutMob />
-        Cerrar Sesión
-      </button>
+      > */}
       <button
         type="button"
-        className="navBar__mobile-btn navBar__mobile-btnAdd"
+        className="navBar__mobile-btnAdd"
         onClick={showModal}
       >
         <IconAddTaskMob />
       </button>
-      <button type="button" className="navBar__mobile-btn">
-        Cuenta
-      </button>
-    </div>
+    </>
   );
 }
 
