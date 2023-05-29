@@ -20,6 +20,8 @@ export function makeDark() {
   root.style.setProperty('--bg__modal-inputTitle-border', '#333333');
   // task
   root.style.setProperty('--border__task', 'transparent');
+
+  root.style.setProperty('--shadow-task', 'transparent');
 };
 
 export function makeLight() {
@@ -44,4 +46,5 @@ export function makeLight() {
   root.style.setProperty('--bg__modal-inputTitle-border', '#c9c9c9');
   // task
   root.style.setProperty('--border__task', '#c9c9c9');
+  root.style.setProperty('--shadow-task', '12px 25px 20px -21px rgb(42 153 47 / 50%)');
 };

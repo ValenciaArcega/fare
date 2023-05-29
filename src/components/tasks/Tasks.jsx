@@ -59,6 +59,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
                   aria-label="checkbox to collapse or exapand"
                 />
                 <button
+                  type="button"
                   className="task__btn-complete"
                   onClick={() => {
                     identificador = note.id;
@@ -85,7 +86,10 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
                   Eliminar Ahora
                 </button>
 
-                <button onClick={closeDeleteMessage} className="confirmDelete-btn-quitModal"
+                <button
+                  type="button"
+                  className="confirmDelete-btn-quitModal"
+                  onClick={closeDeleteMessage}
                 >
                   Cancelar
                 </button>

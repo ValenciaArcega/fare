@@ -4,11 +4,19 @@ import { makeDark, makeLight } from "../../functions/switch-appearance";
 export function Appearance() {
   return (
     <>
-      <button type="button" className="btn-Dark" onClick={makeDark}>
+      <button
+        title="button of moon"
+        type="button"
+        className="btn-Dark"
+        onClick={makeDark}>
         <IconMoon />
       </button>
 
-      <button type="button" className="btn-Light hidden" onClick={makeLight}>
+      <button
+        title="button of sun"
+        type="button"
+        className="btn-Light hidden"
+        onClick={makeLight}>
         <IconSun />
       </button>
     </>

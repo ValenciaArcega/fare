@@ -24,6 +24,8 @@
   --borderFieldID: #c5c5c5;
   --borderFieldPass: #c5c5c5;
   --borderFieldPassConfirm: #c5c5c5;
+
+  --shadow-task: 12px 25px 20px -21px rgb(42 153 47 / 50%);
 }
 
 ::selection {
@@ -196,7 +198,7 @@ textarea {
   /* border: 1px solid var(--border__task); */
   border-radius: 14px;
   background-color: var(--ff);
-  box-shadow: 12px 25px 20px -21px rgb(42 153 47 / 50%);
+  box-shadow: var(--shadow-task);
 }
 
 .task-title {
@@ -204,6 +206,7 @@ textarea {
   font-size: 20px;
   font-weight: 600;
   pointer-events: none;
+  color: var(--mainColor);
 }
 
 .task-p {
@@ -718,7 +721,6 @@ textarea {
 .login-img {
   min-height: 5.3rem;
   max-height: 5.3rem;
-  user-select: none;
   pointer-events: none;
 }
 
@@ -728,7 +730,6 @@ textarea {
   font-size: 2rem;
   letter-spacing: -1px;
   font-weight: 800;
-  user-select: none;
   pointer-events: none;
 }
 
@@ -737,7 +738,6 @@ textarea {
   width: 80%;
   margin-top: 1rem;
   font-weight: 600;
-  user-select: none;
   pointer-events: none;
 }
 
