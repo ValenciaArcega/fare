@@ -218,8 +218,13 @@ textarea {
   pointer-events: none;
 }
 
+.wrapper-task-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .taskDescription {
-  --max-lines: 1;
+  --max-lines: 3;
   --line-height: 1.6;
   width: 16rem;
   border-radius: 12px;

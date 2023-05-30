@@ -53,6 +53,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
                   <p className="task-title">{note.title}</p>
                   <p className="task-p">{note.description}</p>
                 </div>
+                {/* <div className="wrapper-task-buttons"> */}
                 <input
                   className="btn-expandDescriptionTask"
                   type="checkbox"
@@ -68,6 +69,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
                 >
                   Completada
                 </button>
+                {/* </div> */}
               </div>
 
               <div className="confirmDelete hidden">
