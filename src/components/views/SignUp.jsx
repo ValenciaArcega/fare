@@ -3,9 +3,12 @@ import { inputNameKeyUp, inputNameFocusIn, inputNameBlur, inputNumberFocusIn, in
 import { reviewRegister } from "../../functions/review-userRegistration";
 import firebaseApp from '../../credentials';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+// testing
+import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore";
 
 export function SignUp({ setIsRegistering }) {
   const auth = getAuth(firebaseApp);
+  const firestore = getFirestore(firebaseApp);
 
   function resetBorders() {
     const root = document.querySelector(':root');
@@ -18,11 +21,52 @@ export function SignUp({ setIsRegistering }) {
     setIsRegistering(false);
   };
 
+  async function findOrCreateDocument(idDocument) {
+    const docRef = doc(firestore, `users/${idDocument}`);
+    const query = await getDoc(docRef);
+    if (query.exists()) {
+      const infoDoc = query.data();
+      return infoDoc.tasks;
+    } else {
+      await setDoc(docRef, { tasks: [...fakeData] });
+      const query = await getDoc(docRef);
+      const infoDoc = query.data();
+      return infoDoc.tasks;
+    }
+  }
+
   async function submitHandler(e) {
     e.preventDefault();
+    const name = e.target.sufn.value;
     const mail = e.target.inputMail.value;
     const password = e.target.inputPassword.value;
-    if (reviewRegister()) await createUserWithEmailAndPassword(auth, mail, password);
+    const dataUser = [
+      {
+        name: name,
+        mail: mail,
+      },
+    ];
+    const fakeData = [
+      {
+        id: +new Date(),
+        title: "Tarea de ejemplo",
+        description:
+          "Aqui podras agregar cualquier idea o pendiente que debas realizar, por ejemplo: Imprimir el reporte de Química para el Jueves 😀",
+      },
+    ];
+    const docRef = doc(firestore, `users/${mail}`);
+    const query = await getDoc(docRef);
+
+    if (query.exists()) {
+      const infoDoc = query.data();
+      return infoDoc.dataUser;
+    } else {
+      await setDoc(docRef, { data: [...dataUser], tasks: [...fakeData] });
+      const query = await getDoc(docRef);
+      const infoDoc = query.data();
+      if (reviewRegister()) await createUserWithEmailAndPassword(auth, mail, password);
+      return infoDoc.dataUser;
+    }
   }
 
   return (

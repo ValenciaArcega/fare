@@ -16,12 +16,12 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
     const description = e.target.inputDescription.value;
     const title = e.target.inputTitle.value;
     const newTaskArr = [
-      ...tasksArray,
       {
         id: +new Date(),
         title: title,
         description: description,
       },
+      ...tasksArray
     ];
 
     updateDoc(docRef, { tasks: [...newTaskArr] });

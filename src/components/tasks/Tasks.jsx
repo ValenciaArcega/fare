@@ -42,7 +42,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
 
       <Finder lookFor={lookFor} setIsSearching={setIsSearching} />
 
-      <h1 className="tasks-header-h1"><span className="highlight-container"><span className="highlight">Mis tareas pendientes</span></span></h1>
+      <h1 className="tasks-header-h1"><span className="highlight-container"><span className="highlight">Mis tareas</span></span></h1>
 
       <div className="tasks">
         {(isSearching ? filteredItems : tasksArray).map(function (note, i) {

@@ -10,16 +10,11 @@ import { Tasks } from "../tasks/Tasks";
 export const auth = getAuth(firebaseApp);
 
 export function Home({ userMail }) {
+  let nombre;
+  const date = new Date().toLocaleDateString("es-MX", { weekday: 'long' });
+  const welcomeText = `Hoy es ${date.slice(0, 1).toUpperCase() + date.slice(1).toLowerCase() + ' ' + new Date().getDate()} ¿Alguna idea?`;
   const firestore = getFirestore(firebaseApp);
   const [tasksArray, setTasksArray] = useState(null);
-  const fakeData = [
-    {
-      id: +new Date(),
-      title: "Tarea de ejemplo",
-      description:
-        "Aqui podras agregar cualquier idea o pendiente que debas realizar, por ejemplo: Imprimir el reporte de Química para el Jueves 😀",
-    },
-  ];
 
   async function findOrCreateDocument(idDocument) {
     const docRef = doc(firestore, `users/${idDocument}`);
@@ -28,15 +23,23 @@ export function Home({ userMail }) {
       const infoDoc = query.data();
       return infoDoc.tasks;
     } else {
-      await setDoc(docRef, { tasks: [...fakeData] });
-      const query = await getDoc(docRef);
+      return;
+    }
+  }
+
+  async function findUser() {
+    const docRef = doc(firestore, `users/${userMail}`);
+    const query = await getDoc(docRef);
+    if (query.exists()) {
       const infoDoc = query.data();
-      return infoDoc.tasks;
+      return infoDoc.data[0].name;
     }
   }
 
   useEffect(() => {
     async function fetchTasks() {
+      nombre = await findUser();
+      console.log(nombre);
       const fetchedTasks = await findOrCreateDocument(userMail);
       setTasksArray(fetchedTasks);
     }
@@ -44,9 +47,13 @@ export function Home({ userMail }) {
   }, []);
 
   return (
-    <div className="container-home">
+    <div>
       <NavBar />
       <Appearance />
+      <section className="wrapper-welcomeText">
+        <h1 className="welcomeText-h1">Hola {nombre}</h1>
+        <p className="welcomeText-p">{welcomeText}</p>
+      </section>
       <AddTask
         tasksArray={tasksArray}
         userMail={userMail}

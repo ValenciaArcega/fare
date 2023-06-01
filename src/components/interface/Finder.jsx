@@ -8,7 +8,7 @@ export function Finder({ lookFor, setIsSearching }) {
         <input
           onChangeCapture={lookFor}
           className="input"
-          placeholder="Buscar por título"
+          placeholder="Buscar tarea por título"
           type="text"
           autoComplete="off"
         />
