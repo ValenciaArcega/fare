@@ -3,7 +3,6 @@ import { inputNameKeyUp, inputNameFocusIn, inputNameBlur, inputNumberFocusIn, in
 import { reviewRegister } from "../../functions/review-userRegistration";
 import firebaseApp from '../../credentials';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-// testing
 import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore";
 
 export function SignUp({ setIsRegistering }) {
@@ -16,24 +15,11 @@ export function SignUp({ setIsRegistering }) {
     root.style.setProperty('--borderFieldID', '#c5c5c5');
     root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5');
   };
+
   function goSignIn() {
     resetBorders();
     setIsRegistering(false);
   };
-
-  async function findOrCreateDocument(idDocument) {
-    const docRef = doc(firestore, `users/${idDocument}`);
-    const query = await getDoc(docRef);
-    if (query.exists()) {
-      const infoDoc = query.data();
-      return infoDoc.tasks;
-    } else {
-      await setDoc(docRef, { tasks: [...fakeData] });
-      const query = await getDoc(docRef);
-      const infoDoc = query.data();
-      return infoDoc.tasks;
-    }
-  }
 
   async function submitHandler(e) {
     e.preventDefault();
