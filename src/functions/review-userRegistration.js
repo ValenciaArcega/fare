@@ -17,17 +17,17 @@ export function reviewRegister() {
 
   /////////////////////////////////////////////////////////
   if (inputName.value === '') {
-    root.style.setProperty('--borderFieldName', '#f63737');
+    root.style.setProperty('--border-inputName', '#f63737');
     textErrorName.textContent = 'El campo es obligatorio';
   } else if (inputName.value.match(/[0-9]/)) {
-    root.style.setProperty('--borderFieldName', '#f63737');
+    root.style.setProperty('--border-inputName', '#f63737');
     textErrorName.textContent = 'Solo caracteres tipo texto';
   } else {
     resultName = true;
   }
   /////////////////////////////////////////////////////////
   if (inputID.value === '') {
-    root.style.setProperty('--borderFieldID', '#f63737');
+    root.style.setProperty('--border-inputID', '#f63737');
     textErrorID.textContent = 'El campo es obligatorio';
   } else {
     resultID = true;
@@ -36,7 +36,7 @@ export function reviewRegister() {
   if (inputPassConfirm.value === inputPass.value) {
     resultPass = true;
   } else {
-    root.style.setProperty('--borderFieldPassConfirm', '#f63737');
+    root.style.setProperty('--border-inputPassConfirm', '#f63737');
     textErrorPassConfirm.textContent = 'Las contraseñas no coinciden';
   }
   /////////////////////////////////////////////////////////

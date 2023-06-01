@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* colors */
+  /* main colors */
   --mainColor: #0ca678;
   --mainColor-tint: #12b886;
   --mainColor-shade: #099268;
@@ -10,23 +10,21 @@
   --ff: #fff;
 
   /* components */
-  --bg__btn-expand: #f2f2f7;
-  --color__btn-expand: #181818;
+  --fr-btn-expand: #181818;
 
+  --bg-btn-expand: #f2f2f7;
   --bg-modal: #f2f2f7;
   --bg-modal-input: #fff;
   --bg-modal-input-border: #c9c9c9;
   --bg-modal-inputTitle-border: #c9c9c9;
-
-  --bg__blur-navBar: rgba(255, 255, 255, 0.4);
-
-  --border__task: #c9c9c9;
   --bg-task: #fff;
+  --bg-blur-navBar: rgba(255, 255, 255, 0.4);
 
-  --borderFieldName: #c5c5c5;
-  --borderFieldID: #c5c5c5;
-  --borderFieldPass: #c5c5c5;
-  --borderFieldPassConfirm: #c5c5c5;
+  --border-task: #c9c9c9;
+  --border-inputName: #c5c5c5;
+  --border-inputID: #c5c5c5;
+  --border-inputPass: #c5c5c5;
+  --border-inputPassConfirm: #c5c5c5;
 
   --shadow-finder: 0px 20px 18px -18px rgba(19, 144, 67, 0.2);
   --shadow-task: 0px 22px 16px -21px rgb(42 153 47 / 44%);
@@ -73,6 +71,7 @@ input {
 
 input,
 textarea {
+  font-family: 'Inter', sans-serif;
   caret-color: var(--mainColor-shade);
   background-color: #fff;
 }
@@ -259,8 +258,8 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color__btn-expand);
-  background-color: var(--bg__btn-expand);
+  color: var(--fr-btn-expand);
+  background-color: var(--bg-btn-expand);
 }
 
 .btn-expandDescriptionTask::before {
@@ -316,7 +315,7 @@ textarea {
   left: 0;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  background-color: var(--bg__blur-navBar);
+  background-color: var(--bg-blur-navBar);
   z-index: 99;
 }
 
@@ -442,6 +441,23 @@ textarea {
   font-weight: 500;
 }
 
+.btn-signOut-mobile {
+  height: 48px;
+  width: 100%;
+  margin: 0 0 2rem 0;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-top: 1px solid var(--bg-modal-input-border);
+  border-bottom: 1px solid var(--bg-modal-input-border);
+  color: #ff4848;
+  background-color: var(--ff);
+}
+
+.btn-signOut-mobile:hover {
+  cursor: pointer;
+}
+
 /* /////////////////////////////////////////////////////// */
 /* Tasks.jsx */
 .confirmDelete {
@@ -481,7 +497,7 @@ textarea {
   border: none;
   border-radius: 8px;
   font-weight: 500;
-  color: var(--color__btn-expand);
+  color: var(--fr-btn-expand);
   background-color: var(--ff);
   box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.1);
 }
@@ -598,26 +614,26 @@ textarea {
   border-radius: 10px;
   font-size: 16px;
   font-weight: 400;
-  border: 2px solid var(--borderFieldName);
+  border: 2px solid var(--border-inputName);
   background: none;
   outline: none;
   background-color: white;
 }
 
 .signUp-mail {
-  border: 2px solid var(--borderFieldID);
+  border: 2px solid var(--border-inputID);
 }
 
 .signUp-pass {
   width: 100%;
   margin-top: 0;
-  border: 2px solid var(--borderFieldPass);
+  border: 2px solid var(--border-inputPass);
 }
 
 .signUp-passConfirm {
   width: 100%;
   margin-top: 0;
-  border: 2px solid var(--borderFieldPassConfirm);
+  border: 2px solid var(--border-inputPassConfirm);
 }
 
 .signUp-name-p,
@@ -647,7 +663,7 @@ textarea {
   height: 50px;
   width: 48px;
 
-  border: 2px solid var(--borderFieldPass);
+  border: 2px solid var(--border-inputPass);
   background-color: #fff;
   border-radius: 10px;
   display: flex;
@@ -656,7 +672,7 @@ textarea {
 }
 
 .btn-showPassConfirm {
-  border: 2px solid var(--borderFieldPassConfirm);
+  border: 2px solid var(--border-inputPassConfirm);
 }
 
 .btn-showPass-svg,
@@ -771,7 +787,8 @@ textarea {
 .login-label {
   min-height: 21px;
   width: 80%;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
+  font-size: 18px;
   font-weight: 600;
   pointer-events: none;
 }
@@ -799,7 +816,7 @@ textarea {
   margin-top: 1.5rem;
   border-radius: 10px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   border: none;
   outline: none;
   color: #000;

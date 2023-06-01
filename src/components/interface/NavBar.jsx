@@ -53,23 +53,13 @@ function NavBarMobile() {
   }
 
   return (
-    <>
-      {/* <button
-        type="button"
-        className="navBar__mobile-btn"
-        onClick={() => {
-          signOut(auth);
-          makeLight();
-        }}
-      > */}
-      <button
-        type="button"
-        className="navBar__mobile-btnAdd"
-        onClick={showModal}
-      >
-        <IconAddTaskMob />
-      </button>
-    </>
+    <button
+      type="button"
+      className="navBar__mobile-btnAdd"
+      onClick={showModal}
+    >
+      <IconAddTaskMob />
+    </button>
   );
 }
 

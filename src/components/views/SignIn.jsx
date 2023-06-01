@@ -54,9 +54,15 @@ export function SignIn({ setIsRegistering }) {
 
         <button className="login-buttonLogin" type="submit">Entrar</button>
 
-        <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
-          onClick={goRegister}
-          className="login-BGR" id="lbgr">Registrate</button>
+        <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta?
+          <button
+            id="lbgr"
+            className="login-BGR"
+            type="button"
+            onClick={goRegister}
+          >
+            Registrate
+          </button>
         </label>
       </form>
     </section>

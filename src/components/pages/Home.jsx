@@ -3,18 +3,28 @@ import NavBar from "../interface/NavBar";
 import React, { useState, useEffect } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { Appearance } from "../theme/Appearance";
+import { makeLight } from "../../functions/switch-appearance";
 import { AddTask } from "../tasks/AddTask";
 import { getAuth } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { Tasks } from "../tasks/Tasks";
 
 export const auth = getAuth(firebaseApp);
 
 export function Home({ userMail }) {
+  const [isDesktop, setIsDesktop] = useState(false);
   const [name, setName] = useState(null);
   const [tasksArray, setTasksArray] = useState(null);
   const firestore = getFirestore(firebaseApp);
+  const day = new Date().getDate();
   const weekDay = new Date().toLocaleDateString("es-MX", { weekday: 'long' });
-  const welcomeText = `Hoy es ${weekDay.slice(0, 1).toUpperCase() + weekDay.slice(1).toLowerCase() + ' ' + new Date().getDate()} ¿Alguna idea?`;
+  const weekDayStr = weekDay.slice(0, 1).toUpperCase() + weekDay.slice(1).toLowerCase();
+  const welcomeText = `Hoy es ${weekDayStr} ${(day === 1) ? '1ro' : day}. ¿Qué hay de nuevo?`;
+
+  function signUserOut() {
+    signOut(auth);
+    makeLight();
+  }
 
   function fixName(str) {
     const newText = str.trim().split(' ')[0];
@@ -52,6 +62,13 @@ export function Home({ userMail }) {
   useEffect(function () {
     getUserName();
     fetchTasks();
+
+    const x = window.matchMedia("(min-width: 624px)");
+    setIsDesktop(x.matches);
+
+    const handleResize = () => setIsDesktop(x.matches);
+    x.addListener(handleResize);
+    return () => x.removeListener(handleResize);
   }, []);
 
   return (
@@ -74,6 +91,8 @@ export function Home({ userMail }) {
           setTasksArray={setTasksArray}
         />
       ) : null}
+
+      {!isDesktop ? <button className="btn-signOut-mobile" onClick={signUserOut}>Cerrar Sesión</button> : null}
     </div>
   );
 }

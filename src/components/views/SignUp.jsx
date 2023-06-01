@@ -11,9 +11,9 @@ export function SignUp({ setIsRegistering }) {
 
   function resetBorders() {
     const root = document.querySelector(':root');
-    root.style.setProperty('--borderFieldName', '#c5c5c5');
-    root.style.setProperty('--borderFieldID', '#c5c5c5');
-    root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5');
+    root.style.setProperty('--border-inputName', '#c5c5c5');
+    root.style.setProperty('--border-inputID', '#c5c5c5');
+    root.style.setProperty('--border-inputPassConfirm', '#c5c5c5');
   };
 
   function goSignIn() {
@@ -46,9 +46,6 @@ export function SignUp({ setIsRegistering }) {
     if (!query.exists()) {
       await setDoc(docRef, { data: [...dataUser], tasks: [...fakeData] });
       if (reviewRegister()) await createUserWithEmailAndPassword(auth, mail, password);
-      // const query = await getDoc(docRef);
-      // const infoDoc = query.data();
-      // return infoDoc.dataUser;
     } else {
       return;
     }
