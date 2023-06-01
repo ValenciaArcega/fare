@@ -43,15 +43,14 @@ export function SignUp({ setIsRegistering }) {
     const docRef = doc(firestore, `users/${mail}`);
     const query = await getDoc(docRef);
 
-    if (query.exists()) {
-      const infoDoc = query.data();
-      return infoDoc.dataUser;
-    } else {
+    if (!query.exists()) {
       await setDoc(docRef, { data: [...dataUser], tasks: [...fakeData] });
-      const query = await getDoc(docRef);
-      const infoDoc = query.data();
       if (reviewRegister()) await createUserWithEmailAndPassword(auth, mail, password);
-      return infoDoc.dataUser;
+      // const query = await getDoc(docRef);
+      // const infoDoc = query.data();
+      // return infoDoc.dataUser;
+    } else {
+      return;
     }
   }
 
