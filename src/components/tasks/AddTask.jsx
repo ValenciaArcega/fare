@@ -4,13 +4,14 @@ import { EmptyInputTitle } from "../messages/EmptyInputTitle";
 import { useState } from "react";
 
 export function AddTask({ tasksArray, userMail, setTasksArray }) {
-  const [isEmpty, setIsEmpty] = useState(false);
+  const [isInputsEmpties, setIsInputsEmpties] = useState(false);
   const firestore = getFirestore(firebaseApp);
 
-  function isInputValueEmpty(title, des) {
+  function isInputsValueEmpty(title, des) {
     if (title.trim() === '' || des.trim() === '') {
-      setIsEmpty(true);
-      setTimeout(() => setIsEmpty(false), 5500);
+      setIsInputsEmpties(true);
+      setTimeout(() => setIsInputsEmpties(false), 5500);
+      return false;
     }
     return true;
   }
@@ -24,7 +25,7 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
     e.preventDefault();
     const title = e.target.inputTitle.value;
     const description = e.target.inputDescription.value;
-    if (isInputValueEmpty(title, description)) {
+    if (isInputsValueEmpty(title, description)) {
       const docRef = doc(firestore, `users/${userMail}`);
       const newTaskArr = [
         {
@@ -47,7 +48,7 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
     <div className="container-modal__NewTask">
       <div onClick={closeModal} className="overlay hidden"></div>
 
-      {isEmpty ? <EmptyInputTitle /> : false}
+      {isInputsEmpties ? <EmptyInputTitle /> : false}
 
       <form className="modal-newTask hidden" onSubmit={addTask}>
         <h1 className="modal-newTask-h1">📚 Nueva tarea</h1>

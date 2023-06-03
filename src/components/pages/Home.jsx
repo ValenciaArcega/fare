@@ -27,8 +27,7 @@ export function Home({ userMail }) {
   }
 
   function fixName(str) {
-    const newText = str.trim().split(' ')[0];
-    return newText.slice(0, 1).toUpperCase() + newText.slice(1).toLowerCase();
+    return str.trim().split(' ')[0];
   }
 
   async function getUserName() {

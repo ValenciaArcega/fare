@@ -21,18 +21,26 @@ export function SignUp({ setIsRegistering }) {
     setIsRegistering(false);
   };
 
-  async function submitHandler(e) {
+  function upperCaseName(str) {
+    // pablo  mario   gonzaleZ CAMARENA  
+    // Pablo Mario Gonzalez Camarena 
+    const stageOne = str.trim().toLowerCase().split(' ').filter(n => n !== '');
+    return stageOne.map(n => n[0].toUpperCase() + n.slice(1)).join(' ');
+  }
+
+  async function addUser(e) {
     e.preventDefault();
     const name = e.target.sufn.value;
+    const nameFixed = upperCaseName(name);
     const mail = e.target.inputMail.value;
     const password = e.target.inputPassword.value;
     const dataUser = [
       {
-        name: name,
+        name: nameFixed,
         mail: mail,
       },
     ];
-    const fakeData = [
+    const initialTask = [
       {
         id: +new Date(),
         title: "Tarea de ejemplo",
@@ -44,7 +52,7 @@ export function SignUp({ setIsRegistering }) {
     const query = await getDoc(docRef);
 
     if (!query.exists()) {
-      await setDoc(docRef, { data: [...dataUser], tasks: [...fakeData] });
+      await setDoc(docRef, { data: [...dataUser], tasks: [...initialTask] });
       if (reviewRegister()) await createUserWithEmailAndPassword(auth, mail, password);
     } else {
       return;
@@ -53,7 +61,7 @@ export function SignUp({ setIsRegistering }) {
 
   return (
     <section className="container-signUp">
-      <form className="signUp" onSubmit={submitHandler}>
+      <form className="signUp" onSubmit={addUser}>
 
         <h1 className="signUp-title">Crea una cuenta <span className="gradientText-one">gratis</span></h1>
 
