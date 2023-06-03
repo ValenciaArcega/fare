@@ -78,7 +78,6 @@ textarea {
 
 /* /////////////////////////////////////////////////////// */
 /* AddTasks.jsx */
-
 .container-modal__NewTask {
   display: flex;
   align-items: center;
@@ -298,6 +297,38 @@ textarea {
   top: 0;
   left: 0;
   z-index: 98;
+}
+
+/* /////////////////////////////////////////////////////// */
+/* EmptyInputTitle.jsx */
+.message-emptyFormAddTak {
+  height: 3rem;
+  width: 18rem;
+  border-bottom: 2px solid #ff2c2c;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  position: fixed;
+  gap: 3px;
+  top: 52px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 14% 1fr;
+  align-items: center;
+  justify-items: center;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: var(--bg-blur-navBar);
+  z-index: 100;
+}
+
+.message-emptyFormAddTak-svg {
+  height: 28px;
+  /* fill: #ff2c2c; */
+  stroke: #ff2c2c;
+}
+
+.message-emptyFormAddTak p {
+  font-size: 14px;
 }
 
 /* /////////////////////////////////////////////////////// */
