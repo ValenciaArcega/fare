@@ -21,6 +21,9 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
     document.querySelector(".overlay").classList.add("hidden");
   }
 
+  // 1. get ID of the task from the map: {identificator} 
+  // 2. pass the ID as a paramether in the edit function
+  // 3. const fullName = infoDoc.data[0].name;
   async function addTask(e) {
     e.preventDefault();
     const title = e.target.inputTitle.value;
