@@ -11,9 +11,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
 
   function lookFor(e) {
     setFilteredItems(
-      tasksArray.filter((item) =>
-        item.title.toLowerCase().includes(e.target.value.toLowerCase())
-      )
+      tasksArray.filter(item => item.title.toLowerCase().includes(e.target.value.toLowerCase()))
     );
     setIsSearching(true);
   }

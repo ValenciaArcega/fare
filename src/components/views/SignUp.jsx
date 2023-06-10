@@ -30,6 +30,7 @@ export function SignUp({ setIsRegistering }) {
 
   async function addUser(e) {
     e.preventDefault();
+    reviewRegister();
     const name = e.target.sufn.value;
     const nameFixed = upperCaseName(name);
     const mail = e.target.inputMail.value;

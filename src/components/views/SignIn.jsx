@@ -39,7 +39,7 @@ export function SignIn({ setIsRegistering }) {
           id="inputMail"
           className="login-inputMail"
           type="text"
-          autoComplete="new-password"
+          // autoComplete="new-password"
           placeholder="usuario@dominio.some"
         />
 
@@ -54,15 +54,14 @@ export function SignIn({ setIsRegistering }) {
 
         <button className="login-buttonLogin" type="submit">Entrar</button>
 
-        <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta?
-          <button
-            id="lbgr"
-            className="login-BGR"
-            type="button"
-            onClick={goRegister}
-          >
-            Registrate
-          </button>
+        <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
+          id="lbgr"
+          className="login-BGR"
+          type="button"
+          onClick={goRegister}
+        >
+          Registrate
+        </button>
         </label>
       </form>
     </section>
