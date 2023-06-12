@@ -40,8 +40,6 @@ export function reviewRegister() {
     textErrorPassConfirm.textContent = 'Las contraseñas no coinciden';
   }
   /////////////////////////////////////////////////////////
-  // let [dataNAME, dataID, dataPASS] = [inputName.value, inputID.value, inputPass.value];
-
   if (resultName && resultID && resultPass) {
     return reviewed = true;
   }

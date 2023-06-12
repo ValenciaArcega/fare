@@ -69,7 +69,7 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
         />
         <button
           onClick={closeModal}
-          className="modal-newTask-addButton"
+          className="btn-blurCircle"
           type="submit"
         >
           Agregar

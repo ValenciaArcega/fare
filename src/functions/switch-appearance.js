@@ -22,8 +22,8 @@ export function makeDark() {
   root.style.setProperty('--border-task', 'transparent');
   root.style.setProperty('--bg-task', '#202020');
   // shadows
-  root.style.setProperty('--shadow-task', 'transparent');
   root.style.setProperty('--shadow-finder', 'transparent');
+  root.style.setProperty('--shadow-task', 'transparent');
   // blur
   root.style.setProperty('--bg-blur-navBar', 'rgba(0, 0, 0, 0.4)');
 };

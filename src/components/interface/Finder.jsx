@@ -2,7 +2,7 @@ import { IconMagnifier, IconClose } from '../svg/Finder';
 
 export function Finder({ lookFor, setIsSearching }) {
   return (
-    <section className="cn">
+    <section className="section-finder">
       <form className="container-finder">
         <IconMagnifier />
         <input

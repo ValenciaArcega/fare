@@ -59,7 +59,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
                 />
                 <button
                   type="button"
-                  className="task__btn-complete"
+                  className="btn-blurCircle"
                   onClick={() => {
                     identificador = note.id;
                     revealConfirmDelete();
