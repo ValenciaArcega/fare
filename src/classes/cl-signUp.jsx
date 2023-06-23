@@ -51,7 +51,7 @@ export class ClReviewSignUp {
     this.root.setProperty('--borderInput-name', '#0ca678')
 
     if (input.value.match(this._expRegNumbers) || input.value.match(this._expRegCharacters)) {
-      this.root.setProperty('--borderInput-name', '#f63737')
+      this.root.setProperty('--borderInput-name', '#DF0000')
       textError.textContent = 'Recuerda, caracteres de tipo texto'
     } else textError.textContent = ''
 
@@ -71,8 +71,8 @@ export class ClReviewSignUp {
       textError.style.color = '#0ca678'
       textError.textContent = '¡Coinciden!'
     } else {
-      textError.style.color = '#f63737'
-      this.root.setProperty('--borderInput-passConfirm', '#f63737')
+      textError.style.color = '#DF0000'
+      this.root.setProperty('--borderInput-passConfirm', '#DF0000')
       textError.textContent = 'Las contraseñas no coinciden'
     }
   }
@@ -83,10 +83,10 @@ export class ClReviewSignUp {
     const textError = document.querySelector('.signUp-name-p')
 
     if (input.value === '') {
-      this.root.setProperty('--borderInput-name', '#f63737')
+      this.root.setProperty('--borderInput-name', '#DF0000')
       textError.textContent = 'El campo es obligatorio'
     } else if (input.value.match(this._expRegNumbers) || input.value.match(this._expRegCharacters)) {
-      this.root.setProperty('--borderInput-name', '#f63737')
+      this.root.setProperty('--borderInput-name', '#DF0000')
       textError.textContent = 'Solo caracteres tipo texto'
     } else return true
   }
@@ -96,10 +96,10 @@ export class ClReviewSignUp {
     const textError = document.querySelector('.signUp-mail-p')
 
     if (input.value === '') {
-      this.root.setProperty('--borderInput-mail', '#f63737')
+      this.root.setProperty('--borderInput-mail', '#DF0000')
       textError.textContent = 'El campo es obligatorio'
     } else if (!input.value.includes('@') || !input.value.includes('.') || input.value.length < 8) {
-      this.root.setProperty('--borderInput-mail', '#f63737')
+      this.root.setProperty('--borderInput-mail', '#DF0000')
       textError.textContent = 'Formato de correo invalido'
     } else return true
   }
@@ -109,10 +109,10 @@ export class ClReviewSignUp {
     const textError = document.querySelector('.signUp-pass-p')
 
     if (input.value === '') {
-      this.root.setProperty('--borderInput-pass', '#f63737')
+      this.root.setProperty('--borderInput-pass', '#DF0000')
       textError.textContent = 'El campo es obligatorio'
     } else if (input.value.length <= 7) {
-      this.root.setProperty('--borderInput-pass', '#f63737')
+      this.root.setProperty('--borderInput-pass', '#DF0000')
       textError.textContent = 'Al menos 8 caracteres'
     } else return true
   }
@@ -123,8 +123,8 @@ export class ClReviewSignUp {
     const inputExternal = document.querySelector('.signUp-pass')
 
     if (inputExternal.value !== input.value) {
-      this.root.setProperty('--borderInput-passConfirm', '#f63737')
-      textError.style.color = '#f63737'
+      this.root.setProperty('--borderInput-passConfirm', '#DF0000')
+      textError.style.color = '#DF0000'
       textError.textContent = 'Las contraseñas no coinciden'
     } else return true
   }

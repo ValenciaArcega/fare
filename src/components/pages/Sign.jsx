@@ -1,5 +1,5 @@
-import { SignIn } from "../views/SignIn"
-import { SignUp } from "../views/SignUp"
+import { SignIn } from "../forms/SignIn"
+import { SignUp } from "../forms/SignUp"
 import { useEffect, useState } from "react"
 import { Loader } from '../loader/Loader'
 
