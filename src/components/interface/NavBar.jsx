@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { signOut } from "firebase/auth";
-import { auth } from "../pages/Home";
-import { makeLight } from "../../functions/switch-appearance";
-import { IconPlus, IconAddTaskMob } from "../svg/NavBar";
+import React, { useEffect, useState } from "react"
+import { signOut } from "firebase/auth"
+import { auth } from "../pages/Home"
+import { ClAppearance } from "../../classes/cl-appearance"
+import { IconPlus, IconAddTaskMob } from "../svg/NavBar"
 
 function NavBarDesktop() {
-  function showModal() {
-    const modal = document.querySelector(".modal-newTask");
-    const overlay = document.querySelector(".overlay");
+  const cl = new ClAppearance()
 
-    modal.classList.remove("hidden");
-    overlay.classList.remove("hidden");
+  function showModal() {
+    const modal = document.querySelector(".modal-newTask")
+    const overlay = document.querySelector(".overlay")
+
+    modal.classList.remove("hidden")
+    overlay.classList.remove("hidden")
   }
 
   return (
@@ -32,24 +34,24 @@ function NavBarDesktop() {
           type="button"
           className="navBar-btn NBbtn-signout"
           onClick={() => {
-            signOut(auth);
-            makeLight();
+            signOut(auth)
+            cl._makeLight()
           }}
         >
           Cerrar sesión
         </button>
       </div>
     </nav>
-  );
+  )
 }
 
 function NavBarMobile() {
   function showModal() {
-    const modal = document.querySelector(".modal-newTask");
-    const overlay = document.querySelector(".overlay");
+    const modal = document.querySelector(".modal-newTask")
+    const overlay = document.querySelector(".overlay")
 
-    modal.classList.remove("hidden");
-    overlay.classList.remove("hidden");
+    modal.classList.remove("hidden")
+    overlay.classList.remove("hidden")
   }
 
   return (
@@ -60,21 +62,21 @@ function NavBarMobile() {
     >
       <IconAddTaskMob />
     </button>
-  );
+  )
 }
 
 export default function NavBar() {
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
-    const x = window.matchMedia("(min-width: 624px)");
-    setIsDesktop(x.matches);
+    const x = window.matchMedia("(min-width: 624px)")
+    setIsDesktop(x.matches)
 
-    const handleResize = () => setIsDesktop(x.matches);
-    x.addListener(handleResize);
+    const handleResize = () => setIsDesktop(x.matches)
+    x.addListener(handleResize)
 
-    return () => x.removeListener(handleResize);
-  }, []);
+    return () => x.removeListener(handleResize)
+  }, [])
 
-  return <div> {isDesktop ? <NavBarDesktop /> : <NavBarMobile />} </div>;
+  return <div> {isDesktop ? <NavBarDesktop /> : <NavBarMobile />} </div>
 }

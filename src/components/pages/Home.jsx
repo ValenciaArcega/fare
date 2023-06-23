@@ -3,7 +3,7 @@ import NavBar from "../interface/NavBar"
 import React, { useState, useEffect } from "react"
 import { getFirestore, doc, getDoc } from "firebase/firestore"
 import { Appearance } from "../theme/Appearance"
-import { makeLight } from "../../functions/switch-appearance"
+import { ClAppearance } from "../../classes/cl-appearance"
 import { AddTask } from "../tasks/AddTask"
 import { getAuth } from "firebase/auth"
 import { signOut } from "firebase/auth"
@@ -18,13 +18,14 @@ export function Home({ userMail }) {
   const [dataLoaded, setDataLoaded] = useState(false)
   const firestore = getFirestore(firebaseApp)
   const day = new Date().getDate()
+  const cl = new ClAppearance()
   const weekDay = new Date().toLocaleDateString("es-MX", { weekday: 'long' })
   const weekDayStr = weekDay.slice(0, 1).toUpperCase() + weekDay.slice(1).toLowerCase()
   const welcomeText = `Hoy es ${weekDayStr} ${(day === 1) ? '1ro' : day}. ¿Qué hay de nuevo?`
 
   function signUserOut() {
     signOut(auth)
-    makeLight()
+    cl._makeLight()
   }
 
   function fixName(str) {

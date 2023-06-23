@@ -1,29 +1,29 @@
-import BadCredentials from "../messages/BadCredentials";
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import firebaseApp from '../../credentials';
-import { useState } from "react";
+import BadCredentials from "../messages/BadCredentials"
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import firebaseApp from '../../credentials'
+import { useState } from "react"
 
 export function SignIn({ setIsRegistering }) {
-  const auth = getAuth(firebaseApp);
-  const [isWrong, setIsWrong] = useState(false);
+  const auth = getAuth(firebaseApp)
+  const [isWrong, setIsWrong] = useState(false)
 
   async function submitHandler(e) {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const m = e.target.inputMail.value;
-      const p = e.target.inputPassword.value;
-      await signInWithEmailAndPassword(auth, m, p);
+      const m = e.target.inputMail.value
+      const p = e.target.inputPassword.value
+      await signInWithEmailAndPassword(auth, m, p)
     } catch (e) {
-      setIsWrong(true);
+      setIsWrong(true)
       setTimeout(() => {
-        setIsWrong(false);
-      }, 4500);
+        setIsWrong(false)
+      }, 4500)
     }
   }
 
   function goRegister(e) {
-    e.preventDefault();
-    setIsRegistering(true);
+    e.preventDefault()
+    setIsRegistering(true)
   };
 
   return (
@@ -52,7 +52,7 @@ export function SignIn({ setIsRegistering }) {
           placeholder="Ingresa tu contraseña"
         />
 
-        <button className="login-buttonLogin" type="submit">Entrar</button>
+        <button className="btn-blurCircle login-buttonLogin" type="submit">Autenticarme</button>
 
         <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
           id="lbgr"
@@ -65,5 +65,5 @@ export function SignIn({ setIsRegistering }) {
         </label>
       </form>
     </section>
-  );
+  )
 };

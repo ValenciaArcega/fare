@@ -1,14 +1,16 @@
-import { IconMoon, IconSun } from "../svg/Appearance";
-import { makeDark, makeLight } from "../../functions/switch-appearance";
+import { IconMoon, IconSun } from "../svg/Appearance"
+import { ClAppearance } from "../../classes/cl-appearance"
 
 export function Appearance() {
+  const cl = new ClAppearance()
+
   return (
     <>
       <button
         title="button of moon"
         type="button"
         className="btn-Dark"
-        onClick={makeDark}>
+        onClick={() => cl._makeDark()}>
         <IconMoon />
       </button>
 
@@ -16,9 +18,9 @@ export function Appearance() {
         title="button of sun"
         type="button"
         className="btn-Light hidden"
-        onClick={makeLight}>
+        onClick={() => cl._makeLight()}>
         <IconSun />
       </button>
     </>
-  );
+  )
 };
