@@ -8,6 +8,7 @@ import { AddTask } from "../tasks/AddTask"
 import { getAuth } from "firebase/auth"
 import { signOut } from "firebase/auth"
 import { Tasks } from "../tasks/Tasks"
+import { Loader } from "../interface/Loader"
 
 export const auth = getAuth(firebaseApp)
 
@@ -98,6 +99,6 @@ export function Home({ userMail }) {
 
         {!isDesktop ? <button className="btn-signOut-mobile" onClick={signUserOut}>Cerrar Sesión</button> : null}
       </div>
-      : null
+      : <Loader />
   )
 }

@@ -25,7 +25,6 @@ export class ClAppearance {
     this.root.setProperty('--bg-task', '#202020')
     // shadows
     this.root.setProperty('--shadow-finder', 'transparent')
-    this.root.setProperty('--shadow-task', 'transparent')
     // blur
     this.root.setProperty('--bg-blur-navBar', 'rgba(0, 0, 0, 0.4)')
   }
@@ -54,7 +53,6 @@ export class ClAppearance {
     this.root.setProperty('--bg-task', '#fff')
     // shadows
     this.root.setProperty('--shadow-finder', '0px 20px 18px -18px rgba(19, 144, 67, 0.2)')
-    this.root.setProperty('--shadow-task', '0px 22px 16px -21px rgb(42 153 47 / 44%)')
     // blur
     this.root.setProperty('--bg-blur-navBar', 'rgba(255, 255, 255, 0.4)')
   }

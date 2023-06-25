@@ -1,7 +1,7 @@
 import { SignIn } from "../forms/SignIn"
 import { SignUp } from "../forms/SignUp"
 import { useEffect, useState } from "react"
-import { Loader } from '../loader/Loader'
+import { Loader } from '../interface/Loader'
 
 export function Sign() {
   const [isRegistering, setIsRegistering] = useState(false)

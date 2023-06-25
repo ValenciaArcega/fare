@@ -36,10 +36,7 @@ function NavBarDesktop() {
           onClick={() => {
             signOut(auth)
             cl._makeLight()
-          }}
-        >
-          Cerrar sesión
-        </button>
+          }}>Cerrar sesión</button>
       </div>
     </nav>
   )
