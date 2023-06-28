@@ -48,7 +48,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
             <main key={i}>
               <article className="task">
                 <div className="taskDescription">
-                  <p className="task-title">{note.title}</p>
+                  <h2 className="task-title">{note.title}</h2>
                   <p className="task-p">{note.description}</p>
                 </div>
                 {/* <div className="wrapper-task-buttons"> */}

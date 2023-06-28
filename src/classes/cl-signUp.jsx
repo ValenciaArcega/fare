@@ -12,7 +12,7 @@ export class ClReviewSignUp {
   }
 
   _inputFocusIn(str) {
-    this.root.setProperty(`--borderInput-${str}`, '#0ca678')
+    this.root.setProperty(`--borderInput-${str}`, '#4263eb')
   }
 
   _showPass(inputName, iconHide, iconShow) {
@@ -48,7 +48,7 @@ export class ClReviewSignUp {
     const input = document.querySelector('.signUp-name')
     const textError = document.querySelector('.signUp-name-p')
 
-    this.root.setProperty('--borderInput-name', '#0ca678')
+    this.root.setProperty('--borderInput-name', '#4263eb')
 
     if (input.value.match(this._expRegNumbers) || input.value.match(this._expRegCharacters)) {
       this.root.setProperty('--borderInput-name', '#DF0000')
@@ -56,7 +56,7 @@ export class ClReviewSignUp {
     } else textError.textContent = ''
 
     if (input.value === '') {
-      this.root.setProperty('--borderInput-name', '#0ca678')
+      this.root.setProperty('--borderInput-name', '#4263eb')
       textError.textContent = ''
     }
   }
@@ -67,8 +67,8 @@ export class ClReviewSignUp {
     const textError = document.querySelector('.signUp-passConfirm-p')
 
     if (inputPassConfirm.value === inputPass.value) {
-      this.root.setProperty('--borderInput-passConfirm', '#0ca678')
-      textError.style.color = '#0ca678'
+      this.root.setProperty('--borderInput-passConfirm', '#4263eb')
+      textError.style.color = '#4263eb'
       textError.textContent = '¡Coinciden!'
     } else {
       textError.style.color = '#DF0000'

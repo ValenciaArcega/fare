@@ -3,8 +3,8 @@ export class ClSignIn {
   root = document.documentElement.style;
 
   _inputFocusIn(str, icon) {
-    this.root.setProperty(`--borderInput-signIn-${str}`, '#0ca678')
-    this.root.setProperty(`--fr-svg-${icon}`, '#0ca678')
+    this.root.setProperty(`--borderInput-signIn-${str}`, '#4263eb')
+    this.root.setProperty(`--fr-svg-${icon}`, '#4263eb')
   }
 
   _inputBlur(str, icon) {

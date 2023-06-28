@@ -81,7 +81,7 @@ export function Home({ userMail }) {
         <NavBar />
         <Appearance />
         <section className="wrapper-welcomeText">
-          <h1 className="welcomeText-h1">Hola {name}</h1>
+          <h1 className="gradientText welcomeText-h1">Hola {name}</h1>
           <p className="welcomeText-p">{welcomeText}</p>
         </section>
         <AddTask

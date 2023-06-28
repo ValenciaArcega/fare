@@ -54,7 +54,7 @@ export function SignUp({ setIsRegistering }) {
         if (cl._reviewSignUp(e)) addUser(e)
       }}>
 
-        <h1 className="signUp-title">Crea una <span className="gradientText-one">cuenta gratis</span></h1>
+        <h1 className="signUp-title">Crea una <span className="gradientText">cuenta gratis</span></h1>
 
         <label className="signUp-label" htmlFor="sufn">Nombre<IconText /></label>
         <input
@@ -131,7 +131,7 @@ export function SignUp({ setIsRegistering }) {
         </div>
         <p className="signUp-passConfirm-p"></p>
 
-        <button type="submit" className="btn-blurCircle signUp-btnRegister" name="button to Register">Registrarme Ahora</button>
+        <button type="submit" className="signUp-btnRegister" name="button to Register">Registrarme Ahora</button>
 
         <label className="signUp-labelGoSignIn" htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className="signUp-btnGoSignIn" onClick={goSignIn}>Inicia Sesión</button></label>
 

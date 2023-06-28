@@ -2,9 +2,10 @@
 
 :root {
   /* main colors */
-  --mainColor: #0ca678;
-  --mainColor-tint: #12b886;
-  --mainColor-shade: #099268;
+  /* --mainColor: #0ca678; */
+  --mainColor: #4263eb;
+  --mainColor-tint: #5573ed;
+  --mainColor-shade: #3b59d4;
 
   /* secondary colors */
   --black18: #181818;
@@ -41,7 +42,7 @@
   --borderInput-pass: #c5c5c5;
   --borderInput-passConfirm: #c5c5c5;
 
-  --shadow-finder: 0px 20px 18px -18px rgba(19, 144, 67, 0.2);
+  --shadow-finder: 0px 20px 18px -18px rgba(21, 91, 166, 0.2);
 }
 
 ::selection {
@@ -79,14 +80,14 @@ button {
 button,
 input {
   font-family: 'Inter', sans-serif;
-  color: var(--black18);
   background-color: var(--bg);
 }
 
 input,
 textarea {
   font-family: 'Inter', sans-serif;
-  caret-color: var(--mainColor-shade);
+  caret-color: var(--mainColor);
+  color: var(--black18);
   background-color: #fff;
 }
 
@@ -192,8 +193,8 @@ textarea {
   background: transparent;
   border: none;
   position: relative;
-  color: #1a1a1a;
   z-index: 1;
+  color: white;
   overflow: visible;
 }
 
@@ -209,13 +210,14 @@ textarea {
 
 .btn-blurCircle:hover {
   cursor: pointer;
+  color: #1c1c1c;
 }
 
 .btn-blurCircle::before {
   transform: translate(0%, 0%);
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom right, #a3fde3, #18be8d);
+  background: linear-gradient(to top right, #3b59d4, #6681ed);
   border-radius: 10px;
 }
 
@@ -283,7 +285,7 @@ textarea {
 .task-title {
   margin-bottom: 8px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   pointer-events: none;
   color: var(--mainColor);
 }
@@ -530,7 +532,7 @@ textarea {
 /* Home.jsx */
 .wrapper-welcomeText {
   margin-top: 72px;
-  margin-left: 18px;
+  margin-left: 16px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -540,13 +542,11 @@ textarea {
   letter-spacing: -1px;
   font-size: 32px;
   font-weight: 800;
-  background: radial-gradient(#00BCD4, #0ca865);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .welcomeText-p {
-  font-size: 18px;
+  font-size: 16px;
+  padding-right: 2px;
   font-weight: 500;
 }
 
@@ -641,7 +641,7 @@ textarea {
   transform: translate(0%, 0%);
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom right, #ff9696, #ff3d3d);
+  background: linear-gradient(to bottom left, #ff8282, #ff1111);
   border-radius: 10px;
 }
 
@@ -854,15 +854,16 @@ textarea {
   margin-top: 12px;
   border-radius: 10px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   border: none;
   outline: none;
-  color: #000;
+  color: white;
+  background: linear-gradient(to top right, #3b59d4, #6681ed);
+  box-shadow: 0 8px 12px -6px #00000080;
 }
 
 .signUp-btnRegister:hover {
   cursor: pointer;
-  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.25);
 }
 
 .signUp-labelGoSignIn {
@@ -876,7 +877,7 @@ textarea {
   border: none;
   outline: none;
   background: none;
-  color: var(--mainColor-shade);
+  color: var(--mainColor) !important;
 }
 
 .signUp-btnGoSignIn:hover {
@@ -976,17 +977,16 @@ textarea {
   margin-top: 1.5rem;
   border-radius: 10px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   border: none;
   outline: none;
-  color: #000;
-  /* background: linear-gradient(to top right, #24be71, #1cd176);
-  box-shadow: 0px 8px 12px -6px rgba(0, 0, 0, 0.2); */
+  color: white;
+  background: linear-gradient(to top right, #3b59d4, #6681ed);
+  box-shadow: 0 8px 12px -6px #00000080;
 }
 
 .login-buttonLogin:hover {
   cursor: pointer;
-  box-shadow: 0px 8px 12px -6px rgba(0, 0, 0, 0.21);
 }
 
 .login-labelBGR {
@@ -1001,7 +1001,7 @@ textarea {
   border: none;
   outline: none;
   background: none;
-  color: var(--mainColor-shade);
+  color: var(--mainColor) !important;
 }
 
 .login-BGR:hover {
@@ -1050,8 +1050,8 @@ textarea {
   display: none;
 }
 
-.gradientText-one {
-  background: linear-gradient(45deg, #07b5b5, #1ed9a1);
+.gradientText {
+  background: linear-gradient(365deg, #4463e0, #75c1cf);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1076,7 +1076,7 @@ textarea {
   top: 0;
   left: 10px;
   transform: scale(1.07, 1.05) skewX(-22deg);
-  background: linear-gradient(to left, #26cf9d, #00d26a);
+  background: linear-gradient(to right, #7a94ff, #7ac1f6);
 }
 
 

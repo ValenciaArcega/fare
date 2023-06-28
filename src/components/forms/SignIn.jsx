@@ -56,7 +56,7 @@ export function SignIn({ setIsRegistering }) {
 
       <form className="login" onSubmit={submitHandler}>
         <img className="login-img" src="login.svg" alt="" />
-        <h1 className="login-title"><span className="gradientText-one">Inicia Sesión</span></h1>
+        <h1 className="login-title"><span className="gradientText">Inicia Sesión</span></h1>
 
         <label className="login-label">Correo electrónico</label>
         <div className="signIn-wrapperInput-mail">
@@ -85,7 +85,7 @@ export function SignIn({ setIsRegistering }) {
           />
         </div>
 
-        <button className="btn-blurCircle login-buttonLogin" type="submit">Autenticarme</button>
+        <button className="login-buttonLogin" type="submit">Autenticarme</button>
 
         <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
           id="lbgr"
