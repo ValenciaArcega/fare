@@ -14,9 +14,10 @@
   /* tertiary colors */
   --border-wrong: #DF0000;
 
-  /* components */
+  /* Foreground */
   --fr-btn-expand: #181818;
 
+  /* Background; */
   --bg-btn-expand: #f2f2f7;
   --bg-modal: #f2f2f7;
   --bg-modal-input: #fff;
@@ -24,6 +25,14 @@
   --bg-modal-inputTitle-border: #c9c9c9;
   --bg-task: #fff;
   --bg-blur-navBar: rgba(255, 255, 255, 0.4);
+
+  /* Border */
+
+  /* SignIn.jsx */
+  --borderInput-signIn-mail: #c5c5c5;
+  --borderInput-signIn-pass: #c5c5c5;
+  --fr-svg-mail: #727272;
+  --fr-svg-pass: #727272;
 
   --border-task: #c9c9c9;
   /* SignUp.jsx */
@@ -923,21 +932,42 @@ textarea {
   pointer-events: none;
 }
 
+
+.signIn-wrapperInput-mail,
+.signIn-wrapperInput-pass {
+  width: 86%;
+  margin-top: 4px;
+  padding-left: 8px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--borderInput-signIn-mail);
+}
+
+.signIn-wrapperInput-mail svg {
+  height: 22px;
+  color: var(--fr-svg-mail);
+}
+
+.signIn-wrapperInput-pass {
+  border: 2px solid var(--borderInput-signIn-pass);
+}
+
+.signIn-wrapperInput-pass svg {
+  height: 22px;
+  color: var(--fr-svg-pass);
+}
+
+
+
 .login-inputMail,
 .login-inputPass {
   min-height: 50px;
-  width: 86%;
-  margin-top: 4px;
-  padding: 0 6px;
-  border-radius: 10px;
+  padding: 0 4px;
   font-size: 18px;
   outline: none;
-  border: 2px solid #e4e4e4;
-}
-
-.login-inputMail:focus,
-.login-inputPass:focus {
-  border: 2px solid var(--mainColor);
+  border: none;
+  background: none;
 }
 
 .login-buttonLogin {

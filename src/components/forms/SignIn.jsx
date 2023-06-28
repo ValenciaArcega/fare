@@ -2,11 +2,14 @@ import BadCredentials from "../messages/BadCredentials"
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import firebaseApp from '../../credentials'
 import { useState } from "react"
+import { IconAt, IconKey } from "../svg/SignIn"
+import { ClSignIn } from "../../classes/cl-signIn"
 
 export function SignIn({ setIsRegistering }) {
   const auth = getAuth(firebaseApp)
   const [isWrong, setIsWrong] = useState(false)
   const [error, setError] = useState('Las credenciales no coinciden')
+  const cl = new ClSignIn()
 
   async function submitHandler(e) {
     e.preventDefault()
@@ -55,22 +58,32 @@ export function SignIn({ setIsRegistering }) {
         <img className="login-img" src="login.svg" alt="" />
         <h1 className="login-title"><span className="gradientText-one">Inicia Sesión</span></h1>
 
-        <label className="login-label" htmlFor="inputMail">Correo electrónico</label>
-        <input
-          id="inputMail"
-          className="login-inputMail"
-          type="text"
-          placeholder="usuario@dominio.some"
-        />
+        <label className="login-label">Correo electrónico</label>
+        <div className="signIn-wrapperInput-mail">
+          <IconAt />
+          <input
+            id="inputMail"
+            className="login-inputMail"
+            type="text"
+            placeholder="usuario@dominio.some"
+            onFocus={() => cl._inputFocusIn('mail', 'mail')}
+            onBlur={() => cl._inputBlur('mail', 'mail')}
+          />
+        </div>
 
-        <label className="login-label" htmlFor="inputPassword">Contraseña</label>
-        <input
-          id="inputPassword"
-          className="login-inputPass"
-          type="password"
-          autoComplete="new-password"
-          placeholder="Ingresa tu contraseña"
-        />
+        <label className="login-label">Contraseña</label>
+        <div className="signIn-wrapperInput-pass">
+          <IconKey />
+          <input
+            id="inputPassword"
+            className="login-inputPass"
+            type="password"
+            autoComplete="new-password"
+            placeholder="Ingresa tu contraseña"
+            onFocus={() => cl._inputFocusIn('pass', 'pass')}
+            onBlur={() => cl._inputBlur('pass', 'pass')}
+          />
+        </div>
 
         <button className="btn-blurCircle login-buttonLogin" type="submit">Autenticarme</button>
 
