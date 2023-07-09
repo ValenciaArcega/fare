@@ -539,7 +539,7 @@ textarea {
 
 .welcomeText-h1 {
   letter-spacing: -1px;
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 800;
 }
 
@@ -558,7 +558,7 @@ textarea {
   outline: none;
   border-top: 1px solid var(--bg-modal-input-border);
   border-bottom: 1px solid var(--bg-modal-input-border);
-  color: #ff4848;
+  color: #b00000;
   background-color: var(--ff);
 }
 
@@ -611,71 +611,28 @@ textarea {
 }
 
 .confirmDelete-btn-deleteTask {
-  width: 100%;
-  height: 48px;
-  font-size: 16px;
-  background: transparent;
-  border: none;
-  position: relative;
-  color: #ffffff;
-  z-index: 1;
-  overflow: visible;
-}
-
-.confirmDelete-btn-deleteTask::after,
-.confirmDelete-btn-deleteTask::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: -99999;
-  transition: all .6s;
+  box-shadow: none;
+  color: white;
+  background: linear-gradient(to bottom left, #ff8282, #ff1111);
 }
 
 .confirmDelete-btn-deleteTask:hover {
   cursor: pointer;
 }
 
-.confirmDelete-btn-deleteTask::before {
-  transform: translate(0%, 0%);
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom left, #ff8282, #ff1111);
+.btn-addTask {
+  height: 50px;
+  margin-top: 12px;
+  font-size: 16px;
+  border: none;
   border-radius: 10px;
+  position: relative;
+  color: white;
+  background: linear-gradient(to top right, #3b59d4, #6681ed);
 }
 
-.confirmDelete-btn-deleteTask::after {
-  transform: translate(10px, 10px);
-  width: 45px;
-  height: 45px;
-  background: #ffffff60;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  border-radius: 50px;
-}
-
-.confirmDelete-btn-deleteTask:hover::before {
-  transform: translate(5%, 20%);
-  width: 110%;
-  height: 110%;
-}
-
-.confirmDelete-btn-deleteTask:hover::after {
-  border-radius: 10px;
-  transform: translate(0, 0);
-  width: 100%;
-  height: 100%;
-}
-
-.confirmDelete-btn-deleteTask:active::after {
-  transition: 0s;
-  transform: translate(0, 5%);
-}
-
-
-.confirmDelete-btn-quitModal:hover {
+.btn-addTask:hover {
   cursor: pointer;
-  box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.16);
 }
 
 

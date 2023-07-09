@@ -1,12 +1,11 @@
 import BadCredentials from "../messages/BadCredentials"
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import firebaseApp from '../../credentials'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../credentials'
 import { useState } from "react"
 import { IconAt, IconKey } from "../svg/SignIn"
 import { ClSignIn } from "../../classes/cl-signIn"
 
 export function SignIn({ setIsRegistering }) {
-  const auth = getAuth(firebaseApp)
   const [isWrong, setIsWrong] = useState(false)
   const [error, setError] = useState('Las credenciales no coinciden')
   const cl = new ClSignIn()

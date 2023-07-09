@@ -1,23 +1,19 @@
-import firebaseApp from "../../credentials"
 import NavBar from "../interface/NavBar"
-import React, { useState, useEffect } from "react"
-import { getFirestore, doc, getDoc } from "firebase/firestore"
-import { Appearance } from "../interface/Appearance"
+import { useState, useEffect } from "react"
 import { ClAppearance } from "../../classes/cl-appearance"
+import { doc, getDoc } from "firebase/firestore"
+import { Appearance } from "../interface/Appearance"
+import { db, auth } from "../../credentials"
 import { AddTask } from "../tasks/AddTask"
-import { getAuth } from "firebase/auth"
 import { signOut } from "firebase/auth"
-import { Tasks } from "../tasks/Tasks"
 import { Loader } from "../interface/Loader"
-
-export const auth = getAuth(firebaseApp)
+import { Tasks } from "../tasks/Tasks"
 
 export function Home({ userMail }) {
   const [isDesktop, setIsDesktop] = useState(false)
   const [name, setName] = useState(null)
   const [tasksArray, setTasksArray] = useState(null)
   const [dataLoaded, setDataLoaded] = useState(false)
-  const firestore = getFirestore(firebaseApp)
   const day = new Date().getDate()
   const cl = new ClAppearance()
   const weekDay = new Date().toLocaleDateString("es-MX", { weekday: 'long' })
@@ -34,11 +30,10 @@ export function Home({ userMail }) {
   }
 
   async function getUserName() {
-    const docRef = doc(firestore, `users/${userMail}`)
+    const docRef = doc(db, `users/${userMail}`)
     const query = await getDoc(docRef)
     if (query.exists()) {
       const infoDoc = query.data()
-      // get data from firebase
       const fullName = infoDoc.data[0].name
       const finalName = fixName(fullName)
       setName(finalName)
@@ -46,7 +41,7 @@ export function Home({ userMail }) {
   }
 
   async function findOrCreateDocument(idDocument) {
-    const docRef = doc(firestore, `users/${idDocument}`)
+    const docRef = doc(db, `users/${idDocument}`)
     const query = await getDoc(docRef)
     if (query.exists()) {
       const infoDoc = query.data()

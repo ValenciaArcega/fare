@@ -1,11 +1,10 @@
-import firebaseApp from "../../credentials"
-import { getFirestore, updateDoc, doc } from "firebase/firestore"
+import { db } from "../../credentials"
+import { updateDoc, doc } from "firebase/firestore"
 import { useState } from "react"
 import { Finder } from "../interface/Finder"
 
 export function Tasks({ tasksArray, userMail, setTasksArray }) {
   let identificador
-  const firestore = getFirestore(firebaseApp)
   const [filteredItems, setFilteredItems] = useState(tasksArray)
   const [isSearching, setIsSearching] = useState(false)
 
@@ -28,7 +27,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
 
   function deleteTask(toDelete) {
     const newTasksArray = tasksArray.filter((task) => task.id !== toDelete)
-    const docRef = doc(firestore, `users/${userMail}`)
+    const docRef = doc(db, `users/${userMail}`)
     updateDoc(docRef, { tasks: [...newTasksArray] })
     // update state    
     setTasksArray(newTasksArray)
@@ -40,7 +39,7 @@ export function Tasks({ tasksArray, userMail, setTasksArray }) {
 
       <Finder lookFor={lookFor} setIsSearching={setIsSearching} />
 
-      <h1 className="tasks-header-h1"><span className="highlight-container"><span className="highlight">Mis tareas</span></span></h1>
+      <h1 className="tasks-header-h1"><span className="highlight-container"><span className="highlight">Mis ideas</span></span></h1>
 
       <section className="tasks">
         {(isSearching ? filteredItems : tasksArray).map(function (note, i) {

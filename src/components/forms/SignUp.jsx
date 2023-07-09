@@ -1,13 +1,11 @@
 import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../svg/SignUp'
-import firebaseApp from '../../credentials'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore"
+import { auth, db } from '../../credentials'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { getDoc, setDoc, doc } from "firebase/firestore"
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 
 export function SignUp({ setIsRegistering }) {
   const cl = new ClReviewSignUp()
-  const auth = getAuth(firebaseApp)
-  const firestore = getFirestore(firebaseApp)
 
   function goSignIn() {
     cl._resetBorders()
@@ -39,7 +37,7 @@ export function SignUp({ setIsRegistering }) {
           "Aqui podras agregar cualquier idea o pendiente que debas realizar, por ejemplo: Imprimir el reporte de Química para el Jueves 😀",
       },
     ]
-    const docRef = doc(firestore, `users/${mail}`)
+    const docRef = doc(db, `users/${mail}`)
     const query = await getDoc(docRef)
 
     if (!query.exists()) {

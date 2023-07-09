@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { signOut } from "firebase/auth"
-import { auth } from "../pages/Home"
+import { auth } from "../../credentials"
 import { ClAppearance } from "../../classes/cl-appearance"
 import { IconPlus, IconAddTaskMob } from "../svg/NavBar"
 
@@ -27,7 +27,7 @@ function NavBarDesktop() {
           onClick={showModal}
         >
           <IconPlus />
-          Agregar tarea
+          Agregar Idea
         </button>
 
         <button
@@ -54,6 +54,7 @@ function NavBarMobile() {
   return (
     <button
       type="button"
+      name="Button to add a new task"
       className="navBar__mobile-btnAdd"
       onClick={showModal}
     >

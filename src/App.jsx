@@ -1,19 +1,17 @@
-import './App.css';
-import firebaseApp from "./credentials";
-import { Sign } from "./components/pages/Sign";
-import { Home } from "./components/pages/Home";
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { useState } from 'react';
-
-const auth = getAuth(firebaseApp);
+import './App.css'
+import { auth } from "./credentials"
+import { Sign } from "./components/pages/Sign"
+import { Home } from "./components/pages/Home"
+import { onAuthStateChanged } from 'firebase/auth'
+import { useState } from 'react'
 
 export function App() {
-  const [globalUser, setGlobalUser] = useState(null);
+  const [globalUser, setGlobalUser] = useState(null)
 
   onAuthStateChanged(auth, (firebaseUser) => {
-    if (firebaseUser) setGlobalUser(firebaseUser);
-    else setGlobalUser(false);
-  });
+    if (firebaseUser) setGlobalUser(firebaseUser)
+    else setGlobalUser(false)
+  })
 
-  return <>{globalUser ? <Home userMail={globalUser.email} /> : <Sign />}</>;
+  return <>{globalUser ? <Home userMail={globalUser.email} /> : <Sign />}</>
 }
