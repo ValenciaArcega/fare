@@ -16,6 +16,7 @@
 
   /* Foreground */
   --fr-btn-expand: #181818;
+  --fr-btn-signOut-mobile: #DF0000;
 
   /* Background */
   --bg-btn-expand: #f2f2f7;
@@ -25,6 +26,7 @@
   --bg-modal-inputTitle-border: #c9c9c9;
   --bg-task: #fff;
   --bg-blur-navBar: rgba(255, 255, 255, 0.4);
+  --bg-btn-signOut-mobile: #fff;
 
   /* Border */
 
@@ -293,6 +295,16 @@ textarea {
   font-size: 18px;
   /* text-align: center; */
   pointer-events: none;
+  white-space: pre-wrap;
+  /* CSS3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
 }
 
 .wrapper-task-buttons {
@@ -558,8 +570,8 @@ textarea {
   outline: none;
   border-top: 1px solid var(--bg-modal-input-border);
   border-bottom: 1px solid var(--bg-modal-input-border);
-  color: #b00000;
-  background-color: var(--ff);
+  color: var(--fr-btn-signOut-mobile);
+  background-color: var(--bg-btn-signOut-mobile);
 }
 
 .btn-signOut-mobile:hover {
@@ -623,9 +635,10 @@ textarea {
 .btn-addTask {
   height: 50px;
   margin-top: 12px;
-  font-size: 16px;
-  border: none;
+  font-size: 17px;
   border-radius: 10px;
+  font-weight: 500;
+  border: none;
   position: relative;
   color: white;
   background: linear-gradient(to top right, #3b59d4, #6681ed);
@@ -1007,9 +1020,15 @@ textarea {
 }
 
 .gradientText {
-  background: linear-gradient(365deg, #4463e0, #75c1cf);
+  background-color: #4463e0;
+  background-size: 100%;
+  background-image: linear-gradient(365deg, #4463e0, #75c1cf);
+  background-image: conic-gradient(365deg, #4463e0, #75c1cf);
+  -moz-background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
 
 .highlight-container,

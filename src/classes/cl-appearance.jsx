@@ -15,6 +15,9 @@ export class ClAppearance {
     // button expand
     this.root.setProperty('--bg-btn-expand', '#343333')
     this.root.setProperty('--fr-btn-expand', '#fff')
+    // button sign out (mobile)
+    this.root.setProperty('--fr-btn-signOut-mobile', '#ff6868')
+    this.root.setProperty('--bg-btn-signOut-mobile', '#141414')
     // modal add new task
     this.root.setProperty('--bg-modal', '#242424')
     this.root.setProperty('--bg-modal-input', '#262626')
@@ -43,6 +46,9 @@ export class ClAppearance {
     // button expand
     this.root.setProperty('--bg-btn-expand', '#f2f2f7')
     this.root.setProperty('--fr-btn-expand', '#181818')
+    // button sign out (mobile)
+    this.root.setProperty('--fr-btn-signOut-mobile', '#DF0000')
+    this.root.setProperty('--bg-btn-signOut-mobile', '#fff')
     // modal add new task
     this.root.setProperty('--bg-modal', '#f2f2f7')
     this.root.setProperty('--bg-modal-input', '#fff')
