@@ -1,10 +1,12 @@
 import { db } from "../../credentials"
 import { updateDoc, doc } from "firebase/firestore"
 import { EmptyInputTitle } from "../messages/EmptyInputTitle"
+import { TaskAdded } from "../messages/TaskAdded"
 import { useState } from "react"
 
 export function AddTask({ tasksArray, userMail, setTasksArray }) {
   const [isInputsEmpties, setIsInputsEmpties] = useState(false)
+  const [taskAdded, setTaskAdded] = useState(false)
 
   function isInputsValueEmpty(title, des) {
     if (title.trim() === '' || des.trim() === '') {
@@ -27,19 +29,21 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
     e.preventDefault()
     const title = e.target.inputTitle.value
     const description = e.target.inputDescription.value
+
     if (isInputsValueEmpty(title, description)) {
       const docRef = doc(db, `users/${userMail}`)
-      const newTaskArr = [
-        {
-          id: +new Date(),
-          title: title,
-          description: description,
-        },
-        ...tasksArray
+      const newTaskArr = [{
+        id: +new Date(),
+        title: title,
+        description: description,
+      },
+      ...tasksArray
       ]
 
       updateDoc(docRef, { tasks: [...newTaskArr] })
       setTasksArray(newTaskArr)
+      setTaskAdded(true)
+      setTimeout(() => setTaskAdded(false), 4000)
 
       e.target.inputTitle.value = ""
       e.target.inputDescription.value = ""
@@ -51,6 +55,7 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
       <div onClick={closeModal} className="overlay hidden"></div>
 
       {isInputsEmpties ? <EmptyInputTitle /> : false}
+      {taskAdded ? <TaskAdded /> : false}
 
       <form className="modal-newTask hidden" onSubmit={addTask}>
         <h1 className="modal-newTask-h1">Nueva tarea</h1>
