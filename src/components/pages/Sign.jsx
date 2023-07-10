@@ -1,7 +1,7 @@
 import { SignIn } from "../forms/SignIn"
 import { SignUp } from "../forms/SignUp"
 import { useEffect, useState } from "react"
-import { Loader } from '../interface/Loader'
+import { LoaderBar } from '../interface/Loader'
 
 export function Sign() {
   const [isRegistering, setIsRegistering] = useState(false)
@@ -14,7 +14,7 @@ export function Sign() {
   return (
     <>
       {load
-        ? <Loader />
+        ? <LoaderBar />
         : !isRegistering
           ? <SignIn setIsRegistering={setIsRegistering} />
           : <SignUp setIsRegistering={setIsRegistering} />}

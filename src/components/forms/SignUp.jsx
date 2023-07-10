@@ -32,9 +32,9 @@ export function SignUp({ setIsRegistering }) {
     const initialTask = [
       {
         id: +new Date(),
-        title: "Tarea de ejemplo",
+        title: "Idea de ejemplo",
         description:
-          "Aqui podras agregar cualquier idea o pendiente que debas realizar, por ejemplo: Imprimir el reporte de Química para el Jueves 😀",
+          "Imprimir el reporte de Química para el Jueves 😀",
       },
     ]
     const docRef = doc(db, `users/${mail}`)
@@ -52,7 +52,7 @@ export function SignUp({ setIsRegistering }) {
         if (cl._reviewSignUp(e)) addUser(e)
       }}>
 
-        <h1 className="signUp-title">Crea una <span className="gradientText">cuenta gratis</span></h1>
+        <h1 className="signUp-title">Crea una cuenta</h1>
 
         <label className="signUp-label" htmlFor="sufn">Nombre<IconText /></label>
         <input
@@ -129,7 +129,9 @@ export function SignUp({ setIsRegistering }) {
         </div>
         <p className="signUp-passConfirm-p"></p>
 
-        <button type="submit" className="signUp-btnRegister" name="button to Register">Registrarme Ahora</button>
+        <button type="submit" className="signUp-btnRegister" name="button to Register">
+          Registrarme Ahora
+        </button>
 
         <label className="signUp-labelGoSignIn" htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className="signUp-btnGoSignIn" onClick={goSignIn}>Inicia Sesión</button></label>
 

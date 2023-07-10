@@ -211,7 +211,7 @@ textarea {
 
 .btn-blurCircle:hover {
   cursor: pointer;
-  color: #1c1c1c;
+  /* color: #1c1c1c; */
 }
 
 .btn-blurCircle::before {
@@ -623,6 +623,10 @@ textarea {
 }
 
 .confirmDelete-btn-deleteTask {
+  gap: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: none;
   color: white;
   background: linear-gradient(to bottom left, #ff8282, #ff1111);
@@ -632,12 +636,21 @@ textarea {
   cursor: pointer;
 }
 
+.confirmDelete-btn-deleteTask svg {
+  height: 18px;
+  stroke: white;
+}
+
 .btn-addTask {
   height: 50px;
   margin-top: 12px;
   font-size: 17px;
   border-radius: 10px;
   font-weight: 500;
+  gap: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   position: relative;
   color: white;
@@ -646,6 +659,11 @@ textarea {
 
 .btn-addTask:hover {
   cursor: pointer;
+}
+
+.btn-addTask svg {
+  height: 22px;
+  color: white;
 }
 
 /* /////////////////////////////////////////////////////// */
@@ -740,8 +758,8 @@ textarea {
 }
 
 .signUp-title {
-  margin-bottom: 6px;
-  font-size: 26px;
+  margin-bottom: 12px;
+  font-size: 28px;
   letter-spacing: -.8px;
 }
 
@@ -967,12 +985,16 @@ textarea {
 }
 
 .login-buttonLogin {
-  min-height: 48px;
+  min-height: 52px;
   width: 86%;
   margin-top: 1.5rem;
   border-radius: 10px;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 17px;
+  gap: 4px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   outline: none;
   color: white;
@@ -982,6 +1004,11 @@ textarea {
 
 .login-buttonLogin:hover {
   cursor: pointer;
+}
+
+.login-buttonLogin svg {
+  height: 24px;
+  color: white;
 }
 
 .login-labelBGR {
@@ -1285,5 +1312,41 @@ input:not(:placeholder-shown)~.finder-btnClose {
 
   50% {
     transform: scale(1.2, 1);
+  }
+}
+
+
+
+.loaderBar {
+  display: block;
+  width: 130px;
+  height: 6px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.loaderBar::before {
+  content: "";
+  position: absolute;
+  background: var(--mainColor);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: movingLoaderBar 1s ease-in-out infinite;
+  ;
+}
+
+@keyframes movingLoaderBar {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
   }
 }

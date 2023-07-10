@@ -2,7 +2,7 @@ import { db } from "../../credentials"
 import { updateDoc, doc } from "firebase/firestore"
 import { EmptyInputTitle } from "../messages/EmptyInputTitle"
 import { TaskAdded } from "../messages/TaskAdded"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export function AddTask({ tasksArray, userMail, setTasksArray }) {
   const [isInputsEmpties, setIsInputsEmpties] = useState(false)
@@ -20,6 +20,11 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
   function closeModal() {
     document.querySelector(".modal-newTask").classList.add("hidden")
     document.querySelector(".overlay").classList.add("hidden")
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   // 1. get ID of the task from the map: {identificator} 
@@ -43,7 +48,9 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
       updateDoc(docRef, { tasks: [...newTaskArr] })
       setTasksArray(newTaskArr)
       setTaskAdded(true)
-      setTimeout(() => setTaskAdded(false), 4000)
+      setTimeout(() => setTaskAdded(false), 4500)
+
+      closeModal()
 
       e.target.inputTitle.value = ""
       e.target.inputDescription.value = ""
@@ -58,7 +65,7 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
       {taskAdded ? <TaskAdded /> : false}
 
       <form className="modal-newTask hidden" onSubmit={addTask}>
-        <h1 className="modal-newTask-h1">Nueva tarea</h1>
+        <h1 className="modal-newTask-h1">Nueva idea</h1>
         <input
           id="inputTitle"
           className="modal-newTask-title"
@@ -72,10 +79,13 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
           type="text"
         />
         <button
-          onClick={closeModal}
+          // onClick={closeModal}
           className="btn-addTask"
           type="submit"
         >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
           Agregar
         </button>
       </form>

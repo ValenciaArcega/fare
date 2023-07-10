@@ -6,3 +6,9 @@ export function Loader() {
     </section>
   )
 }
+
+export function LoaderBar() {
+  return <section className="container-loader">
+    <div className="loaderBar"></div>
+  </section>
+}

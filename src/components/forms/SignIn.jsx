@@ -2,7 +2,7 @@ import BadCredentials from "../messages/BadCredentials"
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../credentials'
 import { useState } from "react"
-import { IconAt, IconKey } from "../svg/SignIn"
+import { IconAt, IconCheck, IconKey } from "../svg/SignIn"
 import { ClSignIn } from "../../classes/cl-signIn"
 
 export function SignIn({ setIsRegistering }) {
@@ -84,7 +84,10 @@ export function SignIn({ setIsRegistering }) {
           />
         </div>
 
-        <button className="login-buttonLogin" type="submit">Autenticarme</button>
+        <button className="login-buttonLogin" type="submit">
+          <IconCheck />
+          Autenticarme
+        </button>
 
         <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
           id="lbgr"

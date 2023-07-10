@@ -3,7 +3,7 @@ export function TaskAdded() {
   return (
     <article className="message-taskAdded">
       <IconVerified />
-      <p>Tarea agregada</p>
+      <p>Idea agregada</p>
     </article>
   )
 }

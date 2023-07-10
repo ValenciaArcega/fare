@@ -6,7 +6,7 @@ import { Appearance } from "../interface/Appearance"
 import { db, auth } from "../../credentials"
 import { AddTask } from "../tasks/AddTask"
 import { signOut } from "firebase/auth"
-import { Loader } from "../interface/Loader"
+import { LoaderBar } from "../interface/Loader"
 import { Tasks } from "../tasks/Tasks"
 
 export function Home({ userMail }) {
@@ -94,6 +94,6 @@ export function Home({ userMail }) {
 
         {!isDesktop ? <button className="btn-signOut-mobile" onClick={signUserOut}>Cerrar Sesión</button> : null}
       </div>
-      : <Loader />
+      : <LoaderBar />
   )
 }
