@@ -295,7 +295,6 @@ textarea {
   font-size: 18px;
   /* text-align: center; */
   pointer-events: none;
-  white-space: pre-wrap;
   /* CSS3 */
   white-space: -moz-pre-wrap;
   /* Mozilla, since 1999 */
@@ -303,13 +302,14 @@ textarea {
   /* Opera 4-6 */
   white-space: -o-pre-wrap;
   /* Opera 7 */
+  white-space: pre-wrap;
   word-wrap: break-word;
   /* Internet Explorer 5.5+ */
 }
 
 .wrapper-task-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 20% 1fr;
 }
 
 .taskDescription {
@@ -553,6 +553,7 @@ textarea {
   letter-spacing: -1px;
   font-size: 38px;
   font-weight: 800;
+  color: var(--mainColor);
 }
 
 .welcomeText-p {
@@ -646,7 +647,7 @@ textarea {
   margin-top: 12px;
   font-size: 17px;
   border-radius: 10px;
-  font-weight: 500;
+  font-weight: 400;
   gap: 4px;
   display: flex;
   justify-content: center;

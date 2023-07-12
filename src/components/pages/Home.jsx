@@ -9,13 +9,14 @@ import { signOut } from "firebase/auth"
 import { LoaderBar } from "../interface/Loader"
 import { Tasks } from "../tasks/Tasks"
 
-export function Home({ userMail }) {
+export function Home() {
+  const correo = auth.currentUser.email
   const [isDesktop, setIsDesktop] = useState(false)
   const [name, setName] = useState(null)
   const [tasksArray, setTasksArray] = useState(null)
   const [dataLoaded, setDataLoaded] = useState(false)
-  const day = new Date().getDate()
   const cl = new ClAppearance()
+  const day = new Date().getDate()
   const weekDay = new Date().toLocaleDateString("es-MX", { weekday: 'long' })
   const weekDayStr = weekDay.slice(0, 1).toUpperCase() + weekDay.slice(1).toLowerCase()
   const welcomeText = `Hoy es ${weekDayStr} ${(day === 1) ? '1ro' : day}. ¿Qué hay de nuevo?`
@@ -30,7 +31,7 @@ export function Home({ userMail }) {
   }
 
   async function getUserName() {
-    const docRef = doc(db, `users/${userMail}`)
+    const docRef = doc(db, `users/${correo}`)
     const query = await getDoc(docRef)
     if (query.exists()) {
       const infoDoc = query.data()
@@ -40,19 +41,17 @@ export function Home({ userMail }) {
     }
   }
 
-  async function findOrCreateDocument(idDocument) {
-    const docRef = doc(db, `users/${idDocument}`)
+  async function findOrCreateDocument() {
+    const docRef = doc(db, `users/${correo}`)
     const query = await getDoc(docRef)
     if (query.exists()) {
       const infoDoc = query.data()
       return infoDoc.tasks
-    } else {
-      return
-    }
+    } else return
   }
 
   async function fetchTasks() {
-    const fetchedTasks = await findOrCreateDocument(userMail)
+    const fetchedTasks = await findOrCreateDocument()
     setTasksArray(fetchedTasks)
     setDataLoaded(true)
   }
@@ -72,28 +71,24 @@ export function Home({ userMail }) {
   return (
     dataLoaded
       ?
-      <div>
+      <section>
         <NavBar />
         <Appearance />
-        <section className="wrapper-welcomeText">
-          <h1 className="gradientText welcomeText-h1">Hola {name}</h1>
+
+        <header className="wrapper-welcomeText">
+          <h1 className="welcomeText-h1">Hola {name}</h1>
           <p className="welcomeText-p">{welcomeText}</p>
-        </section>
-        <AddTask
-          tasksArray={tasksArray}
-          userMail={userMail}
-          setTasksArray={setTasksArray}
-        />
-        {tasksArray ? (
-          <Tasks
-            tasksArray={tasksArray}
-            userMail={userMail}
-            setTasksArray={setTasksArray}
-          />
-        ) : null}
+        </header>
+
+        <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} />
+
+        {tasksArray
+          ? <Tasks tasksArray={tasksArray} setTasksArray={setTasksArray} /> : null}
 
         {!isDesktop ? <button className="btn-signOut-mobile" onClick={signUserOut}>Cerrar Sesión</button> : null}
-      </div>
-      : <LoaderBar />
+
+      </section>
+      :
+      <LoaderBar />
   )
 }

@@ -1,20 +1,33 @@
-
+/**
+ * @overview The following class allows review inputs behavior and
+ make checking of the data type that arrives, let it know to the user
+ if something went wrong with the input character
+ * @author Valencia Arcega Luis Angel
+ */
 export class ClReviewSignUp {
-  ////////////////////////////////// V A R I A B L E S 
   root = document.documentElement.style;
-  _expRegLetters = /[a-zA-Z]/;
-  _expRegNumbers = /[0-9]/;
-  _expRegCharacters = /[¡°!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/¿?]/;
+  _regularExpressionLetters = /[a-zA-Z]/;
+  _regularExpressionNumbers = /[0-9]/;
+  _regularExpressionCharacters = /[¡°!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/¿?]/;
 
-  ////////////////////////////////// M E T H O D S 
-  _inputBlur(str) {
-    this.root.setProperty(`--borderInput-${str}`, '#c5c5c5')
-  }
-
+  /**
+   * The following two private methods going to review the name of the
+  CSS variable to change when the user "focus in" or "focus out" the inputs
+   * @param {string} str Name of the border variable to change color.
+   */
   _inputFocusIn(str) {
     this.root.setProperty(`--borderInput-${str}`, '#4263eb')
   }
 
+  _inputBlur(str) {
+    this.root.setProperty(`--borderInput-${str}`, '#c5c5c5')
+  }
+
+  /**
+ * @param {string} inputName Name of the input to review the type.
+ * @param {string} iconHide Name of the icon which will hide the password.
+ * @param {string} iconShow Name of the icon which will show the password.
+ */
   _showPass(inputName, iconHide, iconShow) {
     const input = document.querySelector(`.${inputName}`)
     const hide = document.querySelector(`.${iconHide}`)
@@ -50,7 +63,7 @@ export class ClReviewSignUp {
 
     this.root.setProperty('--borderInput-name', '#4263eb')
 
-    if (input.value.match(this._expRegNumbers) || input.value.match(this._expRegCharacters)) {
+    if (input.value.match(this._regularExpressionNumbers) || input.value.match(this._regularExpressionCharacters)) {
       this.root.setProperty('--borderInput-name', '#DF0000')
       textError.textContent = 'Recuerda, caracteres de tipo texto'
     } else textError.textContent = ''
@@ -77,7 +90,10 @@ export class ClReviewSignUp {
     }
   }
 
-  //////////////////////////////////// ✅
+  /**
+   * The following methods will check if the input entries are correct
+   * @returns {boolean} true in case of not have any mistake
+   */
   _reviewInputName() {
     const input = document.querySelector('.signUp-name')
     const textError = document.querySelector('.signUp-name-p')
@@ -85,7 +101,7 @@ export class ClReviewSignUp {
     if (input.value === '') {
       this.root.setProperty('--borderInput-name', '#DF0000')
       textError.textContent = 'El campo es obligatorio'
-    } else if (input.value.match(this._expRegNumbers) || input.value.match(this._expRegCharacters)) {
+    } else if (input.value.match(this._regularExpressionNumbers) || input.value.match(this._regularExpressionCharacters)) {
       this.root.setProperty('--borderInput-name', '#DF0000')
       textError.textContent = 'Solo caracteres tipo texto'
     } else return true

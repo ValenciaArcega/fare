@@ -18,9 +18,9 @@ function NavBarDesktop() {
   return (
     <nav className="navBar-desktop">
 
-      <img src="logo.png" alt="" height={34} style={{ marginLeft: 10 }} />
+      <img src="logo.png" alt="brand logo" height={34} style={{ marginLeft: 10 }} />
 
-      <div className="NVD-wrapperButtons">
+      <section className="NVD-wrapperButtons">
         <button
           type="button"
           className="navBar-btn NBbtn-addTask"
@@ -36,8 +36,8 @@ function NavBarDesktop() {
           onClick={() => {
             signOut(auth)
             cl._makeLight()
-          }}>Cerrar sesión</button>
-      </div>
+          }}>Cerrar Sesión</button>
+      </section>
     </nav>
   )
 }

@@ -1,13 +1,24 @@
+/**
+ * @overview The following component allows Register a user or go to log in
+ * @author Valencia Arcega Luis Angel
+ */
 import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../svg/SignUp'
 import { auth, db } from '../../credentials'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 
+/**
+ * @param {Object: state} setIsRegistering Change between forms in Sign.jsx
+ */
 export function SignUp({ setIsRegistering }) {
+  /**
+   * Review inputs in the form
+   * @constructor
+   */
   const cl = new ClReviewSignUp()
 
-  function goSignIn() {
+  function renderComponentSignIn() {
     cl._resetBorders()
     setIsRegistering(false)
   };
@@ -133,7 +144,7 @@ export function SignUp({ setIsRegistering }) {
           Registrarme Ahora
         </button>
 
-        <label className="signUp-labelGoSignIn" htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className="signUp-btnGoSignIn" onClick={goSignIn}>Inicia Sesión</button></label>
+        <label className="signUp-labelGoSignIn" htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className="signUp-btnGoSignIn" onClick={renderComponentSignIn}>Inicia Sesión</button></label>
 
       </form>
     </section>

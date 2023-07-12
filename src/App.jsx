@@ -6,12 +6,12 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useState } from 'react'
 
 export function App() {
-  const [globalUser, setGlobalUser] = useState(null)
+  const [user, setUser] = useState(null)
 
   onAuthStateChanged(auth, (firebaseUser) => {
-    if (firebaseUser) setGlobalUser(firebaseUser)
-    else setGlobalUser(false)
+    if (firebaseUser) setUser(firebaseUser)
+    else setUser(false)
   })
 
-  return <>{globalUser ? <Home userMail={globalUser.email} /> : <Sign />}</>
+  return <>{user ? <Home /> : <Sign />}</>
 }

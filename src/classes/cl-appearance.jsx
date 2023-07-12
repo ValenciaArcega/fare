@@ -1,65 +1,75 @@
+/**
+ @author Valencia Arcega Luis Angel
+  * The following class allows to modify CSS variables (custom properties)
+ with assistence of the root element avaliable in the DOM
+ */
+
 export class ClAppearance {
+  // catching the root element of the DOM which contains
   root = document.documentElement.style;
 
-  _makeDark() {
-    const btnDark = document.querySelector('.btn-Dark')
-    const btnLight = document.querySelector('.btn-Light')
+  /* The following private methods will be call each time that the user
+  click the moon/sun button, and will change some variables (backgrounds, 
+  borders, foregrounds)  established on the root element in the 
+  App.css to shade/tint or dark/light version */
 
-    btnDark.classList.add('hidden')
-    btnLight.classList.remove('hidden')
+  _makeDark() {
+    const buttonAppearanceDark = document.querySelector('.btn-Dark')
+    const buttonAppearanceLight = document.querySelector('.btn-Light')
+
+    // switch between moon and sun buttons
+    buttonAppearanceDark.classList.add('hidden')
+    buttonAppearanceLight.classList.remove('hidden')
 
     this.root.setProperty('--mainColor', '#5573ed')
-    this.root.setProperty('--bg', '#181818')
     this.root.setProperty('--black18', '#fff');;
     this.root.setProperty('--ff', '#363636')
-    // button expand
-    this.root.setProperty('--bg-btn-expand', '#343333')
+    // foregrounds
     this.root.setProperty('--fr-btn-expand', '#fff')
-    // button sign out (mobile)
     this.root.setProperty('--fr-btn-signOut-mobile', '#ff6868')
+    // backgrounds
+    this.root.setProperty('--bg-btn-expand', '#343333')
+    this.root.setProperty('--bg', '#181818')
     this.root.setProperty('--bg-btn-signOut-mobile', '#141414')
-    // modal add new task
     this.root.setProperty('--bg-modal', '#242424')
     this.root.setProperty('--bg-modal-input', '#262626')
     this.root.setProperty('--bg-modal-input-border', '#333333')
     this.root.setProperty('--bg-modal-inputTitle-border', '#333333')
-    // task
-    this.root.setProperty('--border-task', 'transparent')
     this.root.setProperty('--bg-task', '#202020')
+    this.root.setProperty('--bg-blur-navBar', 'rgba(0, 0, 0, 0.4)')
+    // borders
+    this.root.setProperty('--border-task', 'transparent')
     // shadows
     this.root.setProperty('--shadow-finder', 'transparent')
-    // blur
-    this.root.setProperty('--bg-blur-navBar', 'rgba(0, 0, 0, 0.4)')
   }
 
   _makeLight() {
-    const btnDark = document.querySelector('.btn-Dark')
-    const btnLight = document.querySelector('.btn-Light')
+    const buttonAppearanceDark = document.querySelector('.btn-Dark')
+    const buttonAppearanceLight = document.querySelector('.btn-Light')
 
-    btnLight.classList.add('hidden')
-    btnDark.classList.remove('hidden')
+    // switch between moon and sun buttons
+    buttonAppearanceLight.classList.add('hidden')
+    buttonAppearanceDark.classList.remove('hidden')
 
     this.root.setProperty('--mainColor', '#4263eb')
-    this.root.setProperty('--bg', '#f2f2f7')
     this.root.setProperty('--black18', '#181818')
     this.root.setProperty('--ff', '#fff')
-    // button expand
-    this.root.setProperty('--bg-btn-expand', '#f2f2f7')
+    // foregrounds
     this.root.setProperty('--fr-btn-expand', '#181818')
-    // button sign out (mobile)
     this.root.setProperty('--fr-btn-signOut-mobile', '#DF0000')
+    // backgrounds
+    this.root.setProperty('--bg', '#f2f2f7')
+    this.root.setProperty('--bg-btn-expand', '#f2f2f7')
     this.root.setProperty('--bg-btn-signOut-mobile', '#fff')
-    // modal add new task
     this.root.setProperty('--bg-modal', '#f2f2f7')
     this.root.setProperty('--bg-modal-input', '#fff')
     this.root.setProperty('--bg-modal-input-border', '#c9c9c9')
     this.root.setProperty('--bg-modal-inputTitle-border', '#c9c9c9')
-    // task
-    this.root.setProperty('--border-task', '#c9c9c9')
     this.root.setProperty('--bg-task', '#fff')
+    this.root.setProperty('--bg-blur-navBar', 'rgba(255, 255, 255, 0.4)')
+    // borders
+    this.root.setProperty('--border-task', '#c9c9c9')
     // shadows
     this.root.setProperty('--shadow-finder', '0px 20px 18px -18px rgba(21, 91, 166, 0.2)')
-    // blur
-    this.root.setProperty('--bg-blur-navBar', 'rgba(255, 255, 255, 0.4)')
   }
 } // class

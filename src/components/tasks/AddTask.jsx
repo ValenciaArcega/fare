@@ -1,10 +1,11 @@
-import { db } from "../../credentials"
+import { db, auth } from "../../credentials"
 import { updateDoc, doc } from "firebase/firestore"
 import { EmptyInputTitle } from "../messages/EmptyInputTitle"
 import { TaskAdded } from "../messages/TaskAdded"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
-export function AddTask({ tasksArray, userMail, setTasksArray }) {
+export function AddTask({ tasksArray, setTasksArray }) {
+  const correo = auth.currentUser.email
   const [isInputsEmpties, setIsInputsEmpties] = useState(false)
   const [taskAdded, setTaskAdded] = useState(false)
 
@@ -20,11 +21,6 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
   function closeModal() {
     document.querySelector(".modal-newTask").classList.add("hidden")
     document.querySelector(".overlay").classList.add("hidden")
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
   }
 
   // 1. get ID of the task from the map: {identificator} 
@@ -35,8 +31,10 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
     const title = e.target.inputTitle.value
     const description = e.target.inputDescription.value
 
+    goTop()
+
     if (isInputsValueEmpty(title, description)) {
-      const docRef = doc(db, `users/${userMail}`)
+      const docRef = doc(db, `users/${correo}`)
       const newTaskArr = [{
         id: +new Date(),
         title: title,
@@ -49,8 +47,6 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
       setTasksArray(newTaskArr)
       setTaskAdded(true)
       setTimeout(() => setTaskAdded(false), 4500)
-
-      closeModal()
 
       e.target.inputTitle.value = ""
       e.target.inputDescription.value = ""
@@ -79,16 +75,20 @@ export function AddTask({ tasksArray, userMail, setTasksArray }) {
           type="text"
         />
         <button
-          // onClick={closeModal}
+          onClick={closeModal}
           className="btn-addTask"
           type="submit"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          </svg>
+          <IconPlus />
           Agregar
         </button>
       </form>
     </div>
   )
+}
+
+function IconPlus() {
+  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+  </svg>
 }
