@@ -30,7 +30,7 @@ export function SignIn({ setIsRegistering }) {
       await signInWithEmailAndPassword(auth, m, p)
     } catch (error) {
       /**
-      * @throws {error} Handle possible error that firebase
+      * @throws {error} Handle possible errors that firebase
       can throw and set custom message for the user
       */
       if (error.message === 'Firebase: Error (auth/internal-error).') {
@@ -111,4 +111,4 @@ export function SignIn({ setIsRegistering }) {
       </label>
     </form>
   </section>
-};
+}

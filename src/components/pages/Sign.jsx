@@ -8,7 +8,7 @@ export function Sign() {
   const [load, setLoad] = useState(true)
 
   useEffect(() => {
-    setTimeout(() => setLoad(false), 3000)
+    setTimeout(() => setLoad(false), 1000)
   }, [])
 
   return (

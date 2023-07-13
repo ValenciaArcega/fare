@@ -259,6 +259,7 @@ textarea {
 .tasks-header-h1 {
   margin-top: 2rem;
   letter-spacing: -1px;
+  font-size: 2rem;
   text-align: center;
   overflow: hidden;
   color: #181818;
@@ -266,10 +267,10 @@ textarea {
 
 .tasks {
   margin-top: 12px;
-  padding: 0 2rem;
+  padding: 0 4rem;
   padding-bottom: 6rem;
   display: grid;
-  gap: 0 16px;
+  gap: 0 24px;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   align-items: center;
   justify-items: center;
