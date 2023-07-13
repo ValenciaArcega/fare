@@ -1,5 +1,5 @@
 /**
- * @overview The following component render the finder input which
+ * @overview The following component renders the finder input which
  allows to the user filter items in the home screen
  * @author Valencia Arcega Luis Angel
  */
