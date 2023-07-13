@@ -2,7 +2,7 @@
 export function LandingPage() {
   return <section className="container-landing">
     <header className="landing-header">
-      <img src="public/faRe.svg" alt="Fare logo on landing page" />
+      <img src="faRe.svg" alt="Fare logo on landing page" />
       <h1 className="landing-header-title">¡Que las ideas no escapen!</h1>
     </header>
 
