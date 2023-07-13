@@ -8,7 +8,11 @@ import { IconAt, IconCheck, IconKey } from "../svg/SignIn"
 import { ClSignIn } from "../../classes/cl-signIn"
 import { useState } from "react"
 import { auth } from '../../credentials'
+import { LandingPage } from "../interface/LandingPage"
 
+/**
+ * @param {Object: state} setIsRegistering Change between forms in Sign.jsx
+ */
 export function SignIn({ setIsRegistering }) {
   const [isLoginWrong, setIsLoginWrong] = useState(false)
   const [bannerError, setBannerError] = useState('Las credenciales no coinciden')
@@ -25,7 +29,6 @@ export function SignIn({ setIsRegistering }) {
       const p = e.target.inputPassword.value
       await signInWithEmailAndPassword(auth, m, p)
     } catch (error) {
-      console.log(error.message)
       /**
       * @throws {error} Handle possible error that firebase
       can throw and set custom message for the user
@@ -58,55 +61,54 @@ export function SignIn({ setIsRegistering }) {
     setIsRegistering(true)
   };
 
-  return (
-    <section className="container-login">
-      {isLoginWrong ? <BadCredentials message={bannerError} /> : null}
+  return <section className="container-login">
+    <LandingPage />
+    {isLoginWrong ? <BadCredentials message={bannerError} /> : null}
 
-      <form className="login" onSubmit={submitLogIn}>
-        <img className="login-img" src="login.svg" alt="Icon login" />
-        <h1 className="login-title"><span className="gradientText">Inicia Sesión</span></h1>
+    <form className="login" onSubmit={submitLogIn}>
+      <img className="login-img" src="login.svg" alt="Icon login" />
+      <h1 className="login-title"><span className="gradientText">Inicia Sesión</span></h1>
 
-        <label className="login-label">Correo electrónico</label>
-        <div className="signIn-wrapperInput-mail">
-          <IconAt />
-          <input
-            id="inputMail"
-            className="login-inputMail"
-            type="text"
-            placeholder="usuario@dominio.some"
-            onFocus={() => cl._inputFocusIn('mail', 'mail')}
-            onBlur={() => cl._inputBlur('mail', 'mail')}
-          />
-        </div>
+      <label className="login-label">Correo electrónico</label>
+      <div className="signIn-wrapperInput-mail">
+        <IconAt />
+        <input
+          id="inputMail"
+          className="login-inputMail"
+          type="text"
+          placeholder="usuario@dominio.some"
+          onFocus={() => cl._inputFocusIn('mail', 'mail')}
+          onBlur={() => cl._inputBlur('mail', 'mail')}
+        />
+      </div>
 
-        <label className="login-label">Contraseña</label>
-        <div className="signIn-wrapperInput-pass">
-          <IconKey />
-          <input
-            id="inputPassword"
-            className="login-inputPass"
-            type="password"
-            autoComplete="new-password"
-            placeholder="Ingresa tu contraseña"
-            onFocus={() => cl._inputFocusIn('pass', 'pass')}
-            onBlur={() => cl._inputBlur('pass', 'pass')}
-          />
-        </div>
+      <label className="login-label">Contraseña</label>
+      <div className="signIn-wrapperInput-pass">
+        <IconKey />
+        <input
+          id="inputPassword"
+          className="login-inputPass"
+          type="password"
+          autoComplete="new-password"
+          placeholder="Ingresa tu contraseña"
+          onFocus={() => cl._inputFocusIn('pass', 'pass')}
+          onBlur={() => cl._inputBlur('pass', 'pass')}
+        />
+      </div>
 
-        <button className="login-buttonLogin" type="submit">
-          <IconCheck />
-          Autenticarme
-        </button>
+      <button className="login-buttonLogin" type="submit">
+        <IconCheck />
+        Autenticarme
+      </button>
 
-        <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
-          id="lbgr"
-          className="login-BGR"
-          type="button"
-          onClick={renderComponentSignUp}
-        >Registrate
-        </button>
-        </label>
-      </form>
-    </section>
-  )
+      <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
+        id="lbgr"
+        className="login-BGR"
+        type="button"
+        onClick={renderComponentSignUp}
+      >Registrate
+      </button>
+      </label>
+    </form>
+  </section>
 };

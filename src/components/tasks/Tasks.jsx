@@ -16,11 +16,11 @@ export function Tasks({ tasksArray, setTasksArray }) {
     setIsSearching(true)
   }
 
-  function copyIdeaText(str) {
+  /*function copyIdeaText(str) {
     navigator.clipboard.writeText(str)
       .then(() => console.log('Texto copiado al portapapeles'))
       .catch(err => console.error(err))
-  }
+  }*/
 
   function closeDeleteMessage() {
     document.querySelector(".overlayDelete").classList.add("hidden")

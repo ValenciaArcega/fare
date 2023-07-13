@@ -30,7 +30,11 @@ export function SignUp({ setIsRegistering }) {
     return stageOne.map(n => n[0].toUpperCase() + n.slice(1)).join(' ')
   }
 
-  async function addUser(e) {
+  /**
+ * @param {Object} e Get the event itself and stored to can
+ * prevent the default behavior in a submit action form
+ */
+  async function createFirebaseUser(e) {
     e.preventDefault()
     const name = e.target.sufn.value
     const nameFixed = upperCaseName(name)
@@ -40,14 +44,12 @@ export function SignUp({ setIsRegistering }) {
       name: nameFixed,
       mail: mail,
     }]
-    const initialTask = [
-      {
-        id: +new Date(),
-        title: "Idea de ejemplo",
-        description:
-          "Imprimir el reporte de Química para el Jueves 😀",
-      },
-    ]
+    const initialTask = [{
+      id: +new Date(),
+      title: "Idea de ejemplo",
+      description:
+        "Imprimir el reporte de Química para el Jueves 😀",
+    }]
     const docRef = doc(db, `users/${mail}`)
     const query = await getDoc(docRef)
 
@@ -60,7 +62,7 @@ export function SignUp({ setIsRegistering }) {
   return (
     <section className="container-signUp">
       <form className="signUp" onSubmit={(e) => {
-        if (cl._reviewSignUp(e)) addUser(e)
+        if (cl._reviewSignUp(e)) createFirebaseUser(e)
       }}>
 
         <h1 className="signUp-title">Crea una cuenta</h1>

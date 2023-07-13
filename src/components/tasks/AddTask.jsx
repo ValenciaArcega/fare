@@ -31,8 +31,6 @@ export function AddTask({ tasksArray, setTasksArray }) {
     const title = e.target.inputTitle.value
     const description = e.target.inputDescription.value
 
-    goTop()
-
     if (isInputsValueEmpty(title, description)) {
       const docRef = doc(db, `users/${correo}`)
       const newTaskArr = [{
