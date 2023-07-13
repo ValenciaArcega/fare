@@ -9,7 +9,7 @@ import { getDoc, setDoc, doc } from "firebase/firestore"
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 
 /**
- * @param {Object: state} setIsRegistering Change between forms in Sign.jsx
+ * @param {Object: function} setIsRegistering Change between forms in Sign.jsx
  */
 export function SignUp({ setIsRegistering }) {
   const classReview = new ClReviewSignUp()
