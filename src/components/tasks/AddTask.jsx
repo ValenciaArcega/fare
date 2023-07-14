@@ -1,18 +1,26 @@
-import { db, auth } from "../../credentials"
-import { updateDoc, doc } from "firebase/firestore"
+/**
+ * @overview The following component contains the modal element that allows
+ the user to add a new idea into firestore.
+ * @author Valencia Arcega Luis Angel
+ */
 import { EmptyInputTitle } from "../messages/EmptyInputTitle"
+import { updateDoc, doc } from "firebase/firestore"
 import { TaskAdded } from "../messages/TaskAdded"
+import { db, auth } from "../../credentials"
 import { useState } from "react"
-
+/**
+ * @param {object} tasksArray
+ * @param {object} setTasksArray 
+ */
 export function AddTask({ tasksArray, setTasksArray }) {
-  const correo = auth.currentUser.email
-  const [isInputsEmpties, setIsInputsEmpties] = useState(false)
+  const email = auth.currentUser.email
+  const [areInputsEmpty, setAreInputsEmpty] = useState(false)
   const [taskAdded, setTaskAdded] = useState(false)
 
-  function isInputsValueEmpty(title, des) {
-    if (title.trim() === '' || des.trim() === '') {
-      setIsInputsEmpties(true)
-      setTimeout(() => setIsInputsEmpties(false), 5500)
+  function isInputsValueEmpty(title, description) {
+    if (title.trim() === '' || description.trim() === '') {
+      setAreInputsEmpty(true)
+      setTimeout(() => setAreInputsEmpty(false), 6000)
       return false
     }
     return true
@@ -23,26 +31,28 @@ export function AddTask({ tasksArray, setTasksArray }) {
     document.querySelector(".overlay").classList.add("hidden")
   }
 
-  // 1. get ID of the task from the map: {identificator} 
-  // 2. pass the ID as a paramether in the edit function
-  // 3. const fullName = infoDoc.data[0].name;
-  async function addTask(e) {
+  /**
+   * @param {object} e Get the event itself and stored to can
+   prevent the default behavior in a submit action form.
+   */
+  async function addNewIdea(e) {
     e.preventDefault()
-    const title = e.target.inputTitle.value
-    const description = e.target.inputDescription.value
+    const fromUser_title = e.target.inputTitle.value
+    const fromUser_description = e.target.inputDescription.value
 
-    if (isInputsValueEmpty(title, description)) {
-      const docRef = doc(db, `users/${correo}`)
-      const newTaskArr = [{
+    if (isInputsValueEmpty(fromUser_title, fromUser_description)) {
+      const documentReference = doc(db, `users/${email}`)
+      const newIdeasArray = [{
         id: +new Date(),
-        title: title,
-        description: description,
+        title: fromUser_title,
+        description: fromUser_description,
       },
       ...tasksArray
       ]
 
-      updateDoc(docRef, { tasks: [...newTaskArr] })
-      setTasksArray(newTaskArr)
+      await updateDoc(documentReference, { tasks: [...newIdeasArray] })
+      setTasksArray(newIdeasArray)
+      // 💭 message success
       setTaskAdded(true)
       setTimeout(() => setTaskAdded(false), 4500)
 
@@ -51,42 +61,35 @@ export function AddTask({ tasksArray, setTasksArray }) {
     }
   }
 
-  return (
-    <div className="container-modal__NewTask">
-      <div onClick={closeModal} className="overlay hidden"></div>
+  return <div className="container-modal__NewTask">
+    <div onClick={closeModal} className="overlay hidden"></div>
 
-      {isInputsEmpties ? <EmptyInputTitle /> : false}
-      {taskAdded ? <TaskAdded /> : false}
+    {areInputsEmpty ? <EmptyInputTitle /> : false}
+    {taskAdded ? <TaskAdded /> : false}
 
-      <form className="modal-newTask hidden" onSubmit={addTask}>
-        <h1 className="modal-newTask-h1">Nueva idea</h1>
-        <input
-          id="inputTitle"
-          className="modal-newTask-title"
-          placeholder="Titulo"
-          autoComplete="off"
-        />
-        <textarea
-          className="modal-newTask-description"
-          id="inputDescription"
-          placeholder="Descripción"
-          type="text"
-        />
-        <button
-          onClick={closeModal}
-          className="btn-addTask"
-          type="submit"
-        >
-          <IconPlus />
-          Agregar
-        </button>
-      </form>
-    </div>
-  )
+    <form className="modal-newTask hidden" onSubmit={addNewIdea}>
+      <h1 className="modal-newTask-h1">Nueva idea</h1>
+      <input
+        id="inputTitle"
+        className="modal-newTask-title"
+        placeholder="Titulo"
+        autoComplete="off" />
+      <textarea
+        id="inputDescription"
+        className="modal-newTask-description"
+        placeholder="Descripción"
+        type="text" />
+      <button
+        className="btn-addTask"
+        type="submit"
+        onClick={closeModal}>
+        <IconPlus /> Agregar</button>
+    </form>
+  </div>
 }
 
 function IconPlus() {
-  return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+  return <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
   </svg>
 }

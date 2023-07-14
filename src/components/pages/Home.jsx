@@ -1,64 +1,59 @@
+/**
+ * @overview Welcome component that fetch task and other functions such as Appearance.
+ * @author Valencia Arcega Luis Angel
+ */
 import NavBar from "../interface/NavBar"
 import { useState, useEffect } from "react"
 import { ClAppearance } from "../../classes/cl-appearance"
 import { doc, getDoc } from "firebase/firestore"
 import { Appearance } from "../interface/Appearance"
+import { LoaderBar } from "../interface/Loader"
 import { db, auth } from "../../credentials"
 import { AddTask } from "../tasks/AddTask"
 import { signOut } from "firebase/auth"
-import { LoaderBar } from "../interface/Loader"
 import { Tasks } from "../tasks/Tasks"
 
 export function Home() {
-  const correo = auth.currentUser.email
+  const email = auth.currentUser.email
   const [isDesktop, setIsDesktop] = useState(false)
   const [name, setName] = useState(null)
   const [tasksArray, setTasksArray] = useState(null)
   const [dataLoaded, setDataLoaded] = useState(false)
-  const cl = new ClAppearance()
+  const classAppearance = new ClAppearance()
   const day = new Date().getDate()
   const weekDay = new Date().toLocaleDateString("es-MX", { weekday: 'long' })
   const weekDayStr = weekDay.slice(0, 1).toUpperCase() + weekDay.slice(1).toLowerCase()
   const welcomeText = `Hoy es ${weekDayStr} ${(day === 1) ? '1ro' : day}. ¿Qué hay de nuevo?`
 
-  function signUserOut() {
-    signOut(auth)
-    cl._makeLight()
-  }
-
+  /**
+   * @param {string} str First name of the user that will be display.
+   */
   function fixName(str) {
     return str.trim().split(' ')[0]
   }
 
-  async function getUserName() {
-    const docRef = doc(db, `users/${correo}`)
-    const query = await getDoc(docRef)
-    if (query.exists()) {
-      const infoDoc = query.data()
-      const fullName = infoDoc.data[0].name
-      const finalName = fixName(fullName)
-      setName(finalName)
-    }
+  function signUserOut() {
+    signOut(auth)
+    classAppearance._makeLight()
   }
 
-  async function findOrCreateDocument() {
-    const docRef = doc(db, `users/${correo}`)
-    const query = await getDoc(docRef)
+  async function getUserNameAndIdeas() {
+    const documentReference = doc(db, `users/${email}`)
+    const query = await getDoc(documentReference)
     if (query.exists()) {
-      const infoDoc = query.data()
-      return infoDoc.tasks
+      const dataFromDB = query.data()
+      // name to display
+      const fullName = dataFromDB.data[0].name
+      const finalName = fixName(fullName)
+      setName(finalName)
+      // ideas to display
+      setTasksArray(dataFromDB.tasks)
+      setDataLoaded(true)
     } else return
   }
 
-  async function fetchTasks() {
-    const fetchedTasks = await findOrCreateDocument()
-    setTasksArray(fetchedTasks)
-    setDataLoaded(true)
-  }
-
   useEffect(function () {
-    getUserName()
-    fetchTasks()
+    getUserNameAndIdeas()
 
     const x = window.matchMedia("(min-width: 624px)")
     setIsDesktop(x.matches)

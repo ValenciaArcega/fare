@@ -1,11 +1,11 @@
-
+/**
+ * @author Valencia Arcega Luis Angel
+ */
 export function TaskAdded() {
-  return (
-    <article className="message-taskAdded">
-      <IconVerified />
-      <p>Idea agregada</p>
-    </article>
-  )
+  return <article className="message-taskAdded">
+    <IconVerified />
+    <p>Idea agregada</p>
+  </article>
 }
 
 function IconVerified() {

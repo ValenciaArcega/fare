@@ -6,8 +6,8 @@
 import { IconMagnifier, IconClose } from '../svg/Finder'
 
 /**
- * @param {Object: function} lookFor Return just the filtered items
- * @param {Object: function} setIsSearching Change the state to know if the user is serching or not
+ * @param {object} lookFor Return just the filtered items
+ * @param {object} setIsSearching Change the state to know if the user is serching or not
  */
 export function Finder({ lookFor, setIsSearching }) {
   return <section className="section-finder">

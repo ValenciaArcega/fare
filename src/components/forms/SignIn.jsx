@@ -11,7 +11,7 @@ import { auth } from '../../credentials'
 import { LandingPage } from "../interface/LandingPage"
 
 /**
- * @param {Object: state} setIsRegistering Change between forms in Sign.jsx
+ * @param {object} setIsRegistering Change between forms in Sign.jsx
  */
 export function SignIn({ setIsRegistering }) {
   const [isLoginWrong, setIsLoginWrong] = useState(false)
@@ -19,7 +19,7 @@ export function SignIn({ setIsRegistering }) {
   const cl = new ClSignIn()
 
   /**
-   * @param {Object} e Get the event itself and stored to can
+   * @param {object} e Get the event itself and stored to can
    * prevent the default behavior in a submit action form
    */
   async function submitLogIn(e) {

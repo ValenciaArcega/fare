@@ -9,7 +9,7 @@ import { getDoc, setDoc, doc } from "firebase/firestore"
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 
 /**
- * @param {Object: function} setIsRegistering Change between forms in Sign.jsx
+ * @param {object} setIsRegistering Change between forms in Sign.jsx
  */
 export function SignUp({ setIsRegistering }) {
   const classReview = new ClReviewSignUp()
@@ -20,16 +20,16 @@ export function SignUp({ setIsRegistering }) {
   };
 
   /**
- * @param {String} str Fix the user input name 👇
- * pablo  oScaR   gonzaleZ CAMARENA 👉 Pablo Oscar Gonzalez Camarena
- */
+  * pablo  oScaR   gonzaleZ CAMARENA 👉 Pablo Oscar Gonzalez Camarena
+  * @param {string} str Fix the user input name 👇
+  */
   function fixName(str) {
     const a = str.trim().toLowerCase().split(' ').filter(n => n !== '')
     return a.map(n => n[0].toUpperCase() + n.slice(1)).join(' ')
   }
 
   /**
- * @param {Object} e Get the event itself and stored to can
+ * @param {object} e Get the event itself and stored to can
  * prevent the default behavior in a submit action form
  */
   async function addUserToFirestore(e) {
