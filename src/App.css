@@ -267,10 +267,10 @@ textarea {
 
 .tasks {
   margin-top: 12px;
-  padding: 0 4rem;
+  padding: 0 1rem;
   padding-bottom: 6rem;
   display: grid;
-  gap: 0 24px;
+  gap: 0 3.8rem;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   align-items: center;
   justify-items: center;
@@ -358,7 +358,7 @@ textarea {
 }
 
 .btn-expandDescriptionTask:checked::before {
-  content: "Contraer";
+  content: "Ver menos";
 }
 
 /* Now the has selector goes in action */
@@ -670,14 +670,19 @@ textarea {
 
 /* /////////////////////////////////////////////////////// */
 /* TaskAdded.jsx */
-.message-taskAdded {
-  height: 3rem;
-  width: 13rem;
+.message-taskAdded,
+.message-taskDeleted,
+.message-signUp {
+  height: 3.5rem;
+  width: 14rem;
   border-radius: 12px;
-  top: 32px;
+  top: 36px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding-left: 24px;
   display: grid;
   gap: 16px;
+  font-size: 18px;
   font-weight: 500;
   grid-template-columns: 10% 1fr;
   align-items: center;
@@ -685,8 +690,13 @@ textarea {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   background-color: var(--bg-blur-navBar);
-  border: 1px dashed var(--border-task);
+  border: 2px dotted var(--border-task);
   z-index: 999;
+}
+
+.message-signUp {
+  height: 3.5rem;
+  width: 17rem;
 }
 
 .message-taskAdded svg {
@@ -694,6 +704,16 @@ textarea {
   fill: var(--mainColor);
 }
 
+.message-taskDeleted svg {
+  height: 24px;
+  stroke: #ff4d4d;
+}
+
+.message-signUp svg {
+  height: 24px;
+  stroke: #fff;
+  fill: #ff4d4d;
+}
 
 /* /////////////////////////////////////////////////////// */
 /* BadCredencials.jsx */
@@ -770,7 +790,7 @@ textarea {
   width: 82%;
   margin-top: 10px;
   letter-spacing: -.4px;
-  font-weight: 500;
+  font-weight: 600;
   display: grid;
   grid-template-columns: 85% 1fr;
 }
@@ -1036,13 +1056,11 @@ textarea {
 
 /* ///////////////////////////////////////////////////// */
 /* LandingPage.jsx */
-.container-landing {}
-
 .landing-header {
   height: 46rem;
   overflow: hidden;
   width: 100%;
-  gap: 8px;
+  gap: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1050,14 +1068,14 @@ textarea {
 }
 
 .landing-header-title {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 20px;
 }
 
 .landing-features-h2,
 .landing-features-description {
   text-align: center;
-  font-size: 44px;
+  font-size: 42px;
   letter-spacing: -1px;
   grid-column: 1/-1;
   font-weight: 800;
@@ -1068,8 +1086,14 @@ textarea {
   letter-spacing: 0;
   width: 76%;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.7;
   font-size: 18px;
+}
+
+@media (max-width: 624px) {
+  .landing-features-description {
+    width: 90%;
+  }
 }
 
 .landing-features {
@@ -1078,7 +1102,7 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to bottom, #f2f2f7, #5573ed82, #f2f2f7);
+  background: linear-gradient(to bottom, #f2f2f7, #5573ed54, #f2f2f7);
 }
 
 .landing-wrapper-features {
@@ -1107,7 +1131,7 @@ textarea {
 
 .landing-feature p {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.6;
 }
 

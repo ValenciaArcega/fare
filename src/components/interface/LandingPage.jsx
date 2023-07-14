@@ -15,7 +15,7 @@ export function LandingPage() {
 
     <main className="landing-features">
       <h2 className="landing-features-h2">Guarda un Fare</h2>
-      <p className="landing-features-description">"Idea" o "Quehacer" (Fare en italiano). Podrás guardar esas pequeñas o grandes tareas en un sólo lugar. Un espacio perfecto para que las ocurrencias se mantengan en el tiempo y las visites cuando quieras.</p>
+      <p className="landing-features-description">"Idea" ó "Quehacer" (Fare en italiano). Podrás guardar esas pequeñas o grandes tareas en un sólo lugar. Un espacio perfecto para que las ocurrencias se mantengan en el tiempo y las visites cuando quieras.</p>
       <div className="landing-wrapper-features">
 
         <article className="landing-feature">
@@ -32,7 +32,7 @@ export function LandingPage() {
 
         <article className="landing-feature">
           <IconMagnify />
-          <h3>Diccionario</h3>
+          <h3>No pierdas nada</h3>
           <p>Busca entre tu mente con indexado de alta velocidad</p>
         </article>
       </div>

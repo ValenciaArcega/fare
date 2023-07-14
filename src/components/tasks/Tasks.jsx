@@ -6,6 +6,7 @@ import { updateDoc, doc } from "firebase/firestore"
 import { db, auth } from "../../credentials"
 import { useState } from "react"
 import { Finder } from "../interface/Finder"
+import { TaskDeleted } from "../messages/TaskDeleted"
 /**
  * @param {object} tasksArray
  * @param {object} setTasksArray 
@@ -15,6 +16,7 @@ export function Tasks({ tasksArray, setTasksArray }) {
   const email = auth.currentUser.email
   const [filteredItems, setFilteredItems] = useState(tasksArray)
   const [isSearching, setIsSearching] = useState(false)
+  const [taskDeleted, setTaskDeleted] = useState(false)
 
   function lookFor(e) {
     setFilteredItems(
@@ -41,6 +43,9 @@ export function Tasks({ tasksArray, setTasksArray }) {
   }
 
   async function deleteTask(IDtoDelete) {
+    setTaskDeleted(true)
+    setTimeout(() => setTaskDeleted(false), 4500)
+
     const newIdeasArray = tasksArray.filter((task) => task.id !== IDtoDelete)
     const documentReference = doc(db, `users/${email}`)
     await updateDoc(documentReference, { tasks: [...newIdeasArray] })
@@ -50,6 +55,7 @@ export function Tasks({ tasksArray, setTasksArray }) {
 
   return <main className="container-tasks">
 
+    {taskDeleted ? <TaskDeleted /> : false}
     <Finder lookFor={lookFor} setIsSearching={setIsSearching} />
 
     <h1 className="tasks-header-h1"><span className="highlight-container"><span className="highlight">Mis ideas</span></span></h1>

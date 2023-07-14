@@ -7,12 +7,15 @@ import { auth, db } from '../../credentials'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { ClReviewSignUp } from "../../classes/cl-signUp"
+import { WrongRegister } from "../messages/SignUp"
+import { useState } from "react"
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
  */
 export function SignUp({ setIsRegistering }) {
   const classReview = new ClReviewSignUp()
+  const [hasError, setHasError] = useState(false)
 
   function renderComponentSignIn() {
     classReview._resetBorders()
@@ -46,29 +49,39 @@ export function SignUp({ setIsRegistering }) {
       id: +new Date(),
       title: "Idea de ejemplo",
       description:
-        "Hacer el reporte de Química 😀",
+        "Hacer el reporte de Química sobre: \n 👉 Marie Curie \n 👉 La historia del Polonio \n El reporte es a mano, sin olvidar las referencias.",
     }]
     const documentReference = doc(db, `users/${fromUser_email}`)
     const query = await getDoc(documentReference)
-
-    if (!query.exists()) {
-      await setDoc(documentReference, { data: [...dataUser], tasks: [...initialIdea] })
-      await createUserWithEmailAndPassword(auth, fromUser_email, fromUser_password)
-    } else return
+    try {
+      if (!query.exists()) {
+        await setDoc(documentReference, { data: [...dataUser], tasks: [...initialIdea] })
+        await createUserWithEmailAndPassword(auth, fromUser_email, fromUser_password)
+      } else {
+        setHasError(true)
+        setTimeout(() => setHasError(false), 4000)
+      }
+    } catch (error) {
+      setHasError(true)
+      setTimeout(() => setHasError(false), 4000)
+    }
   }
 
   return <section className="container-signUp">
+
+    {hasError ? <WrongRegister /> : false}
+
     <form className="signUp" onSubmit={(e) => {
       if (classReview._reviewSignUp(e)) addUserToFirestore(e)
     }}>
 
       <h1 className="signUp-title">Crea una cuenta</h1>
 
-      <label className="signUp-label" htmlFor="sufn">Nombre<IconText /></label>
+      <label className="signUp-label" htmlFor="sufn">Nombre completo<IconText /></label>
       <input
         id="sufn"
         className="signUp-name"
-        placeholder="Hernández Castillo Sasha"
+        placeholder="Nombre(s) y apellidos"
         autoComplete="new-password"
         onFocus={() => classReview._inputFocusIn('name')}
         onBlur={() => classReview._inputBlur('name')}
@@ -81,7 +94,7 @@ export function SignUp({ setIsRegistering }) {
         id="inputMail"
         className="signUp-mail"
         placeholder="usuario@dominio.some"
-        autoComplete="new-password"
+        // autoComplete="new-password"
         onFocus={() => classReview._inputFocusIn('mail')}
         onBlur={() => classReview._inputBlur('mail')}
         onChangeCapture={() => document.querySelector('.signUp-mail-p').textContent = ''}
