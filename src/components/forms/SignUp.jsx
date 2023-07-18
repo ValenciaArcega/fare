@@ -17,25 +17,23 @@ export function SignUp({ setIsRegistering }) {
   const classReview = new ClReviewSignUp()
   const [hasError, setHasError] = useState(false)
 
-  function renderComponentSignIn() {
+  const renderComponentSignIn = function () {
     classReview._resetBorders()
     setIsRegistering(false)
-  };
-
+  }
   /**
   * pablo  oScaR   gonzaleZ CAMARENA 👉 Pablo Oscar Gonzalez Camarena
   * @param {string} str Fix the user input name 👇
   */
-  function fixName(str) {
+  const fixName = function (str) {
     const a = str.trim().toLowerCase().split(' ').filter(n => n !== '')
     return a.map(n => n[0].toUpperCase() + n.slice(1)).join(' ')
   }
-
   /**
  * @param {object} e Get the event itself and stored to can
  * prevent the default behavior in a submit action form
  */
-  async function addUserToFirestore(e) {
+  const addUserToFirestore = async function (e) {
     e.preventDefault()
     const fromUser_name = e.target.sufn.value
     const fromUser_email = e.target.inputMail.value

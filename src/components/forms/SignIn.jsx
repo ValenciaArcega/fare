@@ -17,38 +17,37 @@ export function SignIn({ setIsRegistering }) {
   const [isLoginWrong, setIsLoginWrong] = useState(false)
   const [bannerError, setBannerError] = useState('Las credenciales no coinciden')
   const cl = new ClSignIn()
-
   /**
    * @param {object} e Get the event itself and stored to can
    * prevent the default behavior in a submit action form
    */
-  async function submitLogIn(e) {
+  const submitLogIn = async function (e) {
     e.preventDefault()
     try {
       const m = e.target.inputMail.value
       const p = e.target.inputPassword.value
       await signInWithEmailAndPassword(auth, m, p)
-    } catch (error) {
+    } catch (err) {
       /**
-      * @throws {error} Handle possible errors that firebase
+      * @throws { err } Handle possible errors that firebase
       can throw and set custom message for the user
       */
-      if (error.message === 'Firebase: Error (auth/internal-error).') {
+      if (err.message === 'Firebase: Error (auth/internal-error).') {
         setBannerError('Las credenciales no coinciden')
       }
-      if (error.message === 'Firebase: Error (auth/user-not-found).') {
+      if (err.message === 'Firebase: Error (auth/user-not-found).') {
         setBannerError('El usuario no existe')
       }
-      if (error.message === 'Firebase: Error (auth/wrong-password).') {
+      if (err.message === 'Firebase: Error (auth/wrong-password).') {
         setBannerError('La contraseña es incorrecta')
       }
-      if (error.message === 'Firebase: Error (auth/invalid-email).') {
+      if (err.message === 'Firebase: Error (auth/invalid-email).') {
         setBannerError('Campo correo es invalido')
       }
-      if (error.message === 'Firebase: Error (auth/missing-password).') {
+      if (err.message === 'Firebase: Error (auth/missing-password).') {
         setBannerError('Campo contraseña es invalido')
       }
-      if (error.message === 'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).') {
+      if (err.message === 'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).') {
         setBannerError('Sesion bloqueada')
       }
       setIsLoginWrong(true)
@@ -56,10 +55,10 @@ export function SignIn({ setIsRegistering }) {
     }
   }
 
-  function renderComponentSignUp(e) {
+  const renderComponentSignUp = function (e) {
     e.preventDefault()
     setIsRegistering(true)
-  };
+  }
 
   return <section className="container-login">
     <LandingPage />

@@ -9,7 +9,7 @@ import { auth } from "../../credentials"
 import { ClAppearance } from "../../classes/cl-appearance"
 import { IconPlus, IconAddTaskMob } from "../svg/NavBar"
 
-function showModal_addTask() {
+const showModal_addTask = function () {
   const modal = document.querySelector(".modal-newTask")
   const overlay = document.querySelector(".overlay")
 

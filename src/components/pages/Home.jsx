@@ -24,20 +24,17 @@ export function Home() {
   const weekDay = new Date().toLocaleDateString("es-MX", { weekday: 'long' })
   const weekDayStr = weekDay.slice(0, 1).toUpperCase() + weekDay.slice(1).toLowerCase()
   const welcomeText = `Hoy es ${weekDayStr} ${(day === 1) ? '1ro' : day}. ¿Qué hay de nuevo?`
-
   /**
    * @param {string} str First name of the user that will be display.
    */
-  function fixName(str) {
-    return str.trim().split(' ')[0]
-  }
+  const fixName = str => str.trim().split(' ')[0]
 
-  function signUserOut() {
+  const signUserOut = function () {
     signOut(auth)
     classAppearance._makeLight()
   }
 
-  async function getUserNameAndIdeas() {
+  const getUserNameAndIdeas = async function () {
     const documentReference = doc(db, `users/${email}`)
     const query = await getDoc(documentReference)
     if (query.exists()) {

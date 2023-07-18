@@ -18,31 +18,31 @@ export function Tasks({ tasksArray, setTasksArray }) {
   const [isSearching, setIsSearching] = useState(false)
   const [taskDeleted, setTaskDeleted] = useState(false)
 
-  function lookFor(e) {
+  const lookFor = function (e) {
     setFilteredItems(
       tasksArray
-        .filter(item => item.title.toLowerCase().includes(e.target.value.toLowerCase()))
+        .filter(task => task.title.toLowerCase().includes(e.target.value.toLowerCase()))
     )
     setIsSearching(true)
   }
 
-  /*function copyIdeaText(str) {
+  /*const copyIdeaText = function (str) {
     navigator.clipboard.writeText(str)
       .then(() => console.log('Texto copiado al portapapeles'))
       .catch(err => console.error(err))
   }*/
 
-  function closeDeleteMessage() {
+  const closeDeleteMessage = function () {
     document.querySelector(".overlayDelete").classList.add("hidden")
     document.querySelector(".confirmDelete").classList.add("hidden")
   }
 
-  function revealConfirmDelete() {
+  const revealConfirmDelete = function () {
     document.querySelector(".confirmDelete").classList.remove("hidden")
     document.querySelector(".overlayDelete").classList.remove("hidden")
   }
 
-  async function deleteTask(IDtoDelete) {
+  const deleteTask = async function (IDtoDelete) {
     setTaskDeleted(true)
     setTimeout(() => setTaskDeleted(false), 4500)
 

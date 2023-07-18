@@ -8,7 +8,7 @@ import { useState } from 'react'
 export function App() {
   const [user, setUser] = useState(null)
 
-  onAuthStateChanged(auth, (firebaseUser) => {
+  onAuthStateChanged(auth, function (firebaseUser) {
     if (firebaseUser) setUser(firebaseUser)
     else setUser(false)
   })

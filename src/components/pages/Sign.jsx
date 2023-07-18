@@ -11,7 +11,7 @@ export function Sign() {
   const [isRegistering, setIsRegistering] = useState(false)
   const [timer, setTimer] = useState(true)
 
-  useEffect(() => {
+  useEffect(function () {
     setTimeout(() => setTimer(false), 1000)
   }, [])
 

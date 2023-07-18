@@ -16,8 +16,11 @@ export function AddTask({ tasksArray, setTasksArray }) {
   const email = auth.currentUser.email
   const [areInputsEmpty, setAreInputsEmpty] = useState(false)
   const [taskAdded, setTaskAdded] = useState(false)
-
-  function isInputsValueEmpty(title, description) {
+  /**
+   * @param {string} title Will be review, to avoid empty entry
+   * @param {string} description Will be review, to avoid empty entry
+   */
+  const isInputsValueEmpty = function (title, description) {
     if (title.trim() === '' || description.trim() === '') {
       setAreInputsEmpty(true)
       setTimeout(() => setAreInputsEmpty(false), 6000)
@@ -26,16 +29,15 @@ export function AddTask({ tasksArray, setTasksArray }) {
     return true
   }
 
-  function closeModal() {
+  const closeModal = function () {
     document.querySelector(".modal-newTask").classList.add("hidden")
     document.querySelector(".overlay").classList.add("hidden")
   }
-
   /**
    * @param {object} e Get the event itself and stored to can
    prevent the default behavior in a submit action form.
    */
-  async function addNewIdea(e) {
+  const addNewIdea = async function (e) {
     e.preventDefault()
     const fromUser_title = e.target.inputTitle.value
     const fromUser_description = e.target.inputDescription.value
