@@ -74,7 +74,7 @@ export function AddTask({ tasksArray, setTasksArray }) {
       <input
         id="inputTitle"
         className="modal-newTask-title"
-        placeholder="Titulo"
+        placeholder="Título o reacción 📚"
         autoComplete="off" />
       <textarea
         id="inputDescription"

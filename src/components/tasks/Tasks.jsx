@@ -26,11 +26,11 @@ export function Tasks({ tasksArray, setTasksArray }) {
     setIsSearching(true)
   }
 
-  /*const copyIdeaText = function (str) {
+  const copyIdeaText = function (str) {
     navigator.clipboard.writeText(str)
       .then(() => console.log('Texto copiado al portapapeles'))
       .catch(err => console.error(err))
-  }*/
+  }
 
   const closeDeleteMessage = function () {
     document.querySelector(".overlayDelete").classList.add("hidden")
@@ -74,19 +74,19 @@ export function Tasks({ tasksArray, setTasksArray }) {
                 type="checkbox"
                 aria-label="checkbox to collapse or exapand"
               />
-              {/* <div className="wrapper-task-buttons"> 
-                  <button onClick={() => copyIdeaText(note.description)}>
-                    Copiar
-                  </button>
-                */}
-              <button
-                type="button"
-                className="btn-blurCircle"
-                onClick={() => {
-                  identifier = note.id
-                  revealConfirmDelete()
-                }}>Completada</button>
-              {/* </div> */}
+              <div className="wrapper-task-buttons">
+                <button onClick={() => copyIdeaText(note.description)}>
+                  Copiar
+                </button>
+
+                <button
+                  type="button"
+                  className="btn-blurCircle"
+                  onClick={() => {
+                    identifier = note.id
+                    revealConfirmDelete()
+                  }}>Completada</button>
+              </div>
             </article>
 
             <div className="confirmDelete hidden">

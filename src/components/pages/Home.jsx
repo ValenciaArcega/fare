@@ -23,7 +23,7 @@ export function Home() {
   const day = new Date().getDate()
   const weekDay = new Date().toLocaleDateString("es-MX", { weekday: 'long' })
   const weekDayStr = weekDay.slice(0, 1).toUpperCase() + weekDay.slice(1).toLowerCase()
-  const welcomeText = `Hoy es ${weekDayStr} ${(day === 1) ? '1ro' : day}. ¿Qué hay de nuevo?`
+  const welcomeText = `Hoy es ${weekDayStr} ${(day === 1) ? '1ro' : day}. ¿Algo nuevo?`
   /**
    * @param {string} str First name of the user that will be display.
    */
@@ -68,7 +68,7 @@ export function Home() {
         <Appearance />
 
         <header className="wrapper-welcomeText">
-          <h1 className="welcomeText-h1">Hola {name}</h1>
+          <h1 className="welcomeText-h1"><span className="blueText">Hola</span> {name}</h1>
           <p className="welcomeText-p">{welcomeText}</p>
         </header>
 

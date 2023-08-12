@@ -35,8 +35,11 @@ export class ClAppearance {
     this.root.setProperty('--bg-modal-input', '#262626')
     this.root.setProperty('--bg-modal-input-border', '#333333')
     this.root.setProperty('--bg-modal-inputTitle-border', '#333333')
-    this.root.setProperty('--bg-task', '#202020')
-    this.root.setProperty('--bg-blur-navBar', 'rgba(0, 0, 0, 0.4)')
+    // this.root.setProperty('--bg-task', '#202020')
+    this.root.setProperty('--bg-task', 'linear-gradient(180deg,#242424,#121212 65.62%)')
+    this.root.setProperty('--bg-fadeEffect', 'transparent')
+
+    this.root.setProperty('--bg-blur-navBar', 'rgba(27, 27, 27, 0.2)')
     // borders
     this.root.setProperty('--border-task', 'transparent')
     // shadows
@@ -66,6 +69,7 @@ export class ClAppearance {
     this.root.setProperty('--bg-modal-input-border', '#c9c9c9')
     this.root.setProperty('--bg-modal-inputTitle-border', '#c9c9c9')
     this.root.setProperty('--bg-task', '#fff')
+    this.root.setProperty('--bg-fadeEffect', '#fff')
     this.root.setProperty('--bg-blur-navBar', 'rgba(255, 255, 255, 0.4)')
     // borders
     this.root.setProperty('--border-task', '#c9c9c9')
