@@ -15,7 +15,7 @@ import { useState } from "react"
 export function AddTask({ tasksArray, setTasksArray }) {
   const email = auth.currentUser.email
   const [areInputsEmpty, setAreInputsEmpty] = useState(false)
-  const [taskAdded, setTaskAdded] = useState(true)
+  const [taskAdded, setTaskAdded] = useState(false)
   /**
    * @param {string} title Will be review, to avoid empty entry
    * @param {string} description Will be review, to avoid empty entry

@@ -312,13 +312,24 @@ textarea {
   height: 48px;
   margin-top: 12px;
   border-radius: 8px;
+  font-size: 15px;
+  gap: 2px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   outline: none;
   color: var(--black18);
   background-color: var(--bg-btn-expand);
 }
+
 .btn-copy:hover {
   cursor: pointer;
+}
+
+.btn-copy svg {
+  height: 18px;
 }
 
 .btn-blurCircle {
@@ -693,11 +704,12 @@ textarea {
 /* TaskAdded.jsx */
 .message-taskAdded,
 .message-taskDeleted,
-.message-signUp {
+.message-signUp,
+.message-copied {
   height: 3.5rem;
   width: 14rem;
   border-radius: 12px;
-  top: 44px;
+  top: 38px;
   left: 50%;
   transform: translate(-50%, -50%);
   padding-left: 24px;
@@ -710,16 +722,20 @@ textarea {
   position: fixed;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  /* background-color: var(--bg-blur-navBar); */
-  /* border: 2px dotted var(--border-task); */
-  color: #181818;
-  border: 0.4px solid rgba(0, 128, 0, 0.396);
-  background-color: #cfffcfc6;
+  background-color: var(--bg-blur-navBar);
+  border: 2px dotted var(--border-task);
+  color: var(--black18);
   z-index: 999;
 }
 
 .message-taskAdded {
+  top: 44px;
   gap: 24px;
+  border: 0.4px solid rgba(0, 128, 0, 0.396);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #181818;
+  background-color: #cfffcfc6;
 }
 .message-signUp {
   height: 3.5rem;
@@ -729,6 +745,16 @@ textarea {
 .message-taskAdded svg {
   height: 28px;
   fill: green;
+}
+
+.message-copied {
+  top: 44px;
+  gap: 36px;
+}
+
+.message-copied svg {
+  height: 28px;
+  color: var(--mainColor);
 }
 
 .message-taskDeleted svg {
@@ -1339,8 +1365,8 @@ input:not(:placeholder-shown) ~ .finder-btnClose {
 }
 
 .finder-svg-search {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
 }
 
 /* Loader.jsx */
