@@ -75,17 +75,19 @@ export function Tasks({ tasksArray, setTasksArray }) {
                 aria-label="checkbox to collapse or exapand"
               />
               <div className="wrapper-task-buttons">
-                <button onClick={() => copyIdeaText(note.description)}>
-                  Copiar
-                </button>
 
                 <button
                   type="button"
                   className="btn-blurCircle"
+                  aria-label="Completada"
                   onClick={() => {
                     identifier = note.id
                     revealConfirmDelete()
                   }}>Completada</button>
+
+                <button className="btn-copy" onClick={() => copyIdeaText(note.description)}>
+                  Copiar
+                </button>
               </div>
             </article>
 
