@@ -14,7 +14,9 @@ export function Appearance() {
       className="btn-Dark"
       title="button of moon"
       type="button"
-      onClick={() => classAppearance._makeDark()}>
+      onClick={() => {
+        classAppearance._makeDark()
+      }}>
       <IconMoon />
     </button>
 

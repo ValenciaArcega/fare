@@ -204,7 +204,7 @@ textarea {
 
 .tasks {
   margin-top: 12px;
-  padding: 0 1rem;
+  padding: 0 6rem;
   padding-bottom: 6rem;
   display: grid;
   gap: 0 3.8rem;
@@ -224,7 +224,7 @@ textarea {
 
 .task-title {
   margin-bottom: 8px;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.5px;
   pointer-events: none;
@@ -1119,6 +1119,10 @@ textarea {
 @media (max-width: 624px) {
   .landing-features-description {
     width: 90%;
+  }
+
+  .tasks {
+    padding: 1rem;
   }
 }
 
