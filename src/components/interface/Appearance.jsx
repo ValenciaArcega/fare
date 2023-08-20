@@ -16,6 +16,7 @@ export function Appearance() {
       type="button"
       onClick={() => {
         classAppearance._makeDark()
+        localStorage.setItem('dark', isDark)
       }}>
       <IconMoon />
     </button>
@@ -24,7 +25,12 @@ export function Appearance() {
       className="btn-Light hidden"
       title="button of sun"
       type="button"
-      onClick={() => classAppearance._makeLight()}>
+      onClick={
+        () => {
+          classAppearance._makeLight()
+          localStorage.setItem('dark', false)
+        }
+      }>
       <IconSun />
     </button>
   </>

@@ -52,6 +52,9 @@ export function Home() {
   useEffect(function () {
     getUserNameAndIdeas()
 
+    if (localStorage.getItem('dark')) classAppearance._makeDark()
+    if (!localStorage.getItem('dark')) classAppearance._makeLight()
+
     const x = window.matchMedia("(min-width: 624px)")
     setIsDesktop(x.matches)
 
@@ -61,26 +64,28 @@ export function Home() {
   }, [])
 
   return (
-    dataLoaded
-      ?
-      <section>
-        <NavBar />
-        <Appearance />
+    <>
+      <Appearance />
+      {dataLoaded
+        ?
+        <section>
+          <NavBar />
 
-        <header className="wrapper-welcomeText">
-          <h1 className="welcomeText-h1"><span className="blueText">Hola</span> {name}</h1>
-          <p className="welcomeText-p">{welcomeText}</p>
-        </header>
+          <header className="wrapper-welcomeText">
+            <h1 className="welcomeText-h1"><span className="blueText">Hola</span> {name}</h1>
+            <p className="welcomeText-p">{welcomeText}</p>
+          </header>
 
-        <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} />
+          <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} />
 
-        {tasksArray
-          ? <Tasks tasksArray={tasksArray} setTasksArray={setTasksArray} /> : null}
+          {tasksArray
+            ? <Tasks tasksArray={tasksArray} setTasksArray={setTasksArray} /> : null}
 
-        {!isDesktop ? <button className="btn-signOut-mobile" onClick={signUserOut}>Cerrar Sesión</button> : null}
+          {!isDesktop ? <button className="btn-signOut-mobile" onClick={signUserOut}>Cerrar Sesión</button> : null}
 
-      </section>
-      :
-      <LoaderBar />
+        </section>
+        :
+        <LoaderBar />}
+    </>
   )
 }
