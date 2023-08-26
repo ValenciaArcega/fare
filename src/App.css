@@ -728,7 +728,8 @@ textarea {
   z-index: 999;
 }
 
-.message-taskAdded {
+.message-taskAdded,
+.message-copied {
   top: 44px;
   gap: 24px;
   border: 0.4px solid rgba(0, 128, 0, 0.396);
@@ -748,18 +749,23 @@ textarea {
 }
 
 .message-copied {
-  top: 44px;
   gap: 36px;
 }
 
 .message-copied svg {
   height: 28px;
-  color: var(--mainColor);
+  color: green;
+}
+
+.message-taskDeleted {
+  border: 1px solid rgba(255, 0, 0, 0.413);
+  color: #181818;
+  background-color: rgb(255, 190, 190);
 }
 
 .message-taskDeleted svg {
-  height: 24px;
-  stroke: #ff4d4d;
+  height: 28px;
+  stroke: #ff2c2c;
 }
 
 .message-signUp svg {
