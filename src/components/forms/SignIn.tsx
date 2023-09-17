@@ -9,6 +9,7 @@ import { ClSignIn } from "../../classes/cl-signIn"
 import { useState } from "react"
 import { auth } from '../../credentials'
 import { LandingPage } from "../interface/LandingPage"
+import React from 'react'
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx

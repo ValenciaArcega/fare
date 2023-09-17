@@ -12,12 +12,12 @@ export class ClSignIn {
    * @param {string} str Name of the border variable to change color.
    * @param {string} icon Name of the icon foreground to change color.
    */
-  _inputFocusIn(str, icon) {
+  _inputFocusIn(str: string, icon: string) {
     this.root.setProperty(`--borderInput-signIn-${str}`, '#4263eb')
     this.root.setProperty(`--fr-svg-${icon}`, '#4263eb')
   }
 
-  _inputBlur(str, icon) {
+  _inputBlur(str: string, icon: string) {
     this.root.setProperty(`--borderInput-signIn-${str}`, '#c5c5c5')
     this.root.setProperty(`--fr-svg-${icon}`, '#727272')
   }
