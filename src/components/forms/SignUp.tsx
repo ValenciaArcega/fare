@@ -8,7 +8,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 import { WrongRegister } from "../messages/SignUp"
-import { useState } from "react"
+import React, { useState } from "react"
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
@@ -95,7 +95,7 @@ export function SignUp({ setIsRegistering }) {
         // autoComplete="new-password"
         onFocus={() => classReview._inputFocusIn('mail')}
         onBlur={() => classReview._inputBlur('mail')}
-        onChangeCapture={() => document.querySelector('.signUp-mail-p').textContent = ''}
+        onChangeCapture={() => classReview._inputMailOnChangeCapture()}
       />
       <p className="signUp-mail-p"></p>
 
