@@ -14,8 +14,8 @@ export class ClAppearance {
   App.css to shade/tint or dark/light version */
 
   _makeDark() {
-    const buttonAppearanceDark = document.querySelector('.btn-Dark')
-    const buttonAppearanceLight = document.querySelector('.btn-Light')
+    const buttonAppearanceDark = document.querySelector('.btn-Dark') as HTMLElement
+    const buttonAppearanceLight = document.querySelector('.btn-Light') as HTMLElement
 
     // switch between moon and sun buttons
     buttonAppearanceDark.classList.add('hidden')
@@ -47,8 +47,8 @@ export class ClAppearance {
   }
 
   _makeLight() {
-    const buttonAppearanceDark = document.querySelector('.btn-Dark')
-    const buttonAppearanceLight = document.querySelector('.btn-Light')
+    const buttonAppearanceDark = document.querySelector('.btn-Dark') as HTMLElement
+    const buttonAppearanceLight = document.querySelector('.btn-Light') as HTMLElement
 
     // switch between moon and sun buttons
     buttonAppearanceLight.classList.add('hidden')

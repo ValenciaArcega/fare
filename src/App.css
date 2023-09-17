@@ -207,7 +207,7 @@ textarea {
   padding: 0 6rem;
   padding-bottom: 6rem;
   display: grid;
-  gap: 0 3.8rem;
+  gap: 2rem 3.8rem;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   align-items: center;
   justify-items: center;

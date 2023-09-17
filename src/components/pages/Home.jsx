@@ -52,9 +52,6 @@ export function Home() {
   useEffect(function () {
     getUserNameAndIdeas()
 
-    if (localStorage.getItem('dark')) classAppearance._makeDark()
-    if (!localStorage.getItem('dark')) classAppearance._makeLight()
-
     const x = window.matchMedia("(min-width: 624px)")
     setIsDesktop(x.matches)
 
@@ -65,10 +62,10 @@ export function Home() {
 
   return (
     <>
-      <Appearance />
       {dataLoaded
         ?
         <section>
+          <Appearance />
           <NavBar />
 
           <header className="wrapper-welcomeText">
