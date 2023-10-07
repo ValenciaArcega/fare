@@ -70,11 +70,20 @@ export function AddTask({ tasksArray, setTasksArray }) {
     {taskAdded ? <TaskAdded /> : false}
 
     <form className="modal-newTask hidden" onSubmit={addNewIdea}>
-      <h1 className="modal-newTask-h1">Nueva idea</h1>
+      <div className="wrapper-header-modal-newTask">
+        <h1 className="modal-newTask-h1">Nueva idea</h1>
+        <lord-icon
+          src="https://cdn.lordicon.com/pkmkagva.json"
+          trigger="loop"
+          delay="1500"
+          colors="primary:#5573ed"
+          state="hover" />
+      </div>
+
       <input
         id="inputTitle"
         className="modal-newTask-title"
-        placeholder="Título o reacción 📚"
+        placeholder="Título"
         autoComplete="off" />
       <textarea
         id="inputDescription"

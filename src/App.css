@@ -117,6 +117,10 @@ textarea {
   box-shadow: 0 8px 20px 2px rgba(0, 0, 0, 0.3);
   z-index: 99;
 }
+.wrapper-header-modal-newTask{
+  display: flex;
+  gap: 4px;
+}
 
 .modal-newTask-h1 {
   font-size: 28px;
@@ -304,8 +308,29 @@ textarea {
 .wrapper-task-buttons {
   display: grid;
   gap: 14px;
+  align-items: center;
   grid-template-columns: 1fr 40%;
   overflow: visible;
+}
+
+.task__btn-complete {
+  height: 46px;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  color: #fff;
+  border: none;
+  outline: none;
+  background: linear-gradient(to top right, #3b59d4, #6681ed);
+  transition: transform .7s;
+}
+
+.task__btn-complete:hover {
+  cursor: pointer;
+  transform: scale(.9, .9);
 }
 
 .btn-copy {
@@ -322,16 +347,20 @@ textarea {
   outline: none;
   color: var(--black18);
   background-color: var(--bg-btn-expand);
+  transition: transform .7s;
 }
 
 .btn-copy:hover {
   cursor: pointer;
+  transform: scale(0.9, 0.9);
 }
 
 .btn-copy svg {
-  height: 18px;
+  height: 28px;
+  stroke: var(--black18);
 }
 
+/* Fancy button hover effect bubble
 .btn-blurCircle {
   height: 48px;
   width: 100%;
@@ -357,7 +386,6 @@ textarea {
 
 .btn-blurCircle:hover {
   cursor: pointer;
-  /* color: #1c1c1c; */
 }
 
 .btn-blurCircle::before {
@@ -395,20 +423,8 @@ textarea {
   transition: 0s;
   transform: translate(0, 5%);
 }
+*/
 
-.task__btn-complete {
-  min-height: 44px;
-  width: 100%;
-  margin-top: 8px;
-  border-radius: 8px;
-  font-weight: 500;
-  border: none;
-  outline: none;
-  color: var(--ff);
-  border: none;
-  outline: none;
-  background-color: var(--mainColor);
-}
 
 .overlay,
 .overlayDelete {
@@ -654,6 +670,12 @@ textarea {
   color: var(--fr-btn-expand);
   background-color: var(--ff);
   box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.1);
+  transition: transform .7s;
+}
+
+.confirmDelete-btn-quitModal:hover,
+.confirmDelete-btn-deleteTask:hover {
+  transform: scale(0.9, 0.9);
 }
 
 .confirmDelete-btn-deleteTask {
@@ -671,9 +693,10 @@ textarea {
 }
 
 .confirmDelete-btn-deleteTask svg {
-  height: 18px;
+  height: 26px;
   stroke: white;
 }
+
 
 .btn-addTask {
   height: 50px;
@@ -689,10 +712,12 @@ textarea {
   position: relative;
   color: white;
   background: linear-gradient(to top right, #3b59d4, #6681ed);
+  transition: transform .7s;
 }
 
 .btn-addTask:hover {
   cursor: pointer;
+  transform: scale(.92, .92);
 }
 
 .btn-addTask svg {
