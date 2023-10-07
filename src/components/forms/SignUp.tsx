@@ -2,7 +2,7 @@
  * @overview The following component allows Register a user or go to Sign in
  * @author Valencia Arcega Luis Angel
  */
-import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../svg/SignUp'
+import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../icons/sign-up'
 import { auth, db } from '../../credentials'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { getDoc, setDoc, doc } from "firebase/firestore"

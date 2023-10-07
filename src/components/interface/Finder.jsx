@@ -3,7 +3,7 @@
  allows to the user filter items in the home screen
  * @author Valencia Arcega Luis Angel
  */
-import { IconMagnifier, IconClose } from '../svg/Finder'
+import { IconMagnifier, IconClose } from '../icons/finder'
 /**
  * @param {object} lookFor Return just the filtered items
  * @param {object} setIsSearching Change the state to know if the user is serching or not

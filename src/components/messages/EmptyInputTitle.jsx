@@ -1,7 +1,7 @@
 /**
  * @author Valencia Arcega Luis Angel
  */
-import { Caution } from "../svg/Caution"
+import { Caution } from "../icons/Caution"
 
 export function EmptyInputTitle() {
   return <section className="message-emptyFormAddTak">

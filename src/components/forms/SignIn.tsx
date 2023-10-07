@@ -4,7 +4,7 @@
  */
 import BadCredentials from "../messages/BadCredentials"
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { IconAt, IconCheck, IconKey } from "../svg/SignIn"
+import { IconAt, IconCheck, IconKey } from "../icons/sign-in"
 import { ClSignIn } from "../../classes/cl-signIn"
 import { useState } from "react"
 import { auth } from '../../credentials'

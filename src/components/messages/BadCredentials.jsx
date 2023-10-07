@@ -1,7 +1,7 @@
 /**
  * @author Valencia Arcega Luis Angel
  */
-import { IconPadlock } from "../svg/BadCredentials"
+import { IconPadlock } from "../icons/bad-credentials"
 
 export default function BadCredentials({ message }) {
   return <main className="msg-BadCredentials">

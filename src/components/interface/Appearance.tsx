@@ -3,7 +3,8 @@
  and call the private methods in cl-appearance file
  * @author Valencia Arcega Luis Angel
  */
-import { IconMoon, IconSun } from "../svg/Appearance"
+import React from 'react'
+import { IconMoon, IconSun } from '../icons/Appearance'
 import { ClAppearance } from "../../classes/cl-appearance"
 
 export function Appearance() {
