@@ -6,6 +6,7 @@
  */
 export function LoaderBar() {
   return <section className="container-loaderBar">
+    <img src="faRe.svg" alt="Fare logo on landing page" />
     <div className="loaderBar"></div>
   </section>
 }

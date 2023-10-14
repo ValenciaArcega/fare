@@ -103,7 +103,7 @@ textarea {
 }
 
 .modal-newTask {
-  width: 20rem;
+  width: 21rem;
   padding: 2rem 1.5rem;
   display: flex;
   gap: 8px;
@@ -143,7 +143,7 @@ textarea {
 }
 
 .modal-newTask-description {
-  height: 10rem;
+  height: 16rem;
   padding: 12px 8px;
   font-size: 19px;
   border: 2px solid var(--bg-modal-input-border);
@@ -326,6 +326,7 @@ textarea {
   outline: none;
   background: linear-gradient(to top right, #3b59d4, #6681ed);
   transition: transform .7s;
+  user-select: all !important;
 }
 
 .task__btn-complete:hover {
@@ -961,9 +962,11 @@ textarea {
   color: white;
   background: linear-gradient(to top right, #3b59d4, #6681ed);
   box-shadow: 0 8px 12px -6px #00000080;
+  transition: transform .7s;
 }
 
 .signUp-btnRegister:hover {
+  transform: scale(.96, .96);
   cursor: pointer;
 }
 
@@ -1081,10 +1084,12 @@ textarea {
   color: white;
   background: linear-gradient(to top right, #3b59d4, #6681ed);
   box-shadow: 0 8px 12px -6px #00000080;
+  transition: transform .7s;
 }
 
 .login-buttonLogin:hover {
   cursor: pointer;
+  transform: scale(.96, .96);
 }
 
 .login-buttonLogin svg {
@@ -1426,13 +1431,13 @@ input:not(:placeholder-shown) ~ .finder-btnClose {
 .loaderBar::before {
   content: "";
   position: absolute;
-  background: var(--mainColor);
+  background: var(--mainColor-tint);
   top: 0;
   left: 0;
   width: 0%;
   height: 100%;
   border-radius: 30px;
-  animation: movingLoaderBar 1s ease-in-out infinite;
+  animation: movingLoaderBar .7s ease-in-out infinite;
 }
 
 @keyframes movingLoaderBar {

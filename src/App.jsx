@@ -3,15 +3,38 @@ import { auth } from "./credentials"
 import { Sign } from "./components/pages/Sign"
 import { Home } from "./components/pages/Home"
 import { onAuthStateChanged } from 'firebase/auth'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { LoaderBar } from "./components/interface/Loader"
 
 export function App() {
   const [user, setUser] = useState(null)
+  const [hasSession, setHasSession] = useState(false)
+  const [loader, setLoader] = useState(true)
 
   onAuthStateChanged(auth, function (firebaseUser) {
-    if (firebaseUser) setUser(firebaseUser)
-    else setUser(false)
+    if (firebaseUser) {
+      setUser(firebaseUser)
+      setHasSession(true)
+    } else {
+      // setHasSession(false)
+      setUser(null)
+    }
   })
 
-  return <>{user ? <Home /> : <Sign />}</>
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false)
+    }, 4000)
+  }
+    , [])
+
+  return <>{
+    loader
+      ? <LoaderBar />
+      : user
+        ? <Home />
+        : <Sign />
+  }</>
 }
+
+//

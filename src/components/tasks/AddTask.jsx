@@ -88,7 +88,7 @@ export function AddTask({ tasksArray, setTasksArray }) {
       <textarea
         id="inputDescription"
         className="modal-newTask-description"
-        placeholder="Descripción"
+        placeholder="¿Qué hay en mente?"
         type="text" />
       <button
         className="btn-addTask"
