@@ -1,10 +1,10 @@
 import './App.css'
 import { auth } from "./credentials"
-import { Sign } from "./components/pages/Sign"
-import { Home } from "./components/pages/Home"
+import { Sign } from "./components/Sign"
+import { Home } from "./components/Home"
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
-import { LoaderBar } from "./components/interface/Loader"
+import { LoaderBar } from "./components/Loader"
 
 export function App() {
   const [user, setUser] = useState(null)
@@ -16,7 +16,6 @@ export function App() {
       setUser(firebaseUser)
       setHasSession(true)
     } else {
-      // setHasSession(false)
       setUser(null)
     }
   })

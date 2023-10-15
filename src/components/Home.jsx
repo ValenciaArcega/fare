@@ -2,16 +2,16 @@
  * @overview Welcome component that fetch task and other functions such as Appearance.
  * @author Valencia Arcega Luis Angel
  */
-import NavBar from "../interface/NavBar"
+import NavBar from "./NavBar"
 import { useState, useEffect } from "react"
-import { ClAppearance } from "../../classes/cl-appearance"
+import { ClAppearance } from "../classes/cl-appearance"
 import { doc, getDoc } from "firebase/firestore"
-import { Appearance } from "../interface/Appearance"
-import { LoaderBar } from "../interface/Loader"
-import { db, auth } from "../../credentials"
-import { AddTask } from "../tasks/AddTask"
+import { Appearance } from "./Appearance"
+import { LoaderBar } from "./Loader"
+import { db, auth } from "../credentials"
+import { AddTask } from "./AddTask"
 import { signOut } from "firebase/auth"
-import { Tasks } from "../tasks/Tasks"
+import { Tasks } from "./Tasks"
 
 export function Home() {
   const email = auth.currentUser.email

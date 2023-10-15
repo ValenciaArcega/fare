@@ -3,10 +3,10 @@
  the user to add a new idea into firestore.
  * @author Valencia Arcega Luis Angel
  */
-import { EmptyInputTitle } from "../messages/EmptyInputTitle"
+import { EmptyInputTitle } from "./messages/EmptyInputTitle"
 import { updateDoc, doc } from "firebase/firestore"
-import { TaskAdded } from "../messages/TaskAdded"
-import { db, auth } from "../../credentials"
+import { TaskAdded } from "./messages/TaskAdded"
+import { db, auth } from "../credentials"
 import { useState } from "react"
 /**
  * @param {object} tasksArray

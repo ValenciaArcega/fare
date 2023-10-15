@@ -4,8 +4,8 @@
  * @author Valencia Arcega Luis Angel
  */
 import React from 'react'
-import { IconMoon, IconSun } from '../icons/Appearance'
-import { ClAppearance } from "../../classes/cl-appearance"
+import { IconMoon, IconSun } from './icons/Appearance'
+import { ClAppearance } from "../classes/cl-appearance"
 
 export function Appearance() {
   const classAppearance = new ClAppearance()

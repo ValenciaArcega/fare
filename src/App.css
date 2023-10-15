@@ -144,10 +144,13 @@ textarea {
 
 .modal-newTask-description {
   height: 16rem;
+  min-height: 4rem;
+  max-height: 20rem;
   padding: 12px 8px;
   font-size: 19px;
   border: 2px solid var(--bg-modal-input-border);
   border-radius: 12px;
+  resize: vertical;
   outline: none;
   color: var(--black18);
   background-color: var(--bg-modal-input);
@@ -224,6 +227,21 @@ textarea {
   border-radius: 14px;
   border: 2px dashed #818181;
   background: var(--bg-task);
+}
+
+.no-task {
+  height: 10rem;
+  width: 100%;
+  margin: 2.5rem 0 3.4rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-task-svg {
+  stroke: var(--mainColor);
 }
 
 .task-title {
@@ -643,9 +661,9 @@ textarea {
   transform: translate(-50%, -50%);
   border-radius: 12px;
   background-color: var(--bg-modal);
-  box-shadow: 0 8px 5rem rgba(0, 0, 0, 0.2);
   z-index: 99;
   background-color: var(--bg-modal);
+  box-shadow: 0 2.6rem 3rem -2rem rgba(0, 0, 0, 0.6);
 }
 
 .confirmDelete-h4 {

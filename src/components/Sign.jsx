@@ -2,8 +2,8 @@
  * @overview Component that allows toggle between SignIn and SignUp.
  * @author Valencia Arcega Luis Angel
  */
-import { SignIn } from "../forms/SignIn"
-import { SignUp } from "../forms/SignUp"
+import { SignIn } from "./SignIn"
+import { SignUp } from "./SignUp"
 import { useEffect, useState } from "react"
 
 export function Sign() {

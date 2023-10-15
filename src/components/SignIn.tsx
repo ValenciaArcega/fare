@@ -2,13 +2,13 @@
  * @overview The following component Log the user in or allows go to sign up
  * @author Valencia Arcega Luis Angel
  */
-import BadCredentials from "../messages/BadCredentials"
+import BadCredentials from "./messages/BadCredentials"
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { IconAt, IconCheck, IconKey } from "../icons/sign-in"
-import { ClSignIn } from "../../classes/cl-signIn"
+import { IconAt, IconCheck, IconKey } from "./icons/sign-in"
+import { ClSignIn } from "../classes/cl-signIn"
 import { useState } from "react"
-import { auth } from '../../credentials'
-import { LandingPage } from "../interface/LandingPage"
+import { auth } from '../credentials'
+import { LandingPage } from "./LandingPage"
 import React from 'react'
 
 /**
