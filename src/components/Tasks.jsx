@@ -3,7 +3,7 @@
  * @author Valencia Arcega Luis Angel
  */
 import { updateDoc, doc } from "firebase/firestore"
-import { db, auth } from "../credentials"
+import { db, auth } from "../../dal/credentials"
 import { useState } from "react"
 import { Finder } from "./Finder"
 import { TaskDeleted } from "./messages/TaskDeleted"

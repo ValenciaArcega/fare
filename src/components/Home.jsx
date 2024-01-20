@@ -8,7 +8,7 @@ import { ClAppearance } from "../classes/cl-appearance"
 import { doc, getDoc } from "firebase/firestore"
 import { Appearance } from "./Appearance"
 import { LoaderBar } from "./Loader"
-import { db, auth } from "../credentials"
+import { db, auth } from "../../dal/credentials"
 import { AddTask } from "./AddTask"
 import { signOut } from "firebase/auth"
 import { Tasks } from "./Tasks"
@@ -35,18 +35,23 @@ export function Home() {
   }
 
   const getUserNameAndIdeas = async function () {
-    const documentReference = doc(db, `users/${email}`)
-    const query = await getDoc(documentReference)
-    if (query.exists()) {
-      const dataFromDB = query.data()
-      // name to display
-      const fullName = dataFromDB.data[0].name
-      const finalName = fixName(fullName)
-      setName(finalName)
-      // ideas to display
-      setTasksArray(dataFromDB.tasks)
-      setDataLoaded(true)
-    } else return
+    try {
+      debugger
+      const documentReference = await doc(db, `users/${email}`)
+      const query = await getDoc(documentReference)
+
+      if (query.exists()) {
+        const dataFromDB = await query.data()
+        const fullName = dataFromDB.data[0].name
+        const finalName = fixName(fullName)
+
+        setName(finalName)
+        setTasksArray(dataFromDB.tasks)
+        setDataLoaded(true)
+      }
+    } catch (ex) {
+      console.log(ex)
+    }
   }
 
   useEffect(function () {

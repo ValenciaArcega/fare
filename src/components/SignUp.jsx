@@ -3,7 +3,7 @@
  * @author Valencia Arcega Luis Angel
  */
 import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from './icons/sign-up'
-import { auth, db } from '../credentials'
+import { db, auth } from "../../dal/credentials"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { ClReviewSignUp } from "../classes/cl-signUp"

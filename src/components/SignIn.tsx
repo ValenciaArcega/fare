@@ -7,7 +7,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { IconAt, IconCheck, IconKey } from "./icons/sign-in"
 import { ClSignIn } from "../classes/cl-signIn"
 import { useState } from "react"
-import { auth } from '../credentials'
+import { auth } from "../../dal/credentials"
 import { LandingPage } from "./LandingPage"
 import React from 'react'
 

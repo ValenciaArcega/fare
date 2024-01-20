@@ -4,7 +4,7 @@
  */
 import { SignIn } from "./SignIn"
 import { SignUp } from "./SignUp"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export function Sign() {
   const [isRegistering, setIsRegistering] = useState(false)

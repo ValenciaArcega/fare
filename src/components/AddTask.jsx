@@ -6,7 +6,7 @@
 import { EmptyInputTitle } from "./messages/EmptyInputTitle"
 import { updateDoc, doc } from "firebase/firestore"
 import { TaskAdded } from "./messages/TaskAdded"
-import { db, auth } from "../credentials"
+import { db, auth } from "../../dal/credentials"
 import { useState } from "react"
 /**
  * @param {object} tasksArray

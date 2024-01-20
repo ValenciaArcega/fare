@@ -5,7 +5,7 @@
  */
 import React, { useEffect, useState } from "react"
 import { signOut } from "firebase/auth"
-import { auth } from "../credentials"
+import { auth } from "../../dal/credentials"
 import { ClAppearance } from "../classes/cl-appearance"
 import { IconPlus, IconAddTaskMob } from "./icons/navigation-bar"
 
