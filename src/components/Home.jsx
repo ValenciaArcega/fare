@@ -12,9 +12,9 @@ import { db, auth } from "../../dal/credentials"
 import { AddTask } from "./AddTask"
 import { signOut } from "firebase/auth"
 import { Tasks } from "./Tasks"
+import { emailUser } from "../constants/firebase"
 
 export function Home() {
-  const email = auth.currentUser.email
   const [isDesktop, setIsDesktop] = useState(false)
   const [name, setName] = useState(null)
   const [tasksArray, setTasksArray] = useState(null)
@@ -37,7 +37,7 @@ export function Home() {
   const getUserNameAndIdeas = async function () {
     try {
       debugger
-      const documentReference = await doc(db, `users/${email}`)
+      const documentReference = await doc(db, `users/${emailUser}`)
       const query = await getDoc(documentReference)
 
       if (query.exists()) {

@@ -6,14 +6,14 @@
 import { EmptyInputTitle } from "./messages/EmptyInputTitle"
 import { updateDoc, doc } from "firebase/firestore"
 import { TaskAdded } from "./messages/TaskAdded"
-import { db, auth } from "../../dal/credentials"
+import { db } from "../../dal/credentials"
 import { useState } from "react"
+import { emailUser } from "../constants/firebase"
 /**
  * @param {object} tasksArray
  * @param {object} setTasksArray 
  */
 export function AddTask({ tasksArray, setTasksArray }) {
-  const email = auth.currentUser.email
   const [areInputsEmpty, setAreInputsEmpty] = useState(false)
   const [taskAdded, setTaskAdded] = useState(false)
   /**
@@ -43,7 +43,7 @@ export function AddTask({ tasksArray, setTasksArray }) {
     const fromUser_description = e.target.inputDescription.value
 
     if (isInputsValueEmpty(fromUser_title, fromUser_description)) {
-      const documentReference = doc(db, `users/${email}`)
+      const documentReference = doc(db, `users/${emailUser}`)
       const newIdeasArray = [{
         id: +new Date(),
         title: fromUser_title,

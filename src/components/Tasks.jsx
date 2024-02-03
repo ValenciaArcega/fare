@@ -3,20 +3,20 @@
  * @author Valencia Arcega Luis Angel
  */
 import { updateDoc, doc } from "firebase/firestore"
-import { db, auth } from "../../dal/credentials"
+import { db } from "../../dal/credentials"
 import { useState } from "react"
 import { Finder } from "./Finder"
 import { TaskDeleted } from "./messages/TaskDeleted"
 import { Copied } from "./messages/Copied"
 import { IconCopy, IconTrashCan } from "./icons/tasks"
 import { NoTaskSection } from './NoTaskSection'
+import { emailUser } from "../constants/firebase"
 /**
  * @param {object} tasksArray
  * @param {object} setTasksArray 
  */
 export function Tasks({ tasksArray, setTasksArray }) {
 	let identifier
-	const email = auth.currentUser.email
 	const [filteredItems, setFilteredItems] = useState(tasksArray)
 	const [isSearching, setIsSearching] = useState(false)
 	const [taskDeleted, setTaskDeleted] = useState(false)
@@ -53,7 +53,7 @@ export function Tasks({ tasksArray, setTasksArray }) {
 		setTimeout(() => setTaskDeleted(false), 4500)
 
 		const newIdeasArray = tasksArray.filter((task) => task.id !== IDtoDelete)
-		const documentReference = doc(db, `users/${email}`)
+		const documentReference = doc(db, `users/${emailUser}`)
 		await updateDoc(documentReference, { tasks: [...newIdeasArray] })
 		setTasksArray(newIdeasArray)
 		setFilteredItems(newIdeasArray)

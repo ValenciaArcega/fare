@@ -12,7 +12,6 @@ export class ClAppearance {
   click the moon/sun button, and will change some variables (backgrounds, 
   borders, foregrounds)  established on the root element in the 
   App.css to shade/tint or dark/light version */
-
   _makeDark() {
     const buttonAppearanceDark = document.querySelector('.btn-Dark') as HTMLElement
     const buttonAppearanceLight = document.querySelector('.btn-Light') as HTMLElement
