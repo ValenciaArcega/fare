@@ -4,7 +4,7 @@
  is the main page to introduce "Fare"
  * @author Valencia Arcega Luis Angel
  */
-import { IconPanLock, IconBulb, IconMagnify } from './icons/landing-page'
+import { IconPanLock, IconBulb, IconMagnify } from '../../components/icons/landing-page'
 
 export function LandingPage() {
   return <section className="container-landing">

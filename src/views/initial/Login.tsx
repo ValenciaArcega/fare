@@ -2,19 +2,19 @@
  * @overview The following component Log the user in or allows go to sign up
  * @author Valencia Arcega Luis Angel
  */
-import BadCredentials from "./messages/BadCredentials"
+import BadCredentials from "../../components/messages/BadCredentials"
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { IconAt, IconCheck, IconKey } from "./icons/sign-in"
-import { ClSignIn } from "../classes/cl-signIn"
+import { IconAt, IconCheck, IconKey } from "../../components/icons/sign-in"
+import { ClSignIn } from "../../classes/cl-signIn"
 import { useState } from "react"
-import { auth } from "../../dal/credentials"
+import { auth } from "../../../dal/credentials"
 import { LandingPage } from "./LandingPage"
 import React from 'react'
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
  */
-export function SignIn({ setIsRegistering }) {
+export function Login({ setIsRegistering }) {
   const [isLoginWrong, setIsLoginWrong] = useState(false)
   const [bannerError, setBannerError] = useState('Las credenciales no coinciden')
   const cl = new ClSignIn()

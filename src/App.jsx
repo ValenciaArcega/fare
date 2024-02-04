@@ -1,10 +1,10 @@
 import './App.css'
 import { auth } from "../dal/credentials"
-import { Sign } from "./components/Sign"
-import { Home } from "./components/Home"
+import { RouterInitial } from "./routes/RouterInitial"
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { LoaderBar } from "./components/Loader"
+import { RouterDashboard } from "./routes/RouterDashboard"
 
 export function App() {
   const [user, setUser] = useState(null)
@@ -13,7 +13,7 @@ export function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false)
-    }, 1000)
+    }, 500)
     // original ==> }, 4000)
     onAuthStateChanged(auth, function (firebaseUser) {
       if (firebaseUser) {
@@ -28,7 +28,7 @@ export function App() {
     loader
       ? <LoaderBar />
       : user
-        ? <Home />
-        : <Sign />
+        ? <RouterDashboard />
+        : <RouterInitial />
   }</>
 }

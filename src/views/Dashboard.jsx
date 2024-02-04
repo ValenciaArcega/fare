@@ -2,19 +2,19 @@
  * @overview Welcome component that fetch task and other functions such as Appearance.
  * @author Valencia Arcega Luis Angel
  */
-import NavBar from "./NavBar"
+import NavBar from "../components/NavBar"
 import { useState, useEffect } from "react"
 import { doc, getDoc } from "firebase/firestore"
-import { Appearance } from "./Appearance"
-import { LoaderBar } from "./Loader"
+import { Appearance } from "../components/Appearance"
+import { LoaderBar } from "../components/Loader"
 import { db, auth } from "../../dal/credentials"
-import { AddTask } from "./AddTask"
-import { Tasks } from "./Tasks"
+import { AddTask } from "../components/AddTask"
+import { Tasks } from "../components/Tasks"
 import { textoBienvenida } from "../functions/home"
 import { signUserOut } from "../functions/sign"
 import { calcViewPort } from "../functions/viewport"
 
-export function Home() {
+export function Dashboard() {
   const [isDesktop, setIsDesktop] = useState(false)
   const [name, setName] = useState(null)
   const [tasksArray, setTasksArray] = useState(null)

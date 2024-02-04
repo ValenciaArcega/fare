@@ -2,12 +2,12 @@
  * @overview The following component allows Register a user or go to Sign in
  * @author Valencia Arcega Luis Angel
  */
-import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from './icons/sign-up'
-import { db, auth } from "../../dal/credentials"
+import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../../components/icons/sign-up'
+import { db, auth } from "../../../dal/credentials"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { getDoc, setDoc, doc } from "firebase/firestore"
-import { ClReviewSignUp } from "../classes/cl-signUp"
-import { WrongRegister } from "./messages/SignUp"
+import { ClReviewSignUp } from "../../classes/cl-signUp"
+import { WrongRegister } from "../../components/messages/SignUp"
 import React, { useState } from "react"
 
 /**
