@@ -1,3 +1,22 @@
+.topBar {
+    height: 3.6rem;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    -webkit-backdrop-filter: blur(12px);
+    -moz-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 10% 1fr;
+}
+
+.topBar-wrapperSign {
+    justify-self: flex-end;
+    background-color: wheat;
+    display: flex;
+    gap: .8rem;
+}
+
 .landingHeader {
     height: 46rem;
     overflow: hidden;

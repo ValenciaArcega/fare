@@ -62,7 +62,6 @@ export function Login({ setIsRegistering }) {
   }
 
   return <section className="container-login">
-    <LandingPage />
     {isLoginWrong ? <BadCredentials message={bannerError} /> : null}
 
     <form className="login" onSubmit={submitLogIn}>

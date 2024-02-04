@@ -5,10 +5,21 @@
  * @author Valencia Arcega Luis Angel
  */
 import css from "./LandingPage.module.css"
+import { Link } from "react-router-dom"
 import { IconPanLock, IconBulb, IconMagnify } from '../../components/icons/landing-page'
 
 export function LandingPage() {
 	return <section>
+
+		<nav className={css.topBar}>
+			<img src="logo.png" alt="brand logo" height={34} style={{ marginLeft: 10 }} />
+
+			<aside className={css["topBar-wrapperSign"]}>
+				<Link to="/fare/SignUp">Registrarme</Link>
+				<Link to="/fare/Login">Iniciar Sesión</Link>
+			</aside>
+		</nav>
+
 		<header className={css.landingHeader}>
 			<img src="faRe.svg" alt="Fare logo on landing page" />
 			<h1 className={css.landingHeaderTitle}>¡Que las ideas no escapen!</h1>
