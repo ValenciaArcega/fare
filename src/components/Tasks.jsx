@@ -10,7 +10,6 @@ import { TaskDeleted } from "./messages/TaskDeleted"
 import { Copied } from "./messages/Copied"
 import { IconCopy, IconTrashCan } from "./icons/tasks"
 import { NoTaskSection } from './NoTaskSection'
-import { emailUser } from "../constants/firebase"
 /**
  * @param {object} tasksArray
  * @param {object} setTasksArray 

@@ -6,9 +6,8 @@
 import { EmptyInputTitle } from "./messages/EmptyInputTitle"
 import { updateDoc, doc } from "firebase/firestore"
 import { TaskAdded } from "./messages/TaskAdded"
-import { db } from "../../dal/credentials"
+import { db, auth } from "../../dal/credentials"
 import { useState } from "react"
-import { emailUser } from "../constants/firebase"
 /**
  * @param {object} tasksArray
  * @param {object} setTasksArray 
@@ -16,6 +15,7 @@ import { emailUser } from "../constants/firebase"
 export function AddTask({ tasksArray, setTasksArray }) {
   const [areInputsEmpty, setAreInputsEmpty] = useState(false)
   const [taskAdded, setTaskAdded] = useState(false)
+  const emailUser = auth.currentUser.email
   /**
    * @param {string} title Will be review, to avoid empty entry
    * @param {string} description Will be review, to avoid empty entry
