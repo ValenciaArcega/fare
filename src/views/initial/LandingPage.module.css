@@ -22,7 +22,7 @@
 
 .linkSignUp {
     height: 34px;
-    width: 12rem;
+    width: 9rem;
     border-radius: .4rem;
     outline: none;
     border: none;
@@ -162,4 +162,9 @@
 .fillGradient {
     height: 15rem;
     grid-column: 1/-1;
+}
+
+.footer {
+    padding: 1rem 0;
+    text-align: center;
 }

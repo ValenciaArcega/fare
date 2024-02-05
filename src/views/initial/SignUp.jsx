@@ -9,17 +9,20 @@ import { getDoc, setDoc, doc } from "firebase/firestore"
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 import { WrongRegister } from "../../components/messages/SignUp"
 import React, { useState } from "react"
+import css from "./SignUp.module.css"
+import { useNavigate } from 'react-router-dom'
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
  */
-export function SignUp({ setIsRegistering }) {
+export function SignUp() {
   const classReview = new ClReviewSignUp()
   const [hasError, setHasError] = useState(false)
+  const navigation = useNavigate()
 
   const renderComponentSignIn = function () {
     classReview._resetBorders()
-    setIsRegistering(false)
+    navigation("/fare/Login")
   }
   /**
   * pablo  oScaR   gonzaleZ CAMARENA 👉 Pablo Oscar Gonzalez Camarena
@@ -65,93 +68,99 @@ export function SignUp({ setIsRegistering }) {
     }
   }
 
-  return <section className="container-signUp">
+  return <>
+    <div className={css.containerCircles}>
+      <div className={css.circleLeft}></div>
+      <div className={css.circleRight}></div>
+    </div>
 
-    {hasError ? <WrongRegister /> : false}
+    <section className={css.containerSignUp}>
+      {hasError ? <WrongRegister /> : false}
 
-    <form className="signUp" onSubmit={(e) => {
-      if (classReview._reviewSignUp(e)) addUserToFirestore(e)
-    }}>
+      <form className="signUp" onSubmit={(e) => {
+        if (classReview._reviewSignUp(e)) addUserToFirestore(e)
+      }}>
 
-      <h1 className="signUp-title">Crea una cuenta</h1>
+        <h1 className="signUp-title">Crea una cuenta</h1>
 
-      <label className="signUp-label" htmlFor="sufn">Nombre completo<IconText /></label>
-      <input
-        id="sufn"
-        className="signUp-name"
-        placeholder="Nombre(s) y apellidos"
-        autoComplete="new-password"
-        onFocus={() => classReview._inputFocusIn('name')}
-        onBlur={() => classReview._inputBlur('name')}
-        onKeyUp={() => classReview._inputNameKeyUp()}
-      />
-      <p className="signUp-name-p"> </p>
-
-      <label className="signUp-label" htmlFor="inputMail">Correo electrónico <IconHashtag /></label>
-      <input
-        id="inputMail"
-        className="signUp-mail"
-        placeholder="usuario@dominio.some"
-        // autoComplete="new-password"
-        onFocus={() => classReview._inputFocusIn('mail')}
-        onBlur={() => classReview._inputBlur('mail')}
-        onChangeCapture={() => classReview._inputMailOnChangeCapture()}
-      />
-      <p className="signUp-mail-p"></p>
-
-      <label className="signUp-label" htmlFor="inputPassword">Contraseña</label>
-      <section className="wrapper-password">
+        <label className="signUp-label" htmlFor="sufn">Nombre completo<IconText /></label>
         <input
-          id="inputPassword"
-          className="signUp-pass"
-          type="password"
+          id="sufn"
+          className="signUp-name"
+          placeholder="Nombre(s) y apellidos"
           autoComplete="new-password"
-          placeholder="Crea una contraseña"
-          onFocus={() => classReview._inputFocusIn('pass')}
-          onBlur={() => classReview._inputBlur('pass')}
-          onChangeCapture={() => classReview._emptyPassConfirm()}
+          onFocus={() => classReview._inputFocusIn('name')}
+          onBlur={() => classReview._inputBlur('name')}
+          onKeyUp={() => classReview._inputNameKeyUp()}
         />
-        <button
-          className="btn-showPass"
-          type="button"
-          title="button show"
-          onClick={() => classReview._showPass('signUp-pass', 'btn-hidePass-svg', 'btn-showPass-svg')}
-        >
-          <IconShow />
-          <IconHide />
-        </button>
-      </section>
-      <p className="signUp-pass-p"></p>
+        <p className="signUp-name-p"> </p>
 
-      <label className="signUp-label" htmlFor="sufcp">Confirmar contraseña</label>
-      <div className="wrapper-password">
+        <label className="signUp-label" htmlFor="inputMail">Correo electrónico <IconHashtag /></label>
         <input
-          id="sufcp"
-          className="signUp-passConfirm"
-          type="password"
-          autoComplete="new-password"
-          placeholder="Repite la contraseña"
-          onFocus={() => classReview._inputFocusIn('passConfirm')}
-          onBlur={() => classReview._inputBlur('passConfirm')}
-          onKeyUp={() => classReview._inputConfirmPassKeyUp()}
+          id="inputMail"
+          className="signUp-mail"
+          placeholder="usuario@dominio.some"
+          // autoComplete="new-password"
+          onFocus={() => classReview._inputFocusIn('mail')}
+          onBlur={() => classReview._inputBlur('mail')}
+          onChangeCapture={() => classReview._inputMailOnChangeCapture()}
         />
-        <button
-          className="btn-showPassConfirm"
-          title="button show"
-          type="button"
-          onClick={() => classReview._showPass('signUp-passConfirm', 'btn-hidePassConfirm-svg', 'btn-showPassConfirm-svg')}
-        >
-          <IconShowConfirm />
-          <IconHideConfirm />
+        <p className="signUp-mail-p"></p>
+
+        <label className="signUp-label" htmlFor="inputPassword">Contraseña</label>
+        <section className="wrapper-password">
+          <input
+            id="inputPassword"
+            className="signUp-pass"
+            type="password"
+            autoComplete="new-password"
+            placeholder="Crea una contraseña"
+            onFocus={() => classReview._inputFocusIn('pass')}
+            onBlur={() => classReview._inputBlur('pass')}
+            onChangeCapture={() => classReview._emptyPassConfirm()}
+          />
+          <button
+            className="btn-showPass"
+            type="button"
+            title="button show"
+            onClick={() => classReview._showPass('signUp-pass', 'btn-hidePass-svg', 'btn-showPass-svg')}
+          >
+            <IconShow />
+            <IconHide />
+          </button>
+        </section>
+        <p className="signUp-pass-p"></p>
+
+        <label className="signUp-label" htmlFor="sufcp">Confirmar contraseña</label>
+        <div className="wrapper-password">
+          <input
+            id="sufcp"
+            className="signUp-passConfirm"
+            type="password"
+            autoComplete="new-password"
+            placeholder="Repite la contraseña"
+            onFocus={() => classReview._inputFocusIn('passConfirm')}
+            onBlur={() => classReview._inputBlur('passConfirm')}
+            onKeyUp={() => classReview._inputConfirmPassKeyUp()}
+          />
+          <button
+            className="btn-showPassConfirm"
+            title="button show"
+            type="button"
+            onClick={() => classReview._showPass('signUp-passConfirm', 'btn-hidePassConfirm-svg', 'btn-showPassConfirm-svg')}
+          >
+            <IconShowConfirm />
+            <IconHideConfirm />
+          </button>
+        </div>
+        <p className="signUp-passConfirm-p"></p>
+
+        <button type="submit" className="signUp-btnRegister" name="button to Register">
+          Registrarme Ahora
         </button>
-      </div>
-      <p className="signUp-passConfirm-p"></p>
 
-      <button type="submit" className="signUp-btnRegister" name="button to Register">
-        Registrarme Ahora
-      </button>
-
-      <label className="signUp-labelGoSignIn" htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className="signUp-btnGoSignIn" onClick={renderComponentSignIn}>Inicia Sesión</button></label>
-    </form>
-  </section>
+        <label className="signUp-labelGoSignIn" htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className="signUp-btnGoSignIn" onClick={renderComponentSignIn}>Inicia Sesión</button></label>
+      </form>
+    </section>
+  </>
 }

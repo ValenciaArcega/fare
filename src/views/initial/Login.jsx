@@ -1,23 +1,25 @@
 /**
  * @overview The following component Log the user in or allows go to sign up
  * @author Valencia Arcega Luis Angel
- */
+*/
+import css from "./Login.module.css"
 import BadCredentials from "../../components/messages/BadCredentials"
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { IconAt, IconCheck, IconKey } from "../../components/icons/sign-in"
 import { ClSignIn } from "../../classes/cl-signIn"
 import { useState } from "react"
 import { auth } from "../../../dal/credentials"
-import { LandingPage } from "./LandingPage"
 import React from 'react'
+import { useNavigate } from "react-router-dom"
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
  */
-export function Login({ setIsRegistering }) {
+export function Login() {
   const [isLoginWrong, setIsLoginWrong] = useState(false)
   const [bannerError, setBannerError] = useState('Las credenciales no coinciden')
   const cl = new ClSignIn()
+  const navigation = useNavigate()
   /**
    * @param {object} e Get the event itself and stored to can
    * prevent the default behavior in a submit action form
@@ -58,56 +60,64 @@ export function Login({ setIsRegistering }) {
 
   const renderComponentSignUp = function (e) {
     e.preventDefault()
-    setIsRegistering(true)
+    navigation("/fare/SignUp")
   }
 
-  return <section className="container-login">
-    {isLoginWrong ? <BadCredentials message={bannerError} /> : null}
+  return <>
+    <div className={css.containerCircles}>
+      <div className={css.circleLeft}></div>
+      <div className={css.circleRight}></div>
+    </div>
 
-    <form className="login" onSubmit={submitLogIn}>
-      <img className="login-img" src="login.svg" alt="Icon login" />
-      <h1 className="login-title"><span className="gradientText">Inicia Sesión</span></h1>
+    <section className={css.containerLogin}>
+      {isLoginWrong ? <BadCredentials message={bannerError} /> : null}
 
-      <label className="login-label">Correo electrónico</label>
-      <div className="signIn-wrapperInput-mail">
-        <IconAt />
-        <input
-          id="inputMail"
-          className="login-inputMail"
-          type="text"
-          placeholder="usuario@dominio.some"
-          onFocus={() => cl._inputFocusIn('mail', 'mail')}
-          onBlur={() => cl._inputBlur('mail', 'mail')}
-        />
-      </div>
 
-      <label className="login-label">Contraseña</label>
-      <div className="signIn-wrapperInput-pass">
-        <IconKey />
-        <input
-          id="inputPassword"
-          className="login-inputPass"
-          type="password"
-          autoComplete="new-password"
-          placeholder="Ingresa tu contraseña"
-          onFocus={() => cl._inputFocusIn('pass', 'pass')}
-          onBlur={() => cl._inputBlur('pass', 'pass')}
-        />
-      </div>
+      <form className="login" onSubmit={submitLogIn}>
+        <img className="login-img" src="login.svg" alt="Icon login" />
+        <h1 className="login-title"><span className="gradientText">Inicia Sesión</span></h1>
 
-      <button className="login-buttonLogin" type="submit">
-        <IconCheck />
-        Autenticarme
-      </button>
+        <label className="login-label">Correo electrónico</label>
+        <div className="signIn-wrapperInput-mail">
+          <IconAt />
+          <input
+            id="inputMail"
+            className="login-inputMail"
+            type="text"
+            placeholder="usuario@dominio.some"
+            onFocus={() => cl._inputFocusIn('mail', 'mail')}
+            onBlur={() => cl._inputBlur('mail', 'mail')}
+          />
+        </div>
 
-      <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
-        id="lbgr"
-        className="login-BGR"
-        type="button"
-        onClick={renderComponentSignUp}
-      >Registrate
-      </button>
-      </label>
-    </form>
-  </section>
+        <label className="login-label">Contraseña</label>
+        <div className="signIn-wrapperInput-pass">
+          <IconKey />
+          <input
+            id="inputPassword"
+            className="login-inputPass"
+            type="password"
+            autoComplete="new-password"
+            placeholder="Ingresa tu contraseña"
+            onFocus={() => cl._inputFocusIn('pass', 'pass')}
+            onBlur={() => cl._inputBlur('pass', 'pass')}
+          />
+        </div>
+
+        <button className="login-buttonLogin" type="submit">
+          <IconCheck />
+          Autenticarme
+        </button>
+
+        <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button
+          id="lbgr"
+          className="login-BGR"
+          type="button"
+          onClick={renderComponentSignUp}
+        >Registrate
+        </button>
+        </label>
+      </form>
+    </section>
+  </>
 }

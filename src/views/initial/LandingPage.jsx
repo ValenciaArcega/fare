@@ -10,7 +10,6 @@ import { IconPanLock, IconBulb, IconMagnify, IconSheets } from '../../components
 
 export function LandingPage() {
 	return <section>
-
 		<nav className={css.topBar}>
 			<img src="logo.png" alt="brand logo" height={34} style={{ marginLeft: 10 }} />
 
@@ -55,5 +54,7 @@ export function LandingPage() {
 
 			<article className={css.fillGradient}></article>
 		</main>
+
+		<footer className={css.footer}>&copy; 2024 Valencia Arcega</footer>
 	</section>
 }

@@ -1,0 +1,43 @@
+.containerCircles {
+    height: 99dvh;
+    height: 99vh;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
+.containerLogin {
+    height: 99dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-backdrop-filter: blur(104px);
+    backdrop-filter: blur(104px);
+    background-image: radial-gradient(#00000017 3%, transparent 0);
+    background-size: 5.5rem 5.5rem;
+    z-index: 2;
+}
+
+.circleRight,
+.circleLeft {
+    height: 12rem;
+    width: 12rem;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 8%;
+    left: 30%;
+    background-color: rgb(199, 115, 251);
+    z-index: 1;
+}
+
+.circleRight {
+    top: 20%;
+    left: auto;
+    right: 30%;
+    background-color: var(--mainColor);
+}

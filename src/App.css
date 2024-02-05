@@ -1010,12 +1010,7 @@ textarea {
 
 /* ///////////////////////////////////////////////////// */
 /* Login.jsx */
-.container-login {
-  padding-bottom: 6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+
 
 .login {
   width: 20rem;

@@ -1,0 +1,42 @@
+.containerCircles {
+    height: 99dvh;
+    height: 99vh;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
+.circleLeft,
+.circleRight {
+    height: 15rem;
+    width: 15rem;
+    bottom: 5%;
+    left: 30%;
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--mainColor-shade);
+}
+
+.circleRight {
+    top: 2%;
+    left: auto;
+    right: 30%;
+    background-color: #ff4a4a;
+}
+
+.containerSignUp {
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-backdrop-filter: blur(134px);
+    backdrop-filter: blur(134px);
+    background-image: radial-gradient(#00000017 3%, transparent 0);
+    background-size: 5.5rem 5.5rem;
+    z-index: 2;
+}
