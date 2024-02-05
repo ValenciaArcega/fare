@@ -2,19 +2,57 @@
     height: 3.6rem;
     width: 100%;
     border-bottom: 1px solid gray;
-    -webkit-backdrop-filter: blur(12px);
-    -moz-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(3px);
+    -moz-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
     display: grid;
     align-items: center;
-    grid-template-columns: 10% 1fr;
+    position: fixed;
+    top: 0;
+    left: 0;
+    grid-template-columns: 10% 89%;
 }
 
 .topBar-wrapperSign {
     justify-self: flex-end;
-    background-color: wheat;
     display: flex;
-    gap: .8rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.linkSignUp {
+    height: 34px;
+    width: 12rem;
+    border-radius: .4rem;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    display: flex;
+    gap: .7rem;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(to bottom, #738cf3, #3b59d4);
+    transition: gap .7s;
+}
+
+.linkSignUp:hover {
+    gap: .3rem;
+    cursor: pointer;
+}
+
+.icon-signUp {
+    max-height: 8px;
+}
+
+.linkLogin {
+    text-decoration: none;
+    color: #181818;
+}
+
+.linkLogin:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .landingHeader {
@@ -29,8 +67,9 @@
 }
 
 .landingHeaderTitle {
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 18px;
+    color: #8f8f8f;
 }
 
 .landingFeaturesTitle,
@@ -45,9 +84,11 @@
 
 .landingFeaturesDescription {
     letter-spacing: 0;
-    font-weight: 500;
-    line-height: 1.7;
-    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8;
+    font-size: 16px;
+    width: 68%;
+    color: #494949;
 }
 
 @media (max-width: 624px) {
@@ -55,19 +96,24 @@
     .tasks {
         padding: 1rem;
     }
+
+    .landingFeaturesDescription {
+        width: 88%;
+    }
 }
 
-/* .landingFeatures {
+.landingFeatures {
     padding: 5rem 0;
     gap: 12px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: linear-gradient(to bottom, #f2f2f7, #5573ed54, #f2f2f7);
-} */
+}
 
 .landingWrapperFeatures {
     width: 90%;
+    padding: 2rem 0;
     align-self: center;
     display: grid;
     justify-items: center;
@@ -78,20 +124,28 @@
 .landingFeature {
     width: 17rem;
     margin-top: 2rem;
-    padding: 18px 18px;
+    padding: 1.3rem;
     border-radius: 18px;
     gap: 6px;
     display: flex;
     flex-direction: column;
     background-color: #fff;
+    transition: all .7s;
+    box-shadow: 0 30px 16px -24px #7f95ee;
+}
+
+.landingFeature:hover {
+    transform: scale(.97, .97);
+    box-shadow: none;
 }
 
 .landingFeature h3 {
+    margin-top: .3rem;
     font-weight: 700;
 }
 
 .landingFeature p {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 17px;
     line-height: 1.6;
 }

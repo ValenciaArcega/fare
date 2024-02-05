@@ -6,7 +6,7 @@
  */
 import css from "./LandingPage.module.css"
 import { Link } from "react-router-dom"
-import { IconPanLock, IconBulb, IconMagnify } from '../../components/icons/landing-page'
+import { IconPanLock, IconBulb, IconMagnify, IconSheets } from '../../components/icons/landing-page'
 
 export function LandingPage() {
 	return <section>
@@ -15,19 +15,22 @@ export function LandingPage() {
 			<img src="logo.png" alt="brand logo" height={34} style={{ marginLeft: 10 }} />
 
 			<aside className={css["topBar-wrapperSign"]}>
-				<Link to="/fare/SignUp">Registrarme</Link>
-				<Link to="/fare/Login">Iniciar Sesión</Link>
+				<Link className={css.linkSignUp} to="/fare/SignUp">
+					<IconSheets height={20} />
+					Registrarme</Link>
+				<Link to="/fare/Login" className={css.linkLogin}>
+					Iniciar Sesión</Link>
 			</aside>
 		</nav>
 
 		<header className={css.landingHeader}>
 			<img src="faRe.svg" alt="Fare logo on landing page" />
-			<h1 className={css.landingHeaderTitle}>¡Que las ideas no escapen!</h1>
+			<h1 className={css.landingHeaderTitle}>Que las pequeñas o grandes ideas, nunca escapen</h1>
 		</header>
 
-		<main>
+		<main className={css.landingFeatures}>
 			<h2 className={css.landingFeaturesTitle}>Guarda un Fare</h2>
-			<p className={css.landingFeaturesDescription}>"Idea" ó "Quehacer" (Fare en italiano). Podrás guardar esas pequeñas o grandes tareas en un sólo lugar. Un espacio perfecto para que las ocurrencias se mantengan en el tiempo y las visites cuando quieras.</p>
+			<p className={css.landingFeaturesDescription}>"Idea" ó "Quehacer" (<strong>Fare en italiano</strong>). Podrás guardar todas las tareas en un sólo lugar. Un espacio perfecto para que las ocurrencias se mantengan en el tiempo y las visites cuando quieras.</p>
 
 			<div className={css.landingWrapperFeatures}>
 				<article className={css.landingFeature}>
@@ -47,6 +50,7 @@ export function LandingPage() {
 					<h3>No pierdas nada</h3>
 					<p>Busca entre tu mente con indexado de alta velocidad</p>
 				</article>
+
 			</div>
 
 			<article className={css.fillGradient}></article>
