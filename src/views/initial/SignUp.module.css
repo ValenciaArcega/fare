@@ -1,3 +1,8 @@
+/*
+ * @author ValenciaArcega
+ * 👉 SPACING SYSTEM (px): 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+ * 👉 FONT SIZE SYSTEM (px): 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98 
+*/
 .containerCircles {
     height: 99dvh;
     height: 99vh;
@@ -39,4 +44,140 @@
     background-image: radial-gradient(#00000017 3%, transparent 0);
     background-size: 5.5rem 5.5rem;
     z-index: 2;
+}
+
+.signUp {
+    width: 20rem;
+    padding: 2rem 0;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    border: 2px dashed #c5c5c5;
+    background-color: #fff;
+}
+
+.signUpTitle {
+    margin-bottom: 12px;
+    font-size: 28px;
+    letter-spacing: -0.8px;
+}
+
+.signUpLabel {
+    width: 82%;
+    margin-top: 10px;
+    letter-spacing: -0.4px;
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: 85% 1fr;
+}
+
+.signUpLabel svg {
+    width: 20px;
+    justify-self: center;
+    color: var(--mainColor);
+}
+
+.signUpName,
+.signUpMail,
+.signUpPass,
+.signUpPassConfirm {
+    min-height: 50px;
+    width: 82%;
+    margin-top: 6px;
+    padding: 0 6px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    border: 2px solid var(--borderInput-name);
+    background: none;
+    outline: none;
+    background-color: white;
+}
+
+.signUpMail {
+    border: 2px solid var(--borderInput-mail);
+}
+
+.signUpPass {
+    width: 100%;
+    margin-top: 0;
+    border: 2px solid var(--borderInput-pass);
+}
+
+.signUpPassConfirm {
+    width: 100%;
+    margin-top: 0;
+    border: 2px solid var(--borderInput-passConfirm);
+}
+
+.wrapperPassword {
+    width: 82%;
+    margin-top: 6px;
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 80% 1fr;
+    background-color: #fff;
+}
+
+.signUpFeedback {
+    height: 16px;
+    width: 82%;
+    margin-top: 2px;
+    margin-left: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f63737;
+    overflow-y: hidden;
+}
+
+.btnShowPass,
+.btnShowPassConfirm {
+    height: 50px;
+    width: 48px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    /* border: 2px solid var(--borderInput-pass); */
+}
+
+.signUpBtnRegister {
+    min-height: 48px;
+    width: 82%;
+    margin-top: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    color: white;
+    background: linear-gradient(to top right, #3b59d4, #6681ed);
+    box-shadow: 0 8px 12px -6px #00000080;
+    transition: transform .7s;
+}
+
+.signUpBtnRegister:hover {
+    transform: scale(.96, .96);
+    cursor: pointer;
+}
+
+.signUpLabelGoSignIn {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.signUpBtnGoSignIn {
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--mainColor) !important;
+}
+
+.signUpBtnGoSignIn:hover {
+    cursor: pointer;
 }

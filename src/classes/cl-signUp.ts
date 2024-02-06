@@ -26,7 +26,7 @@ export class ClReviewSignUp {
   }
 
   _inputMailOnChangeCapture() {
-    const p = document.querySelector('.signUp-mail-p') as HTMLParagraphElement
+    const p = document.querySelector('#signUp-mail-p') as HTMLParagraphElement
     p.textContent = ''
   }
 
@@ -36,7 +36,7 @@ export class ClReviewSignUp {
  * @param {string} iconShow Name of the icon which will show the password.
  */
   _showPass(inputName: string, iconHide: string, iconShow: string) {
-    const input = document.querySelector(`.${inputName}`) as HTMLInputElement
+    const input = document.querySelector(`#${inputName}`) as HTMLInputElement
     const hide = document.querySelector(`.${iconHide}`) as HTMLInputElement
     const show = document.querySelector(`.${iconShow}`) as HTMLInputElement
 
@@ -52,11 +52,11 @@ export class ClReviewSignUp {
   }
 
   _emptyPassConfirm() {
-    const a = document.querySelector('.signUp-passConfirm') as HTMLInputElement
+    const a = document.querySelector('#suPassConfirm') as HTMLInputElement
     a.value = ''
-    const b = document.querySelector('.signUp-passConfirm-p') as HTMLParagraphElement
+    const b = document.querySelector('#signUp-passConfirm-p') as HTMLParagraphElement
     b.textContent = ''
-    const c = document.querySelector('.signUp-pass-p') as HTMLParagraphElement
+    const c = document.querySelector('#signUp-pass-p') as HTMLParagraphElement
     c.textContent = ''
   }
 
@@ -68,8 +68,8 @@ export class ClReviewSignUp {
   }
 
   _inputNameKeyUp() {
-    const input = document.querySelector('.signUp-name') as HTMLInputElement
-    const textError = document.querySelector('.signUp-name-p') as HTMLElement
+    const input = document.querySelector('#sufn') as HTMLInputElement
+    const textError = document.querySelector('#signUp-name-p') as HTMLElement
 
     this.root.setProperty('--borderInput-name', '#4263eb')
 
@@ -85,9 +85,9 @@ export class ClReviewSignUp {
   }
 
   _inputConfirmPassKeyUp() {
-    const inputPass = document.querySelector('.signUp-pass') as HTMLInputElement
-    const inputPassConfirm = document.querySelector('.signUp-passConfirm') as HTMLInputElement
-    const textError = document.querySelector('.signUp-passConfirm-p') as HTMLElement
+    const inputPass = document.querySelector('#suPassword') as HTMLInputElement
+    const inputPassConfirm = document.querySelector('#suPassConfirm') as HTMLInputElement
+    const textError = document.querySelector('#signUp-passConfirm-p') as HTMLElement
 
     if (inputPassConfirm.value === inputPass.value) {
       this.root.setProperty('--borderInput-passConfirm', '#4263eb')
@@ -105,8 +105,8 @@ export class ClReviewSignUp {
    * @returns {boolean} true in case of not have any mistake
    */
   _reviewInputName(): ReviewInputName {
-    const input = document.querySelector('.signUp-name') as HTMLInputElement
-    const textError = document.querySelector('.signUp-name-p') as HTMLParagraphElement
+    const input = document.querySelector('#suName') as HTMLInputElement
+    const textError = document.querySelector('#signUp-name-p') as HTMLParagraphElement
 
     if (input.value === '') {
       this.root.setProperty('--borderInput-name', '#DF0000')
@@ -118,21 +118,21 @@ export class ClReviewSignUp {
   }
 
   _reviewInputMail(): ReviewInputName {
-    const input = document.querySelector('.signUp-mail') as HTMLInputElement
-    const textError = document.querySelector('.signUp-mail-p') as HTMLParagraphElement
+    const input = document.querySelector('#suMail') as HTMLInputElement
+    const textError = document.querySelector('#signUp-mail-p') as HTMLParagraphElement
 
     if (input.value === '') {
       this.root.setProperty('--borderInput-mail', '#DF0000')
       textError.textContent = 'El campo es obligatorio'
-    } else if (!input.value.includes('@') || !input.value.includes('.') || input.value.length < 8) {
+    } else if (!input.value.includes('@') || !input.value.includes('.') || input.value.length < 10) {
       this.root.setProperty('--borderInput-mail', '#DF0000')
       textError.textContent = 'Formato de correo invalido'
     } else return true
   }
 
   _reviewInputPass(): ReviewInputName {
-    const input = document.querySelector('.signUp-pass') as HTMLInputElement
-    const textError = document.querySelector('.signUp-pass-p') as HTMLParagraphElement
+    const input = document.querySelector('#suPassword') as HTMLInputElement
+    const textError = document.querySelector('#signUp-pass-p') as HTMLParagraphElement
 
     if (input.value === '') {
       this.root.setProperty('--borderInput-pass', '#DF0000')
@@ -144,9 +144,9 @@ export class ClReviewSignUp {
   }
 
   _reviewInputConfirmPassword(): ReviewInputName {
-    const input = document.querySelector('.signUp-passConfirm') as HTMLInputElement
-    const textError = document.querySelector('.signUp-passConfirm-p') as HTMLParagraphElement
-    const inputExternal = document.querySelector('.signUp-pass') as HTMLInputElement
+    const input = document.querySelector('#suPassConfirm') as HTMLInputElement
+    const textError = document.querySelector('#signUp-passConfirm-p') as HTMLParagraphElement
+    const inputExternal = document.querySelector('#suPassword') as HTMLInputElement
 
     if (inputExternal.value !== input.value) {
       this.root.setProperty('--borderInput-passConfirm', '#DF0000')
