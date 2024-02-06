@@ -8,6 +8,7 @@ import { signOut } from "firebase/auth"
 import { auth } from "../../dal/credentials"
 import { ClAppearance } from "../classes/cl-appearance"
 import { IconPlus, IconAddTaskMob } from "./icons/navigation-bar"
+import { useNavigate } from "react-router-dom"
 
 const showModal_addTask = function () {
   const modal = document.querySelector(".modal-newTask")
@@ -19,6 +20,7 @@ const showModal_addTask = function () {
 
 function NavBarDesktop() {
   const classAppearance = new ClAppearance()
+  const navigation = useNavigate()
 
   return <nav className="navBar-desktop">
     <img src="logo.png" alt="brand logo" height={34} style={{ marginLeft: 10 }} />
@@ -36,6 +38,7 @@ function NavBarDesktop() {
         onClick={() => {
           signOut(auth)
           classAppearance._makeLight()
+          navigation("/fare/")
         }}>Cerrar Sesión</button>
     </section>
   </nav>

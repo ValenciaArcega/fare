@@ -13,6 +13,8 @@ import { Tasks } from "../components/Tasks"
 import { textoBienvenida } from "../functions/home"
 import { signUserOut } from "../functions/sign"
 import { calcViewPort } from "../functions/viewport"
+import { ClAppearance } from "../classes/cl-appearance"
+import { useNavigate } from "react-router-dom"
 
 export function Dashboard() {
   const [isDesktop, setIsDesktop] = useState(false)
@@ -20,8 +22,9 @@ export function Dashboard() {
   const [tasksArray, setTasksArray] = useState(null)
   const [dataLoaded, setDataLoaded] = useState(false)
   const emailUser = auth.currentUser.email
-
+  const classAppearance = new ClAppearance()
   const fixName = str => str.trim().split(' ')[0]
+  const navigation = useNavigate()
 
   const getUserNameAndIdeas = async function () {
     try {
@@ -64,7 +67,11 @@ export function Dashboard() {
         {tasksArray
           ? <Tasks tasksArray={tasksArray} setTasksArray={setTasksArray} /> : null}
 
-        {!isDesktop ? <button className="btn-signOut-mobile" onClick={() => signUserOut(auth)}>Cerrar Sesión</button> : null}
+        {!isDesktop ? <button className="btn-signOut-mobile" onClick={() => {
+          signUserOut(auth)
+          classAppearance._makeLight()
+          navigation("/fare/")
+        }}>Cerrar Sesión</button> : null}
 
       </section>
       :

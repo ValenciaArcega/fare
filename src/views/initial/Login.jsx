@@ -30,6 +30,7 @@ export function Login() {
 			const m = e.target.inputMail.value
 			const p = e.target.inputPassword.value
 			await signInWithEmailAndPassword(auth, m, p)
+			navigation("/fare/Dashboard")
 		} catch (err) {
 			/**
 			* @throws { err } Handle possible errors that firebase

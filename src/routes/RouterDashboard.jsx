@@ -4,6 +4,6 @@ import { Dashboard } from "../views/Dashboard"
 
 export function RouterDashboard() {
     return <Routes>
-        <Route path="/fare/dashboard" Component={Dashboard} />
+        <Route path="/fare/Dashboard" Component={Dashboard} />
     </Routes>
 }
