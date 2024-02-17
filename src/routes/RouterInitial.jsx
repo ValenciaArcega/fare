@@ -17,7 +17,7 @@ export function RouterInitial() {
   </>*/}
 
   return <Routes>
-    <Route path="/fare" Component={LandingPage} />
+    <Route path="/fare/" Component={LandingPage} />
     <Route path="/fare/Login" Component={Login} />
     <Route path="/fare/SignUp" Component={SignUp} />
   </Routes>

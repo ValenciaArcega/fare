@@ -1,0 +1,11 @@
+.containerFare {
+    height: 100dvh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    grid-template-areas: "sidebar main";
+}
+
+.mainFare {
+    grid-area: main;
+}

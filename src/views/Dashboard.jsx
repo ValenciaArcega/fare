@@ -1,5 +1,5 @@
 /**
- * @overview Welcome component that fetch task and other functions such as Appearance.
+ * @overview Component view that fetch tasks and other functions such as Appearance.
  * @author Valencia Arcega Luis Angel
  */
 import NavBar from "../components/NavBar"
@@ -15,6 +15,8 @@ import { signUserOut } from "../functions/sign"
 import { calcViewPort } from "../functions/viewport"
 import { ClAppearance } from "../classes/cl-appearance"
 import { useNavigate } from "react-router-dom"
+import { SidebarLg } from "../components/SidebarLg"
+import css from "./Dashboard.module.css"
 
 export function Dashboard() {
   const [isDesktop, setIsDesktop] = useState(false)
@@ -50,12 +52,13 @@ export function Dashboard() {
     calcViewPort(setIsDesktop)
   }, [])
 
-  return <>
+  return <section className={css.containerFare}>
+    <SidebarLg />
     {dataLoaded
       ?
-      <section>
+      <main className={css.mainFare}>
         <Appearance />
-        <NavBar />
+        {/* <NavBar /> */}
 
         <header className="wrapper-welcomeText">
           <h1 className="welcomeText-h1"><span className="blueText">Hola</span> {name}</h1>
@@ -73,8 +76,8 @@ export function Dashboard() {
           navigation("/fare/")
         }}>Cerrar Sesión</button> : null}
 
-      </section>
+      </main>
       :
       <LoaderBar />}
-  </>
+  </section>
 }
