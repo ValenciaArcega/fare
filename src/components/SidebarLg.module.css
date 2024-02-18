@@ -1,7 +1,17 @@
 .navigationBar {
     height: 100dvh;
-    width: 4rem;
-    border-right: 1px solid rgb(179, 178, 178);
-    background: var(--white);
+    width: 4.2rem;
+    border-right: 1px solid #b3b2b2;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: repeat(8, 1fr);
     grid-area: sidebar;
+    background: var(--white);
+}
+
+.wrapperBtn {}
+
+.wrapperBtn:hover {
+    cursor: pointer;
 }
