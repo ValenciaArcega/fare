@@ -10,8 +10,18 @@
     background: var(--white);
 }
 
-.wrapperBtn {}
+.wrapperBtn {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .7s;
+    position: relative;
+}
 
 .wrapperBtn:hover {
-    cursor: pointer;
+    border-radius: 50px;
+    background: #e4e3e3;
+    transform: scale(.95, .95);
 }
