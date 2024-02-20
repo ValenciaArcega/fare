@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import css from "./SidebarLg.module.css"
-import { IconStar, IconProfile, IconMagnify, IconHome } from "./icons/sidebar"
+import { IconStar, IconProfile, IconMagnify, IconHome, IconPlus, IconMoon } from "./icons/sidebar"
 
 export function SidebarLg() {
     const navigation = useNavigate()
@@ -13,19 +13,27 @@ export function SidebarLg() {
         <img src="logo.png" alt="brand simple logo" height={48} />
 
         <a onClick={() => navigateTo("/fare/")} className={css.wrapperBtn}>
-            <IconHome fill="#181818" height={22} />
+            <IconHome height={22} />
         </a>
 
         <a onClick={() => navigateTo("/fare/favorites")} className={css.wrapperBtn}>
-            <IconStar fill="#181818" height={22} />
+            <IconStar height={22} />
         </a>
+
+        <button className={css.wrapperBtn}>
+            <IconPlus height={22} />
+        </button>
 
         <a onClick={() => navigateTo("/fare/search")} className={css.wrapperBtn}>
-            <IconMagnify fill="#181818" height={22} />
+            <IconMagnify height={22} />
         </a>
 
+        <button className={css.wrapperBtn}>
+            <IconMoon height={22} />
+        </button>
+
         <a onClick={() => navigateTo("/fare/profile")} className={css.wrapperBtn}>
-            <IconProfile fill="#181818" height={22} />
+            <IconProfile height={22} />
         </a>
     </nav>
 }

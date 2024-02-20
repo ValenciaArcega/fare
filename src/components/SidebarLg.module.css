@@ -5,9 +5,31 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     grid-area: sidebar;
     background: var(--white);
+
+    & button {
+        border: none;
+        outline: none;
+        background-color: none;
+    }
+
+    & :nth-child(4) {
+        grid-row: 5/6;
+    }
+
+    & :nth-child(5) {
+        grid-row: 6/7;
+    }
+
+    & :nth-child(6) {
+        grid-row: 9/10;
+    }
+
+    & :nth-child(7) {
+        grid-row: 10/11;
+    }
 }
 
 .wrapperBtn {
@@ -18,10 +40,19 @@
     justify-content: center;
     transition: all .7s;
     position: relative;
-}
 
-.wrapperBtn:hover {
-    border-radius: 50px;
-    background: #e4e3e3;
-    transform: scale(.95, .95);
+    & svg {
+        fill: var(--black18);
+    }
+
+    &:hover {
+        cursor: pointer;
+        border-radius: 50px;
+        background: var(--bg);
+        transform: scale(.95, .95);
+
+        & svg {
+            fill: var(--mainColor);
+        }
+    }
 }
