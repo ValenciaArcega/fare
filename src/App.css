@@ -868,17 +868,20 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  grid-row: 9/10;
+  /* position: fixed;
   top: 54px;
-  right: 20px;
-  background: none;
+  right: 20px; */
+  /* background: none;
   -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  z-index: 100;
+  backdrop-filter: blur(4px); */
+  /* z-index: 100; */
+
 }
 
 .btn-darkIcon,
 .btn-lightIcon {
+  grid-row: 9/10;
   height: 24px;
   color: #181818;
 }

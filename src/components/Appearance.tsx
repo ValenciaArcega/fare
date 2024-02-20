@@ -10,7 +10,7 @@ import { ClAppearance } from "../classes/cl-appearance"
 export function Appearance() {
   const classAppearance = new ClAppearance()
 
-  return <>
+  return <div>
     <button
       className="btn-Dark"
       title="button of moon"
@@ -26,5 +26,5 @@ export function Appearance() {
       onClick={() => classAppearance._makeLight()}>
       <IconSun />
     </button>
-  </>
+  </div>
 }

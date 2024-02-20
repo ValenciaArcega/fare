@@ -12,7 +12,7 @@
     & button {
         border: none;
         outline: none;
-        background-color: none;
+        background: none;
     }
 
     & :nth-child(4) {

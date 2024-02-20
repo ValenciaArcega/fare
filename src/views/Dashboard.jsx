@@ -57,7 +57,7 @@ export function Dashboard() {
     {dataLoaded
       ?
       <main className={css.mainFare}>
-        <Appearance />
+        {/* <Appearance /> */}
         {/* <NavBar /> */}
 
         <header className="wrapper-welcomeText">
