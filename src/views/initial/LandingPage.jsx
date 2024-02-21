@@ -4,7 +4,7 @@
  is the main page to introduce "Fare"
  * @author Valencia Arcega Luis Angel
  */
-import css from "./LandingPage.module.css"
+import css from "../../css/LandingPage.module.css"
 import { Link } from "react-router-dom"
 import { IconPanLock, IconBulb, IconMagnify, IconSheets } from '../../components/icons/landing-page'
 

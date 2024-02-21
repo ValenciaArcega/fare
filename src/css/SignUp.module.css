@@ -4,8 +4,8 @@
  * 👉 FONT SIZE SYSTEM (px): 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98 
 */
 .containerCircles {
-    height: 99dvh;
-    height: 99vh;
+    height: 100dvh;
+    height: 100vh;
     width: 100%;
     z-index: 1;
     position: relative;
@@ -30,6 +30,7 @@
 }
 
 .containerSignUp {
+    height: 100dvh;
     width: 100%;
     padding-top: 2rem;
     padding-bottom: 2rem;

@@ -1,7 +1,9 @@
-import { useNavigate } from "react-router-dom"
-import css from "./SidebarLg.module.css"
-import { IconStar, IconProfile, IconMagnify, IconHome, IconPlus, IconMoon } from "./icons/sidebar"
+import css from "../css/SidebarLg.module.css"
+import { auth } from "../../dal/credentials"
+import { signOut } from "firebase/auth"
 import { Appearance } from "./Appearance"
+import { useNavigate } from "react-router-dom"
+import { IconStar, IconProfile, IconMagnify, IconHome, IconPlus } from "./icons/sidebar"
 
 export function SidebarLg() {
     const navigation = useNavigate()
@@ -44,7 +46,10 @@ export function SidebarLg() {
 
         <Appearance />
 
-        <a onClick={() => navigateTo("/fare/profile")} className={css.wrapperBtn}>
+        <a onClick={() => {
+            signOut(auth)
+            navigation("/fare/")
+        }} className={css.wrapperBtn}>
             <IconProfile height={22} />
         </a>
     </nav>

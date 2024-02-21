@@ -2,15 +2,15 @@
  * @overview The following component allows Register a user or go to Sign in
  * @author Valencia Arcega Luis Angel
  */
+import css from "../../css/SignUp.module.css"
 import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../../components/icons/sign-up'
 import { db, auth } from "../../../dal/credentials"
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { getDoc, setDoc, doc } from "firebase/firestore"
-import { ClReviewSignUp } from "../../classes/cl-signUp"
-import { WrongRegister } from "../../components/messages/SignUp"
-import React, { useState } from "react"
-import css from "./SignUp.module.css"
+import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
+import { WrongRegister } from "../../components/messages/SignUp"
+import { ClReviewSignUp } from "../../classes/cl-signUp"
+import { getDoc, setDoc, doc } from "firebase/firestore"
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx

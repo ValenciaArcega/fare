@@ -2,34 +2,30 @@
  * @overview The following component Log the user in or allows go to sign up
  * @author Valencia Arcega Luis Angel
 */
-import css from "./Login.module.css"
+import css from "../../css/Login.module.css"
 import BadCredentials from "../../components/messages/BadCredentials"
+import { auth } from "../../../dal/credentials"
+import { useNavigate } from "react-router-dom"
+import { useState, useRef } from "react"
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { IconAt, IconCheck, IconKey } from "../../components/icons/sign-in"
-import { ClSignIn } from "../../classes/cl-signIn"
-import { useState } from "react"
-import { auth } from "../../../dal/credentials"
-import React from 'react'
-import { useNavigate } from "react-router-dom"
 
-/**
- * @param {object} setIsRegistering Change between forms in Sign.jsx
- */
 export function Login() {
+	const root = useRef(document.documentElement)
 	const [isLoginWrong, setIsLoginWrong] = useState(false)
 	const [bannerError, setBannerError] = useState('Las credenciales no coinciden')
-	const cl = new ClSignIn()
 	const navigation = useNavigate()
 	/**
 	 * @param {object} e Get the event itself and stored to can
 	 * prevent the default behavior in a submit action form
 	 */
-	const submitLogIn = async function (e) {
+	async function submitLogIn(e) {
 		e.preventDefault()
 		try {
-			const m = e.target.inputMail.value
-			const p = e.target.inputPassword.value
-			await signInWithEmailAndPassword(auth, m, p)
+			const userMail = e.target.inputMail.value
+			const userPass = e.target.inputPassword.value
+
+			await signInWithEmailAndPassword(auth, userMail, userPass)
 			navigation("/fare/")
 		} catch (err) {
 			/**
@@ -59,9 +55,25 @@ export function Login() {
 		}
 	}
 
-	const navigateSignUp = function (e) {
+	function navigateSignUp(e) {
 		e.preventDefault()
 		navigation("/fare/SignUp")
+	}
+
+	/**
+	 * The following functions going to review the name of the
+	 * CSS variable to change when the user "focus in" or "focus out" the inputs
+	 * @param {string} border Name of the border variable to change color.
+	 * @param {string} icon Name of the icon stroke to change the color.
+	 */
+	function onFocusInput(border, icon) {
+		root.current.style.setProperty(`--borderInput-signIn-${border}`, '#4263eb')
+		root.current.style.setProperty(`--fr-svg-${icon}`, '#4263eb')
+	}
+
+	function onBlurInput(border, icon) {
+		root.current.style.setProperty(`--borderInput-signIn-${border}`, '#c5c5c5')
+		root.current.style.setProperty(`--fr-svg-${icon}`, '#727272')
 	}
 
 	return <>
@@ -86,8 +98,8 @@ export function Login() {
 						className={css.loginInputMail}
 						type="text"
 						placeholder="usuario@dominio.some"
-						onFocus={() => cl._inputFocusIn('mail', 'mail')}
-						onBlur={() => cl._inputBlur('mail', 'mail')}
+						onFocus={() => onFocusInput('mail', 'mail')}
+						onBlur={() => onBlurInput('mail', 'mail')}
 					/>
 				</div>
 
@@ -100,8 +112,8 @@ export function Login() {
 						type="password"
 						autoComplete="new-password"
 						placeholder="Ingresa tu contraseña"
-						onFocus={() => cl._inputFocusIn('pass', 'pass')}
-						onBlur={() => cl._inputBlur('pass', 'pass')}
+						onFocus={() => onFocusInput('pass', 'pass')}
+						onBlur={() => onBlurInput('pass', 'pass')}
 					/>
 				</div>
 
