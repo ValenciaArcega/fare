@@ -1,6 +1,6 @@
 /**
  * @overview Component that allows toggle between SignIn and SignUp.
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import { LandingPage } from "../views/initial/LandingPage"
 import { Login } from "../views/initial/Login"

@@ -7,5 +7,9 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     open: false
-  }
+  },
+  esbuild: {
+    jsxFactory: 'jsx',
+    jsxFragment: 'Fragment',
+  },
 })

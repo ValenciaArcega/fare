@@ -1,5 +1,5 @@
 /**
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import { Caution } from "../icons/Caution"
 

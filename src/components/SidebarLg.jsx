@@ -20,7 +20,6 @@ export function SidebarLg() {
         overlay.classList.remove("hidden")
     }
 
-
     return <nav className={css.navigationBar}>
         <img src="logo.png" alt="brand simple logo" height={48} />
 

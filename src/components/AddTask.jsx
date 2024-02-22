@@ -1,7 +1,7 @@
 /**
  * @overview The following component contains the modal element that allows
  the user to add a new idea into firestore.
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import { EmptyInputTitle } from "./messages/EmptyInputTitle"
 import { updateDoc, doc } from "firebase/firestore"

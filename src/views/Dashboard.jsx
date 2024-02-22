@@ -1,6 +1,6 @@
 /**
  * @overview Component view that fetch tasks and other functions such as Appearance.
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import NavBar from "../components/NavBar"
 import { Appearance } from "../components/Appearance"

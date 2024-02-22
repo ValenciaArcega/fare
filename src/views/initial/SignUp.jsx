@@ -1,6 +1,6 @@
 /**
  * @overview The following component allows Register a user or go to Sign in
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import css from "../../css/SignUp.module.css"
 import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../../components/icons/sign-up'

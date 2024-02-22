@@ -1,7 +1,7 @@
 /**
  * @overview The following component renders the navigation bar
  depending on the viewport size (Mobile NavBar or Desktop NavBar)
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import React, { useEffect, useState } from "react"
 import { signOut } from "firebase/auth"

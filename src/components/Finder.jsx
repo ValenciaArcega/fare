@@ -1,7 +1,7 @@
 /**
  * @overview The following component renders the finder input which
  allows to the user filter items in the home screen
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import { IconMagnifier, IconClose } from './icons/finder'
 /**

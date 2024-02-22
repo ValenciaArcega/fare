@@ -2,7 +2,7 @@
  * @overview The following class allows review inputs behavior and
  make checking of the data type that arrives, let it know to the user
  if something went wrong with the input character
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 type ReviewInputName = boolean | void
 

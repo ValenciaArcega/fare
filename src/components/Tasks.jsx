@@ -1,6 +1,6 @@
 /**
  * @overview Component with all tasks fetched from firestore.
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import { updateDoc, doc } from "firebase/firestore"
 import { db } from "../../dal/credentials"

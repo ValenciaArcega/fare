@@ -1,5 +1,5 @@
 /**
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 import { IconPadlock } from "../icons/bad-credentials"
 

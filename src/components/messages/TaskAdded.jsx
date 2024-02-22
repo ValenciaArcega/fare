@@ -1,5 +1,5 @@
 /**
- * @author Valencia Arcega Luis Angel
+ * @author ValenciaArcega
  */
 export function TaskAdded() {
   return <article className="message-taskAdded">

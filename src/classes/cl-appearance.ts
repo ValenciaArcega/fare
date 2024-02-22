@@ -1,5 +1,5 @@
 /**
- @author Valencia Arcega Luis Angel
+ @author ValenciaArcega
   * The following class allows to modify CSS variables (custom properties)
  with assistence of the root element avaliable in the DOM
  */
