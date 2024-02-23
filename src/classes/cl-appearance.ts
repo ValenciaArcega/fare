@@ -25,11 +25,10 @@ export class ClAppearance {
     this.root.setProperty('--ff', '#363636')
     // foregrounds
     this.root.setProperty('--fr-btn-expand', '#fff')
-    this.root.setProperty('--fr-btn-signOut-mobile', '#ff6868')
+    this.root.setProperty('--fr-descriptions', '#f2f2f7');
     // backgrounds
     this.root.setProperty('--bg-btn-expand', '#343333')
     this.root.setProperty('--bg', '#181818')
-    this.root.setProperty('--bg-btn-signOut-mobile', '#141414')
     this.root.setProperty('--bg-modal', '#242424')
     this.root.setProperty('--bg-modal-input', '#262626')
     this.root.setProperty('--bg-modal-input-border', '#333333')
@@ -58,11 +57,10 @@ export class ClAppearance {
     this.root.setProperty('--ff', '#fff')
     // foregrounds
     this.root.setProperty('--fr-btn-expand', '#181818')
-    this.root.setProperty('--fr-btn-signOut-mobile', '#DF0000')
+    this.root.setProperty('--fr-descriptions', '#5d5a5a');
     // backgrounds
     this.root.setProperty('--bg', '#f2f2f7')
     this.root.setProperty('--bg-btn-expand', '#f2f2f7')
-    this.root.setProperty('--bg-btn-signOut-mobile', '#fff')
     this.root.setProperty('--bg-modal', '#f2f2f7')
     this.root.setProperty('--bg-modal-input', '#fff')
     this.root.setProperty('--bg-modal-input-border', '#c9c9c9')

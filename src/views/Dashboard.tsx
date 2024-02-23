@@ -56,14 +56,12 @@ export function Dashboard() {
       <SidebarLg />
       {dataLoaded ? (
         <main className={css.mainFare}>
-          {/* <Appearance /> */}
-          {/* <NavBar /> */}
-
           <header className="wrapper-welcomeText">
-            <h1 className="welcomeText-h1">
+            <h1>
               <span className="blueText">Hola</span> {name}
+              <span className="blueText">.</span>
             </h1>
-            <p className="welcomeText-p">{textoBienvenida}</p>
+            <p>{textoBienvenida}</p>
           </header>
 
           <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} />

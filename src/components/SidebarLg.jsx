@@ -39,10 +39,6 @@ export function SidebarLg() {
             <IconMagnify height={22} />
         </button>
 
-        {/* <button className={css.wrapperBtn}>
-            <IconMoon height={22} />
-        </button> */}
-
         <Appearance />
 
         <a onClick={() => {

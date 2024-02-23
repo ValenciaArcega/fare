@@ -16,8 +16,7 @@
 
   /* Foreground */
   --fr-btn-expand: #181818;
-  --fr-btn-signOut-mobile: #df0000;
-
+  --fr-descriptions: #5d5a5a;
   /* Background */
   --bg-btn-expand: #f2f2f7;
   --bg-modal: #f2f2f7;
@@ -27,7 +26,6 @@
   --bg-task: #fff;
   --bg-fadeEffect: #fff;
   --bg-blur-navBar: rgba(255, 255, 255, 0.4);
-  --bg-btn-signOut-mobile: #fff;
 
   /* Border */
 
@@ -490,124 +488,6 @@ textarea {
 }
 
 /* /////////////////////////////////////////////////////// */
-/* NavBar.jsx */
-.navBar-desktop {
-  height: 52px;
-  width: 100%;
-  border-bottom: 2px solid var(--mainColor);
-  display: grid;
-  grid-template-columns: 30% 1fr;
-  position: fixed;
-  align-items: center;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background-color: var(--bg-blur-navBar);
-  z-index: 99;
-}
-
-.NVD-title {
-  margin-left: 1.3rem;
-  letter-spacing: 2px;
-  font-size: 24px;
-  font-weight: 700;
-  font-style: italic;
-  overflow-y: hidden;
-  color: #181818;
-}
-
-.navBar-btn {
-  font-weight: 500;
-  letter-spacing: -0.2px;
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  justify-items: center;
-  border: none;
-  background: none;
-  color: var(--black18);
-}
-
-.NVD-wrapperButtons {
-  padding-right: 1.3rem;
-  gap: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  background: none;
-}
-
-.navBar__btn__svg-addTask,
-.navBar__btn__svg-power {
-  height: 20px;
-}
-
-.navBar__btn__svg-addTask {
-  color: var(--mainColor);
-}
-
-.navBar__btn__svg-power {
-  color: rgb(255, 62, 62);
-}
-
-.navBar-btn:hover {
-  cursor: pointer;
-}
-
-/* /////////////////////////////////////////////////////// */
-.navBar-mobile {
-  width: 100%;
-  height: 3.3rem;
-  border-top: 2px solid var(--mainColor);
-  display: grid;
-  grid-template-columns: 30% 1fr 30%;
-  justify-items: center;
-  overflow: visible;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: var(--ff);
-  z-index: 100;
-}
-
-.navBar__mobile-btnAdd {
-  height: 4.2rem;
-  width: 4.2rem;
-  margin-top: -2rem;
-  border-radius: 300px;
-  position: fixed;
-  bottom: 18px;
-  right: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: linear-gradient(to left bottom,
-      var(--mainColor),
-      var(--mainColor-shade));
-  box-shadow: 0px 6px 15px rgb(0, 0, 0, 0.25);
-  z-index: 96;
-}
-
-.navBar__mobile-btnAdd:hover {
-  cursor: pointer;
-}
-
-.navBar__mobile-btnAdd svg {
-  color: #fff;
-}
-
-.navBarMobile__btn__svg-addTask {
-  height: 20px;
-}
-
-.navBarMobile__btn__svg-addTask {
-  height: 32px;
-}
-
-/* /////////////////////////////////////////////////////// */
 /* Home.jsx */
 .wrapper-welcomeText {
   margin-top: 72px;
@@ -615,37 +495,22 @@ textarea {
   gap: 6px;
   display: flex;
   flex-direction: column;
+
+  & h1 {
+    letter-spacing: -1px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--black18);
+  }
+
+  & p {
+    font-size: 18px;
+    padding-right: 2px;
+    font-weight: 400;
+    color: var(--fr-descriptions);
+  }
 }
 
-.welcomeText-h1 {
-  letter-spacing: -1.7px;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--black18);
-}
-
-.welcomeText-p {
-  font-size: 20px;
-  padding-right: 2px;
-  font-weight: 500;
-}
-
-.btn-signOut-mobile {
-  height: 48px;
-  width: 100%;
-  margin: 0 0 2rem 0;
-  font-weight: 500;
-  border: none;
-  outline: none;
-  border-top: 1px solid var(--bg-modal-input-border);
-  border-bottom: 1px solid var(--bg-modal-input-border);
-  color: var(--fr-btn-signOut-mobile);
-  background-color: var(--bg-btn-signOut-mobile);
-}
-
-.btn-signOut-mobile:hover {
-  cursor: pointer;
-}
 
 /* /////////////////////////////////////////////////////// */
 /* Tasks.jsx */
@@ -882,12 +747,12 @@ textarea {
 .btn-darkIcon,
 .btn-lightIcon {
   grid-row: 9/10;
-  height: 24px;
+  height: 22px;
   color: #181818;
 }
 
 .btn-lightIcon {
-  height: 28px;
+  height: 26px;
   color: yellow;
 }
 
