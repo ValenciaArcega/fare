@@ -8,6 +8,8 @@ import { updateDoc, doc } from "firebase/firestore";
 import { TaskAdded } from "./messages/TaskAdded";
 import { db, auth } from "../../dal/credentials";
 import { FormEvent, useState } from "react";
+import css from "../css/AddTask.module.css";
+import { IconPlus } from "./icons/tasks";
 /**
  * @param {object} tasksArray
  * @param {object} setTasksArray
@@ -72,58 +74,34 @@ export function AddTask(tasks: {
   };
 
   return (
-    <div className="container-modal__NewTask">
+    <article className={css.containerPopupAddTask}>
       <div onClick={closeModal} className="overlay hidden"></div>
 
-      {areInputsEmpty ? <EmptyInputTitle /> : false}
-      {taskAdded ? <TaskAdded /> : false}
+      {areInputsEmpty && <EmptyInputTitle />}
+      {taskAdded && <TaskAdded />}
 
       <form className="modal-newTask hidden" onSubmit={addNewIdea}>
-        <div className="wrapper-header-modal-newTask">
-          <h1 className="modal-newTask-h1">Nueva idea</h1>
-          {/* @ts-ignore */}
-          <lord-icon
-            src="https://cdn.lordicon.com/pkmkagva.json"
-            trigger="loop"
-            delay="1500"
-            colors="primary:#5573ed"
-            state="hover"
-          />
-        </div>
+        <header className={css.headerNewTask}>
+          <h1>
+            Nueva <span className="blueText">idea</span>.
+          </h1>
+        </header>
 
         <input
           id="inputTitle"
-          className="modal-newTask-title"
+          className={css.inputTaskTitle}
           placeholder="Título"
           autoComplete="off"
         />
         <textarea
           id="inputDescription"
-          className="modal-newTask-description"
+          className={css.inputTaskDescription}
           placeholder="¿Qué hay en mente?"
-          // type="text"
         />
-        <button className="btn-addTask" type="submit" onClick={closeModal}>
+        <button className={css.btnAddTask} type="submit" onClick={closeModal}>
           <IconPlus /> Agregar
         </button>
       </form>
-    </div>
-  );
-}
-
-function IconPlus() {
-  return (
-    <svg
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M12 4.5v15m7.5-7.5h-15"
-      />
-    </svg>
+    </article>
   );
 }

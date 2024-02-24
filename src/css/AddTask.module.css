@@ -1,0 +1,109 @@
+.containerPopupAddTask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+}
+
+.popupAddTask {
+    width: 21rem;
+    padding: 2rem 1.5rem;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    background-color: var(--bg-modal);
+    box-shadow: 0 8px 20px 2px #0000004d;
+    z-index: 99;
+}
+
+.headerNewTask {
+    display: flex;
+    gap: 4px;
+
+    & h1 {
+        font-size: 28px;
+        font-weight: 500;
+        padding-bottom: 12px;
+        letter-spacing: -.4px;
+        overflow-y: hidden;
+    }
+}
+
+.inputTaskTitle {
+    height: 3rem;
+    padding: 0 .8rem;
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid var(--bg-modal-inputTitle-border);
+    border-radius: 12px;
+    outline: none;
+    color: var(--black18);
+    /* text-align: center; */
+    background-color: var(--bg-modal-input);
+
+    &:focus {
+        border: 2px solid var(--mainColor);
+    }
+}
+
+.inputTaskDescription {
+    height: 16rem;
+    min-height: 3rem;
+    max-height: 25rem;
+    padding: 12px 8px;
+    font-size: 19px;
+    border: 2px solid var(--bg-modal-input-border);
+    border-radius: 12px;
+    resize: vertical;
+    outline: none;
+    color: var(--black18);
+    background-color: var(--bg-modal-input);
+
+    &:focus {
+        border: 2px solid var(--mainColor);
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        border: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 12px;
+        height: 10%;
+        width: 10%;
+        background-color: var(--mainColor);
+    }
+}
+
+.btnAddTask {
+    height: 50px;
+    margin-top: 12px;
+    font-size: 17px;
+    border-radius: 10px;
+    font-weight: 400;
+    gap: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: relative;
+    color: white;
+    background: linear-gradient(to top right, #3b59d4, #6681ed);
+    transition: transform .7s;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(.96, .96);
+    }
+
+    & svg {
+        height: 22px;
+        color: white;
+    }
+}
