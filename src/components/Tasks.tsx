@@ -7,7 +7,7 @@ import { auth, db } from "../../dal/credentials";
 import { useState } from "react";
 import { Finder } from "./Finder";
 import { TaskDeleted } from "./messages/TaskDeleted";
-import { Copied } from "./messages/Copied";
+import { DoneCopy } from "./messages/Done";
 import { IconCopy, IconTrashCan } from "./icons/tasks";
 import { NoTaskSection } from "./NoTaskSection";
 /**
@@ -70,7 +70,8 @@ export function Tasks(tasks: {
   return (
     <main className="container-tasks">
       {taskDeleted ? <TaskDeleted /> : false}
-      {copiedText ? <Copied /> : false}
+
+      {copiedText && <DoneCopy txt="Copiado al portapapeles" />}
       {/* @ts-ignore */}
       <Finder lookFor={lookFor} setIsSearching={setIsSearching} />
 

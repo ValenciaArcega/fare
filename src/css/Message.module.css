@@ -1,0 +1,21 @@
+.msg {
+    height: fit-content;
+    min-height: 4rem;
+    width: fit-content;
+    min-width: 10rem;
+    max-width: 23rem;
+    padding: 1rem;
+    border-radius: .8rem;
+    position: absolute;
+    display: grid;
+    gap: .8rem;
+    grid-template-columns: 10% 1fr;
+    align-items: center;
+    justify-content: center;
+    top: 1rem;
+    right: 1rem;
+    line-height: 1.5;
+    background-color: var(--ff);
+    box-shadow: 0px 6px 13px 0px #0000003d;
+    z-index: var(--zindex-msg);
+}

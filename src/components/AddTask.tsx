@@ -1,19 +1,16 @@
 /**
  * @overview The following component contains the modal element that allows
- the user to add a new idea into firestore.
+ the user to add a new idea into database.
  * @author ValenciaArcega
  */
-import { EmptyInputTitle } from "./messages/EmptyInputTitle";
+import { ErrorCaution } from "./messages/Error";
 import { updateDoc, doc } from "firebase/firestore";
 import { TaskAdded } from "./messages/TaskAdded";
 import { db, auth } from "../../dal/credentials";
 import { FormEvent, useState } from "react";
 import css from "../css/AddTask.module.css";
 import { IconPlus } from "./icons/tasks";
-/**
- * @param {object} tasksArray
- * @param {object} setTasksArray
- */
+
 export function AddTask(tasks: {
   tasksArray: string[];
   setTasksArray: (newValue: any) => void;
@@ -21,10 +18,7 @@ export function AddTask(tasks: {
   const [areInputsEmpty, setAreInputsEmpty] = useState(false);
   const [taskAdded, setTaskAdded] = useState(false);
   const emailUser = auth.currentUser?.email;
-  /**
-   * @param {string} title Will be review, to avoid empty entry
-   * @param {string} description Will be review, to avoid empty entry
-   */
+
   const isInputsValueEmpty = function (title: string, description: string) {
     if (title.trim() === "" || description.trim() === "") {
       setAreInputsEmpty(true);
@@ -77,7 +71,9 @@ export function AddTask(tasks: {
     <article className={css.containerPopupAddTask}>
       <div onClick={closeModal} className="overlay hidden"></div>
 
-      {areInputsEmpty && <EmptyInputTitle />}
+      {areInputsEmpty && (
+        <ErrorCaution txt="Error al agregar. El título o descripción no pueden estar vacios" />
+      )}
       {taskAdded && <TaskAdded />}
 
       <form className="modal-newTask hidden" onSubmit={addNewIdea}>

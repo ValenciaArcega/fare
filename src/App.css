@@ -41,6 +41,8 @@
   --borderInput-passConfirm: #c5c5c5;
 
   --shadow-finder: 0px 20px 18px -18px #155ba633;
+
+  --zindex-msg: 101;
 }
 
 ::selection {
@@ -300,36 +302,6 @@ textarea {
 }
 
 /* /////////////////////////////////////////////////////// */
-/* EmptyInputTitle.jsx */
-.message-emptyFormAddTak {
-  height: 4.5rem;
-  width: 20rem;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 0, 0, 0.413);
-  gap: 6px;
-  top: 58px;
-  grid-template-columns: 12% 1fr;
-  z-index: 100;
-  position: fixed;
-  overflow: hidden;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  color: #181818;
-  background-color: rgb(255, 190, 190);
-}
-
-.message-emptyFormAddTak-svg {
-  height: 28px;
-  fill: #ff2c2c;
-}
-
-.message-emptyFormAddTak p {
-  font-size: 0.94rem;
-}
-
-/* /////////////////////////////////////////////////////// */
 /* Home.jsx */
 .wrapper-welcomeText {
   margin-top: 72px;
@@ -427,8 +399,7 @@ textarea {
 /* TaskAdded.jsx */
 .message-taskAdded,
 .message-taskDeleted,
-.message-signUp,
-.message-copied {
+.message-signUp {
   height: 3.5rem;
   width: 14rem;
   border-radius: 12px;
@@ -451,8 +422,7 @@ textarea {
   z-index: 999;
 }
 
-.message-taskAdded,
-.message-copied {
+.message-taskAdded {
   top: 44px;
   gap: 24px;
   border: 0.4px solid rgba(0, 128, 0, 0.396);
@@ -471,15 +441,6 @@ textarea {
 .message-taskAdded svg {
   height: 28px;
   fill: green;
-}
-
-.message-copied {
-  gap: 36px;
-}
-
-.message-copied svg {
-  height: 28px;
-  color: green;
 }
 
 .message-taskDeleted {
