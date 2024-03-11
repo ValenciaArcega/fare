@@ -1,8 +1,6 @@
 /**
  * @author ValenciaArcega
  */
-import React from "react";
-
 export function IconAt() {
   return (
     <svg

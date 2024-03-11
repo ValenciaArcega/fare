@@ -6,11 +6,10 @@ import { updateDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../dal/credentials";
 import { useState } from "react";
 import { Finder } from "./Finder";
-import { TaskDeleted } from "./messages/TaskDeleted";
 import { IconCopy, IconTrashCan } from "./icons/tasks";
 import { NoTaskSection } from "./NoTaskSection";
 import { Message } from "./messages/Message";
-import { Clipboard } from "./icons/message";
+import { Clipboard, IconVerified } from "./icons/message";
 /**
  * @param {object} tasksArray
  * @param {object} setTasksArray
@@ -70,7 +69,11 @@ export function Tasks(tasks: {
 
   return (
     <main className="container-tasks">
-      {taskDeleted ? <TaskDeleted /> : false}
+      {taskDeleted && (
+        <Message txt="Idea eliminada">
+          <IconVerified height={28} fill="green" />
+        </Message>
+      )}
 
       {copiedText && (
         <Message txt="Copiado al portapapeles">
@@ -79,8 +82,6 @@ export function Tasks(tasks: {
       )}
       {/* @ts-ignore */}
       <Finder lookFor={lookFor} setIsSearching={setIsSearching} />
-
-      {/* <h1 className="tasks-header-h1"><span className="highlight-container"><span className="highlight">Mis ideas</span></span></h1> */}
 
       <section className="tasks">
         {filteredItems.length > 0 || tasks.tasksArray.length > 0 ? (
