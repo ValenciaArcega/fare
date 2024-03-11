@@ -3,13 +3,14 @@
  the user to add a new idea into database.
  * @author ValenciaArcega
  */
-import { ErrorCaution } from "./messages/Error";
 import { updateDoc, doc } from "firebase/firestore";
-import { TaskAdded } from "./messages/TaskAdded";
 import { db, auth } from "../../dal/credentials";
 import { FormEvent, useState } from "react";
 import css from "../css/AddTask.module.css";
 import { IconPlus } from "./icons/tasks";
+import { Message } from "./messages/Message";
+import { Caution } from "./icons/message";
+import { IconVerified } from "./icons/message";
 
 export function AddTask(tasks: {
   tasksArray: string[];
@@ -32,10 +33,7 @@ export function AddTask(tasks: {
     document.querySelector(".modal-newTask")?.classList.add("hidden");
     document.querySelector(".overlay")?.classList.add("hidden");
   };
-  /**
-   * @param {object} e Get the event itself and stored to can
-   prevent the default behavior in a submit action form.
-   */
+
   const addNewIdea = async function (e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -72,9 +70,16 @@ export function AddTask(tasks: {
       <div onClick={closeModal} className="overlay hidden"></div>
 
       {areInputsEmpty && (
-        <ErrorCaution txt="Error al agregar. El título o descripción no pueden estar vacios" />
+        <Message txt="Error al agregar. El título o descripción no pueden estar vacios">
+          <Caution height={28} fill="#ff2c2c" />
+        </Message>
       )}
-      {taskAdded && <TaskAdded />}
+
+      {taskAdded && (
+        <Message txt="Idea agregada">
+          <IconVerified height={28} fill="green" />
+        </Message>
+      )}
 
       <form className="modal-newTask hidden" onSubmit={addNewIdea}>
         <header className={css.headerNewTask}>

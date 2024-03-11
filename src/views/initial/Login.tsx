@@ -146,7 +146,7 @@ export function Login() {
               type="button"
               onClick={navigateSignUp}
             >
-              Registrat
+              Registrate
             </button>
           </label>
         </form>

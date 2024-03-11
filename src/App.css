@@ -302,31 +302,6 @@ textarea {
 }
 
 /* /////////////////////////////////////////////////////// */
-/* Home.jsx */
-.wrapper-welcomeText {
-  margin-top: 72px;
-  margin-left: 16px;
-  gap: 6px;
-  display: flex;
-  flex-direction: column;
-
-  & h1 {
-    letter-spacing: -1px;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--black18);
-  }
-
-  & p {
-    font-size: 18px;
-    padding-right: 2px;
-    font-weight: 400;
-    color: var(--fr-descriptions);
-  }
-}
-
-
-/* /////////////////////////////////////////////////////// */
 /* Tasks.jsx */
 .confirmDelete {
   width: 19rem;
@@ -397,7 +372,6 @@ textarea {
 
 /* /////////////////////////////////////////////////////// */
 /* TaskAdded.jsx */
-.message-taskAdded,
 .message-taskDeleted,
 .message-signUp {
   height: 3.5rem;
@@ -420,27 +394,6 @@ textarea {
   border: 2px dotted var(--border-task);
   color: var(--black18);
   z-index: 999;
-}
-
-.message-taskAdded {
-  top: 44px;
-  gap: 24px;
-  border: 0.4px solid rgba(0, 128, 0, 0.396);
-  -webkit-backdrop-filter: blur(8px);
-  -moz-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  color: #181818;
-  background-color: #cfffcfc6;
-}
-
-.message-signUp {
-  height: 3.5rem;
-  width: 17rem;
-}
-
-.message-taskAdded svg {
-  height: 28px;
-  fill: green;
 }
 
 .message-taskDeleted {

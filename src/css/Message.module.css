@@ -1,14 +1,14 @@
 .msg {
-    height: fit-content;
-    min-height: 4rem;
-    width: fit-content;
+    min-height: 1rem;
     min-width: 10rem;
-    max-width: 23rem;
-    padding: 1rem;
+    max-width: 22rem;
+    /* padding-inline: 1.2rem; */
+    padding: 1.1rem;
     border-radius: .8rem;
+    font-size: 1.1rem;
     position: absolute;
     display: grid;
-    gap: .8rem;
+    gap: 1.2rem;
     grid-template-columns: 10% 1fr;
     align-items: center;
     justify-content: center;
@@ -16,6 +16,6 @@
     right: 1rem;
     line-height: 1.5;
     background-color: var(--ff);
-    box-shadow: 0px 6px 13px 0px #0000003d;
+    box-shadow: 0 6px 22px -3px #00000030;
     z-index: var(--zindex-msg);
 }

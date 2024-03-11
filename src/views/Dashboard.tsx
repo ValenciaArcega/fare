@@ -9,23 +9,16 @@ import { db, auth } from "../../dal/credentials";
 import { AddTask } from "../components/AddTask";
 import { Tasks } from "../components/Tasks";
 import { textoBienvenida } from "../functions/home";
-import { signUserOut } from "../functions/sign";
-import { calcViewPort } from "../functions/viewport";
-import { ClAppearance } from "../classes/cl-appearance";
-import { useNavigate } from "react-router-dom";
 import { SidebarLg } from "../components/SidebarLg";
 import css from "../css/Dashboard.module.css";
 import { StateBool, StateStr, StateArrStr } from "../types/state";
 
 export function Dashboard() {
-  const [isDesktop, setIsDesktop]: StateBool = useState(false);
   const [name, setName]: StateStr = useState("");
   const [tasksArray, setTasksArray]: StateArrStr = useState([""]);
   const [dataLoaded, setDataLoaded]: StateBool = useState(false);
   const emailUser = auth.currentUser?.email;
-  const classAppearance = new ClAppearance();
   const fixName = (str: string) => str.trim().split(" ")[0];
-  const navigation = useNavigate();
 
   const getUserNameAndIdeas = async function (): Promise<void> {
     try {
@@ -48,7 +41,6 @@ export function Dashboard() {
 
   useEffect(function () {
     getUserNameAndIdeas();
-    calcViewPort(setIsDesktop);
   }, []);
 
   return (
@@ -56,7 +48,7 @@ export function Dashboard() {
       <SidebarLg />
       {dataLoaded ? (
         <main className={css.mainFare}>
-          <header className="wrapper-welcomeText">
+          <header className={css.wrapperWelcomeText}>
             <h1>
               <span className="blueText">Hola</span> {name}
               <span className="blueText">.</span>
@@ -66,22 +58,9 @@ export function Dashboard() {
 
           <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} />
 
-          {tasksArray ? (
+          {tasksArray && (
             <Tasks tasksArray={tasksArray} setTasksArray={setTasksArray} />
-          ) : null}
-
-          {!isDesktop ? (
-            <button
-              className="btn-signOut-mobile"
-              onClick={() => {
-                signUserOut(auth);
-                classAppearance._makeLight();
-                navigation("/fare/");
-              }}
-            >
-              Cerrar Sesión
-            </button>
-          ) : null}
+          )}
         </main>
       ) : (
         <LoaderBar />
