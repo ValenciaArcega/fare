@@ -10,7 +10,7 @@ import { Message } from "./messages/Message";
 import { Caution } from "./icons/message";
 import { IconVerified } from "./icons/message";
 import { updateDoc, doc } from "firebase/firestore";
-import { FormEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export function AddTask(tasks: {
   tasksArray: string[];

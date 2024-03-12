@@ -26,7 +26,7 @@ export function SignUp() {
 	}
 	/**
 	* pablo  oScaR   gonzaleZ CAMARENA 👉 Pablo Oscar Gonzalez Camarena
-	* @param {string} str Fix the user input name 👇
+	* @param {string} str Fix the user input name
 	*/
 	const fixName = function (str) {
 		const a = str.trim().toLowerCase().split(' ').filter(n => n !== '')
@@ -160,7 +160,7 @@ export function SignUp() {
 					Registrarme Ahora
 				</button>
 
-				<label className={css.signUpLabelGoSignIn} htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className={css.signUpBtnGoSignIn} onClick={renderComponentSignIn}>Inicia Sesión</button></label>
+				<label className={css.signUpLabelGoSignIn} htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className={css.signUpBtnGoSignIn} type="button" onClick={renderComponentSignIn}>Inicia Sesión</button></label>
 			</form>
 		</section>
 	</>
