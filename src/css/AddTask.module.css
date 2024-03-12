@@ -52,8 +52,7 @@
 }
 
 .inputTaskDescription {
-    height: 16rem;
-    min-height: 3rem;
+    min-height: 10rem;
     max-height: 25rem;
     padding: 12px 8px;
     font-size: 19px;
@@ -81,7 +80,14 @@
     }
 }
 
-.btnAddTask {
+.footerBts {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.btnAddTask,
+.btnCancelAddTask {
     height: 50px;
     margin-top: 12px;
     font-size: 17px;
@@ -106,4 +112,9 @@
         height: 22px;
         color: white;
     }
+}
+
+.btnCancelAddTask {
+    color: var(--black18);
+    background: var(--ff)
 }

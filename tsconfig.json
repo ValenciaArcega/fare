@@ -116,7 +116,7 @@
   "allowJs": true,
   "outDir": "dal",
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.css"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.css", "src/components/AddTask.tsx"],
   // "include": ["src/**/*"],
   "exclude": ["node_modules", "dal"]
 }
