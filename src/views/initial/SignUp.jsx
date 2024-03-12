@@ -7,18 +7,20 @@ import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowCon
 import { db, auth } from "../../../dal/credentials"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import { WrongRegister } from "../../components/messages/SignUp"
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { MessageSign } from "../../components/messages/Message"
+import { IconCross } from "../../components/icons/message"
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
  */
 export function SignUp() {
-	const classReview = new ClReviewSignUp()
-	const [hasError, setHasError] = useState(false)
 	const navigation = useNavigate()
+	const classReview = new ClReviewSignUp()
+
+	const [msgError, setMsgError] = useState("")
 
 	const renderComponentSignIn = function () {
 		classReview._resetBorders()
@@ -32,39 +34,37 @@ export function SignUp() {
 		const a = str.trim().toLowerCase().split(' ').filter(n => n !== '')
 		return a.map(n => n[0].toUpperCase() + n.slice(1)).join(' ')
 	}
-	/**
-   * @param {object} e Get the event itself and stored to can
-   * prevent the default behavior in a submit action form
-   */
+
 	const addUserToFirestore = async function (e) {
 		e.preventDefault()
-		const fromUser_name = e.target.suName.value
-		const fromUser_email = e.target.suMail.value
-		const fromUser_password = e.target.suPassword.value
-		const nameFixed = fixName(fromUser_name)
-		const dataUser = [{
-			name: nameFixed,
-			mail: fromUser_email,
-		}]
-		const initialIdea = [{
-			id: +new Date(),
-			title: "Idea de ejemplo",
-			description:
-				"Hacer el reporte de Química sobre: \n 👉 Marie Curie \n 👉 La historia del Polonio \n El reporte es a mano, sin olvidar las referencias.",
-		}]
-		const documentReference = doc(db, `users/${fromUser_email}`)
-		const query = await getDoc(documentReference)
+
 		try {
+			const fromUser_name = e.target.suName.value
+			const fromUser_email = e.target.suMail.value
+			const fromUser_password = e.target.suPassword.value
+			const nameFixed = fixName(fromUser_name)
+			const dataUser = [{
+				name: nameFixed,
+				mail: fromUser_email,
+			}]
+			const initialIdea = [{
+				id: +new Date(),
+				title: "Idea de ejemplo",
+				description:
+					"Hacer el reporte de Química sobre: \n 👉 Marie Curie \n 👉 La historia del Polonio \n El reporte es a mano, sin olvidar las referencias.",
+			}]
+			const documentReference = doc(db, `users/${fromUser_email}`)
+			const query = await getDoc(documentReference)
 			if (!query.exists()) {
 				await setDoc(documentReference, { data: [...dataUser], tasks: [...initialIdea] })
 				await createUserWithEmailAndPassword(auth, fromUser_email, fromUser_password)
 			} else {
-				setHasError(true)
-				setTimeout(() => setHasError(false), 4000)
+				setMsgError("El correo ya esta registrado")
+				setTimeout(() => setMsgError(""), 4000)
 			}
 		} catch (error) {
-			setHasError(true)
-			setTimeout(() => setHasError(false), 4000)
+			setMsgError("Error al enviar")
+			setTimeout(() => setMsgError(""), 4000)
 		}
 	}
 
@@ -75,7 +75,10 @@ export function SignUp() {
 		</div>
 
 		<section className={css.containerSignUp}>
-			{hasError ? <WrongRegister /> : false}
+
+			{msgError !== "" && <MessageSign txt={msgError} >
+				<IconCross height={24} fill="#ff4d4d" />
+			</MessageSign>}
 
 			<form className={css.signUp} onSubmit={(e) => {
 				if (classReview._reviewSignUp(e)) addUserToFirestore(e)

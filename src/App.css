@@ -361,37 +361,6 @@ textarea {
   stroke: white;
 }
 
-/* /////////////////////////////////////////////////////// */
-/* TaskAdded.jsx */
-.message-signUp {
-  height: 3.5rem;
-  width: 14rem;
-  border-radius: 12px;
-  top: 38px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding-left: 24px;
-  display: grid;
-  gap: 16px;
-  font-size: 18px;
-  font-weight: 500;
-  grid-template-columns: 10% 1fr;
-  align-items: center;
-  position: fixed;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background-color: var(--bg-blur-navBar);
-  border: 2px dotted var(--border-task);
-  color: var(--black18);
-  z-index: 999;
-}
-
-.message-signUp svg {
-  height: 24px;
-  stroke: #fff;
-  fill: #ff4d4d;
-}
-
 /* ///////////////////////////////////////////////////// */
 /* SignUp.jsx */
 .btn-showPass-svg,

@@ -26,6 +26,7 @@ export function Login() {
 			const { email, password } = Object.fromEntries(new window.FormData(e.target))
 
 			await signInWithEmailAndPassword(auth, email, password)
+
 			navigation("/fare/")
 		} catch (err) {
 			if (err.message === "Firebase: Error (auth/internal-error).") {
