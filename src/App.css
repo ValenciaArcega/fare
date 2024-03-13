@@ -106,7 +106,7 @@ textarea {
   transform: translate(-50%, -50%);
   border-radius: 12px;
   background-color: var(--bg-modal);
-  box-shadow: 0 8px 20px 2px #0000004d;
+  box-shadow: 0 4px 12px 0px #00000068;
   z-index: 99;
 }
 
@@ -284,8 +284,8 @@ textarea {
 .overlayDelete {
   height: 100%;
   width: 100%;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   position: fixed;
   top: 0;
   left: 0;
