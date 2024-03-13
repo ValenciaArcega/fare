@@ -308,57 +308,53 @@ textarea {
   background-color: var(--bg-modal);
   z-index: 99;
   background-color: var(--bg-modal);
-  box-shadow: 0 2.6rem 3rem -2rem #00000099;
-}
+  box-shadow: 0 10px 10px 4px #00000038;
 
-.confirmDelete-h4 {
-  font-size: 22px;
-  text-align: center;
-}
+  & h4 {
+    font-size: 22px;
+    text-align: center;
+  }
 
-.confirmDelete-p {
-  padding: 12px;
-  border-radius: 12px;
-  line-height: 1.5;
-  text-align: center;
-  border: 1px solid var(--bg-modal-input-border);
-  background-color: var(--bg-modal-input);
-}
+  & p {
+    padding: 12px;
+    border-radius: 12px;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid var(--bg-modal-input-border);
+    background-color: var(--bg-modal-input);
+  }
 
-.confirmDelete-btn-quitModal,
-.confirmDelete-btn-deleteTask {
-  height: 48px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  color: var(--fr-btn-expand);
-  background-color: var(--ff);
-  box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.1);
-  transition: transform .7s;
-}
+  & footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .8rem;
+  }
 
-.confirmDelete-btn-quitModal:hover,
-.confirmDelete-btn-deleteTask:hover {
-  transform: scale(0.9, 0.9);
-}
+  & button {
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--fr-btn-expand);
+    background-color: var(--ff);
+    box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.1);
+    transition: transform .7s;
 
-.confirmDelete-btn-deleteTask {
-  gap: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: none;
-  color: white;
-  background: linear-gradient(to bottom left, #ff8282, #ff1111);
-}
+    &:hover {
+      transform: scale(0.9, 0.9);
+      cursor: pointer;
+    }
+  }
 
-.confirmDelete-btn-deleteTask:hover {
-  cursor: pointer;
-}
-
-.confirmDelete-btn-deleteTask svg {
-  height: 26px;
-  stroke: white;
+  & button:last-child {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    color: white;
+    background: linear-gradient(to bottom left, #ff8282, #ff1111);
+  }
 }
 
 /* ///////////////////////////////////////////////////// */

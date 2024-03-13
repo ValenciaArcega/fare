@@ -40,32 +40,27 @@ export function IconCopy() {
   );
 }
 
-export function IconTrashCan() {
-  return (
-    <svg
-      width="44"
-      height="44"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="#ffffff"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path
-        d="M20 6a1 1 0 0 1 .117 1.993l-.117 .007h-.081l-.919 11a3 3 0 0 1 -2.824 2.995l-.176 .005h-8c-1.598 0 -2.904 -1.249 -2.992 -2.75l-.005 -.167l-.923 -11.083h-.08a1 1 0 0 1 -.117 -1.993l.117 -.007h16z"
-        strokeWidth="0"
-        fill="currentColor"
-      />
-      <path
-        d="M14 2a2 2 0 0 1 2 2a1 1 0 0 1 -1.993 .117l-.007 -.117h-4l-.007 .117a1 1 0 0 1 -1.993 -.117a2 2 0 0 1 1.85 -1.995l.15 -.005h4z"
-        strokeWidth="0"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
+export const IconTrashCan = ({ height, stroke }: { height: number, stroke: string }) => <svg
+  height={height}
+  viewBox="0 0 24 24"
+  strokeWidth="1.5"
+  stroke={stroke}
+  fill="none"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path
+    d="M20 6a1 1 0 0 1 .117 1.993l-.117 .007h-.081l-.919 11a3 3 0 0 1 -2.824 2.995l-.176 .005h-8c-1.598 0 -2.904 -1.249 -2.992 -2.75l-.005 -.167l-.923 -11.083h-.08a1 1 0 0 1 -.117 -1.993l.117 -.007h16z"
+    strokeWidth="0"
+    fill="currentColor"
+  />
+  <path
+    d="M14 2a2 2 0 0 1 2 2a1 1 0 0 1 -1.993 .117l-.007 -.117h-4l-.007 .117a1 1 0 0 1 -1.993 -.117a2 2 0 0 1 1.85 -1.995l.15 -.005h4z"
+    strokeWidth="0"
+    fill="currentColor"
+  />
+</svg>
 
 export const IconPlus = () => (
   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
