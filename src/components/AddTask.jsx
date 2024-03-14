@@ -12,11 +12,8 @@ import { updateDoc, doc } from "firebase/firestore"
 import { useEffect, useRef, useState } from "react"
 import { HiOutlineX } from "react-icons/hi"
 
-export function AddTask({ tasksArray, setTasksArray, setIsAdding }) {
+export function AddTask({ tasksArray, setTasksArray, setIsAdding, setMsgDone, setMsgError }) {
 	const emailUser = auth.currentUser?.email
-
-	const [msgError, setMsgError] = useState(false)
-	const [msgDone, setMsgDone] = useState(false)
 
 	const textArea = useRef()
 
@@ -39,34 +36,24 @@ export function AddTask({ tasksArray, setTasksArray, setIsAdding }) {
 
 			await updateDoc(documentReference, { tasks: [...newIdeasArray] })
 			setTasksArray(newIdeasArray)
-			setMsgDone(true)
-			setTimeout(() => setMsgDone(false), 4500)
-
 			e.target.inputTitle.value = ""
 			e.target.inputDescription.value = ""
+
+			setMsgDone("Idea agregada")
+			setTimeout(() => setMsgDone(""), 3000)
+			setIsAdding(false)
 		} else {
-			setMsgError(true)
-			setTimeout(() => setMsgError(false), 5000)
+			setMsgError("La descripción no puede estar vacía")
+			setTimeout(() => setMsgError(""), 4500)
 		}
 	}
+
 	useEffect(() => {
 		textArea.current.focus()
 	}, [])
 
 	return <article className={css.containerPopupAddTask}>
-		<div onClick={closeModal} className="overlay"></div>
-
-		{msgError && (
-			<Message txt="La descripción no puede estar vacía">
-				<HiOutlineX size={28} color="#ff2c2c" />
-			</Message>
-		)}
-
-		{msgDone && (
-			<Message txt="Idea agregada">
-				<IconVerified height={28} fill="green" />
-			</Message>
-		)}
+		<div onClick={() => setIsAdding(false)} className="overlay"></div>
 
 		<form className="modal-newTask" onSubmit={addNewIdea}>
 			<header className={css.headerNewTask}>
@@ -88,23 +75,26 @@ export function AddTask({ tasksArray, setTasksArray, setIsAdding }) {
 				ref={textArea}
 				className={css.inputTaskDescription}
 				placeholder="¿Qué hay en mente?"
+				onKeyDown={description_OnKeyDown}
 			/>
 			<footer className={css.footerBts}>
 				<button
 					type="button"
 					className={css.btnCancelAddTask}
-					onClick={closeModal}
+					onClick={() => setIsAdding(false)}
 				>
 					Cancelar
 				</button>
-				<button className={css.btnAddTask} type="submit" onClick={closeModal}>
+				<button className={css.btnAddTask} type="submit">
 					<IconPlus /> Agregar
 				</button>
 			</footer>
 		</form>
 	</article>
 
-	function closeModal() {
-		setIsAdding(false)
-	};
+	function description_OnKeyDown(e) {
+		if (e.ctrlKey && e.key === 'Enter') {
+
+		}
+	}
 }

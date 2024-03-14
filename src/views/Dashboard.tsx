@@ -12,6 +12,9 @@ import { textoBienvenida } from "../functions/home";
 import { SidebarLg } from "../components/SidebarLg";
 import css from "../css/Dashboard.module.css";
 import { StateBool, StateStr, StateArrStr } from "../types/state";
+import { Message } from "../components/messages/Message";
+import { HiOutlineX } from "react-icons/hi";
+import { IconVerified } from "../components/icons/message";
 
 export function Dashboard() {
   const emailUser = auth.currentUser?.email;
@@ -20,6 +23,8 @@ export function Dashboard() {
   const [tasksArray, setTasksArray]: StateArrStr = useState([""]);
   const [dataLoaded, setDataLoaded]: StateBool = useState(false);
   const [isAdding, setIsAdding] = useState(false)
+  const [msgDone, setMsgDone] = useState("")
+  const [msgError, setMsgError] = useState("")
 
   const fixName = (str: string) => str.trim().split(" ")[0];
 
@@ -50,6 +55,15 @@ export function Dashboard() {
     <SidebarLg setIsAdding={setIsAdding} />
     {dataLoaded ? (
       <main className={css.mainFare}>
+
+        {msgError !== "" && <Message txt={msgError}>
+          <HiOutlineX size={28} color="#ff2c2c" />
+        </Message>}
+
+        {msgDone !== "" && <Message txt={msgDone}>
+          <IconVerified height={28} fill="green" />
+        </Message>}
+
         <header className={css.wrapperWelcomeText}>
           <h1>
             <span className="blueText">Hola</span> {name}
@@ -58,7 +72,7 @@ export function Dashboard() {
           <p>{textoBienvenida}</p>
         </header>
 
-        {isAdding && <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} setIsAdding={setIsAdding} />}
+        {isAdding && <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} setIsAdding={setIsAdding} setMsgDone={setMsgDone} setMsgError={setMsgError} />}
 
         {tasksArray && (
           <Tasks tasksArray={tasksArray} setTasksArray={setTasksArray} />
