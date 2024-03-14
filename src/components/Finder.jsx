@@ -3,7 +3,8 @@
  allows to the user filter items in the home screen
  * @author ValenciaArcega
  */
-import { IconMagnifier, IconClose } from './icons/finder'
+import { HiMagnifyingGlass, HiMiniXMark } from "react-icons/hi2"
+
 /**
  * @param {object} lookFor Return just the filtered items
  * @param {object} setIsSearching Change the state to know if the user is serching or not
@@ -11,10 +12,10 @@ import { IconMagnifier, IconClose } from './icons/finder'
 export function Finder({ lookFor, setIsSearching }) {
   return <section className="section-finder">
     <form className="container-finder">
-      <IconMagnifier />
+      <HiMagnifyingGlass size={24} />
       <input
         className="input"
-        placeholder="Buscar idea"
+        placeholder="Buscar cualquier idea"
         type="text"
         autoComplete="off"
         onChangeCapture={lookFor}
@@ -23,7 +24,7 @@ export function Finder({ lookFor, setIsSearching }) {
         className="finder-btnClose"
         type="reset"
         onClick={() => setIsSearching(false)}>
-        <IconClose />
+        <HiMiniXMark size={22} />
       </button>
     </form>
   </section>

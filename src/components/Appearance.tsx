@@ -1,9 +1,5 @@
-/**
- * @overview The following component contains both appearance buttons 
- and call the private methods in cl-appearance file
- * @author ValenciaArcega
- */
-import { IconMoon, IconSun } from "./icons/appearance";
+import { HiMiniMoon, HiSun } from "react-icons/hi2";
+
 import { ClAppearance } from "../classes/cl-appearance";
 
 export function Appearance() {
@@ -17,7 +13,7 @@ export function Appearance() {
         type="button"
         onClick={() => classAppearance._makeDark()}
       >
-        <IconMoon />
+        <HiMiniMoon color="#181818" size={22} />
       </button>
 
       <button
@@ -26,7 +22,7 @@ export function Appearance() {
         type="button"
         onClick={() => classAppearance._makeLight()}
       >
-        <IconSun />
+        <HiSun color="yellow" size={26} />
       </button>
     </div>
   );

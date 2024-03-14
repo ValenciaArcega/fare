@@ -391,18 +391,6 @@ textarea {
 
 }
 
-.btn-darkIcon,
-.btn-lightIcon {
-  grid-row: 9/10;
-  height: 22px;
-  color: #181818;
-}
-
-.btn-lightIcon {
-  height: 26px;
-  color: yellow;
-}
-
 /* //////////////////////////////// */
 /* tools */
 .hidden {
@@ -449,9 +437,16 @@ textarea {
   transition: border-radius 0.5s ease;
   background: var(--ff);
   box-shadow: var(--shadow-finder);
+
+  & svg:first-child {
+    color: var(--mainColor-shade);
+  }
+
+  & svg:last-child {
+    color: #ff2d2d;
+  }
 }
 
-/* styling of animated border */
 .container-finder:before {
   content: "";
   position: absolute;
@@ -495,26 +490,9 @@ textarea {
   visibility: hidden;
 }
 
-/* closeButton shown when typing */
 input:not(:placeholder-shown)~.finder-btnClose {
   opacity: 1;
   visibility: visible;
-}
-
-/* sizing svg icons */
-.finder-svg-close,
-.finder-svg-search {
-  /* margin-top: 3px; */
-  padding: 0;
-  align-self: center;
-  width: 18px;
-  height: 18px;
-  color: var(--mainColor);
-}
-
-.finder-svg-search {
-  width: 26px;
-  height: 26px;
 }
 
 /* Loader.jsx */

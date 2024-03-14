@@ -6,7 +6,7 @@
  */
 import css from "../../css/LandingPage.module.css"
 import { Link } from "react-router-dom"
-import { IconPanLock, IconBulb, IconMagnify, IconSheets } from '../../components/icons/landing-page'
+import { HiOutlineLockClosed, HiOutlineLightBulb, HiOutlineMagnifyingGlass, HiClipboardDocumentList } from "react-icons/hi2"
 
 export function LandingPage() {
 	return <section>
@@ -15,7 +15,7 @@ export function LandingPage() {
 
 			<aside className={css["topBar-wrapperSign"]}>
 				<Link className={css.linkSignUp} to="/fare/SignUp">
-					<IconSheets height={20} />
+					<HiClipboardDocumentList size={20} />
 					Registrarme</Link>
 				<Link to="/fare/Login" className={css.linkLogin}>
 					Iniciar Sesión</Link>
@@ -24,7 +24,7 @@ export function LandingPage() {
 
 		<header className={css.landingHeader}>
 			<img src="faRe.svg" alt="Fare logo on landing page" />
-			<h1 className={css.landingHeaderTitle}>Que las pequeñas o grandes ideas, nunca escapen</h1>
+			<h1 className={css.landingHeaderTitle}>Que las pequeñas o grandes <span className="blueText">ideas</span>, nunca escapen</h1>
 		</header>
 
 		<main className={css.landingFeatures}>
@@ -33,19 +33,19 @@ export function LandingPage() {
 
 			<div className={css.landingWrapperFeatures}>
 				<article className={css.landingFeature}>
-					<IconPanLock />
+					<HiOutlineLockClosed />
 					<h3>Sesiones</h3>
 					<p>Solo tu, eres el autor intelectual de tu mente</p>
 				</article>
 
 				<article className={css.landingFeature}>
-					<IconBulb />
+					<HiOutlineLightBulb />
 					<h3>Instantánea</h3>
 					<p>Captura y revisa tus ideas al momento de pensarlas</p>
 				</article>
 
 				<article className={css.landingFeature}>
-					<IconMagnify />
+					<HiOutlineMagnifyingGlass />
 					<h3>No pierdas nada</h3>
 					<p>Busca entre tu mente con indexado de alta velocidad</p>
 				</article>

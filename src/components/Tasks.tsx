@@ -13,10 +13,6 @@ import { Clipboard, IconVerified } from "./icons/message";
 import { HiCheckBadge, HiOutlineStar } from "react-icons/hi2";
 import { IoCopyOutline } from "react-icons/io5";
 
-/**
- * @param {object} tasksArray
- * @param {object} setTasksArray
- */
 export function Tasks(tasks: {
 	tasksArray: any[];
 	setTasksArray: (newValue: any) => void;
