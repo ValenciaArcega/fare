@@ -108,11 +108,6 @@
         cursor: pointer;
         transform: scale(.96, .96);
     }
-
-    & svg {
-        height: 22px;
-        color: white;
-    }
 }
 
 .btnCancelAddTask {

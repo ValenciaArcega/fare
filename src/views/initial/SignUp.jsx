@@ -58,6 +58,8 @@ export function SignUp() {
 			if (!query.exists()) {
 				await setDoc(documentReference, { data: [...dataUser], tasks: [...initialIdea] })
 				await createUserWithEmailAndPassword(auth, fromUser_email, fromUser_password)
+
+				navigation("/fare/")
 			} else {
 				setMsgError("El correo ya esta registrado")
 				setTimeout(() => setMsgError(""), 4000)
@@ -108,7 +110,7 @@ export function SignUp() {
 					onFocus={() => classReview._inputFocusIn('mail')}
 					onBlur={() => classReview._inputBlur('mail')}
 					onChangeCapture={() => classReview._inputMailOnChangeCapture()}
-				/>x
+				/>
 				<p id="signUp-mail-p" className={css.signUpFeedback}></p>
 
 				<label className={css.signUpLabel} htmlFor="suPassword">Contraseña</label>

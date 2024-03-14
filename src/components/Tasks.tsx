@@ -6,10 +6,13 @@ import { updateDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../dal/credentials";
 import { useState } from "react";
 import { Finder } from "./Finder";
-import { IconCopy, IconTrashCan } from "./icons/tasks";
+import { HiMiniTrash } from "react-icons/hi2";
 import { NoTaskSection } from "./NoTaskSection";
 import { Message } from "./messages/Message";
 import { Clipboard, IconVerified } from "./icons/message";
+import { HiCheckBadge, HiOutlineStar } from "react-icons/hi2";
+import { IoCopyOutline } from "react-icons/io5";
+
 /**
  * @param {object} tasksArray
  * @param {object} setTasksArray
@@ -28,7 +31,7 @@ export function Tasks(tasks: {
 	const lookFor = function (e: any) {
 		setFilteredItems(
 			tasks.tasksArray.filter((task) =>
-				task.title.toLowerCase().includes(e.target.value.toLowerCase())
+				task.description.toLowerCase().includes(e.target.value.toLowerCase()) || task.title.toLowerCase().includes(e.target.value.toLowerCase())
 			)
 		);
 		setIsSearching(true);
@@ -104,6 +107,14 @@ export function Tasks(tasks: {
 									<div className="wrapper-task-buttons">
 										<button
 											type="button"
+											className="btn-copy"
+											aria-label="Favoritos"
+										>
+											<HiOutlineStar size={26} />
+										</button>
+
+										<button
+											type="button"
 											className="task__btn-complete"
 											aria-label="Completada"
 											onClick={() => {
@@ -111,7 +122,7 @@ export function Tasks(tasks: {
 												revealConfirmDelete();
 											}}
 										>
-											Completada
+											<HiCheckBadge size={28} color="#fff" />
 										</button>
 
 										<button
@@ -119,7 +130,7 @@ export function Tasks(tasks: {
 											className="btn-copy"
 											onClick={() => copyIdeaText(note.description)}
 										>
-											<IconCopy />
+											<IoCopyOutline size={24} />
 										</button>
 									</div>
 								</article>
@@ -140,7 +151,9 @@ export function Tasks(tasks: {
 											onClick={() => {
 												deleteTask(identifier);
 												closeDeleteMessage();
-											}}><IconTrashCan height={22} stroke="#fff" /></button>
+											}}>
+											<HiMiniTrash size={26} color="#fff" />
+										</button>
 									</footer>
 								</div>
 								<div className="overlayDelete hidden"></div>

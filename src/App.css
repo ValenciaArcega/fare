@@ -116,8 +116,8 @@ textarea {
 }
 
 .tasks {
-  margin-top: 12px;
-  padding: 0 6rem;
+  margin-top: 2rem;
+  padding: 0 3rem;
   padding-bottom: 6rem;
   display: grid;
   gap: 2rem 3.8rem;
@@ -131,10 +131,13 @@ textarea {
   width: 20.5rem;
   padding: 1.2rem;
   border-radius: 14px;
-  border: 2px dashed #818181;
+  /* border: 2px dashed #818181; */
+  box-shadow: 0px 3px 20px #00000014;
   background: var(--bg-task);
 }
 
+
+/* NoTaskSection.tsx */
 .no-task {
   height: 10rem;
   width: 100%;
@@ -142,13 +145,20 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  font-size: 1.1rem;
+  font-weight: 400;
   justify-content: center;
   align-items: center;
+
+  & svg {
+    color: var(--mainColor);
+  }
+
+  & span {
+    font-size: 2rem;
+  }
 }
 
-.no-task-svg {
-  stroke: var(--mainColor);
-}
 
 .task-title {
   margin-bottom: 8px;
@@ -226,15 +236,15 @@ textarea {
 .wrapper-task-buttons {
   display: grid;
   gap: 14px;
+  margin-top: .5rem;
   align-items: center;
-  grid-template-columns: 1fr 40%;
+  grid-template-columns: repeat(3, 1fr);
   overflow: visible;
 }
 
 .task__btn-complete {
   height: 46px;
   width: 100%;
-  margin-top: 8px;
   border-radius: 8px;
   font-weight: 500;
   border: none;
@@ -255,11 +265,8 @@ textarea {
 
 .btn-copy {
   height: 48px;
-  margin-top: 12px;
   border-radius: 8px;
-  font-size: 15px;
   gap: 2px;
-  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -273,11 +280,6 @@ textarea {
 .btn-copy:hover {
   cursor: pointer;
   transform: scale(0.9, 0.9);
-}
-
-.btn-copy svg {
-  height: 28px;
-  stroke: var(--black18);
 }
 
 .overlay,

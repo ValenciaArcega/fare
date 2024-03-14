@@ -14,7 +14,7 @@ export function Finder({ lookFor, setIsSearching }) {
       <IconMagnifier />
       <input
         className="input"
-        placeholder="Buscar idea por título"
+        placeholder="Buscar idea"
         type="text"
         autoComplete="off"
         onChangeCapture={lookFor}

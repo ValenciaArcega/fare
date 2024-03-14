@@ -5,12 +5,12 @@
  */
 import css from "../css/AddTask.module.css"
 import { db, auth } from "../../dal/credentials"
-import { IconPlus } from "./icons/tasks"
 import { Message } from "./messages/Message"
 import { IconVerified } from "./icons/message"
 import { updateDoc, doc } from "firebase/firestore"
 import { useEffect, useRef, useState } from "react"
 import { HiOutlineX } from "react-icons/hi"
+import { HiMiniPlus } from "react-icons/hi2"
 
 export function AddTask({ tasksArray, setTasksArray, setIsAdding, setMsgDone, setMsgError }) {
 	const emailUser = auth.currentUser?.email
@@ -19,31 +19,36 @@ export function AddTask({ tasksArray, setTasksArray, setIsAdding, setMsgDone, se
 
 	const addNewIdea = async function (e) {
 		e.preventDefault()
+		try {
+			let { title, description } = Object.fromEntries(new window.FormData(e.target))
 
-		let { title, description } = Object.fromEntries(new window.FormData(e.target))
-		if (title.trim() == "") title = "💡"
+			if (title.trim() == "") title = "💡"
 
-		if (!description.trim() == "") {
-			const documentReference = doc(db, `users/${emailUser}`)
-			const newIdeasArray = [
-				{
-					id: +new Date(),
-					title: title,
-					description: description,
-				},
-				...tasksArray,
-			]
+			if (!description.trim() == "") {
+				const documentReference = doc(db, `users/${emailUser}`)
+				const newIdeasArray = [
+					{
+						id: +new Date(),
+						title: title,
+						description: description,
+					},
+					...tasksArray,
+				]
 
-			await updateDoc(documentReference, { tasks: [...newIdeasArray] })
-			setTasksArray(newIdeasArray)
-			e.target.inputTitle.value = ""
-			e.target.inputDescription.value = ""
+				await updateDoc(documentReference, { tasks: [...newIdeasArray] })
+				setTasksArray(newIdeasArray)
+				e.target.inputTitle.value = ""
+				e.target.inputDescription.value = ""
 
-			setMsgDone("Idea agregada")
-			setTimeout(() => setMsgDone(""), 3000)
-			setIsAdding(false)
-		} else {
-			setMsgError("La descripción no puede estar vacía")
+				setMsgDone("Idea agregada")
+				setTimeout(() => setMsgDone(""), 3000)
+				setIsAdding(false)
+			} else {
+				setMsgError("La descripción no puede estar vacía")
+				setTimeout(() => setMsgError(""), 4500)
+			}
+		} catch {
+			setMsgError("Error al agregar")
 			setTimeout(() => setMsgError(""), 4500)
 		}
 	}
@@ -75,7 +80,6 @@ export function AddTask({ tasksArray, setTasksArray, setIsAdding, setMsgDone, se
 				ref={textArea}
 				className={css.inputTaskDescription}
 				placeholder="¿Qué hay en mente?"
-				onKeyDown={description_OnKeyDown}
 			/>
 			<footer className={css.footerBts}>
 				<button
@@ -86,15 +90,10 @@ export function AddTask({ tasksArray, setTasksArray, setIsAdding, setMsgDone, se
 					Cancelar
 				</button>
 				<button className={css.btnAddTask} type="submit">
-					<IconPlus /> Agregar
+					<HiMiniPlus size={24} color="#fff" />
+					Agregar
 				</button>
 			</footer>
 		</form>
 	</article>
-
-	function description_OnKeyDown(e) {
-		if (e.ctrlKey && e.key === 'Enter') {
-
-		}
-	}
 }
