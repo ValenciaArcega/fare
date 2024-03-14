@@ -14,10 +14,13 @@ import css from "../css/Dashboard.module.css";
 import { StateBool, StateStr, StateArrStr } from "../types/state";
 
 export function Dashboard() {
+  const emailUser = auth.currentUser?.email;
+
   const [name, setName]: StateStr = useState("");
   const [tasksArray, setTasksArray]: StateArrStr = useState([""]);
   const [dataLoaded, setDataLoaded]: StateBool = useState(false);
-  const emailUser = auth.currentUser?.email;
+  const [isAdding, setIsAdding] = useState(false)
+
   const fixName = (str: string) => str.trim().split(" ")[0];
 
   const getUserNameAndIdeas = async function (): Promise<void> {
@@ -43,28 +46,26 @@ export function Dashboard() {
     getUserNameAndIdeas();
   }, []);
 
-  return (
-    <section className={css.containerFare}>
-      <SidebarLg />
-      {dataLoaded ? (
-        <main className={css.mainFare}>
-          <header className={css.wrapperWelcomeText}>
-            <h1>
-              <span className="blueText">Hola</span> {name}
-              <span className="blueText">.</span>
-            </h1>
-            <p>{textoBienvenida}</p>
-          </header>
+  return <section className={css.containerFare}>
+    <SidebarLg setIsAdding={setIsAdding} />
+    {dataLoaded ? (
+      <main className={css.mainFare}>
+        <header className={css.wrapperWelcomeText}>
+          <h1>
+            <span className="blueText">Hola</span> {name}
+            <span className="blueText">.</span>
+          </h1>
+          <p>{textoBienvenida}</p>
+        </header>
 
-          <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} />
+        {isAdding && <AddTask tasksArray={tasksArray} setTasksArray={setTasksArray} setIsAdding={setIsAdding} />}
 
-          {tasksArray && (
-            <Tasks tasksArray={tasksArray} setTasksArray={setTasksArray} />
-          )}
-        </main>
-      ) : (
-        <LoaderBar />
-      )}
-    </section>
-  );
+        {tasksArray && (
+          <Tasks tasksArray={tasksArray} setTasksArray={setTasksArray} />
+        )}
+      </main>
+    ) : (
+      <LoaderBar />
+    )}
+  </section>
 }

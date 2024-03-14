@@ -5,7 +5,7 @@ import { Appearance } from "./Appearance"
 import { useNavigate } from "react-router-dom"
 import { IconStar, IconProfile, IconMagnify, IconHome, IconPlus } from "./icons/sidebar"
 
-export function SidebarLg() {
+export function SidebarLg({ setIsAdding }) {
     const navigation = useNavigate()
 
     function navigateTo(route) {
@@ -13,11 +13,7 @@ export function SidebarLg() {
     }
 
     function showModalAddTask() {
-        const modal = document.querySelector(".modal-newTask")
-        const overlay = document.querySelector(".overlay")
-
-        modal.classList.remove("hidden")
-        overlay.classList.remove("hidden")
+        setIsAdding(true)
     }
 
     return <nav className={css.navigationBar}>

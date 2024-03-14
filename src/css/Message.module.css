@@ -1,20 +1,21 @@
 .msg,
 .msgSign {
-    min-height: 1rem;
-    min-width: 10rem;
+    min-height: 3rem;
+    min-width: 20rem;
     max-width: 22rem;
     /* padding-inline: 1.2rem; */
-    padding: 1.1rem;
+    padding: .8rem 1.1rem;
     border-radius: .3rem;
     font-size: 1.1rem;
-    position: absolute;
     display: grid;
     gap: 1.2rem;
     grid-template-columns: 10% 1fr;
     align-items: center;
     justify-content: center;
-    top: 1rem;
-    right: 1rem;
+    position: fixed;
+    top: 1.1rem;
+    left: 50%;
+    transform: translateX(-50%);
     line-height: 1.5;
     background-color: var(--ff);
     box-shadow: 0 6px 22px -3px #00000030;

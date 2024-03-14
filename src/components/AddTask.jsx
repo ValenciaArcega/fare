@@ -7,28 +7,18 @@ import css from "../css/AddTask.module.css"
 import { db, auth } from "../../dal/credentials"
 import { IconPlus } from "./icons/tasks"
 import { Message } from "./messages/Message"
-import { Caution } from "./icons/message"
 import { IconVerified } from "./icons/message"
 import { updateDoc, doc } from "firebase/firestore"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { HiOutlineX } from "react-icons/hi"
 
-export function AddTask({ tasksArray, setTasksArray }) {
+export function AddTask({ tasksArray, setTasksArray, setIsAdding }) {
 	const emailUser = auth.currentUser?.email
 
 	const [msgError, setMsgError] = useState(false)
 	const [msgDone, setMsgDone] = useState(false)
 
-	const popupAddTask = useRef()
-	const overlay = useRef()
-
-	const isInputsValueEmpty = function (title, description) {
-		if (description.trim() == "") {
-			setMsgError(true)
-			setTimeout(() => setMsgError(false), 5000)
-			return false
-		}
-		return true
-	}
+	const textArea = useRef()
 
 	const addNewIdea = async function (e) {
 		e.preventDefault()
@@ -36,7 +26,7 @@ export function AddTask({ tasksArray, setTasksArray }) {
 		let { title, description } = Object.fromEntries(new window.FormData(e.target))
 		if (title.trim() == "") title = "💡"
 
-		if (isInputsValueEmpty(title, description)) {
+		if (!description.trim() == "") {
 			const documentReference = doc(db, `users/${emailUser}`)
 			const newIdeasArray = [
 				{
@@ -54,15 +44,21 @@ export function AddTask({ tasksArray, setTasksArray }) {
 
 			e.target.inputTitle.value = ""
 			e.target.inputDescription.value = ""
+		} else {
+			setMsgError(true)
+			setTimeout(() => setMsgError(false), 5000)
 		}
 	}
+	useEffect(() => {
+		textArea.current.focus()
+	}, [])
 
 	return <article className={css.containerPopupAddTask}>
-		<div ref={overlay} onClick={closeModal} className="overlay hidden"></div>
+		<div onClick={closeModal} className="overlay"></div>
 
 		{msgError && (
-			<Message txt="Error al agregar. El título o descripción no pueden estar vacios">
-				<Caution height={28} fill="#ff2c2c" />
+			<Message txt="La descripción no puede estar vacía">
+				<HiOutlineX size={28} color="#ff2c2c" />
 			</Message>
 		)}
 
@@ -72,7 +68,7 @@ export function AddTask({ tasksArray, setTasksArray }) {
 			</Message>
 		)}
 
-		<form ref={popupAddTask} className="modal-newTask hidden" onSubmit={addNewIdea}>
+		<form className="modal-newTask" onSubmit={addNewIdea}>
 			<header className={css.headerNewTask}>
 				<h1>
 					Nueva <span className="blueText">idea</span>.
@@ -89,6 +85,7 @@ export function AddTask({ tasksArray, setTasksArray }) {
 			<textarea
 				id="inputDescription"
 				name="description"
+				ref={textArea}
 				className={css.inputTaskDescription}
 				placeholder="¿Qué hay en mente?"
 			/>
@@ -108,7 +105,6 @@ export function AddTask({ tasksArray, setTasksArray }) {
 	</article>
 
 	function closeModal() {
-		popupAddTask.current.classList.add("hidden")
-		overlay.current.classList.add("hidden")
+		setIsAdding(false)
 	};
 }
