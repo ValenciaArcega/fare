@@ -11,6 +11,7 @@ import { IconPlus } from "./icons/tasks"
 import { Message } from "./messages/Message"
 import { Caution } from "./icons/message"
 import { IconVerified } from "./icons/message"
+import { HiOutlinePlus } from "react-icons/hi2"
 
 export function AddTask(tasksArray, setTasksArray) {
 	const [areInputsEmpty, setAreInputsEmpty] = useState(false)
@@ -63,7 +64,7 @@ export function AddTask(tasksArray, setTasksArray) {
 					Cancelar
 				</button>
 				<button className={css.btnAddTask} type="submit" onClick={closeModal}>
-					<IconPlus /> Agregar
+					<HiOutlinePlus /> Agregar
 				</button>
 			</footer>
 		</form>

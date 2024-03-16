@@ -25,11 +25,6 @@ export class ClReviewSignUp {
 		this.root.setProperty(`--borderInput-${str}`, '#c5c5c5')
 	}
 
-	_inputMailOnChangeCapture() {
-		const p = document.querySelector('#signUp-mail-p') as HTMLParagraphElement
-		p.textContent = ''
-	}
-
 	/**
    * @param {string} inputName Name of the input to review the type.
    * @param {string} iconHide Name of the icon which will hide the password.
@@ -65,23 +60,6 @@ export class ClReviewSignUp {
 		this.root.setProperty('--borderInput-mail', '#c5c5c5')
 		this.root.setProperty('--borderInput-pass', '#c5c5c5')
 		this.root.setProperty('--borderInput-passConfirm', '#c5c5c5')
-	}
-
-	_inputNameKeyUp() {
-		const input = document.querySelector('#sufn') as HTMLInputElement
-		const textError = document.querySelector('#signUp-name-p') as HTMLElement
-
-		this.root.setProperty('--borderInput-name', '#4263eb')
-
-		if (input.value.match(this._regularExpressionNumbers) || input.value.match(this._regularExpressionCharacters)) {
-			this.root.setProperty('--borderInput-name', '#DF0000')
-			textError.textContent = 'Recuerda, caracteres de tipo texto'
-		} else textError.textContent = ''
-
-		if (input.value === '') {
-			this.root.setProperty('--borderInput-name', '#4263eb')
-			textError.textContent = ''
-		}
 	}
 
 	_inputConfirmPassKeyUp() {

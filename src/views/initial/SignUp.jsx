@@ -5,13 +5,14 @@
 import css from "../../css/SignUp.module.css"
 import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../../components/icons/sign-up'
 import { db, auth } from "../../../dal/credentials"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { MessageSign } from "../../components/messages/Message"
 import { IconCross } from "../../components/icons/message"
+import { useKeyUpSign } from "../../hooks/useKeyUpSign"
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
@@ -26,6 +27,8 @@ export function SignUp() {
 		classReview._resetBorders()
 		navigation("/fare/Login")
 	}
+	const { nameKeyUp, mail_onChangeCapture, errorName, errorMail } = useKeyUpSign()
+
 	/**
 	* pablo  oScaR   gonzaleZ CAMARENA 👉 Pablo Oscar Gonzalez Camarena
 	* @param {string} str Fix the user input name
@@ -96,9 +99,9 @@ export function SignUp() {
 					autoComplete="new-password"
 					onFocus={() => classReview._inputFocusIn('name')}
 					onBlur={() => classReview._inputBlur('name')}
-					onKeyUp={() => classReview._inputNameKeyUp()}
+					onKeyUp={nameKeyUp}
 				/>
-				<p id="signUp-name-p" className={css.signUpFeedback}></p>
+				<p ref={errorName} id="signUp-name-p" className={css.signUpFeedback}></p>
 
 				<label className={css.signUpLabel} htmlFor="suMail">
 					Correo electrónico
@@ -109,9 +112,9 @@ export function SignUp() {
 					placeholder="usuario@dominio.some"
 					onFocus={() => classReview._inputFocusIn('mail')}
 					onBlur={() => classReview._inputBlur('mail')}
-					onChangeCapture={() => classReview._inputMailOnChangeCapture()}
+					onChangeCapture={mail_onChangeCapture}
 				/>
-				<p id="signUp-mail-p" className={css.signUpFeedback}></p>
+				<p ref={errorMail} id="signUp-mail-p" className={css.signUpFeedback}></p>
 
 				<label className={css.signUpLabel} htmlFor="suPassword">Contraseña</label>
 				<section className={css.wrapperPassword}>
@@ -162,11 +165,13 @@ export function SignUp() {
 				<p id="signUp-passConfirm-p" className={css.signUpFeedback}></p>
 
 				<button type="submit" className={css.signUpBtnRegister} name="Button to Register a new user">
-					Registrarme Ahora
+					Registrarme
 				</button>
 
 				<label className={css.signUpLabelGoSignIn} htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className={css.signUpBtnGoSignIn} type="button" onClick={renderComponentSignIn}>Inicia Sesión</button></label>
 			</form>
 		</section>
 	</>
+
+
 }
