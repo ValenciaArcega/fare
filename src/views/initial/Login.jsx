@@ -9,7 +9,7 @@ import { useState, useRef, FormEvent, MouseEvent } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { IconAt, IconCheck, IconKey } from "../../components/icons/sign-in"
 import { MessageSign } from "../../components/messages/Message"
-import { IconPadlock } from "../../components/icons/message"
+import { HiOutlineLockClosed } from "react-icons/hi2"
 
 export function Login() {
 	const root = useRef(document.documentElement)
@@ -80,7 +80,7 @@ export function Login() {
 		<section className={css.containerLogin}>
 
 			{msgError && <MessageSign txt={bannerError} >
-				<IconPadlock height={22} stroke="#df0000" />
+				<HiOutlineLockClosed size={22} color="#df0000" />
 			</MessageSign>}
 
 			<form className={css.loginForm} onSubmit={submitLogIn}>
