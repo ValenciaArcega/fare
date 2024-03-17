@@ -12,7 +12,8 @@ import { getDoc, setDoc, doc } from "firebase/firestore"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { MessageSign } from "../../components/messages/Message"
 import { IconCross } from "../../components/icons/message"
-import { useKeyUpSign } from "../../hooks/useKeyUpSign"
+import { useKeyUpSign } from "../../hooks/useFieldsSign"
+import { fixName } from "../../functions/upperName"
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
@@ -27,18 +28,120 @@ export function SignUp() {
 		classReview._resetBorders()
 		navigation("/fare/Login")
 	}
-	const { nameKeyUp, mail_onChangeCapture, errorName, errorMail } = useKeyUpSign()
+	const { name_onKeyUp,
+		mail_onChangeCapture,
+		pass_onChangeCapture,
+		passConfirm_onKeyUp,
+		inputPass,
+		inputPassConfirm,
+		errorName,
+		errorMail,
+		errorPass,
+		errorPassConfim } = useKeyUpSign()
 
-	/**
-	* pablo  oScaR   gonzaleZ CAMARENA 👉 Pablo Oscar Gonzalez Camarena
-	* @param {string} str Fix the user input name
-	*/
-	const fixName = function (str) {
-		const a = str.trim().toLowerCase().split(' ').filter(n => n !== '')
-		return a.map(n => n[0].toUpperCase() + n.slice(1)).join(' ')
-	}
+	return <>
+		<div className={css.containerCircles}>
+			<div className={css.circleLeft}></div>
+			<div className={css.circleRight}></div>
+		</div>
 
-	const addUserToFirestore = async function (e) {
+		<section className={css.containerSignUp}>
+
+			{msgError !== "" && <MessageSign txt={msgError} >
+				<IconCross height={24} fill="#ff4d4d" />
+			</MessageSign>}
+
+			<form className={css.signUp} onSubmit={(e) => {
+				if (classReview._reviewSignUp(e)) addUserToFirestore(e)
+			}}>
+				<h1 className={css.signUpTitle}>Crea una cuenta</h1>
+
+				<label className={css.signUpLabel} htmlFor="suName">
+					Nombre completo<IconText /></label>
+				<input
+					id="suName"
+					className={css.signUpName}
+					placeholder="Nombre(s) y apellidos"
+					autoComplete="new-password"
+					onFocus={() => classReview._inputFocusIn('name')}
+					onBlur={() => classReview._inputBlur('name')}
+					onKeyUp={name_onKeyUp}
+				/>
+				<p ref={errorName} id="signUp-name-p" className={css.signUpFeedback}></p>
+
+				<label className={css.signUpLabel} htmlFor="suMail">
+					Correo electrónico
+					<IconHashtag /></label>
+				<input
+					id="suMail"
+					className={css.signUpMail}
+					placeholder="usuario@dominio.some"
+					onFocus={() => classReview._inputFocusIn('mail')}
+					onBlur={() => classReview._inputBlur('mail')}
+					onChangeCapture={mail_onChangeCapture}
+				/>
+				<p ref={errorMail} id="signUp-mail-p" className={css.signUpFeedback}></p>
+
+				<label className={css.signUpLabel} htmlFor="suPassword">Contraseña</label>
+				<section className={css.wrapperPassword}>
+					<input
+						id="suPassword"
+						ref={inputPass}
+						className={css.signUpPass}
+						type="password"
+						autoComplete="new-password"
+						placeholder="Crea una contraseña"
+						onFocus={() => classReview._inputFocusIn('pass')}
+						onBlur={() => classReview._inputBlur('pass')}
+						onChangeCapture={pass_onChangeCapture}
+					/>
+					<button
+						className={css.btnShowPass}
+						type="button"
+						title="button show"
+						onClick={() => classReview._showPass('suPassword', 'btn-hidePass-svg', 'btn-showPass-svg')}
+					>
+						<IconShow />
+						<IconHide />
+					</button>
+				</section>
+				<p ref={errorPass} id="signUp-pass-p" className={css.signUpFeedback}></p>
+
+				<label className={css.signUpLabel} htmlFor="suPassConfirm">
+					Confirmar contraseña</label>
+				<div className={css.wrapperPassword}>
+					<input
+						id="suPassConfirm"
+						ref={inputPassConfirm}
+						className={css.signUpPassConfirm}
+						type="password"
+						autoComplete="new-password"
+						placeholder="Repite la contraseña"
+						onFocus={() => classReview._inputFocusIn('passConfirm')}
+						onBlur={() => classReview._inputBlur('passConfirm')}
+						onKeyUp={passConfirm_onKeyUp}
+					/>
+					<button
+						className={css.btnShowPassConfirm}
+						title="button show"
+						type="button"
+						onClick={() => classReview._showPass('suPassConfirm', 'btn-hidePassConfirm-svg', 'btn-showPassConfirm-svg')}>
+						<IconShowConfirm />
+						<IconHideConfirm />
+					</button>
+				</div>
+				<p ref={errorPassConfim} id="signUp-passConfirm-p" className={css.signUpFeedback}></p>
+
+				<button type="submit" className={css.signUpBtnRegister} name="Button to Register a new user">
+					Registrarme
+				</button>
+
+				<label className={css.signUpLabelGoSignIn} htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className={css.signUpBtnGoSignIn} type="button" onClick={renderComponentSignIn}>Inicia Sesión</button></label>
+			</form>
+		</section>
+	</>
+
+	async function addUserToFirestore(e) {
 		e.preventDefault()
 
 		try {
@@ -72,106 +175,4 @@ export function SignUp() {
 			setTimeout(() => setMsgError(""), 4000)
 		}
 	}
-
-	return <>
-		<div className={css.containerCircles}>
-			<div className={css.circleLeft}></div>
-			<div className={css.circleRight}></div>
-		</div>
-
-		<section className={css.containerSignUp}>
-
-			{msgError !== "" && <MessageSign txt={msgError} >
-				<IconCross height={24} fill="#ff4d4d" />
-			</MessageSign>}
-
-			<form className={css.signUp} onSubmit={(e) => {
-				if (classReview._reviewSignUp(e)) addUserToFirestore(e)
-			}}>
-				<h1 className={css.signUpTitle}>Crea una cuenta</h1>
-
-				<label className={css.signUpLabel} htmlFor="suName">
-					Nombre completo<IconText /></label>
-				<input
-					id="suName"
-					className={css.signUpName}
-					placeholder="Nombre(s) y apellidos"
-					autoComplete="new-password"
-					onFocus={() => classReview._inputFocusIn('name')}
-					onBlur={() => classReview._inputBlur('name')}
-					onKeyUp={nameKeyUp}
-				/>
-				<p ref={errorName} id="signUp-name-p" className={css.signUpFeedback}></p>
-
-				<label className={css.signUpLabel} htmlFor="suMail">
-					Correo electrónico
-					<IconHashtag /></label>
-				<input
-					id="suMail"
-					className={css.signUpMail}
-					placeholder="usuario@dominio.some"
-					onFocus={() => classReview._inputFocusIn('mail')}
-					onBlur={() => classReview._inputBlur('mail')}
-					onChangeCapture={mail_onChangeCapture}
-				/>
-				<p ref={errorMail} id="signUp-mail-p" className={css.signUpFeedback}></p>
-
-				<label className={css.signUpLabel} htmlFor="suPassword">Contraseña</label>
-				<section className={css.wrapperPassword}>
-					<input
-						id="suPassword"
-						className={css.signUpPass}
-						type="password"
-						autoComplete="new-password"
-						placeholder="Crea una contraseña"
-						onFocus={() => classReview._inputFocusIn('pass')}
-						onBlur={() => classReview._inputBlur('pass')}
-						onChangeCapture={() => classReview._emptyPassConfirm()}
-					/>
-					<button
-						className={css.btnShowPass}
-						type="button"
-						title="button show"
-						onClick={() => classReview._showPass('suPassword', 'btn-hidePass-svg', 'btn-showPass-svg')}
-					>
-						<IconShow />
-						<IconHide />
-					</button>
-				</section>
-				<p id="signUp-pass-p" className={css.signUpFeedback}></p>
-
-				<label className={css.signUpLabel} htmlFor="suPassConfirm">
-					Confirmar contraseña</label>
-				<div className={css.wrapperPassword}>
-					<input
-						id="suPassConfirm"
-						className={css.signUpPassConfirm}
-						type="password"
-						autoComplete="new-password"
-						placeholder="Repite la contraseña"
-						onFocus={() => classReview._inputFocusIn('passConfirm')}
-						onBlur={() => classReview._inputBlur('passConfirm')}
-						onKeyUp={() => classReview._inputConfirmPassKeyUp()}
-					/>
-					<button
-						className={css.btnShowPassConfirm}
-						title="button show"
-						type="button"
-						onClick={() => classReview._showPass('suPassConfirm', 'btn-hidePassConfirm-svg', 'btn-showPassConfirm-svg')}>
-						<IconShowConfirm />
-						<IconHideConfirm />
-					</button>
-				</div>
-				<p id="signUp-passConfirm-p" className={css.signUpFeedback}></p>
-
-				<button type="submit" className={css.signUpBtnRegister} name="Button to Register a new user">
-					Registrarme
-				</button>
-
-				<label className={css.signUpLabelGoSignIn} htmlFor="sufbsi">¿Ya tienes una cuenta? <button id="sufbsi" className={css.signUpBtnGoSignIn} type="button" onClick={renderComponentSignIn}>Inicia Sesión</button></label>
-			</form>
-		</section>
-	</>
-
-
 }

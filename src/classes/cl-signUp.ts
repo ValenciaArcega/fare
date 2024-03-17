@@ -46,36 +46,11 @@ export class ClReviewSignUp {
 		}
 	}
 
-	_emptyPassConfirm() {
-		const a = document.querySelector('#suPassConfirm') as HTMLInputElement
-		a.value = ''
-		const b = document.querySelector('#signUp-passConfirm-p') as HTMLParagraphElement
-		b.textContent = ''
-		const c = document.querySelector('#signUp-pass-p') as HTMLParagraphElement
-		c.textContent = ''
-	}
-
 	_resetBorders() {
 		this.root.setProperty('--borderInput-name', '#c5c5c5')
 		this.root.setProperty('--borderInput-mail', '#c5c5c5')
 		this.root.setProperty('--borderInput-pass', '#c5c5c5')
 		this.root.setProperty('--borderInput-passConfirm', '#c5c5c5')
-	}
-
-	_inputConfirmPassKeyUp() {
-		const inputPass = document.querySelector('#suPassword') as HTMLInputElement
-		const inputPassConfirm = document.querySelector('#suPassConfirm') as HTMLInputElement
-		const textError = document.querySelector('#signUp-passConfirm-p') as HTMLElement
-
-		if (inputPassConfirm.value === inputPass.value) {
-			this.root.setProperty('--borderInput-passConfirm', '#4263eb')
-			textError.style.color = '#4263eb'
-			textError.textContent = '¡Coinciden!'
-		} else {
-			textError.style.color = '#DF0000'
-			this.root.setProperty('--borderInput-passConfirm', '#DF0000')
-			textError.textContent = 'Las contraseñas no coinciden'
-		}
 	}
 
 	/**
