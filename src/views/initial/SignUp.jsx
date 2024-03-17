@@ -32,10 +32,13 @@ export function SignUp() {
 		mail_onChangeCapture,
 		pass_onChangeCapture,
 		passConfirm_onKeyUp,
+		reviewFields,
+		inputName,
+		inputEmail,
 		inputPass,
 		inputPassConfirm,
 		errorName,
-		errorMail,
+		errorEmail,
 		errorPass,
 		errorPassConfim } = useKeyUpSign()
 
@@ -51,15 +54,14 @@ export function SignUp() {
 				<IconCross height={24} fill="#ff4d4d" />
 			</MessageSign>}
 
-			<form className={css.signUp} onSubmit={(e) => {
-				if (classReview._reviewSignUp(e)) addUserToFirestore(e)
-			}}>
+			<form className={css.signUp} onSubmit={signUp_onSubmit}>
 				<h1 className={css.signUpTitle}>Crea una cuenta</h1>
 
 				<label className={css.signUpLabel} htmlFor="suName">
 					Nombre completo<IconText /></label>
 				<input
 					id="suName"
+					ref={inputName}
 					className={css.signUpName}
 					placeholder="Nombre(s) y apellidos"
 					autoComplete="new-password"
@@ -74,13 +76,14 @@ export function SignUp() {
 					<IconHashtag /></label>
 				<input
 					id="suMail"
+					ref={inputEmail}
 					className={css.signUpMail}
 					placeholder="usuario@dominio.some"
 					onFocus={() => classReview._inputFocusIn('mail')}
 					onBlur={() => classReview._inputBlur('mail')}
 					onChangeCapture={mail_onChangeCapture}
 				/>
-				<p ref={errorMail} id="signUp-mail-p" className={css.signUpFeedback}></p>
+				<p ref={errorEmail} id="signUp-mail-p" className={css.signUpFeedback}></p>
 
 				<label className={css.signUpLabel} htmlFor="suPassword">Contraseña</label>
 				<section className={css.wrapperPassword}>
@@ -142,7 +145,7 @@ export function SignUp() {
 	</>
 
 	async function addUserToFirestore(e) {
-		e.preventDefault()
+		// e.preventDefault()
 
 		try {
 			const fromUser_name = e.target.suName.value
@@ -174,5 +177,12 @@ export function SignUp() {
 			setMsgError("Error al enviar")
 			setTimeout(() => setMsgError(""), 4000)
 		}
+	}
+
+	function signUp_onSubmit(e) {
+		e.preventDefault()
+
+		if (reviewFields()) addUserToFirestore(e)
+		else console.log("Nope")
 	}
 }

@@ -58,63 +58,63 @@ export class ClReviewSignUp {
 	 * @returns {boolean} true in case of not have any mistake
 	 */
 	_reviewInputName(): ReviewInputName {
-		const input = document.querySelector('#suName') as HTMLInputElement
-		const textError = document.querySelector('#signUp-name-p') as HTMLParagraphElement
+		// const input = document.querySelector('#suName') as HTMLInputElement
+		// const textError = document.querySelector('#signUp-name-p') as HTMLParagraphElement
 
-		if (input.value === '') {
-			this.root.setProperty('--borderInput-name', '#DF0000')
-			textError.textContent = 'El campo es obligatorio'
-		} else if (input.value.match(this._regularExpressionNumbers) || input.value.match(this._regularExpressionCharacters)) {
-			this.root.setProperty('--borderInput-name', '#DF0000')
-			textError.textContent = 'Solo caracteres tipo texto'
-		} else return true
+		// if (input.value === '') {
+		// 	this.root.setProperty('--borderInput-name', '#DF0000')
+		// 	textError.textContent = 'El campo es obligatorio'
+		// } else if (input.value.match(this._regularExpressionNumbers) || input.value.match(this._regularExpressionCharacters)) {
+		// 	this.root.setProperty('--borderInput-name', '#DF0000')
+		// 	textError.textContent = 'Solo caracteres tipo texto'
+		// } else return true
 	}
 
 	_reviewInputMail(): ReviewInputName {
-		const input = document.querySelector('#suMail') as HTMLInputElement
-		const textError = document.querySelector('#signUp-mail-p') as HTMLParagraphElement
+		// const input = document.querySelector('#suMail') as HTMLInputElement
+		// const textError = document.querySelector('#signUp-mail-p') as HTMLParagraphElement
 
-		if (input.value === '') {
-			this.root.setProperty('--borderInput-mail', '#DF0000')
-			textError.textContent = 'El campo es obligatorio'
-		} else if (!input.value.includes('@') || !input.value.includes('.') || input.value.length < 10) {
-			this.root.setProperty('--borderInput-mail', '#DF0000')
-			textError.textContent = 'Formato de correo invalido'
-		} else return true
+		// if (input.value === '') {
+		// 	this.root.setProperty('--borderInput-mail', '#DF0000')
+		// 	textError.textContent = 'El campo es obligatorio'
+		// } else if (!input.value.includes('@') || !input.value.includes('.') || input.value.length < 10) {
+		// 	this.root.setProperty('--borderInput-mail', '#DF0000')
+		// 	textError.textContent = 'Formato de correo invalido'
+		// } else return true
 	}
 
 	_reviewInputPass(): ReviewInputName {
-		const input = document.querySelector('#suPassword') as HTMLInputElement
-		const textError = document.querySelector('#signUp-pass-p') as HTMLParagraphElement
+		// const input = document.querySelector('#suPassword') as HTMLInputElement
+		// const textError = document.querySelector('#signUp-pass-p') as HTMLParagraphElement
 
-		if (input.value === '') {
-			this.root.setProperty('--borderInput-pass', '#DF0000')
-			textError.textContent = 'El campo es obligatorio'
-		} else if (input.value.length <= 7) {
-			this.root.setProperty('--borderInput-pass', '#DF0000')
-			textError.textContent = 'Al menos 8 caracteres'
-		} else return true
+		// if (input.value === '') {
+		// 	this.root.setProperty('--borderInput-pass', '#DF0000')
+		// 	textError.textContent = 'El campo es obligatorio'
+		// } else if (input.value.length <= 7) {
+		// 	this.root.setProperty('--borderInput-pass', '#DF0000')
+		// 	textError.textContent = 'Al menos 8 caracteres'
+		// } else return true
 	}
 
 	_reviewInputConfirmPassword(): ReviewInputName {
-		const input = document.querySelector('#suPassConfirm') as HTMLInputElement
-		const textError = document.querySelector('#signUp-passConfirm-p') as HTMLParagraphElement
-		const inputExternal = document.querySelector('#suPassword') as HTMLInputElement
+		// const input = document.querySelector('#suPassConfirm') as HTMLInputElement
+		// const textError = document.querySelector('#signUp-passConfirm-p') as HTMLParagraphElement
+		// const inputExternal = document.querySelector('#suPassword') as HTMLInputElement
 
-		if (inputExternal.value !== input.value) {
-			this.root.setProperty('--borderInput-passConfirm', '#DF0000')
-			textError.style.color = '#DF0000'
-			textError.textContent = 'Las contraseñas no coinciden'
-		} else return true
+		// if (inputExternal.value !== input.value) {
+		// 	this.root.setProperty('--borderInput-passConfirm', '#DF0000')
+		// 	textError.style.color = '#DF0000'
+		// 	textError.textContent = 'Las contraseñas no coinciden'
+		// } else return true
 	}
 
 	_reviewSignUp(e) {
-		e.preventDefault()
-		this._reviewInputName()
-		this._reviewInputMail()
-		this._reviewInputPass()
-		this._reviewInputConfirmPassword()
+		// e.preventDefault()
+		// this._reviewInputName()
+		// this._reviewInputMail()
+		// this._reviewInputPass()
+		// this._reviewInputConfirmPassword()
 
-		if (this._reviewInputName() && this._reviewInputMail() && this._reviewInputConfirmPassword() && this._reviewInputPass()) return true
+		// if (this._reviewInputName() && this._reviewInputMail() && this._reviewInputConfirmPassword() && this._reviewInputPass()) return true
 	}
 }
