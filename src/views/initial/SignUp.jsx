@@ -5,7 +5,7 @@
 import css from "../../css/SignUp.module.css"
 import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../../components/icons/sign-up'
 import { db, auth } from "../../../dal/credentials"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { ClReviewSignUp } from "../../classes/cl-signUp"
 import { getDoc, setDoc, doc } from "firebase/firestore"
@@ -14,6 +14,7 @@ import { MessageSign } from "../../components/messages/Message"
 import { IconCross } from "../../components/icons/message"
 import { useKeyUpSign } from "../../hooks/useFieldsSign"
 import { fixName } from "../../functions/upperName"
+import { timeMsgMedium } from "../../constants/time"
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
@@ -144,17 +145,14 @@ export function SignUp() {
 		</section>
 	</>
 
-	async function addUserToFirestore(e) {
-		// e.preventDefault()
-
+	async function addUserToFirestore() {
 		try {
-			const fromUser_name = e.target.suName.value
-			const fromUser_email = e.target.suMail.value
-			const fromUser_password = e.target.suPassword.value
-			const nameFixed = fixName(fromUser_name)
+			const nameFixed = fixName(inputName.current.value)
+			const email = inputEmail.current.value
+			const password = inputPass.current.value
 			const dataUser = [{
 				name: nameFixed,
-				mail: fromUser_email,
+				mail: email,
 			}]
 			const initialIdea = [{
 				id: +new Date(),
@@ -162,27 +160,33 @@ export function SignUp() {
 				description:
 					"Hacer el reporte de Química sobre: \n 👉 Marie Curie \n 👉 La historia del Polonio \n El reporte es a mano, sin olvidar las referencias.",
 			}]
-			const documentReference = doc(db, `users/${fromUser_email}`)
+			const documentReference = doc(db, `users/${email}`)
 			const query = await getDoc(documentReference)
+
 			if (!query.exists()) {
 				await setDoc(documentReference, { data: [...dataUser], tasks: [...initialIdea] })
-				await createUserWithEmailAndPassword(auth, fromUser_email, fromUser_password)
+				await createUserWithEmailAndPassword(auth, email, password)
 
 				navigation("/fare/")
 			} else {
 				setMsgError("El correo ya esta registrado")
-				setTimeout(() => setMsgError(""), 4000)
+				setTimeout(() => setMsgError(""), timeMsgMedium)
 			}
 		} catch (error) {
 			setMsgError("Error al enviar")
-			setTimeout(() => setMsgError(""), 4000)
+			setTimeout(() => setMsgError(""), timeMsgMedium)
 		}
 	}
 
 	function signUp_onSubmit(e) {
 		e.preventDefault()
 
-		if (reviewFields()) addUserToFirestore(e)
-		else console.log("Nope")
+		if (reviewFields()) {
+			addUserToFirestore()
+		}
+		else {
+			setMsgError("Error al registrar usuario")
+			setTimeout(() => setMsgError(""), timeMsgMedium)
+		}
 	}
 }
