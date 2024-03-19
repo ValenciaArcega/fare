@@ -31,6 +31,7 @@
 
 .containerSignUp {
     height: 100dvh;
+    min-height: 100%;
     width: 100%;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -48,7 +49,7 @@
 }
 
 .signUp {
-    width: 20rem;
+    width: 22rem;
     padding: 2rem 0;
     border-radius: 12px;
     display: flex;
@@ -74,9 +75,10 @@
 }
 
 .signUpLabel svg {
-    width: 20px;
+    width: 24px;
     justify-self: center;
-    color: var(--mainColor);
+    stroke: var(--mainColor);
+    fill: var(--mainColor);
 }
 
 .signUpName,
@@ -181,4 +183,10 @@
 
 .signUpBtnGoSignIn:hover {
     cursor: pointer;
+}
+
+@media (max-width: 624px) {
+    .containerSignUp {
+        padding-top: 7rem;
+    }
 }

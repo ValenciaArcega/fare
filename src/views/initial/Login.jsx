@@ -7,9 +7,8 @@ import { auth } from "../../../dal/credentials"
 import { useNavigate } from "react-router-dom"
 import { useState, useRef, FormEvent, MouseEvent } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth"
-import { IconAt, IconCheck, IconKey } from "../../components/icons/sign-in"
 import { MessageSign } from "../../components/messages/Message"
-import { HiOutlineLockClosed } from "react-icons/hi2"
+import { HiOutlineLockClosed, HiAtSymbol, HiOutlineKey, HiCheck } from "react-icons/hi2"
 
 export function Login() {
 	const root = useRef(document.documentElement)
@@ -95,7 +94,7 @@ export function Login() {
 
 				<label className={css.loginLabel}>Correo electrónico</label>
 				<div className={css.loginWrapperInputMail}>
-					<IconAt />
+					<HiAtSymbol size={22} />
 					<input
 						id="inputMail"
 						name="email"
@@ -109,7 +108,7 @@ export function Login() {
 
 				<label className={css.loginLabel}>Contraseña</label>
 				<div className={css.loginWrapperInputPassword}>
-					<IconKey />
+					<HiOutlineKey size={22} />
 					<input
 						id="inputPassword"
 						name="password"
@@ -123,7 +122,7 @@ export function Login() {
 				</div>
 
 				<button className={css.loginBtnAuth} type="submit">
-					<IconCheck />
+					<HiCheck size={22} color="#fff" />
 					Autenticarme
 				</button>
 

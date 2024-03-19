@@ -67,8 +67,11 @@
 }
 
 .landingHeaderTitle {
+    padding-inline: 1rem;
     font-weight: 400;
     font-size: 18px;
+    line-height: 1.7;
+    text-align: center;
     color: #8f8f8f;
 }
 

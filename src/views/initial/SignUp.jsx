@@ -3,7 +3,7 @@
  * @author ValenciaArcega
  */
 import css from "../../css/SignUp.module.css"
-import { IconText, IconHashtag, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../../components/icons/sign-up'
+import { IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../../components/icons/sign-up'
 import { db, auth } from "../../../dal/credentials"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
@@ -15,6 +15,8 @@ import { IconCross } from "../../components/icons/message"
 import { useKeyUpSign } from "../../hooks/useFieldsSign"
 import { fixName } from "../../functions/upperName"
 import { timeMsgMedium } from "../../constants/time"
+import { IoTextOutline } from "react-icons/io5"
+import { HiAtSymbol } from "react-icons/hi2"
 
 /**
  * @param {object} setIsRegistering Change between forms in Sign.jsx
@@ -59,7 +61,7 @@ export function SignUp() {
 				<h1 className={css.signUpTitle}>Crea una cuenta</h1>
 
 				<label className={css.signUpLabel} htmlFor="suName">
-					Nombre completo<IconText /></label>
+					Nombre completo <IoTextOutline size={22} /> </label>
 				<input
 					id="suName"
 					ref={inputName}
@@ -73,8 +75,7 @@ export function SignUp() {
 				<p ref={errorName} id="signUp-name-p" className={css.signUpFeedback}></p>
 
 				<label className={css.signUpLabel} htmlFor="suMail">
-					Correo electrónico
-					<IconHashtag /></label>
+					Correo electrónico <HiAtSymbol size={32} /></label>
 				<input
 					id="suMail"
 					ref={inputEmail}

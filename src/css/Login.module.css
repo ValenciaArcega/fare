@@ -142,11 +142,6 @@
     transform: scale(.96, .96);
 }
 
-.loginBtnAuth svg {
-    height: 24px;
-    color: white;
-}
-
 .loginLabelGoSignUp {
     margin-top: 16px;
     padding: 10px 0;
