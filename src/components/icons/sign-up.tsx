@@ -29,7 +29,7 @@ export function IconHide() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="btn-hidePass-svg hidden"
+      className="btn-hidePass-svg"
     >
       <path
         strokeLinecap="round"
@@ -70,7 +70,7 @@ export function IconHideConfirm() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="btn-hidePassConfirm-svg hidden"
+      className="btn-hidePassConfirm-svg"
     >
       <path
         strokeLinecap="round"

@@ -105,6 +105,14 @@ export function useKeyUpSign() {
 	}
 	//#endregion
 
+
+	function resetBorders() {
+		root.setProperty('--borderInput-name', '#c5c5c5')
+		root.setProperty('--borderInput-mail', '#c5c5c5')
+		root.setProperty('--borderInput-pass', '#c5c5c5')
+		root.setProperty('--borderInput-passConfirm', '#c5c5c5')
+	}
+
 	function reviewFields() {
 		validateName()
 		validateEmail()
@@ -130,6 +138,7 @@ export function useKeyUpSign() {
 		errorName,
 		errorEmail,
 		errorPass,
-		errorPassConfim
+		errorPassConfim,
+		resetBorders
 	}
 }

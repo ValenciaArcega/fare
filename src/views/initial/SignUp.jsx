@@ -26,9 +26,11 @@ export function SignUp() {
 	const classReview = new ClReviewSignUp()
 
 	const [msgError, setMsgError] = useState("")
+	const [isShowingPass, setIsShowingPass] = useState(false)
+	const [isShowingPassConfirm, setIsShowingPassConfirm] = useState(false)
 
 	const renderComponentSignIn = function () {
-		classReview._resetBorders()
+		resetBorders()
 		navigation("/fare/Login")
 	}
 	const { name_onKeyUp,
@@ -43,7 +45,8 @@ export function SignUp() {
 		errorName,
 		errorEmail,
 		errorPass,
-		errorPassConfim } = useKeyUpSign()
+		errorPassConfim,
+		resetBorders } = useKeyUpSign()
 
 	return <>
 		<div className={css.containerCircles}>
@@ -93,7 +96,7 @@ export function SignUp() {
 						id="suPassword"
 						ref={inputPass}
 						className={css.signUpPass}
-						type="password"
+						type={isShowingPass ? "text" : "password"}
 						autoComplete="new-password"
 						placeholder="Crea una contraseña"
 						onFocus={() => classReview._inputFocusIn('pass')}
@@ -104,10 +107,9 @@ export function SignUp() {
 						className={css.btnShowPass}
 						type="button"
 						title="button show"
-						onClick={() => classReview._showPass('suPassword', 'btn-hidePass-svg', 'btn-showPass-svg')}
+						onClick={() => setIsShowingPass(!isShowingPass)}
 					>
-						<IconShow />
-						<IconHide />
+						{isShowingPass ? <IconHide /> : <IconShow />}
 					</button>
 				</section>
 				<p ref={errorPass} id="signUp-pass-p" className={css.signUpFeedback}></p>
@@ -119,7 +121,7 @@ export function SignUp() {
 						id="suPassConfirm"
 						ref={inputPassConfirm}
 						className={css.signUpPassConfirm}
-						type="password"
+						type={isShowingPassConfirm ? "text" : "password"}
 						autoComplete="new-password"
 						placeholder="Repite la contraseña"
 						onFocus={() => classReview._inputFocusIn('passConfirm')}
@@ -130,9 +132,8 @@ export function SignUp() {
 						className={css.btnShowPassConfirm}
 						title="button show"
 						type="button"
-						onClick={() => classReview._showPass('suPassConfirm', 'btn-hidePassConfirm-svg', 'btn-showPassConfirm-svg')}>
-						<IconShowConfirm />
-						<IconHideConfirm />
+						onClick={() => setIsShowingPassConfirm(!isShowingPassConfirm)}>
+						{isShowingPassConfirm ? <IconHideConfirm /> : <IconShowConfirm />}
 					</button>
 				</div>
 				<p ref={errorPassConfim} id="signUp-passConfirm-p" className={css.signUpFeedback}></p>
