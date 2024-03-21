@@ -160,7 +160,7 @@
 	transform: translate(-50%, -50%);
 	border-radius: 12px;
 	background-color: var(--bg-modal);
-	z-index: 99;
+	z-index: var(--z-index-popup);
 	background-color: var(--bg-modal);
 	box-shadow: 0 10px 10px 4px #00000038;
 
@@ -219,5 +219,26 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 98;
+	z-index: var(--z-index-overlay);
+}
+
+.containerNoTasks {
+	height: 10rem;
+	width: 100%;
+	margin: 2.5rem 0 3.4rem 0;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 1.1rem;
+	font-weight: 400;
+	justify-content: center;
+	align-items: center;
+
+	& svg {
+		color: var(--mainColor);
+	}
+
+	& span {
+		font-size: 2rem;
+	}
 }

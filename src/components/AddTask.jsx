@@ -14,53 +14,14 @@ import { HiMiniPlus } from "react-icons/hi2"
 
 export function AddTask({ tasksArray, setTasksArray, setIsAdding, setMsgDone, setMsgError }) {
 	const emailUser = auth.currentUser?.email
-
 	const textArea = useRef()
 
-	const addNewIdea = async function (e) {
-		e.preventDefault()
-		try {
-			let { title, description } = Object.fromEntries(new window.FormData(e.target))
-
-			if (title.trim() == "") title = "💡"
-
-			if (!description.trim() == "") {
-				const documentReference = doc(db, `users/${emailUser}`)
-				const newIdeasArray = [
-					{
-						id: +new Date(),
-						title: title,
-						description: description,
-					},
-					...tasksArray,
-				]
-
-				await updateDoc(documentReference, { tasks: [...newIdeasArray] })
-				setTasksArray(newIdeasArray)
-				e.target.inputTitle.value = ""
-				e.target.inputDescription.value = ""
-
-				setMsgDone("Idea agregada")
-				setTimeout(() => setMsgDone(""), 3000)
-				setIsAdding(false)
-			} else {
-				setMsgError("La descripción no puede estar vacía")
-				setTimeout(() => setMsgError(""), 4500)
-			}
-		} catch {
-			setMsgError("Error al agregar")
-			setTimeout(() => setMsgError(""), 4500)
-		}
-	}
-
-	useEffect(() => {
-		textArea.current.focus()
-	}, [])
+	useEffect(() => textArea.current.focus(), [])
 
 	return <article className={css.containerPopupAddTask}>
 		<div onClick={() => setIsAdding(false)} className="overlay"></div>
 
-		<form className="modal-newTask" onSubmit={addNewIdea}>
+		<form className={css.popupAddTask} onSubmit={addNewIdea}>
 			<header className={css.headerNewTask}>
 				<h1>
 					Nueva <span className="blueText">idea</span>.
@@ -96,4 +57,40 @@ export function AddTask({ tasksArray, setTasksArray, setIsAdding, setMsgDone, se
 			</footer>
 		</form>
 	</article>
+
+	async function addNewIdea(e) {
+		e.preventDefault()
+		try {
+			let { title, description } = Object.fromEntries(new window.FormData(e.target))
+
+			if (title.trim() == "") title = "💡"
+
+			if (!description.trim() == "") {
+				const documentReference = doc(db, `users/${emailUser}`)
+				const newIdeasArray = [
+					{
+						id: +new Date(),
+						title: title,
+						description: description,
+					},
+					...tasksArray,
+				]
+
+				await updateDoc(documentReference, { tasks: [...newIdeasArray] })
+				setTasksArray(newIdeasArray)
+				e.target.inputTitle.value = ""
+				e.target.inputDescription.value = ""
+
+				setMsgDone("Idea agregada")
+				setTimeout(() => setMsgDone(""), 3000)
+				setIsAdding(false)
+			} else {
+				setMsgError("La descripción no puede estar vacía")
+				setTimeout(() => setMsgError(""), 4500)
+			}
+		} catch {
+			setMsgError("Error al agregar")
+			setTimeout(() => setMsgError(""), 4500)
+		}
+	}
 }

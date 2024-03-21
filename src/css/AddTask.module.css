@@ -18,7 +18,7 @@
     border-radius: 12px;
     background-color: var(--bg-modal);
     box-shadow: 0 6px 10px 2px #00000023;
-    z-index: 99;
+    z-index: var(--z-index-popup);
 }
 
 .headerNewTask {

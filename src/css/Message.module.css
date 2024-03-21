@@ -19,7 +19,7 @@
     line-height: 1.5;
     background-color: var(--ff);
     box-shadow: 0 6px 22px -3px #00000030;
-    z-index: var(--zindex-msg);
+    z-index: var(--z-index-msg);
 }
 
 .msgSign {
