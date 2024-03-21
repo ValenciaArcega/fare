@@ -1,7 +1,5 @@
 import { HiMiniMoon, HiSun } from "react-icons/hi2";
-
 import { useAppearance } from "../hooks/useAppearance";
-
 
 export function Appearance() {
 

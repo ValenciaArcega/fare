@@ -1,12 +1,14 @@
 import css from "../css/SidebarLg.module.css"
-import { auth } from "../../dal/credentials"
-import { signOut } from "firebase/auth"
 import { Appearance } from "./Appearance"
 import { useNavigate } from "react-router-dom"
 import { HiMiniUser, HiMagnifyingGlass, HiHome, HiMiniStar, HiPlus } from "react-icons/hi2"
+import { signOut } from "firebase/auth"
+import { auth } from "../../dal/credentials"
+import { useAppearance } from "../hooks/useAppearance"
 
 export function SidebarLg({ setIsAdding }) {
     const navigation = useNavigate()
+    const { makeLight } = useAppearance()
 
     function navigateTo(route) {
         navigation(route)
@@ -37,11 +39,14 @@ export function SidebarLg({ setIsAdding }) {
 
         <Appearance />
 
-        <a onClick={() => {
-            signOut(auth)
-            navigation("/fare/")
-        }} className={css.wrapperBtn}>
+        <a onClick={signUserOut} className={css.wrapperBtn}>
             <HiMiniUser size={26} />
         </a>
     </nav>
+
+    function signUserOut() {
+        signOut(auth)
+        makeLight()
+        navigation("/fare/")
+    }
 }

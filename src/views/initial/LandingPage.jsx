@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import { HiOutlineLockClosed, HiOutlineLightBulb, HiOutlineMagnifyingGlass, HiClipboardDocumentList } from "react-icons/hi2"
 
 export function LandingPage() {
-	return <section>
+	return <section style={{ background: "#f2f2f7" }}>
 		<nav className={css.topBar}>
 			<img src="logo.png" alt="brand logo" height={34} style={{ marginLeft: 10 }} />
 
