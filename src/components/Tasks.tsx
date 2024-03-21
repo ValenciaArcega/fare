@@ -2,6 +2,7 @@
  * @overview Component with all tasks fetched from firestore.
  * @author ValenciaArcega
  */
+import css from "../css/Tasks.module.css"
 import { updateDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../dal/credentials";
 import { useState } from "react";
@@ -67,7 +68,7 @@ export function Tasks(tasks: {
 	};
 
 	return (
-		<main className="container-tasks">
+		<main className={css.containerTasks}>
 			{taskDeleted && (
 				<Message txt="Idea eliminada">
 					<IconVerified height={28} fill="green" />
@@ -82,7 +83,7 @@ export function Tasks(tasks: {
 			{/* @ts-ignore */}
 			<Finder lookFor={lookFor} setIsSearching={setIsSearching} />
 
-			<section className="tasks">
+			<section className={css.wrapperTasks}>
 				{filteredItems.length > 0 || tasks.tasksArray.length > 0 ? (
 					(isSearching ? filteredItems : tasks.tasksArray).map(function (
 						note,
@@ -90,17 +91,17 @@ export function Tasks(tasks: {
 					) {
 						return (
 							<main key={i}>
-								<article className="task">
-									<div className="taskDescription">
-										<h2 className="task-title">{note.title}</h2>
-										<p className="task-p">{note.description}</p>
+								<article className={css.task}>
+									<div className={css.taskBody}>
+										<h2>{note.title}</h2>
+										<p>{note.description}</p>
 									</div>
 									<input
-										className="btn-expandDescriptionTask"
+										className={css.btnToggleTask}
 										type="checkbox"
 										aria-label="checkbox to collapse or exapand"
 									/>
-									<div className="wrapper-task-buttons">
+									<div className={css.wrapperTaskBtns}>
 										<button
 											type="button"
 											className="btn-copy"

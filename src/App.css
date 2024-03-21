@@ -111,31 +111,6 @@ textarea {
 }
 
 /* /////////////////////////////////////////////////////// */
-.container-tasks {
-  background: none;
-}
-
-.tasks {
-  margin-top: 2rem;
-  padding: 0 3rem;
-  padding-bottom: 6rem;
-  display: grid;
-  gap: 2rem 3.8rem;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  align-items: center;
-  justify-items: center;
-}
-
-.task {
-  margin: 18px;
-  width: 20.5rem;
-  padding: 1.2rem;
-  border-radius: 14px;
-  /* border: 2px dashed #818181; */
-  box-shadow: 0px 3px 20px #00000014;
-  background: var(--bg-task);
-}
-
 
 /* NoTaskSection.tsx */
 .no-task {
@@ -157,89 +132,6 @@ textarea {
   & span {
     font-size: 2rem;
   }
-}
-
-
-.task-title {
-  margin-bottom: 8px;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  pointer-events: none;
-  color: var(--mainColor);
-}
-
-.task-p {
-  font-size: 18px;
-  pointer-events: none;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-.taskDescription {
-  --max-lines: 4;
-  --line-height: 1.6;
-  width: 16rem;
-  border-radius: 12px;
-  text-align: start;
-
-  margin-top: 6px;
-  margin-bottom: 8px;
-  max-height: calc(var(--max-lines) * 1em * var(--line-height));
-  line-height: var(--line-height);
-  overflow: hidden;
-  position: relative;
-}
-
-.taskDescription:has(+ .btn-expandDescriptionTask:not(:checked))::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  height: calc(1.6em * var(--line-height));
-  width: 100%;
-  background: linear-gradient(to bottom, transparent, var(--bg-fadeEffect));
-  z-index: 90;
-}
-
-.btn-expandDescriptionTask {
-  appearance: none;
-  min-width: 100%;
-  min-height: 44px;
-  margin-top: 8px;
-  padding: 4px 12px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--fr-btn-expand);
-  background-color: var(--bg-btn-expand);
-}
-
-.btn-expandDescriptionTask::before {
-  content: "Expandir";
-}
-
-.btn-expandDescriptionTask:checked::before {
-  content: "Ver menos";
-}
-
-/* Now the has selector goes in action */
-.taskDescription:has(+ .btn-expandDescriptionTask:checked) {
-  max-height: none;
-}
-
-.wrapper-task-buttons {
-  display: grid;
-  gap: 14px;
-  margin-top: .5rem;
-  align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  overflow: visible;
 }
 
 .task__btn-complete {
