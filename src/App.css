@@ -134,45 +134,6 @@ textarea {
   }
 }
 
-.task__btn-complete {
-  height: 46px;
-  width: 100%;
-  border-radius: 8px;
-  font-weight: 500;
-  border: none;
-  outline: none;
-  color: #fff;
-  border: none;
-  outline: none;
-  background: linear-gradient(to top right, #3b59d4, #6681ed);
-  transition: transform .7s;
-  -webkit-user-select: all !important;
-  user-select: all !important;
-}
-
-.task__btn-complete:hover {
-  cursor: pointer;
-  transform: scale(.9, .9);
-}
-
-.btn-copy {
-  height: 48px;
-  border-radius: 8px;
-  gap: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  outline: none;
-  color: var(--black18);
-  background-color: var(--bg-btn-expand);
-  transition: transform .7s;
-}
-
-.btn-copy:hover {
-  cursor: pointer;
-  transform: scale(0.9, 0.9);
-}
 
 .overlay,
 .overlayDelete {
@@ -188,68 +149,7 @@ textarea {
 
 /* /////////////////////////////////////////////////////// */
 /* Tasks.jsx */
-.confirmDelete {
-  width: 19rem;
-  padding: 2rem 2rem 1.6rem 2rem;
-  display: flex;
-  gap: 14px;
-  flex-direction: column;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 12px;
-  background-color: var(--bg-modal);
-  z-index: 99;
-  background-color: var(--bg-modal);
-  box-shadow: 0 10px 10px 4px #00000038;
 
-  & h4 {
-    font-size: 22px;
-    text-align: center;
-  }
-
-  & p {
-    padding: 12px;
-    border-radius: 12px;
-    line-height: 1.5;
-    text-align: center;
-    border: 1px solid var(--bg-modal-input-border);
-    background-color: var(--bg-modal-input);
-  }
-
-  & footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: .8rem;
-  }
-
-  & button {
-    height: 48px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    color: var(--fr-btn-expand);
-    background-color: var(--ff);
-    box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.1);
-    transition: transform .7s;
-
-    &:hover {
-      transform: scale(0.9, 0.9);
-      cursor: pointer;
-    }
-  }
-
-  & button:last-child {
-    gap: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none;
-    color: white;
-    background: linear-gradient(to bottom left, #ff8282, #ff1111);
-  }
-}
 
 /* ///////////////////////////////////////////////////// */
 /* SignUp.jsx */
@@ -285,9 +185,7 @@ textarea {
 
 /* //////////////////////////////// */
 /* tools */
-.hidden {
-  display: none;
-}
+
 
 .gradientText {
   background-color: #4463e0;
@@ -303,6 +201,10 @@ textarea {
 
 .blueText {
   color: var(--mainColor);
+}
+
+.hidden {
+  display: none !important;
 }
 
 /* ///////////////////////////////////////////////////// */

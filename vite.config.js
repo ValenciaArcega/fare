@@ -6,7 +6,8 @@ export default defineConfig({
   base: '/fare/',
   server: {
     host: '0.0.0.0',
-    open: false
+    open: false,
+    port: 5174
   },
   esbuild: {
     jsxFactory: 'jsx',
