@@ -159,8 +159,8 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	border-radius: 12px;
-	background-color: var(--bg-modal);
 	z-index: var(--z-index-popup);
+	color: var(--black18);
 	background-color: var(--bg-modal);
 	box-shadow: 0 10px 10px 4px #00000038;
 
@@ -195,7 +195,7 @@
 		transition: transform .7s;
 
 		&:hover {
-			transform: scale(0.9, 0.9);
+			transform: scale(0.97, 0.97);
 			cursor: pointer;
 		}
 	}

@@ -1,7 +1,3 @@
-/**
- * @overview Component view that fetch tasks and other functions such as Appearance.
- * @author ValenciaArcega
- */
 import { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { LoaderBar } from "../components/Loader";

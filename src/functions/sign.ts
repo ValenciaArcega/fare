@@ -1,13 +1,12 @@
 import { signOut } from "firebase/auth"
-import { ClAppearance } from "../classes/cl-appearance"
 import { useNavigate } from "react-router-dom";
+import { useAppearance } from "../hooks/useAppearance";
 
 export const signUserOut = (auth: any): void => {
-    const classAppearance = new ClAppearance();
     const navigation = useNavigate()
+    const { makeLight } = useAppearance()
 
-    classAppearance._makeLight()
-
+    makeLight()
     signOut(auth)
     navigation("/fare/");
 }
