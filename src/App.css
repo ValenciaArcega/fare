@@ -107,16 +107,6 @@ textarea {
 }
 
 /* ///////////////////////////////////////////////////// */
-/* SignUp.jsx */
-.btn-showPass-svg,
-.btn-hidePass-svg,
-.btn-showPassConfirm-svg,
-.btn-hidePassConfirm-svg {
-  height: 24px;
-  color: var(--mainColor);
-}
-
-/* ///////////////////////////////////////////////////// */
 /* Appearance.jsx */
 .btn-Dark,
 .btn-Light {

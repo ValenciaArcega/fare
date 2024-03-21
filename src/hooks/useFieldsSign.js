@@ -103,15 +103,6 @@ export function useKeyUpSign() {
 		}
 		else return true
 	}
-	//#endregion
-
-
-	function resetBorders() {
-		root.setProperty('--borderInput-name', '#c5c5c5')
-		root.setProperty('--borderInput-mail', '#c5c5c5')
-		root.setProperty('--borderInput-pass', '#c5c5c5')
-		root.setProperty('--borderInput-passConfirm', '#c5c5c5')
-	}
 
 	function reviewFields() {
 		validateName()
@@ -123,6 +114,22 @@ export function useKeyUpSign() {
 			return true
 		}
 		else return false
+	}
+	//#endregion
+
+	function resetBorders() {
+		root.setProperty('--borderInput-name', '#c5c5c5')
+		root.setProperty('--borderInput-mail', '#c5c5c5')
+		root.setProperty('--borderInput-pass', '#c5c5c5')
+		root.setProperty('--borderInput-passConfirm', '#c5c5c5')
+	}
+
+	function inputFocusIn(str) {
+		root.setProperty(`--borderInput-${str}`, '#4263eb')
+	}
+
+	function inputBlur(str) {
+		root.setProperty(`--borderInput-${str}`, '#c5c5c5')
 	}
 
 	return {
@@ -139,6 +146,8 @@ export function useKeyUpSign() {
 		errorEmail,
 		errorPass,
 		errorPassConfim,
-		resetBorders
+		resetBorders,
+		inputFocusIn,
+		inputBlur
 	}
 }

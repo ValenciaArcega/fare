@@ -1,13 +1,7 @@
-/**
- * @overview The following component allows Register a user or go to Sign in
- * @author ValenciaArcega
- */
 import css from "../../css/SignUp.module.css"
-import { IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../../components/icons/sign-up'
 import { db, auth } from "../../../dal/credentials"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import { ClReviewSignUp } from "../../classes/cl-signUp"
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { MessageSign } from "../../components/messages/Message"
@@ -16,23 +10,15 @@ import { useKeyUpSign } from "../../hooks/useFieldsSign"
 import { fixName } from "../../functions/upperName"
 import { timeMsgMedium } from "../../constants/time"
 import { IoTextOutline } from "react-icons/io5"
-import { HiAtSymbol } from "react-icons/hi2"
+import { HiAtSymbol, HiOutlineEye, HiOutlineEyeSlash } from "react-icons/hi2"
 
-/**
- * @param {object} setIsRegistering Change between forms in Sign.jsx
- */
 export function SignUp() {
 	const navigation = useNavigate()
-	const classReview = new ClReviewSignUp()
 
 	const [msgError, setMsgError] = useState("")
 	const [isShowingPass, setIsShowingPass] = useState(false)
 	const [isShowingPassConfirm, setIsShowingPassConfirm] = useState(false)
 
-	const renderComponentSignIn = function () {
-		resetBorders()
-		navigation("/fare/Login")
-	}
 	const { name_onKeyUp,
 		mail_onChangeCapture,
 		pass_onChangeCapture,
@@ -46,7 +32,9 @@ export function SignUp() {
 		errorEmail,
 		errorPass,
 		errorPassConfim,
-		resetBorders } = useKeyUpSign()
+		resetBorders,
+		inputFocusIn,
+		inputBlur } = useKeyUpSign()
 
 	return <>
 		<div className={css.containerCircles}>
@@ -71,8 +59,8 @@ export function SignUp() {
 					className={css.signUpName}
 					placeholder="Nombre(s) y apellidos"
 					autoComplete="new-password"
-					onFocus={() => classReview._inputFocusIn('name')}
-					onBlur={() => classReview._inputBlur('name')}
+					onFocus={() => inputFocusIn('name')}
+					onBlur={() => inputBlur('name')}
 					onKeyUp={name_onKeyUp}
 				/>
 				<p ref={errorName} id="signUp-name-p" className={css.signUpFeedback}></p>
@@ -84,8 +72,8 @@ export function SignUp() {
 					ref={inputEmail}
 					className={css.signUpMail}
 					placeholder="usuario@dominio.some"
-					onFocus={() => classReview._inputFocusIn('mail')}
-					onBlur={() => classReview._inputBlur('mail')}
+					onFocus={() => inputFocusIn('mail')}
+					onBlur={() => inputBlur('mail')}
 					onChangeCapture={mail_onChangeCapture}
 				/>
 				<p ref={errorEmail} id="signUp-mail-p" className={css.signUpFeedback}></p>
@@ -99,8 +87,8 @@ export function SignUp() {
 						type={isShowingPass ? "text" : "password"}
 						autoComplete="new-password"
 						placeholder="Crea una contraseña"
-						onFocus={() => classReview._inputFocusIn('pass')}
-						onBlur={() => classReview._inputBlur('pass')}
+						onFocus={() => inputFocusIn('pass')}
+						onBlur={() => inputBlur('pass')}
 						onChangeCapture={pass_onChangeCapture}
 					/>
 					<button
@@ -109,7 +97,9 @@ export function SignUp() {
 						title="button show"
 						onClick={() => setIsShowingPass(!isShowingPass)}
 					>
-						{isShowingPass ? <IconHide /> : <IconShow />}
+						{isShowingPass
+							? <HiOutlineEyeSlash size={24} color="#4263eb" />
+							: <HiOutlineEye size={24} color="#4263eb" />}
 					</button>
 				</section>
 				<p ref={errorPass} id="signUp-pass-p" className={css.signUpFeedback}></p>
@@ -124,8 +114,8 @@ export function SignUp() {
 						type={isShowingPassConfirm ? "text" : "password"}
 						autoComplete="new-password"
 						placeholder="Repite la contraseña"
-						onFocus={() => classReview._inputFocusIn('passConfirm')}
-						onBlur={() => classReview._inputBlur('passConfirm')}
+						onFocus={() => inputFocusIn('passConfirm')}
+						onBlur={() => inputBlur('passConfirm')}
 						onKeyUp={passConfirm_onKeyUp}
 					/>
 					<button
@@ -133,7 +123,9 @@ export function SignUp() {
 						title="button show"
 						type="button"
 						onClick={() => setIsShowingPassConfirm(!isShowingPassConfirm)}>
-						{isShowingPassConfirm ? <IconHideConfirm /> : <IconShowConfirm />}
+						{isShowingPassConfirm
+							? <HiOutlineEyeSlash size={24} color="#4263eb" />
+							: <HiOutlineEye size={24} color="#4263eb" />}
 					</button>
 				</div>
 				<p ref={errorPassConfim} id="signUp-passConfirm-p" className={css.signUpFeedback}></p>
@@ -183,12 +175,15 @@ export function SignUp() {
 	function signUp_onSubmit(e) {
 		e.preventDefault()
 
-		if (reviewFields()) {
-			addUserToFirestore()
-		}
+		if (reviewFields()) addUserToFirestore()
 		else {
 			setMsgError("Error al registrar usuario")
 			setTimeout(() => setMsgError(""), timeMsgMedium)
 		}
+	}
+
+	function renderComponentSignIn() {
+		resetBorders()
+		navigation("/fare/Login")
 	}
 }

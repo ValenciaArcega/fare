@@ -5,7 +5,6 @@
  */
 
 export class ClAppearance {
-  // catching the root element of the DOM which contains
   root = document.documentElement.style;
 
   /* The following private methods will be call each time that the user
