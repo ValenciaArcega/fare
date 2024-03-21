@@ -1,7 +1,3 @@
-/**
- * @overview Component with all tasks fetched from firestore.
- * @author ValenciaArcega
- */
 import css from "../css/Tasks.module.css"
 import { updateDoc, doc } from "firebase/firestore"
 import { auth, db } from "../../dal/credentials"
@@ -15,16 +11,13 @@ import { HiCheckBadge, HiOutlineStar } from "react-icons/hi2"
 import { IoCopyOutline } from "react-icons/io5"
 
 export function Tasks({ tasksArray, setTasksArray }) {
-	let identifier
 	const emailUser = auth.currentUser?.email
 
 	const [filteredItems, setFilteredItems] = useState(tasksArray)
 	const [isSearching, setIsSearching] = useState(false)
 	const [taskDeleted, setTaskDeleted] = useState(false)
 	const [copiedText, setCopiedText] = useState(false)
-
-	const popupDeleteTask = useRef()
-	const overlayDeleteTask = useRef()
+	const [isDeleting, setIsDeleting] = useState(false)
 
 	const lookFor = function (e) {
 		setFilteredItems(
@@ -99,10 +92,7 @@ export function Tasks({ tasksArray, setTasksArray }) {
 								type="button"
 								className={css.btnCompleteTask}
 								aria-label="Completada"
-								onClick={() => {
-									identifier = note.id
-									toggleHidden()
-								}}
+								onClick={togglePopup}
 							>
 								<HiCheckBadge size={28} color="#fff" />
 							</button>
@@ -117,33 +107,34 @@ export function Tasks({ tasksArray, setTasksArray }) {
 						</footer>
 					</article>
 
-					<dialog ref={popupDeleteTask} className={`${css.popupDeleteTask} hidden`}>
-						<h4>Eliminar Idea</h4>
-						<p>Esta acción es permanente y no se puede deshacer</p>
-						<footer>
-							<button
-								type="button"
-								onClick={toggleHidden}
-							>Cancelar</button>
-							<button
-								title="Button to delete task"
-								type="button"
-								onClick={() => {
-									deleteTask(identifier)
-									toggleHidden()
-								}}>
-								<HiMiniTrash size={26} color="#fff" />
-							</button>
-						</footer>
-					</dialog>
-					<div ref={overlayDeleteTask} className={`${css.overlayDelete} hidden`}></div>
+					{isDeleting && <>
+						<dialog className={`${css.popupDeleteTask}`}>
+							<h4>Eliminar Idea</h4>
+							<p>Esta acción es permanente y no se puede deshacer</p>
+							<footer>
+								<button
+									type="button"
+									onClick={togglePopup}
+								>Cancelar</button>
+								<button
+									title="Button to delete task"
+									type="button"
+									onClick={() => {
+										deleteTask(note.id)
+										togglePopup()
+									}}>
+									<HiMiniTrash size={26} color="#fff" />
+								</button>
+							</footer>
+						</dialog>
+						<div className={`${css.overlayDelete}`}></div>
+					</>}
 				</main>)
 				: <NoTaskSection />}
 		</section>
 	</main>
 
-	function toggleHidden() {
-		popupDeleteTask.current.classList.toggle("hidden")
-		overlayDeleteTask.current.classList.toggle("hidden")
+	function togglePopup() {
+		setIsDeleting(!isDeleting)
 	}
 }
