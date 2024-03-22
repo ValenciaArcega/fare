@@ -4,7 +4,7 @@ import { RouterInitial } from "./routes/RouterInitial"
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { LoaderBar } from "./components/Loader"
-import { RouterDashboard } from "./routes/RouterDashboard"
+import { RouterHome } from "./routes/RouterHome"
 
 export function App() {
 	const [user, setUser] = useState(null)
@@ -28,7 +28,7 @@ export function App() {
 		loader
 			? <LoaderBar />
 			: user
-				? <RouterDashboard />
+				? <RouterHome />
 				: <RouterInitial />
 	}</>
 }

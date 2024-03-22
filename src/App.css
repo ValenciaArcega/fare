@@ -265,6 +265,12 @@ input:not(:placeholder-shown)~.finder-btnClose {
   animation: movingLoaderBar .7s ease-in-out infinite;
 }
 
+.layoutDashboard {
+  display: grid;
+  grid-template-columns: 4.2rem 1fr;
+  grid-template-areas: "sidebar main";
+}
+
 @keyframes movingLoaderBar {
   50% {
     width: 100%;

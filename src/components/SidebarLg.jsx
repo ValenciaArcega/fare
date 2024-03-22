@@ -2,21 +2,9 @@ import css from "../css/SidebarLg.module.css"
 import { Appearance } from "./Appearance"
 import { useNavigate } from "react-router-dom"
 import { HiMiniUser, HiMagnifyingGlass, HiHome, HiMiniStar, HiPlus } from "react-icons/hi2"
-import { signOut } from "firebase/auth"
-import { auth } from "../../dal/credentials"
-import { useAppearance } from "../hooks/useAppearance"
 
 export function SidebarLg({ setIsAdding }) {
     const navigation = useNavigate()
-    const { makeLight } = useAppearance()
-
-    function navigateTo(route) {
-        navigation(route)
-    }
-
-    function showModalAddTask() {
-        setIsAdding(true)
-    }
 
     return <nav className={css.navigationBar}>
         <img src="logo.png" alt="brand simple logo" height={48} />
@@ -39,14 +27,17 @@ export function SidebarLg({ setIsAdding }) {
 
         <Appearance />
 
-        <a onClick={signUserOut} className={css.wrapperBtn}>
+        <a onClick={() => navigateTo("/fare/profile")} className={css.wrapperBtn}>
             <HiMiniUser size={26} />
         </a>
     </nav>
 
-    function signUserOut() {
-        signOut(auth)
-        makeLight()
+    function navigateTo(route) {
+        navigation(route)
+    }
+
+    function showModalAddTask() {
+        setIsAdding(true)
         navigation("/fare/")
     }
 }
