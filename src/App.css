@@ -282,3 +282,10 @@ input:not(:placeholder-shown)~.finder-btnClose {
     left: unset;
   }
 }
+
+@media (max-width: 664px) {
+  .layoutDashboard {
+    grid-template-columns: 1fr;
+    grid-template-areas: "main";
+  }
+}
