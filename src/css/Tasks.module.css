@@ -64,7 +64,7 @@
 	height: calc(1.6em * var(--line-height));
 	width: 100%;
 	background: linear-gradient(to bottom, transparent, var(--bg-fadeEffect));
-	z-index: 90;
+	z-index: 10;
 }
 
 .btnToggleTask {

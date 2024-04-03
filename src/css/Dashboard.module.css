@@ -23,3 +23,15 @@
         color: var(--fr-descriptions);
     }
 }
+
+@media (max-width: 664px) {
+    .mainFare {
+        height: 100%;
+        padding: 4rem 0 0 0;
+        grid-area: main;
+    }
+
+    .wrapperWelcomeText {
+        padding-left: 2rem;
+    }
+}

@@ -47,6 +47,7 @@
   --z-index-overlay: 98;
   --z-index-blurOverCircles: 2;
   --z-index-containerCircles: 1;
+  --z-index-navigationBar: 90;
 }
 
 ::selection {
