@@ -1,7 +1,7 @@
 import css from "../css/Tasks.module.css"
 import { updateDoc, doc } from "firebase/firestore"
 import { auth, db } from "../../dal/credentials"
-import { useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { Finder } from "./Finder"
 import { HiMiniTrash } from "react-icons/hi2"
 import { NoTaskSection } from "./NoTaskSection"
@@ -9,56 +9,27 @@ import { Message } from "./messages/Message"
 import { Clipboard, IconVerified } from "./icons/message"
 import { HiCheckBadge, HiOutlineStar } from "react-icons/hi2"
 import { IoCopyOutline } from "react-icons/io5"
+import { contextTask } from "../context/taskContext"
+import { contextMessage } from "../context/messageContext"
 
-export function Tasks({ tasksArray, setTasksArray }) {
+export function Tasks() {
 	const emailUser = auth.currentUser?.email
+
+	const { tasksArray, setTasksArray } = useContext(contextTask)
+	const { msgDone, setMsgDone } = useContext(contextMessage)
 
 	const [filteredItems, setFilteredItems] = useState(tasksArray)
 	const [isSearching, setIsSearching] = useState(false)
-	const [taskDeleted, setTaskDeleted] = useState(false)
-	const [copiedText, setCopiedText] = useState(false)
 	const [isDeleting, setIsDeleting] = useState(false)
 
-	const lookFor = function (e) {
-		setFilteredItems(
-			tasksArray.filter((task) =>
-				task.description.toLowerCase().includes(e.target.value.toLowerCase()) || task.title.toLowerCase().includes(e.target.value.toLowerCase())
-			)
-		)
-		setIsSearching(true)
-	}
-
-	const copyIdeaText = function (str) {
-		navigator.clipboard
-			.writeText(str)
-			.then(() => {
-				setCopiedText(true)
-				setTimeout(() => setCopiedText(false), 3000)
-			})
-			.catch((err) => console.error(err))
-	}
-
-	const deleteTask = async function (IDtoDelete) {
-		setTaskDeleted(true)
-		setTimeout(() => setTaskDeleted(false), 4500)
-
-		const newIdeasArray = tasksArray.filter(
-			(task) => task.id !== IDtoDelete
-		)
-		const documentReference = doc(db, `users/${emailUser}`)
-		await updateDoc(documentReference, { tasks: [...newIdeasArray] })
-		setTasksArray(newIdeasArray)
-		setFilteredItems(newIdeasArray)
-	}
-
 	return <main className={css.containerTasks}>
-		{taskDeleted && (
+		{msgDone && (
 			<Message txt="Idea eliminada">
 				<IconVerified height={28} fill="green" />
 			</Message>
 		)}
 
-		{copiedText && (
+		{msgDone && (
 			<Message txt="Copiado al portapapeles">
 				<Clipboard height={28} stroke="green" />
 			</Message>
@@ -136,5 +107,36 @@ export function Tasks({ tasksArray, setTasksArray }) {
 
 	function togglePopup() {
 		setIsDeleting(!isDeleting)
+	}
+
+	function copyIdeaText(str) {
+		navigator.clipboard
+			.writeText(str)
+			.then(() => {
+				setMsgDone(true)
+				setTimeout(() => setMsgDone(false), 3000)
+			})
+			.catch((err) => console.error(err))
+	}
+
+	function lookFor(e) {
+		setFilteredItems(
+			tasksArray.filter((task) =>
+				task.description.toLowerCase().includes(e.target.value.toLowerCase()) || task.title.toLowerCase().includes(e.target.value.toLowerCase())
+			)
+		)
+		setIsSearching(true)
+	}
+
+	async function deleteTask(IDtoDelete) {
+		const newIdeasArray = tasksArray.filter(
+			(task) => task.id !== IDtoDelete
+		)
+		const documentReference = doc(db, `users/${emailUser}`)
+		await updateDoc(documentReference, { tasks: [...newIdeasArray] })
+		setMsgDone(true)
+		setTimeout(() => setMsgDone(false), 4500)
+		setTasksArray(newIdeasArray)
+		setFilteredItems(newIdeasArray)
 	}
 }

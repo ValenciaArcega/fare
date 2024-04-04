@@ -17,7 +17,7 @@ export function SidebarLg({ setIsAdding }) {
             <HiMiniStar size={22} />
         </a>
 
-        <button onClick={showModalAddTask} className={css.wrapperBtn}>
+        <button onClick={() => setIsAdding(true)} className={css.wrapperBtn}>
             <HiPlus size={22} />
         </button>
 
@@ -34,10 +34,5 @@ export function SidebarLg({ setIsAdding }) {
 
     function navigateTo(route) {
         navigation(route)
-    }
-
-    function showModalAddTask() {
-        setIsAdding(true)
-        navigation("/fare/")
     }
 }

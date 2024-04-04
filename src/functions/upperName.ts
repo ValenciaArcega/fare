@@ -1,5 +1,5 @@
 /**
-* pablo  oScaR   gonzaleZ CAMARENA 👉 Pablo Oscar Gonzalez Camarena
+* pablo  oScaR   gonzaleZ CAMARENA --> Pablo Oscar Gonzalez Camarena
 * @param {string} str Fix the user input name
 */
 export function fixName(str: string) {

@@ -6,15 +6,19 @@
 import css from "../css/AddTask.module.css"
 import { db, auth } from "../../dal/credentials"
 import { Message } from "./messages/Message"
-import { IconVerified } from "./icons/message"
 import { updateDoc, doc } from "firebase/firestore"
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { HiOutlineX } from "react-icons/hi"
 import { HiMiniPlus } from "react-icons/hi2"
+import { contextMessage } from "../context/messageContext"
+import { contextTask } from "../context/taskContext"
 
-export function AddTask({ tasksArray, setTasksArray, setIsAdding, setMsgDone, setMsgError }) {
+export function AddTask({ setIsAdding }) {
 	const emailUser = auth.currentUser?.email
 	const textArea = useRef()
+
+	const { setMsgDone, setMsgError } = useContext(contextMessage)
+	const { tasksArray, setTasksArray } = useContext(contextTask)
 
 	useEffect(() => textArea.current.focus(), [])
 

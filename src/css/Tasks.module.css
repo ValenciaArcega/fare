@@ -162,7 +162,7 @@
 	z-index: var(--z-index-popup);
 	color: var(--black18);
 	background-color: var(--bg-modal);
-	box-shadow: 0 10px 10px 4px #00000038;
+	box-shadow: 0 4px 10px #0000000a;
 
 	& h4 {
 		font-size: 22px;
