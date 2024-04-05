@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom"
-import { Dashboard } from "../views/Dashboard"
 import { Profile } from "../views/Profile"
 import { Favorites } from "../views/Favorites"
 import { SidebarLg } from "../components/SidebarLg"
+import { Tasks } from "../views/Tasks"
 import { useContext, useEffect, useState } from "react"
 import { NavigationBar } from "../components/NavigationBar"
 import { AddTask } from "../components/AddTask"
@@ -47,7 +47,7 @@ export function RouterHome() {
         </Message>}
 
         <Routes>
-            <Route path="/fare/" Component={Dashboard} />
+            <Route path="/fare/" Component={Tasks} />
             <Route path="/fare/profile" Component={Profile} />
             <Route path="/fare/favorites" Component={Favorites} />
         </Routes>
