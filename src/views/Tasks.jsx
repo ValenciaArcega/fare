@@ -25,7 +25,7 @@ export function Tasks() {
 	const [isDeleting, setIsDeleting] = useState(false)
 	const [name, setName] = useState("")
 	const [dataLoaded, setDataLoaded] = useState(false)
-
+	const [idTaskToDelete, setIdTaskToDelete] = useState(null)
 
 	useEffect(function () {
 		getUserNameAndIdeas()
@@ -42,15 +42,9 @@ export function Tasks() {
 			</header>
 
 			{tasksArray && <main className={css.containerTasks}>
-				{msgDone && (
-					<Message txt="Idea eliminada">
+				{msgDone !== "" && (
+					<Message txt={msgDone}>
 						<IconVerified height={28} fill="green" />
-					</Message>
-				)}
-
-				{msgDone && (
-					<Message txt="Copiado al portapapeles">
-						<Clipboard height={28} stroke="green" />
 					</Message>
 				)}
 
@@ -58,7 +52,7 @@ export function Tasks() {
 
 				<section className={css.wrapperTasks}>
 					{filteredItems.length > 0 || tasksArray.length > 0
-						? (isSearching ? filteredItems : tasksArray).map((note, i) => <main key={i}>
+						? (isSearching ? filteredItems : tasksArray).map((note, i) => <main key={note.id}>
 							<article className={css.task}>
 								<main className={css.taskBody}>
 									<h2>{note.title}</h2>
@@ -82,7 +76,10 @@ export function Tasks() {
 										type="button"
 										className={css.btnCompleteTask}
 										aria-label="Completada"
-										onClick={togglePopup}
+										onClick={() => {
+											setIdTaskToDelete(note.id)
+											togglePopup()
+										}}
 									>
 										<HiCheckBadge size={28} color="#fff" />
 									</button>
@@ -98,7 +95,7 @@ export function Tasks() {
 							</article>
 
 							{isDeleting && <>
-								<dialog className={`${css.popupDeleteTask}`}>
+								<article className={`${css.popupDeleteTask}`}>
 									<h4>Eliminar Idea</h4>
 									<p>Esta acción es permanente y no se puede deshacer</p>
 									<footer>
@@ -110,13 +107,13 @@ export function Tasks() {
 											title="Button to delete task"
 											type="button"
 											onClick={() => {
-												deleteTask(note.id)
+												deleteTask()
 												togglePopup()
 											}}>
 											<HiMiniTrash size={26} color="#fff" />
 										</button>
 									</footer>
-								</dialog>
+								</article>
 								<div className={`${css.overlayDelete}`}></div>
 							</>}
 						</main>)
@@ -134,8 +131,8 @@ export function Tasks() {
 		navigator.clipboard
 			.writeText(str)
 			.then(() => {
-				setMsgDone(true)
-				setTimeout(() => setMsgDone(false), 3000)
+				setMsgDone("Copiado al portapapeles")
+				setTimeout(() => setMsgDone(""), 4000)
 			})
 			.catch((err) => console.error(err))
 	}
@@ -168,15 +165,19 @@ export function Tasks() {
 		}
 	}
 
-	async function deleteTask(IDtoDelete) {
-		const newIdeasArray = tasksArray.filter(
-			(task) => task.id !== IDtoDelete
-		)
-		const documentReference = doc(db, `users/${emailUser}`)
-		await updateDoc(documentReference, { tasks: [...newIdeasArray] })
-		setMsgDone(true)
-		setTimeout(() => setMsgDone(false), 4500)
-		setTasksArray(newIdeasArray)
-		setFilteredItems(newIdeasArray)
+	async function deleteTask() {
+		try {
+			const newIdeasArray = tasksArray.filter(
+				(task) => task.id !== idTaskToDelete
+			)
+			const documentReference = doc(db, `users/${emailUser}`)
+			await updateDoc(documentReference, { tasks: [...newIdeasArray] })
+			setMsgDone("Idea eliminada")
+			setTimeout(() => setMsgDone(""), 4500)
+			setTasksArray(newIdeasArray)
+			setFilteredItems(newIdeasArray)
+		} catch (ex) {
+			console.log(ex)
+		}
 	}
 }

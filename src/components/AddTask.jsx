@@ -73,7 +73,7 @@ export function AddTask({ setIsAdding }) {
 				const documentReference = doc(db, `users/${emailUser}`)
 				const newIdeasArray = [
 					{
-						id: +new Date(),
+						id: crypto.randomUUID(),
 						title: title,
 						description: description,
 					},
