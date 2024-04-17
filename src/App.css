@@ -270,6 +270,7 @@ input:not(:placeholder-shown)~.finder-btnClose {
   display: grid;
   grid-template-columns: 4.2rem 1fr;
   grid-template-areas: "sidebar main";
+  z-index: -2;
 }
 
 @keyframes movingLoaderBar {

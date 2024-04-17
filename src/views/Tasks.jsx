@@ -13,12 +13,15 @@ import { contextTask } from "../context/taskContext"
 import { contextMessage } from "../context/messageContext"
 import { LoaderBar } from "../components/Loader"
 import { textoBienvenida } from "../functions/home"
+import { useToast } from "../hooks/useToast"
 
 export function Tasks() {
 	const emailUser = auth.currentUser?.email
 
 	const { tasksArray, setTasksArray } = useContext(contextTask)
 	const { msgDone, setMsgDone } = useContext(contextMessage)
+
+	const { toastSuccess } = useToast()
 
 	const [filteredItems, setFilteredItems] = useState(tasksArray)
 	const [isSearching, setIsSearching] = useState(false)
@@ -131,8 +134,9 @@ export function Tasks() {
 		navigator.clipboard
 			.writeText(str)
 			.then(() => {
-				setMsgDone("Copiado al portapapeles")
-				setTimeout(() => setMsgDone(""), 4000)
+				toastSuccess("Copiado al portapapeles")
+				// setMsgDone("Copiado al portapapeles")
+				// setTimeout(() => setMsgDone(""), 4000)
 			})
 			.catch((err) => console.error(err))
 	}

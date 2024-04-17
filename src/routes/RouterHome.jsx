@@ -10,6 +10,9 @@ import { contextMessage } from "../context/messageContext"
 import { Message } from "../components/messages/Message"
 import { HiOutlineX } from "react-icons/hi"
 import { IconVerified } from "../components/icons/message"
+import { ToastContainer, } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 export function RouterHome() {
     let viewPort = window.matchMedia("(max-width: 664px)")
@@ -31,25 +34,32 @@ export function RouterHome() {
         viewPort.addListener(mediaScreen)
     }, [])
 
-    return <section className="layoutDashboard">
-        {isMobile
-            ? <NavigationBar setIsAdding={setIsAdding} />
-            : <SidebarLg setIsAdding={setIsAdding} />}
+    return (<>
+        <ToastContainer
+            newestOnTop
+            rtl={false}
+            pauseOnHover
+        />
+        <section className="layoutDashboard">
+            {isMobile
+                ? <NavigationBar setIsAdding={setIsAdding} />
+                : <SidebarLg setIsAdding={setIsAdding} />}
 
-        {isAdding && <AddTask setIsAdding={setIsAdding} />}
+            {isAdding && <AddTask setIsAdding={setIsAdding} />}
 
-        {msgError !== "" && <Message txt={msgError}>
-            <HiOutlineX size={28} color="#ff2c2c" />
-        </Message>}
+            {msgError !== "" && <Message txt={msgError}>
+                <HiOutlineX size={28} color="#ff2c2c" />
+            </Message>}
 
-        {msgDone !== "" && <Message txt={msgDone}>
-            <IconVerified height={28} fill="green" />
-        </Message>}
+            {msgDone !== "" && <Message txt={msgDone}>
+                <IconVerified height={28} fill="green" />
+            </Message>}
 
-        <Routes>
-            <Route path="/fare/" Component={Tasks} />
-            <Route path="/fare/profile" Component={Profile} />
-            <Route path="/fare/favorites" Component={Favorites} />
-        </Routes>
-    </section>
+            <Routes>
+                <Route path="/fare/" Component={Tasks} />
+                <Route path="/fare/profile" Component={Profile} />
+                <Route path="/fare/favorites" Component={Favorites} />
+            </Routes>
+        </section>
+    </>)
 }
