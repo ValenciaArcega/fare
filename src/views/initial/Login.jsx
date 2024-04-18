@@ -7,68 +7,14 @@ import { auth } from "../../../dal/credentials"
 import { useNavigate } from "react-router-dom"
 import { useState, useRef, FormEvent, MouseEvent } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth"
-import { MessageSign } from "../../components/messages/Message"
-import { HiOutlineLockClosed, HiAtSymbol, HiOutlineKey, HiCheck } from "react-icons/hi2"
+import { HiAtSymbol, HiOutlineKey, HiCheck } from "react-icons/hi2"
+import { useToast } from "../../hooks/useToast"
 
 export function Login() {
 	const root = useRef(document.documentElement)
 
-	const [msgError, setMsgError] = useState(false)
-	const [bannerError, setBannerError] = useState("Las credenciales no coinciden")
-
+	const { toastError } = useToast()
 	const navigation = useNavigate()
-
-	async function submitLogIn(e) {
-		e.preventDefault()
-
-		try {
-			const { email, password } = Object.fromEntries(new window.FormData(e.target))
-
-			await signInWithEmailAndPassword(auth, email, password)
-
-			navigation("/fare/")
-		} catch (err) {
-			if (err.message === "Firebase: Error (auth/internal-error).") {
-				setBannerError("Las credenciales no coinciden")
-			}
-			if (err.message === "Firebase: Error (auth/user-not-found).") {
-				setBannerError("El usuario no existe")
-			}
-			if (err.message === "Firebase: Error (auth/wrong-password).") {
-				setBannerError("La contraseña es incorrecta")
-			}
-			if (err.message === "Firebase: Error (auth/invalid-email).") {
-				setBannerError("Campo correo es invalido")
-			}
-			if (err.message === "Firebase: Error (auth/missing-password).") {
-				setBannerError("Campo contraseña es invalido")
-			}
-			if (
-				err.message ===
-				"Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests)."
-			) {
-				setBannerError("Sesion bloqueada")
-			}
-			setMsgError(true)
-			setTimeout(() => setMsgError(false), 4000)
-		}
-	}
-
-	/**
-	 * The following functions going to review the name of the
-	 * CSS variable to change when the user "focus in" or "focus out" the inputs
-	 * @param {string} border Name of the border variable to change color.
-	 * @param {string} icon Name of the icon stroke to change the color.
-	 */
-	function onFocusInput(border, icon) {
-		root.current.style.setProperty(`--borderInput-signIn-${border}`, "#4263eb")
-		root.current.style.setProperty(`--fr-svg-${icon}`, "#4263eb")
-	}
-
-	function onBlurInput(border, icon) {
-		root.current.style.setProperty(`--borderInput-signIn-${border}`, "#c5c5c5")
-		root.current.style.setProperty(`--fr-svg-${icon}`, "#727272")
-	}
 
 	return <>
 		<div className={css.containerCircles}>
@@ -77,11 +23,6 @@ export function Login() {
 		</div>
 
 		<section className={css.containerLogin}>
-
-			{msgError && <MessageSign txt={bannerError} >
-				<HiOutlineLockClosed size={22} color="#df0000" />
-			</MessageSign>}
-
 			<form className={css.loginForm} onSubmit={submitLogIn}>
 				<img
 					className={css.loginImg}
@@ -140,4 +81,57 @@ export function Login() {
 			</form>
 		</section>
 	</>
+
+	async function submitLogIn(e) {
+		e.preventDefault()
+
+		try {
+			const { email, password } = Object.fromEntries(new window.FormData(e.target))
+
+			await signInWithEmailAndPassword(auth, email, password)
+
+			navigation("/fare/")
+		} catch (ex) {
+			if (ex.message === "Firebase: Error (auth/internal-error).") {
+				toastError("Las credenciales no coinciden")
+			}
+			if (ex.message === "Firebase: Error (auth/user-not-found).") {
+				toastError("El usuario no existe")
+			}
+			if (ex.message === "Firebase: Error (auth/wrong-password).") {
+				toastError("La contraseña es incorrecta")
+			}
+			if (ex.message === "Firebase: Error (auth/invalid-email).") {
+				toastError("Campo correo es invalido")
+			}
+			if (ex.message === "Firebase: Error (auth/missing-password).") {
+				toastError("Campo contraseña es invalido")
+			}
+			if (
+				ex.message ===
+				"Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests)."
+			) {
+				toastError("Sesion bloqueada")
+			}
+			else {
+				toastError("Las credenciales no coinciden")
+			}
+		}
+	}
+
+	/**
+	 * The following functions going to review the name of the
+	 * CSS variable to change when the user "focus in" or "focus out" the inputs
+	 * @param {string} border Name of the border variable to change color.
+	 * @param {string} icon Name of the icon stroke to change the color.
+	 */
+	function onFocusInput(border, icon) {
+		root.current.style.setProperty(`--borderInput-signIn-${border}`, "#4263eb")
+		root.current.style.setProperty(`--fr-svg-${icon}`, "#4263eb")
+	}
+
+	function onBlurInput(border, icon) {
+		root.current.style.setProperty(`--borderInput-signIn-${border}`, "#c5c5c5")
+		root.current.style.setProperty(`--fr-svg-${icon}`, "#727272")
+	}
 }

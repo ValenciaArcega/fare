@@ -4,21 +4,19 @@ import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { MessageSign } from "../../components/messages/Message"
-import { IconCross } from "../../components/icons/message"
 import { useKeyUpSign } from "../../hooks/useFieldsSign"
 import { fixName } from "../../functions/upperName"
-import { timeMsgMedium } from "../../constants/time"
 import { IoTextOutline } from "react-icons/io5"
 import { HiAtSymbol, HiOutlineEye, HiOutlineEyeSlash } from "react-icons/hi2"
+import { useToast } from "../../hooks/useToast"
 
 export function SignUp() {
-	const navigation = useNavigate()
 
-	const [msgError, setMsgError] = useState("")
 	const [isShowingPass, setIsShowingPass] = useState(false)
 	const [isShowingPassConfirm, setIsShowingPassConfirm] = useState(false)
 
+	const navigation = useNavigate()
+	const { toastError } = useToast()
 	const { name_onKeyUp,
 		mail_onChangeCapture,
 		pass_onChangeCapture,
@@ -43,11 +41,6 @@ export function SignUp() {
 		</div>
 
 		<section className={css.containerSignUp}>
-
-			{msgError !== "" && <MessageSign txt={msgError} >
-				<IconCross height={24} fill="#ff4d4d" />
-			</MessageSign>}
-
 			<form className={css.signUp} onSubmit={signUp_onSubmit}>
 				<h1 className={css.signUpTitle}>Crea una cuenta</h1>
 
@@ -163,12 +156,10 @@ export function SignUp() {
 
 				navigation("/fare/")
 			} else {
-				setMsgError("El correo ya esta registrado")
-				setTimeout(() => setMsgError(""), timeMsgMedium)
+				toastError("El correo ya esta registrado")
 			}
 		} catch (error) {
-			setMsgError("Error al enviar")
-			setTimeout(() => setMsgError(""), timeMsgMedium)
+			toastError("Error al enviar")
 		}
 	}
 
@@ -177,8 +168,7 @@ export function SignUp() {
 
 		if (reviewFields()) addUserToFirestore()
 		else {
-			setMsgError("Error al registrar usuario")
-			setTimeout(() => setMsgError(""), timeMsgMedium)
+			toastError("Error al registrar usuario")
 		}
 	}
 

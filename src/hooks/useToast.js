@@ -1,10 +1,11 @@
 import { Bounce, toast } from "react-toastify"
+import { timeMsgMedium } from "../constants/time"
 
 export const useToast = () => {
 
 	const toastSuccess = msg => toast.success(msg, {
-		position: "top-center",
-		autoClose: 5000,
+		position: "top-right",
+		autoClose: timeMsgMedium,
 		hideProgressBar: true,
 		closeOnClick: false,
 		pauseOnHover: true,
@@ -14,8 +15,8 @@ export const useToast = () => {
 	})
 
 	const toastError = msg => toast.error(msg, {
-		position: "top-center",
-		autoClose: 5000,
+		position: "top-right",
+		autoClose: timeMsgMedium,
 		hideProgressBar: true,
 		closeOnClick: false,
 		pauseOnHover: true,
@@ -26,7 +27,7 @@ export const useToast = () => {
 
 	const toastLoading = msg => toast.loading(msg, {
 		position: "top-center",
-		autoClose: 5000,
+		autoClose: timeMsgMedium,
 		hideProgressBar: true,
 		closeOnClick: false,
 		pauseOnHover: false,

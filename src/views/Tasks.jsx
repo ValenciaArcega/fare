@@ -5,8 +5,6 @@ import { useContext, useRef, useState, useEffect } from "react"
 import { Finder } from "../components/Finder"
 import { HiMiniTrash } from "react-icons/hi2"
 import { NoTaskSection } from "../components/NoTaskSection"
-import { Message } from "../components/messages/Message"
-import { Clipboard, IconVerified } from "../components/icons/message"
 import { HiCheckBadge, HiOutlineStar } from "react-icons/hi2"
 import { IoCopyOutline } from "react-icons/io5"
 import { contextTask } from "../context/taskContext"
@@ -19,9 +17,8 @@ export function Tasks() {
 	const emailUser = auth.currentUser?.email
 
 	const { tasksArray, setTasksArray } = useContext(contextTask)
-	const { msgDone, setMsgDone } = useContext(contextMessage)
 
-	const { toastSuccess } = useToast()
+	const { toastSuccess, toastError } = useToast()
 
 	const [filteredItems, setFilteredItems] = useState(tasksArray)
 	const [isSearching, setIsSearching] = useState(false)
@@ -45,12 +42,6 @@ export function Tasks() {
 			</header>
 
 			{tasksArray && <main className={css.containerTasks}>
-				{msgDone !== "" && (
-					<Message txt={msgDone}>
-						<IconVerified height={28} fill="green" />
-					</Message>
-				)}
-
 				<Finder lookFor={lookFor} setIsSearching={setIsSearching} />
 
 				<section className={css.wrapperTasks}>
@@ -135,10 +126,8 @@ export function Tasks() {
 			.writeText(str)
 			.then(() => {
 				toastSuccess("Copiado al portapapeles")
-				// setMsgDone("Copiado al portapapeles")
-				// setTimeout(() => setMsgDone(""), 4000)
 			})
-			.catch((err) => console.error(err))
+			.catch((err) => toastError(ex.message))
 	}
 
 	function lookFor(e) {
@@ -165,7 +154,7 @@ export function Tasks() {
 				setDataLoaded(true)
 			}
 		} catch (ex) {
-			console.log(ex)
+			toastError(ex.message)
 		}
 	}
 
@@ -176,12 +165,12 @@ export function Tasks() {
 			)
 			const documentReference = doc(db, `users/${emailUser}`)
 			await updateDoc(documentReference, { tasks: [...newIdeasArray] })
-			setMsgDone("Idea eliminada")
-			setTimeout(() => setMsgDone(""), 4500)
+
+			toastSuccess("Idea eliminada")
 			setTasksArray(newIdeasArray)
 			setFilteredItems(newIdeasArray)
 		} catch (ex) {
-			console.log(ex)
+			toastError(ex.message)
 		}
 	}
 }

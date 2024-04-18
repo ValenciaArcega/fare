@@ -5,6 +5,9 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { LoaderBar } from "./components/Loader"
 import { RouterHome } from "./routes/RouterHome"
+import { ToastContainer, } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 export function App() {
 	const [user, setUser] = useState(null)
@@ -24,11 +27,18 @@ export function App() {
 		})
 	}, [])
 
-	return <>{
-		loader
-			? <LoaderBar />
-			: user
-				? <RouterHome />
-				: <RouterInitial />
-	}</>
+	return <>
+		<ToastContainer
+			rtl={false}
+			pauseOnHover
+			stacked={true}
+		/>
+		{
+			loader
+				? <LoaderBar />
+				: user
+					? <RouterHome />
+					: <RouterInitial />
+		}
+	</>
 }

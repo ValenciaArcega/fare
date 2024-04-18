@@ -5,19 +5,19 @@
  */
 import css from "../css/AddTask.module.css"
 import { db, auth } from "../../dal/credentials"
-import { Message } from "./messages/Message"
 import { updateDoc, doc } from "firebase/firestore"
 import { useContext, useEffect, useRef, useState } from "react"
 import { HiOutlineX } from "react-icons/hi"
 import { HiMiniPlus } from "react-icons/hi2"
 import { contextMessage } from "../context/messageContext"
 import { contextTask } from "../context/taskContext"
+import { useToast } from "../hooks/useToast"
 
 export function AddTask({ setIsAdding }) {
 	const emailUser = auth.currentUser?.email
 	const textArea = useRef()
 
-	const { setMsgDone, setMsgError } = useContext(contextMessage)
+	const { toastSuccess, toastError } = useToast()
 	const { tasksArray, setTasksArray } = useContext(contextTask)
 
 	useEffect(() => textArea.current.focus(), [])
@@ -85,16 +85,13 @@ export function AddTask({ setIsAdding }) {
 				e.target.inputTitle.value = ""
 				e.target.inputDescription.value = ""
 
-				setMsgDone("Idea agregada")
-				setTimeout(() => setMsgDone(""), 3000)
+				toastSuccess("Idea agregada")
 				setIsAdding(false)
 			} else {
-				setMsgError("La descripción no puede estar vacía")
-				setTimeout(() => setMsgError(""), 4500)
+				toastError("La descripción no puede estar vacía")
 			}
 		} catch {
-			setMsgError("Error al agregar")
-			setTimeout(() => setMsgError(""), 4500)
+			toastError("Error al agregar")
 		}
 	}
 }
