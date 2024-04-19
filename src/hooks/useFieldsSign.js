@@ -18,15 +18,15 @@ export function useKeyUpSign() {
 	function name_onKeyUp(e) {
 		const name = e.target.value
 
-		root.setProperty('--borderInput-name', '#4263eb')
+		root.setProperty('--borderInputName', '#4263eb')
 
 		if (name.match(regNumbers) || name.match(regCharacters)) {
-			root.setProperty('--borderInput-name', '#DF0000')
+			root.setProperty('--borderInputName', '#DF0000')
 			errorName.current.textContent = 'Recuerda, caracteres de tipo texto'
 		} else errorName.current.textContent = ''
 
 		if (name === '') {
-			root.setProperty('--borderInput-name', '#4263eb')
+			root.setProperty('--borderInputName', '#4263eb')
 			errorName.current.textContent = ''
 		}
 	}
@@ -43,12 +43,12 @@ export function useKeyUpSign() {
 
 	function passConfirm_onKeyUp() {
 		if (inputPassConfirm.current.value === inputPass.current.value) {
-			root.setProperty('--borderInput-passConfirm', '#4263eb')
+			root.setProperty('--borderInputPassConfirm', '#4263eb')
 			errorPassConfim.current.style.color = '#4263eb'
 			errorPassConfim.current.textContent = '¡Coinciden!'
 		} else {
 			errorPassConfim.current.style.color = '#DF0000'
-			root.setProperty('--borderInput-passConfirm', '#DF0000')
+			root.setProperty('--borderInputPassConfirm', '#DF0000')
 			errorPassConfim.current.textContent = 'Las contraseñas no coinciden'
 		}
 	}
@@ -57,11 +57,11 @@ export function useKeyUpSign() {
 	// #region Validate inputs
 	function validateName() {
 		if (inputName.current.value === '') {
-			root.setProperty('--borderInput-name', '#DF0000')
+			root.setProperty('--borderInputName', '#DF0000')
 			errorName.current.textContent = 'El campo es obligatorio'
 		}
 		else if (inputName.current.value.match(regNumbers) || inputName.current.value.match(regCharacters)) {
-			root.setProperty('--borderInput-name', '#DF0000')
+			root.setProperty('--borderInputName', '#DF0000')
 			errorName.current.textContent = 'Solo caracteres tipo texto'
 		} else return true
 	}
@@ -70,34 +70,34 @@ export function useKeyUpSign() {
 		const isInvalidEmail = !inputEmail.current.value.includes('@') || !inputEmail.current.value.includes('.') || inputEmail.current.value.length < 10
 
 		if (inputEmail.current.value === '') {
-			root.setProperty('--borderInput-mail', '#DF0000')
+			root.setProperty('--borderInputMail', '#DF0000')
 			errorEmail.current.textContent = 'El campo es obligatorio'
 		}
 		else if (isInvalidEmail) {
-			root.setProperty('--borderInput-mail', '#DF0000')
+			root.setProperty('--borderInputMail', '#DF0000')
 			errorEmail.current.textContent = 'Formato de correo invalido'
 		} else return true
 	}
 
 	function validatePassword() {
 		if (inputPass.current.value === '') {
-			root.setProperty('--borderInput-pass', '#DF0000')
+			root.setProperty('--borderInputPass', '#DF0000')
 			errorPass.current.textContent = 'El campo es obligatorio'
 		}
 		else if (inputPass.current.value.length <= 7) {
-			root.setProperty('--borderInput-pass', '#DF0000')
+			root.setProperty('--borderInputPass', '#DF0000')
 			errorPass.current.textContent = 'Al menos 8 caracteres'
 		} else return true
 	}
 
 	function validatePasswordConfirm() {
 		if (inputPass.current.value !== inputPassConfirm.current.value) {
-			root.setProperty('--borderInput-passConfirm', '#DF0000')
+			root.setProperty('--borderInputPassConfirm', '#DF0000')
 			errorPassConfim.current.style.color = '#DF0000'
 			errorPassConfim.current.textContent = 'Las contraseñas no coinciden'
 		}
 		else if (inputPassConfirm.current.value == "") {
-			root.setProperty('--borderInput-passConfirm', '#DF0000')
+			root.setProperty('--borderInputPassConfirm', '#DF0000')
 			errorPassConfim.current.style.color = '#DF0000'
 			errorPassConfim.current.textContent = 'Es necesario verificar la contraseña'
 		}
@@ -118,10 +118,10 @@ export function useKeyUpSign() {
 	//#endregion
 
 	function resetBorders() {
-		root.setProperty('--borderInput-name', '#c5c5c5')
-		root.setProperty('--borderInput-mail', '#c5c5c5')
-		root.setProperty('--borderInput-pass', '#c5c5c5')
-		root.setProperty('--borderInput-passConfirm', '#c5c5c5')
+		root.setProperty('--borderInputName', '#c5c5c5')
+		root.setProperty('--borderInputMail', '#c5c5c5')
+		root.setProperty('--borderInputPass', '#c5c5c5')
+		root.setProperty('--borderInputPassConfirm', '#c5c5c5')
 	}
 
 	function inputFocusIn(str) {

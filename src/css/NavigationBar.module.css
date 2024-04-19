@@ -8,5 +8,5 @@
 	backdrop-filter: blur(8px);
 	display: grid;
 	border-top: 1px solid #c5c5c5;
-	z-index: var(--z-index-navigationBar);
+	z-index: var(--zIndexNavigationBar);
 }

@@ -7,7 +7,7 @@
     height: 100dvh;
     height: 100vh;
     width: 100%;
-    z-index: var(--z-index-containerCircles);
+    z-index: var(--zIndexContainerCircles);
     position: relative;
 }
 
@@ -19,7 +19,7 @@
     left: 30%;
     position: absolute;
     border-radius: 50%;
-    background-color: var(--mainColor-shade);
+    background-color: var(--mainColorShade);
 }
 
 .circleRight {
@@ -45,7 +45,7 @@
     backdrop-filter: blur(134px);
     background-image: radial-gradient(#00000017 3%, transparent 0);
     background-size: 5.5rem 5.5rem;
-    z-index: var(--z-index-blurOverCircles);
+    z-index: var(--zIndexBlurOverCircles);
 }
 
 .signUp {
@@ -92,26 +92,26 @@
     border-radius: 10px;
     font-size: 16px;
     font-weight: 400;
-    border: 2px solid var(--borderInput-name);
+    border: 2px solid var(--borderInputName);
     background: none;
     outline: none;
     background-color: white;
 }
 
 .signUpMail {
-    border: 2px solid var(--borderInput-mail);
+    border: 2px solid var(--borderInputMail);
 }
 
 .signUpPass {
     width: 100%;
     margin-top: 0;
-    border: 2px solid var(--borderInput-pass);
+    border: 2px solid var(--borderInputPass);
 }
 
 .signUpPassConfirm {
     width: 100%;
     margin-top: 0;
-    border: 2px solid var(--borderInput-passConfirm);
+    border: 2px solid var(--borderInputPassConfirm);
 }
 
 .wrapperPassword {
@@ -144,7 +144,6 @@
     align-items: center;
     justify-content: center;
     border: none;
-    /* border: 2px solid var(--borderInput-pass); */
 }
 
 .signUpBtnRegister {

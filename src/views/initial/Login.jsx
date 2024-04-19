@@ -42,8 +42,8 @@ export function Login() {
 						className={css.loginInputMail}
 						type="text"
 						placeholder="usuario@dominio.some"
-						onFocus={() => onFocusInput("mail", "mail")}
-						onBlur={() => onBlurInput("mail", "mail")}
+						onFocus={() => onFocusInput("Mail", "Mail")}
+						onBlur={() => onBlurInput("Mail", "Mail")}
 					/>
 				</div>
 
@@ -57,8 +57,8 @@ export function Login() {
 						type="password"
 						autoComplete="current-password"
 						placeholder="Ingresa tu contraseña"
-						onFocus={() => onFocusInput("pass", "pass")}
-						onBlur={() => onBlurInput("pass", "pass")}
+						onFocus={() => onFocusInput("Pass", "Pass")}
+						onBlur={() => onBlurInput("Pass", "Pass")}
 					/>
 				</div>
 
@@ -95,25 +95,24 @@ export function Login() {
 			if (ex.message === "Firebase: Error (auth/internal-error).") {
 				toastError("Las credenciales no coinciden")
 			}
-			if (ex.message === "Firebase: Error (auth/user-not-found).") {
+			else if (ex.message === "Firebase: Error (auth/user-not-found).") {
 				toastError("El usuario no existe")
 			}
-			if (ex.message === "Firebase: Error (auth/wrong-password).") {
+			else if (ex.message === "Firebase: Error (auth/wrong-password).") {
 				toastError("La contraseña es incorrecta")
 			}
-			if (ex.message === "Firebase: Error (auth/invalid-email).") {
+			else if (ex.message === "Firebase: Error (auth/invalid-email).") {
 				toastError("Campo correo es invalido")
 			}
-			if (ex.message === "Firebase: Error (auth/missing-password).") {
+			else if (ex.message === "Firebase: Error (auth/missing-password).") {
 				toastError("Campo contraseña es invalido")
 			}
-			if (
+			else if (
 				ex.message ===
 				"Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests)."
 			) {
 				toastError("Sesion bloqueada")
-			}
-			else {
+			} else {
 				toastError("Las credenciales no coinciden")
 			}
 		}
@@ -126,12 +125,12 @@ export function Login() {
 	 * @param {string} icon Name of the icon stroke to change the color.
 	 */
 	function onFocusInput(border, icon) {
-		root.current.style.setProperty(`--borderInput-signIn-${border}`, "#4263eb")
-		root.current.style.setProperty(`--fr-svg-${icon}`, "#4263eb")
+		root.current.style.setProperty(`--borderInputLogin${border}`, "#4263eb")
+		root.current.style.setProperty(`--colorIcon${icon}`, "#4263eb")
 	}
 
 	function onBlurInput(border, icon) {
-		root.current.style.setProperty(`--borderInput-signIn-${border}`, "#c5c5c5")
-		root.current.style.setProperty(`--fr-svg-${icon}`, "#727272")
+		root.current.style.setProperty(`--borderInputLogin${border}`, "#c5c5c5")
+		root.current.style.setProperty(`--colorIcon${icon}`, "#727272")
 	}
 }

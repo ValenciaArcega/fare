@@ -7,7 +7,7 @@
     height: 100dvh;
     height: 100vh;
     width: 100%;
-    z-index: var(--z-index-containerCircles);
+    z-index: var(--zIndexContainerCircles);
     position: relative;
 }
 
@@ -25,7 +25,7 @@
     backdrop-filter: blur(104px);
     background-image: radial-gradient(#00000017 3%, transparent 0);
     background-size: 5.5rem 5.5rem;
-    z-index: var(--z-index-blurOverCircles);
+    z-index: var(--zIndexBlurOverCircles);
 }
 
 .circleRight,
@@ -90,21 +90,19 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
-    border: 2px solid var(--borderInput-signIn-mail);
+    border: 2px solid var(--borderInputLoginMail);
 }
 
 .loginWrapperInputMail svg {
-    height: 22px;
-    color: var(--fr-svg-mail);
+    color: var(--colorIconMail);
 }
 
 .loginWrapperInputPassword {
-    border: 2px solid var(--borderInput-signIn-pass);
+    border: 2px solid var(--borderInputLoginPass);
 }
 
 .loginWrapperInputPassword svg {
-    height: 22px;
-    color: var(--fr-svg-pass);
+    color: var(--colorIconPass);
 }
 
 .loginInputMail,

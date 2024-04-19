@@ -20,7 +20,7 @@
 		font-size: 18px;
 		padding-right: 2px;
 		font-weight: 400;
-		color: var(--fr-descriptions);
+		color: var(--frWelcomeMessage);
 	}
 }
 
@@ -58,7 +58,7 @@
 	border-radius: 14px;
 	/* border: 2px dashed #818181; */
 	box-shadow: 0px 3px 20px #00000014;
-	background: var(--bg-task);
+	background: var(--bgTask);
 }
 
 .taskBody {
@@ -101,7 +101,7 @@
 	bottom: 0;
 	height: calc(1.6em * var(--line-height));
 	width: 100%;
-	background: linear-gradient(to bottom, transparent, var(--bg-fadeEffect));
+	background: linear-gradient(to bottom, transparent, var(--bgFadeEffect));
 	z-index: 10;
 }
 
@@ -117,8 +117,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: var(--fr-btn-expand);
-	background-color: var(--bg-btn-expand);
+	color: var(--frBtnExpand);
+	background-color: var(--bgBtnExpand);
 }
 
 .btnToggleTask::before {
@@ -154,7 +154,7 @@
 	border: none;
 	outline: none;
 	color: var(--black18);
-	background-color: var(--bg-btn-expand);
+	background-color: var(--bgBtnExpand);
 	transition: transform .7s;
 
 	&:hover {
@@ -197,9 +197,9 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	border-radius: 12px;
-	z-index: var(--z-index-popup);
+	z-index: var(--zIndexPopup);
 	color: var(--black18);
-	background-color: var(--bg-modal);
+	background-color: var(--bgModal);
 	box-shadow: 0 4px 10px #0000000a;
 
 	& h4 {
@@ -212,8 +212,8 @@
 		border-radius: 12px;
 		line-height: 1.5;
 		text-align: center;
-		border: 1px solid var(--bg-modal-input-border);
-		background-color: var(--bg-modal-input);
+		border: 1px solid var(--borderInputNewTaskDescription);
+		background-color: var(--bgInputModal);
 	}
 
 	& footer {
@@ -227,7 +227,7 @@
 		border: none;
 		border-radius: 8px;
 		font-weight: 500;
-		color: var(--fr-btn-expand);
+		color: var(--frBtnExpand);
 		background-color: var(--ff);
 		box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.1);
 		transition: transform .7s;
@@ -257,7 +257,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: var(--z-index-overlay);
+	z-index: var(--zIndexOverlay);
 }
 
 .containerNoTasks {

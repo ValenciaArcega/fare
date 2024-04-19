@@ -1,54 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 :root {
-  /* main colors */
   --mainColor: #4263eb;
-  --mainColor-tint: #5573ed;
-  --mainColor-shade: #3b59d4;
+  --mainColorTint: #5573ed;
+  --mainColorShade: #3b59d4;
 
-  /* secondary colors */
   --black18: #181818;
   --bg: #f2f2f7;
   --ff: #fff;
 
-  /* tertiary colors */
-  --border-wrong: #df0000;
+  --frBtnExpand: #181818;
+  --frWelcomeMessage: #5d5a5a;
 
-  /* Foreground */
-  --fr-btn-expand: #181818;
-  --fr-descriptions: #5d5a5a;
-  /* Background */
-  --bg-btn-expand: #f2f2f7;
-  --bg-modal: #f2f2f7;
-  --bg-modal-input: #fff;
-  --bg-modal-input-border: #c9c9c9;
-  --bg-modal-inputTitle-border: #c9c9c9;
-  --bg-task: #fff;
-  --bg-fadeEffect: #fff;
-  --bg-blur-navBar: #ffffff66;
+  --bgBtnExpand: #f2f2f7;
+  --bgModal: #f2f2f7;
+  --bgInputModal: #fff;
+  --bgTask: #fff;
+  --bgFadeEffect: #fff;
 
-  /* SignIn.jsx */
-  --borderInput-signIn-mail: #c5c5c5;
-  --borderInput-signIn-pass: #c5c5c5;
-  --fr-svg-mail: #727272;
-  --fr-svg-pass: #727272;
+  --borderInputNewTaskTitle: #c9c9c9;
+  --borderInputNewTaskDescription: #c9c9c9;
+  --borderInputLoginMail: #c5c5c5;
+  --borderInputLoginPass: #c5c5c5;
+  --borderTask: #c9c9c9;
 
-  --border-task: #c9c9c9;
-  /* SignUp.jsx */
-  --borderInput-name: #c5c5c5;
-  --borderInput-mail: #c5c5c5;
-  --borderInput-pass: #c5c5c5;
-  --borderInput-passConfirm: #c5c5c5;
+  --colorIconMail: #727272;
+  --colorIconPass: #727272;
 
-  --shadow-finder: 0px 20px 18px -18px #155ba633;
+  --borderInputName: #c5c5c5;
+  --borderInputMail: #c5c5c5;
+  --borderInputPass: #c5c5c5;
+  --borderInputPassConfirm: #c5c5c5;
 
-  --z-index-msg: 101;
-  --z-index-popup: 99;
-  --z-index-overlay: 98;
-  --z-index-blurOverCircles: 2;
-  --z-index-containerCircles: 1;
-  --z-index-navigationBar: 90;
+  --shadowFinder: 0px 20px 18px -18px #155ba633;
+
+  --zIndexMsg: 101;
+  --zIndexPopup: 99;
+  --zIndexOverlay: 98;
+  --zIndexBlurOverCircles: 2;
+  --zIndexContainerCircles: 1;
+  --zIndexNavigationBar: 90;
 }
+
+#rootDarkMode {}
 
 ::selection {
   background-color: var(--mainColor);
@@ -104,7 +98,7 @@ textarea {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: var(--z-index-overlay);
+  z-index: var(--zIndexOverlay);
 }
 
 /* ///////////////////////////////////////////////////// */
@@ -174,10 +168,10 @@ textarea {
   border-radius: 30px;
   transition: border-radius 0.5s ease;
   background: var(--ff);
-  box-shadow: var(--shadow-finder);
+  box-shadow: var(--shadowFinder);
 
   & svg:first-child {
-    color: var(--mainColor-shade);
+    color: var(--mainColorShade);
   }
 
   & svg:last-child {
@@ -257,7 +251,7 @@ input:not(:placeholder-shown)~.finder-btnClose {
 .loaderBar::before {
   content: "";
   position: absolute;
-  background: var(--mainColor-tint);
+  background: var(--mainColorTint);
   top: 0;
   left: 0;
   width: 0%;
