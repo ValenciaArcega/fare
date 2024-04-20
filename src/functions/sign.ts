@@ -5,9 +5,9 @@ import { useAppearance } from "../hooks/useAppearance";
 
 export const signUserOut = (): void => {
     const navigation = useNavigate()
-    const { makeLight } = useAppearance()
+    const { root } = useAppearance()
 
     signOut(auth)
-    makeLight()
+    root.removeAttribute("id")
     navigation("/fare/");
 }

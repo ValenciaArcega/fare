@@ -42,7 +42,28 @@
   --zIndexNavigationBar: 90;
 }
 
-#rootDarkMode {}
+#rootDarkMode {
+  --mainColor: #5573ed;
+
+  --black18: #fff;
+  --bg: #181818;
+  --ff: #363636;
+
+  --frBtnExpand: #fff;
+  --frWelcomeMessage: #f2f2f7;
+
+  --bgBtnExpand: #343333;
+  --bgModal: #242424;
+  --bgInputModal: #262626;
+  --bgTask: linear-gradient(180deg, #242424, #121212, 65.62%);
+  --bgFadeEffect: transparent;
+
+  --borderInputNewTaskTitle: #333333;
+  --borderInputNewTaskDescription: #333333;
+  --borderTask: transparent;
+
+  --shadowFinder: transparent;
+}
 
 ::selection {
   background-color: var(--mainColor);
@@ -108,7 +129,7 @@ textarea {
   height: 48px;
   width: 48px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #00000033;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,7 +265,7 @@ input:not(:placeholder-shown)~.finder-btnClose {
   width: 130px;
   height: 6px;
   border-radius: 30px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #00000033;
   position: relative;
 }
 
@@ -265,6 +286,24 @@ input:not(:placeholder-shown)~.finder-btnClose {
   grid-template-columns: 4.2rem 1fr;
   grid-template-areas: "sidebar main";
   z-index: -2;
+}
+
+.wrapperAppearance {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  position: relative;
+
+  & input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
 }
 
 @keyframes movingLoaderBar {

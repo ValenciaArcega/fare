@@ -229,7 +229,7 @@
 		font-weight: 500;
 		color: var(--frBtnExpand);
 		background-color: var(--ff);
-		box-shadow: 0px 5px 15px -6px rgba(0, 0, 0, 0.1);
+		box-shadow: 0px 5px 15px -6px #0000001a;
 		transition: transform .7s;
 
 		&:hover {

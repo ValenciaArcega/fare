@@ -5,7 +5,7 @@ import { signOut } from "firebase/auth"
 
 export function Profile() {
 	const navigation = useNavigate()
-	const { makeLight } = useAppearance()
+	const { root } = useAppearance()
 
 	return <section>
 		<button onClick={signUserOut}>Cerrar Sesión</button>
@@ -13,7 +13,7 @@ export function Profile() {
 
 	function signUserOut() {
 		signOut(auth)
-		makeLight()
+		root.removeAttribute("id")
 		navigation("/fare/")
 	}
 }
