@@ -7,7 +7,10 @@
     align-items: center;
     grid-template-rows: repeat(10, 1fr);
     grid-area: sidebar;
+    position: fixed;
     background: var(--white);
+    top: 0;
+    left: 0;
 
     & button {
         border: none;

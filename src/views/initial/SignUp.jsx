@@ -52,8 +52,8 @@ export function SignUp() {
 					className={css.signUpName}
 					placeholder="Nombre(s) y apellidos"
 					autoComplete="new-password"
-					onFocus={() => inputFocusIn('name')}
-					onBlur={() => inputBlur('name')}
+					onFocus={() => inputFocusIn('Name')}
+					onBlur={() => inputBlur('Name')}
 					onKeyUp={name_onKeyUp}
 				/>
 				<p ref={errorName} id="signUp-name-p" className={css.signUpFeedback}></p>
@@ -65,8 +65,8 @@ export function SignUp() {
 					ref={inputEmail}
 					className={css.signUpMail}
 					placeholder="usuario@dominio.some"
-					onFocus={() => inputFocusIn('mail')}
-					onBlur={() => inputBlur('mail')}
+					onFocus={() => inputFocusIn('Mail')}
+					onBlur={() => inputBlur('Mail')}
 					onChangeCapture={mail_onChangeCapture}
 				/>
 				<p ref={errorEmail} id="signUp-mail-p" className={css.signUpFeedback}></p>
@@ -80,8 +80,8 @@ export function SignUp() {
 						type={isShowingPass ? "text" : "password"}
 						autoComplete="new-password"
 						placeholder="Crea una contraseña"
-						onFocus={() => inputFocusIn('pass')}
-						onBlur={() => inputBlur('pass')}
+						onFocus={() => inputFocusIn('Pass')}
+						onBlur={() => inputBlur('Pass')}
 						onChangeCapture={pass_onChangeCapture}
 					/>
 					<button
@@ -107,8 +107,8 @@ export function SignUp() {
 						type={isShowingPassConfirm ? "text" : "password"}
 						autoComplete="new-password"
 						placeholder="Repite la contraseña"
-						onFocus={() => inputFocusIn('passConfirm')}
-						onBlur={() => inputBlur('passConfirm')}
+						onFocus={() => inputFocusIn('PassConfirm')}
+						onBlur={() => inputBlur('PassConfirm')}
 						onKeyUp={passConfirm_onKeyUp}
 					/>
 					<button

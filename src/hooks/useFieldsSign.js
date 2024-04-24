@@ -125,11 +125,11 @@ export function useKeyUpSign() {
 	}
 
 	function inputFocusIn(str) {
-		root.setProperty(`--borderInput-${str}`, '#4263eb')
+		root.setProperty(`--borderInput${str}`, '#4263eb')
 	}
 
 	function inputBlur(str) {
-		root.setProperty(`--borderInput-${str}`, '#c5c5c5')
+		root.setProperty(`--borderInput${str}`, '#c5c5c5')
 	}
 
 	return {

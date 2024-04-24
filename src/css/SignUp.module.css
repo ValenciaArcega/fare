@@ -31,7 +31,6 @@
 
 .containerSignUp {
     height: 100dvh;
-    min-height: 100%;
     width: 100%;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -46,6 +45,12 @@
     background-image: radial-gradient(#00000017 3%, transparent 0);
     background-size: 5.5rem 5.5rem;
     z-index: var(--zIndexBlurOverCircles);
+}
+
+@media (max-width: 500px) {
+    .containerSignUp {
+        align-items: start !important;
+    }
 }
 
 .signUp {
