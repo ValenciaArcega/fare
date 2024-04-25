@@ -1,17 +1,17 @@
-import css from "../../css/SignUp.module.css"
-import { db, auth } from "../../../dal/credentials"
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { getDoc, setDoc, doc } from "firebase/firestore"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { useKeyUpSign } from "../../hooks/useFieldsSign"
-import { fixName } from "../../functions/upperName"
 import { IoTextOutline } from "react-icons/io5"
 import { HiAtSymbol, HiOutlineEye, HiOutlineEyeSlash } from "react-icons/hi2"
+
+import css from "../css/SignUp.module.css"
+import { db, auth } from "../../../dal/credentials"
+import { fixName } from "../../functions/upperName"
+import { useKeyUpSign } from "../../hooks/useFieldsSign"
 import { useToast } from "../../hooks/useToast"
 
 export function SignUp() {
-
 	const [isShowingPass, setIsShowingPass] = useState(false)
 	const [isShowingPassConfirm, setIsShowingPassConfirm] = useState(false)
 

@@ -1,13 +1,10 @@
-/**
- * @overview The following component Log the user in or allows go to sign up
- * @author ValenciaArcega
- */
-import css from "../../css/Login.module.css"
-import { auth } from "../../../dal/credentials"
+import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import { useState, useRef, FormEvent, MouseEvent } from "react"
-import { signInWithEmailAndPassword } from "firebase/auth"
 import { HiAtSymbol, HiOutlineKey, HiCheck } from "react-icons/hi2"
+import { signInWithEmailAndPassword } from "firebase/auth"
+
+import css from "../css/Login.module.css"
+import { auth } from "../../../dal/credentials"
 import { useToast } from "../../hooks/useToast"
 
 export function Login() {
